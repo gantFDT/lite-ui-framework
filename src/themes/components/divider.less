@@ -1,0 +1,36 @@
+html {
+  
+  .ant-divider {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    background: var(--border-color-split)
+  }
+
+  .ant-divider-horizontal.ant-divider-with-text-center,
+  .ant-divider-horizontal.ant-divider-with-text-left,
+  .ant-divider-horizontal.ant-divider-with-text-right {
+    color: var(--heading-color);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-divider-horizontal.ant-divider-with-text-center::before,
+  .ant-divider-horizontal.ant-divider-with-text-left::before,
+  .ant-divider-horizontal.ant-divider-with-text-right::before,
+  .ant-divider-horizontal.ant-divider-with-text-center::after,
+  .ant-divider-horizontal.ant-divider-with-text-left::after,
+  .ant-divider-horizontal.ant-divider-with-text-right::after {
+    border-top: 1px solid var(--border-color-split)
+  }
+
+  .ant-divider-dashed {
+    border-color: var(--border-color-split)
+  }
+  .ant-divider-horizontal{
+    margin: 10px 0;
+  }
+
+}

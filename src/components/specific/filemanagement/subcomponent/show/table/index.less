@@ -1,0 +1,42 @@
+.rowWrapper {
+
+  &:hover {
+    .operateContainer .operateWrapper {
+      display: block;
+    }
+
+    background:#e6f7ff;
+  }
+
+  .operateContainer {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .description {
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .operateWrapper {
+      position: absolute;
+      right: 0;
+      white-space: nowrap;
+      display: none;
+
+      .operateIcon {
+        font-size: 20px;
+        color: var(--primary-color);
+        opacity: 0.5;
+        margin-left: 8px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+html {
+
+  .ant-fullcalendar {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    border-top: var(--border-width-base) var(--border-style-base) var(--border-color-base)
+  }
+
+  .ant-fullcalendar-value {
+    color: var(--text-color);
+    border-radius: var(--border-radius-sm)
+  }
+
+  .ant-fullcalendar-value:hover {
+    background: var(--item-hover-bg)
+  }
+
+  .ant-fullcalendar-value:active {
+    color: var(--text-color-inverse);
+    background: var(--primary-color)
+  }
+
+  .ant-fullcalendar-today .ant-fullcalendar-value,
+  .ant-fullcalendar-month-panel-current-cell .ant-fullcalendar-value {
+    -webkit-box-shadow: 0 0 0 1px var(--primary-color) inset;
+    box-shadow: 0 0 0 1px var(--primary-color) inset
+  }
+
+  .ant-fullcalendar-selected-day .ant-fullcalendar-value,
+  .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-value {
+    color: var(--text-color-inverse);
+    background: var(--primary-color)
+  }
+
+  .ant-fullcalendar-disabled-cell-first-of-row .ant-fullcalendar-value {
+    border-top-left-radius: var(--border-radius-base);
+    border-bottom-left-radius: var(--border-radius-base)
+  }
+
+  .ant-fullcalendar-disabled-cell-last-of-row .ant-fullcalendar-value {
+    border-top-right-radius: var(--border-radius-base);
+    border-bottom-right-radius: var(--border-radius-base)
+  }
+
+  .ant-fullcalendar-last-month-cell .ant-fullcalendar-value,
+  .ant-fullcalendar-next-month-btn-day .ant-fullcalendar-value {
+    color: var(--disabled-color)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-header label.ant-radio-button {
+    height: var(--input-height-base);
+    line-height: calc(var(--input-height-base) - 2px)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-date {
+    color: var(--text-color);
+    border-top: 2px solid var(--border-color-split)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month:hover,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-date:hover {
+    background: var(--item-hover-bg)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month:active,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-date:active {
+    background: var(--primary-2)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-today .ant-fullcalendar-value {
+    color: var(--text-color)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-current-cell .ant-fullcalendar-month,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-today .ant-fullcalendar-date {
+    border-top-color: var(--primary-color)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-month,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-date {
+    background: var(--primary-1)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-value,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-value {
+    color: var(--primary-color)
+  }
+
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-last-month-cell .ant-fullcalendar-date,
+  .ant-fullcalendar-fullscreen .ant-fullcalendar-next-month-btn-day .ant-fullcalendar-date {
+    color: var(--disabled-color)
+  }
+
+  .ant-fullcalendar-disabled-cell .ant-fullcalendar-value {
+    color: var(--disabled-color)
+  }
+}

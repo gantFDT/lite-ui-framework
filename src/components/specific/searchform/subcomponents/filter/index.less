@@ -1,0 +1,57 @@
+@import '~antd/es/style/themes/default.less';
+
+.panel {
+  width: 300px;
+  display: block;
+
+  :global {
+    .gant-blockheader {
+      height: auto !important;
+      min-height: auto;
+      border-bottom: 1px solid #edebe9;
+      padding: 0;
+    }
+  }
+
+  .header {
+    color: #000;
+    font-size: 14px !important;
+    font-weight: bold;
+    padding-left: 5px;
+    margin: 5px 0px 5px 0px !important;
+  }
+
+  .content {
+    padding: 5px;
+
+    .item {
+      margin-bottom: 5px;
+
+      .tag {
+        &:hover {
+          cursor: pointer;
+        }
+
+        :global(.anticon-close) {
+          &:hover {
+            color: red;
+            transform: scale(1.2)
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagenationWrapper {
+  display: inline-block;
+  position: relative;
+  min-width: 180px;
+
+  .pagenation {
+    display: inline-block;
+    position: absolute;
+    top: -12px;
+    right: -10px;
+  }
+}

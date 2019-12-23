@@ -1,0 +1,107 @@
+@import '~antd/es/style/themes/default.less';
+
+.panel {
+  width: 300px;
+
+  :global {
+    .gant-blockheader {
+      height: auto !important;
+      min-height: auto;
+      border-bottom: 1px solid var(--border-color-split);
+      padding: 0;
+    }
+  }
+
+  .content {
+    padding: 5px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color-split);
+  }
+
+  .header {
+    color: var(--text-color);
+    font-size: 14px !important;
+    font-weight: bold;
+    padding-left: 5px;
+    margin: 5px 0px 5px 0px !important;
+  }
+
+  ul {
+    padding-inline-start: unset;
+    margin-bottom: 0px !important;
+
+    li {
+      padding: 3px 10px;
+      line-height: 30px;
+      font-size: 12px;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .leftContent {
+        flex: 1;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .tag {
+        // color: var(--primary-color);
+        margin-left: 5px;
+      }
+
+      .operates {
+        display: none;
+        font-size: 12px;
+        color: unset;
+
+        .operate {
+          &:hover {
+            color: var(--primary-color);
+            cursor: pointer;
+          }
+        }
+
+        .delete {
+          color: var(--btn-danger-color);
+
+          &:hover {
+            color: var(--error-8);
+          }
+        }
+      }
+
+      &:hover {
+        background: var(--item-hover-bg);
+        color: var(--item-hover-color);
+        border-radius: var(--border-radius-base);
+
+        .operates {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.dropbutton {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+  display: inline-block;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &DefaultShow {
+    opacity: 1;
+  }
+
+  &SplitLine {
+    border-left: 1px solid #edebe9;
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+}

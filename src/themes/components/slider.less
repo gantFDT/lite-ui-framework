@@ -1,0 +1,82 @@
+html {
+
+  .ant-slider {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    margin: var(--slider-margin)
+  }
+
+  .ant-slider-rail {
+    background-color: var(--slider-rail-background-color);
+    border-radius: var(--border-radius-sm)
+  }
+
+  .ant-slider-track {
+    background-color: var(--slider-track-background-color);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-slider-handle {
+    background-color: var(--slider-handle-background-color);
+    border: solid var(--slider-handle-border-width) var(--slider-handle-color);
+    -webkit-box-shadow: var(--slider-handle-shadow);
+    box-shadow: var(--slider-handle-shadow)
+  }
+
+  .ant-slider-handle:focus {
+    border-color: var(--slider-handle-color-focus);
+    -webkit-box-shadow: 0 0 0 5px var(--slider-handle-color-focus-shadow);
+    box-shadow: 0 0 0 5px var(--slider-handle-color-focus-shadow)
+  }
+
+  .ant-slider-handle.ant-tooltip-open {
+    border-color: var(--slider-handle-color-tooltip-open)
+  }
+
+  .ant-slider:hover .ant-slider-rail {
+    background-color: var(--slider-rail-background-color-hover)
+  }
+
+  .ant-slider:hover .ant-slider-track {
+    background-color: var(--slider-track-background-color-hover)
+  }
+
+  .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+    border-color: var(--slider-handle-color-hover)
+  }
+
+  .ant-slider-mark {
+    font-size: var(--font-size-base)
+  }
+
+  .ant-slider-mark-text {
+    color: var(--text-color-secondary)
+  }
+
+  .ant-slider-mark-text-active {
+    color: var(--text-color)
+  }
+
+  .ant-slider-dot {
+    background-color: var(--component-background);
+    border: 2px solid var(--slider-dot-border-color)
+  }
+
+  .ant-slider-dot-active {
+    border-color: var(--slider-dot-border-color-active)
+  }
+
+  .ant-slider-disabled .ant-slider-track {
+    background-color: var(--slider-disabled-color) !important
+  }
+
+  .ant-slider-disabled .ant-slider-handle,
+  .ant-slider-disabled .ant-slider-dot {
+    background-color: var(--component-background);
+    border-color: var(--slider-disabled-color) !important
+  }
+}

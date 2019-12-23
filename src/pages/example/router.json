@@ -1,0 +1,156 @@
+{
+  "order": 2,
+  "routes": {
+    "name": "example",
+    "path": "/example",
+    "component": "./example/_layout",
+    "routes": [{
+        "path": "/example",
+        "name": "实验室",
+        "component": "./example",
+        "exact": true
+      },
+      {
+        "path": "anchorpage",
+        "name": "anchorpage",
+        "component": "./example/anchorpage"
+      },
+      {
+        "path": "submenupage",
+        "name": "submenupage",
+        "component": "./example/submenupage",
+        "routes": [{
+            "path": "/example/submenupage",
+            "redirect": "/example/submenupage/onepage",
+            "exact": true
+          },
+          {
+            "path": "onepage",
+            "component": "./example/submenupage/onepage"
+          },
+          {
+            "path": "twopage",
+            "component": "./example/submenupage/twopage"
+          },
+          {
+            "path": "threepage",
+            "component": "./example/submenupage/threepage"
+          }
+        ]
+      },
+      {
+        "path": "resizableModal",
+        "name": "resizableModal",
+        "component": "./example/resizableModal"
+      },
+      {
+        "path": "formSchema",
+        "name": "formSchema",
+        "component": "./example/formschema"
+      },
+      {
+        "path": "smartsearch",
+        "name": "smartsearch",
+        "component": "./example/smartsearch"
+      },
+      {
+        "path": "upload",
+        "name": "upload",
+        "component": "./example/upload"
+      },
+      {
+        "path": "codelist",
+        "name": "codelist",
+        "component": "./example/codelist"
+      },
+      {
+        "path": "contextmenu",
+        "name": "contextmenu",
+        "component": "./example/contextmenu"
+      },
+      {
+        "path": "searchform",
+        "name": "searchform",
+        "component": "./example/searchform"
+      },
+      {
+        "path": "treedemo",
+        "name": "treedemo",
+        "component": "./example/treedemo"
+      },
+      {
+        "path": "tabpanel",
+        "name": "tabpanel",
+        "component": "./example/tabpanel"
+      },
+      {
+        "path": "workflow",
+        "name": "工作流相关组件",
+        "component": "./example/workflow"
+      },
+      {
+        "path": "tempalelayout",
+        "name": "tempalelayout",
+        "component": "./example/tempalelayout"
+      },
+      {
+        "path": "resizewidth",
+        "name": "resizewidth",
+        "component": "./example/resizewidth"
+      },
+      {
+        "path": "collapsepane",
+        "name": "collapsepane",
+        "component": "./example/collapsepane"
+      },
+      {
+        "path": "testdemo",
+        "name": "testdemo演示",
+        "nameEN": "testdemo",
+        "component": "./example/testDemo"
+      },
+      {
+        "path": "edittable",
+        "name": "可编辑表格",
+        "component": "./example/edittable"
+      },
+      {
+        "path": "tabletransfer",
+        "name": "tabletransfer",
+        "nameEN": "tabletransfer",
+        "component": "./example/tabletransfer"
+      },
+      {
+        "path": "selectors",
+        "name": "业务选择器",
+        "component": "./example/selectors"
+      },
+      {
+        "path": "filepreview",
+        "name": "filepreview",
+        "nameEN": "filepreview",
+        "component": "./example/filepreview"
+      },
+      {
+        "path": "utiltest",
+        "name": "工具类",
+        "component": "./example/utiltest"
+      },
+      {
+        "path": "playground",
+        "name": "演练场",
+        "component": "./example/playground"
+      },
+      {
+        "path": "richtexteditor",
+        "name": "富文本编辑器",
+        "component": "./example/richtexteditor"
+      },
+      {
+        "path": "contactbuttongroup",
+        "name": "联系方式按钮组",
+        "component": "./example/contactbuttongroup"
+      }
+    ]
+  }
+}

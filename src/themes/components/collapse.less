@@ -1,0 +1,72 @@
+html {
+  
+  .ant-collapse {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    background-color: var(--collapse-header-bg);
+    border: var(--border-width-base) var(--border-style-base) var(--border-color-base);
+    border-radius: var(--collapse-panel-border-radius)
+  }
+
+  .ant-collapse>.ant-collapse-item {
+    border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-base)
+  }
+
+  .ant-collapse>.ant-collapse-item:last-child,
+  .ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header {
+    border-radius: 0 0 var(--collapse-panel-border-radius) var(--collapse-panel-border-radius)
+  }
+
+  .ant-collapse>.ant-collapse-item>.ant-collapse-header {
+    padding: var(--collapse-header-padding);
+    padding-left: var(--collapse-header-padding-extra);
+    color: var(--heading-color)
+  }
+
+  .ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-arrow {
+    color: var(--icon-color);
+    left: var(--padding-md);
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-collapse-icon-position-right>.ant-collapse-item>.ant-collapse-header {
+    padding: var(--collapse-header-padding);
+    padding-right: var(--collapse-header-padding-extra)
+  }
+
+  .ant-collapse-icon-position-right>.ant-collapse-item>.ant-collapse-header .ant-collapse-arrow {
+    right: var(--padding-md)
+  }
+
+  .ant-collapse-content {
+    color: var(--text-color);
+    background-color: var(--collapse-content-bg);
+    border-top: var(--border-width-base) var(--border-style-base) var(--border-color-base)
+  }
+
+  .ant-collapse-content>.ant-collapse-content-box {
+    padding: var(--collapse-content-padding)
+  }
+
+  .ant-collapse-item:last-child>.ant-collapse-content {
+    border-radius: 0 0 var(--collapse-panel-border-radius) var(--collapse-panel-border-radius)
+  }
+
+  .ant-collapse-borderless {
+    background-color: var(--component-background)
+  }
+
+  .ant-collapse-borderless>.ant-collapse-item {
+    border-bottom: 1px solid var(--border-color-base)
+  }
+
+  .ant-collapse .ant-collapse-item-disabled>.ant-collapse-header,
+  .ant-collapse .ant-collapse-item-disabled>.ant-collapse-header>.arrow {
+    color: var(--disabled-color)
+  }
+  
+}

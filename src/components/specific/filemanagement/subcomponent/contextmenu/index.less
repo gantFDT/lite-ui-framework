@@ -1,0 +1,46 @@
+.react-contextmenu {
+  background-color: var(--component-background);
+  border-radius: var(--border-radius-base);
+  -webkit-box-shadow: var(--box-shadow-base);
+  box-shadow: var(--box-shadow-base);
+  z-index: 99;
+  padding: 4px 0;
+
+  .react-contextmenu-item {
+    cursor: pointer;
+    padding: var(--dropdown-vertical-padding) var(--control-padding-horizontal);
+    color: var(--text-color);
+    font-size: var(--dropdown-font-size);
+    line-height: var(--dropdown-line-height);
+    min-width: 160px;
+
+    &:active {
+      color: var(--dropdown-selected-color);
+      background-color: var(--item-active-bg)
+    }
+
+    &:hover {
+      background-color: var(--item-hover-bg);
+      color: var(--item-hover-color);
+      text-decoration: none;
+    }
+
+    &--disabled {
+      background-color: transparent;
+      color: var(--disabled-color);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--component-background);
+        color: var(--disabled-color);
+      }
+    }
+
+    &--divider {
+      cursor: inherit;
+      height: 1px;
+      margin: 4px 0px;
+      background-color: var(--border-color-split);
+    }
+  }
+}

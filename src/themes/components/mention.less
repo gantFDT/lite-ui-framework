@@ -1,0 +1,321 @@
+html {
+
+  .ant-mention-wrapper {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor {
+    height: var(--input-height-base);
+    padding: var(--input-padding-vertical-base) var(--input-padding-horizontal-base);
+    color: var(--input-color);
+    font-size: var(--font-size-base);
+    background-color: var(--input-bg);
+    border: var(--border-width-base) var(--border-style-base) var(--input-border-color);
+    border-bottom-color: var(--input-border-bottom-color);
+    border-radius: var(--border-radius-base);
+    min-height: var(--input-height-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor:hover {
+    border-color: var(--input-hover-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mention-wrapper .ant-mention-editor:focus {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor-disabled {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor-disabled:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mention-wrapper .ant-mention-editor[disabled] {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor[disabled]:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  textarea.ant-mention-wrapper .ant-mention-editor {
+    min-height: var(--input-height-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor-lg {
+    height: var(--input-height-lg);
+    padding: var(--input-padding-vertical-lg) var(--input-padding-horizontal-lg);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-mention-wrapper .ant-mention-editor-sm {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-mention-wrapper.ant-mention-active:not(.disabled) .ant-mention-editor {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-mention-wrapper.disabled .ant-mention-editor {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mention-wrapper.disabled .ant-mention-editor:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mention-wrapper .public-DraftEditorPlaceholder-root .public-DraftEditorPlaceholder-inner {
+    padding: 5px calc(var(--control-padding-horizontal) - 1px);
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mention-wrapper .DraftEditor-editorContainer .public-DraftEditor-content {
+    padding: 5px calc(var(--control-padding-horizontal) - 1px)
+  }
+
+  .ant-mention-dropdown {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    background-color: var(--component-background);
+    border-radius: var(--border-radius-base);
+    -webkit-box-shadow: var(--box-shadow-base);
+    box-shadow: var(--box-shadow-base)
+  }
+
+  .ant-mention-dropdown-notfound.ant-mention-dropdown-item {
+    color: var(--disabled-color)
+  }
+
+  .ant-mention-dropdown-notfound.ant-mention-dropdown-item .anticon-loading {
+    color: var(--primary-color)
+  }
+
+  .ant-mention-dropdown-item {
+    padding: 5px var(--control-padding-horizontal);
+    color: var(--text-color)
+  }
+
+  .ant-mention-dropdown-item:hover {
+    background-color: var(--item-hover-bg)
+  }
+
+  .ant-mention-dropdown-item.focus,
+  .ant-mention-dropdown-item-active {
+    background-color: var(--item-active-bg)
+  }
+
+  .ant-mention-dropdown-item-disabled {
+    color: var(--disabled-color)
+  }
+
+  .ant-mention-dropdown-item-disabled:hover {
+    color: var(--disabled-color);
+    background-color: var(--component-background)
+  }
+
+  .ant-mention-dropdown-item-selected,
+  .ant-mention-dropdown-item-selected:hover {
+    color: var(--text-color);
+    background-color: var(--background-color-base)
+  }
+
+  .ant-mention-dropdown-item-divider {
+    background-color: var(--border-color-split)
+  }
+  
+  .ant-mentions {
+    color: var(--text-color);
+    font-variant: var(--font-variant-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    height: var(--input-height-base);
+    padding: var(--input-padding-vertical-base) var(--input-padding-horizontal-base);
+    color: var(--input-color);
+    font-size: var(--font-size-base);
+    background-color: var(--input-bg);
+    border: var(--border-width-base) var(--border-style-base) var(--input-border-color);
+    border-bottom-color: var(--input-border-bottom-color);
+    border-radius: var(--border-radius-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-mentions::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions:hover {
+    border-color: var(--input-hover-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mentions:focus {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-mentions-disabled {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mentions-disabled:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mentions[disabled] {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mentions[disabled]:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  textarea.ant-mentions {
+    min-height: var(--input-height-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-mentions-lg {
+    height: var(--input-height-lg);
+    padding: var(--input-padding-vertical-lg) var(--input-padding-horizontal-lg);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-mentions-sm {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-mentions-disabled>textarea {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-mentions-disabled>textarea:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-mentions-focused {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-mentions>textarea,
+  .ant-mentions-measure {
+    min-height: calc(var(--input-height-base) - 2px);
+    padding: var(--input-padding-vertical-base) var(--input-padding-horizontal-base)
+  }
+
+  .ant-mentions>textarea::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions>textarea:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions>textarea::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-mentions-dropdown {
+    color: var(--text-color);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    font-size: var(--font-size-base);
+    background-color: var(--component-background);
+    border-radius: var(--border-radius-base);
+    -webkit-box-shadow: var(--box-shadow-base);
+    box-shadow: var(--box-shadow-base)
+  }
+
+  .ant-mentions-dropdown-menu-item {
+    padding: 5px var(--control-padding-horizontal);
+    color: var(--text-color)
+  }
+
+  .ant-mentions-dropdown-menu-item:hover {
+    background-color: var(--item-hover-bg)
+  }
+
+  .ant-mentions-dropdown-menu-item:first-child {
+    border-radius: var(--border-radius-base) var(--border-radius-base) 0 0
+  }
+
+  .ant-mentions-dropdown-menu-item:last-child {
+    border-radius: 0 0 var(--border-radius-base) var(--border-radius-base)
+  }
+
+  .ant-mentions-dropdown-menu-item-disabled {
+    color: var(--disabled-color)
+  }
+
+  .ant-mentions-dropdown-menu-item-disabled:hover {
+    color: var(--disabled-color);
+    background-color: var(--component-background)
+  }
+
+  .ant-mentions-dropdown-menu-item-selected {
+    color: var(--text-color);
+    font-weight: var(--select-item-selected-font-weight);
+    background-color: var(--background-color-light)
+  }
+
+  .ant-mentions-dropdown-menu-item-active {
+    background-color: var(--item-active-bg)
+  }
+
+}

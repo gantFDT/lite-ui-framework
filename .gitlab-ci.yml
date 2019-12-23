@@ -1,0 +1,2 @@
+
+include: 'https://operation.gantcloud.com/ci-script/ui-team/ui-framework/build.yaml'

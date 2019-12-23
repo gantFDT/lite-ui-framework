@@ -1,0 +1,77 @@
+html {
+
+  .ant-switch {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    height: var(--switch-height);
+    line-height: calc(var(--switch-height) - 2px);
+    background-color: var(--disabled-color)
+  }
+
+  .ant-switch-inner {
+    color: var(--text-color-inverse);
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-switch-loading-icon,
+  .ant-switch::after {
+    width: calc(var(--switch-height) - 4px);
+    height: calc(var(--switch-height) - 4px);
+    background-color: var(--component-background)
+  }
+
+  .ant-switch::after {
+    -webkit-box-shadow: 0 2px 4px 0 var(--switch-shadow-color);
+    box-shadow: 0 2px 4px 0 var(--switch-shadow-color)
+  }
+
+  .ant-switch-loading .ant-switch-loading-icon {
+    color: var(--text-color)
+  }
+
+  .ant-switch-checked.ant-switch-loading .ant-switch-loading-icon {
+    color: var(--switch-color)
+  }
+
+  .ant-switch:focus {
+    -webkit-box-shadow: 0 0 0 2px var(--fade-switch-color-20);
+    box-shadow: 0 0 0 2px var(--fade-switch-color-20)
+  }
+
+  .ant-switch-small {
+    height: var(--switch-sm-height);
+    line-height: calc(var(--switch-sm-height) - 2px)
+  }
+
+  .ant-switch-small .ant-switch-inner {
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-switch-small::after {
+    width: calc(var(--switch-sm-height) - 4px);
+    height: calc(var(--switch-sm-height) - 4px)
+  }
+
+  .ant-switch-small .ant-switch-loading-icon {
+    width: calc(var(--switch-sm-height) - 4px);
+    height: calc(var(--switch-sm-height) - 4px)
+  }
+
+  .ant-switch-small.ant-switch-checked .ant-switch-loading-icon {
+    margin-left: var(--switch-sm-checked-margin-left)
+  }
+
+  .ant-switch-checked {
+    background-color: var(--switch-color)
+  }
+
+  .ant-switch-loading,
+  .ant-switch-disabled {
+    opacity: var(--switch-disabled-opacity)
+  }
+
+}

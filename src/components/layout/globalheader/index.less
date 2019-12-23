@@ -1,0 +1,420 @@
+@import '~antd/lib/style/themes/default.less';
+
+
+
+
+.logo {
+  display: inline-block;
+  height: var(--layout-header-height);
+  padding: 0 0 0 24px;
+  font-size: 20px;
+  line-height: var(--layout-header-height);
+  vertical-align: top;
+  cursor: pointer;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+
+  :global(.ant-dropdown-menu-item) {
+    min-width: 160px;
+  }
+}
+
+.trigger {
+  height: var(--layout-header-height);
+  line-height: var(--layout-header-height);
+  padding: ~'calc((var(--layout-header-height) - 20px) / 2)'24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  vertical-align: top;
+
+  &:hover {
+    background: var(--header-hover-background);
+  }
+}
+
+.taskbarbox {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  float: right;
+
+  .arrowsIcon {
+    width: 20px;
+    height: 100%;
+    vertical-align: top;
+    line-height: inherit !important;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .forbidArrows {
+    background: #e2e1e1;
+    cursor: not-allowed !important;
+    opacity: 0.4;
+
+    svg {
+      cursor: not-allowed !important;
+    }
+  }
+}
+
+// tastbar文件内部
+.taskbarcontent {
+  width: 100%;
+  height: 100%;
+
+  .taskbarouter {
+    width: calc(100% - 60px);
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+
+  }
+}
+
+.headerright {
+  display: inline-flex;
+  // overflow-x: scroll;
+  white-space: nowrap;
+  height: 100%;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
+  .taskbarbtn:first-child {
+    border-left: 1px solid #edebe9;
+    ;
+  }
+
+  .taskbarbtn:hover {
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  .taskbaractive {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .taskbarbtn {
+    display: inline-block;
+    height: 100%;
+    padding: 0 10px;
+    border-right: 1px solid #edebe9;
+    list-style: none;
+
+    .taskbartitle {
+      vertical-align: baseline;
+      padding-right: 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+.taskbarclose {
+  margin: 0 0 0 10px !important;
+  float: right;
+  vertical-align: middle !important;
+  line-height: inherit !important;
+}
+
+.headerright::-webkit-scrollbar {
+  display: none;
+}
+
+.right {
+  float: right;
+  height: 100%;
+  overflow: hidden;
+
+  .action {
+    display: inline-block;
+    height: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    border-right: var(--global-header-action-border-right);
+
+    i {
+      color: var(--global-header-text-color);
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background: var(--header-hover-background);
+      color: var(--header-hover-color);
+
+      :global {
+        .anticon {
+          color: var(--header-hover-color);
+        }
+      }
+    }
+
+    &:global(.opened) {
+      background: var(--header-hover-background);
+      color: var(--header-hover-color);
+    }
+  }
+
+  .search {
+    padding: 0 12px;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  .account {
+    .name {
+      color: var(--global-header-text-color);
+    }
+
+    .avatar {
+      margin: ~'calc((var(--layout-header-height) - 24px) / 2)'0;
+      margin-right: 8px;
+      color: var(--primary-color);
+      vertical-align: top;
+      background: rgba(255, 255, 255, 0.85);
+      display: inline-block;
+    }
+  }
+
+  :global(a) {
+    color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.dark {
+  height: var(--layout-header-height);
+
+  .action {
+    color: rgba(255, 255, 255, 0.85);
+
+    >i {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    &:hover,
+    &:global(.opened) {
+      background: var(--primary-color);
+    }
+
+    :global(.ant-badge) {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+  }
+
+  :global(a) {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@media only screen and (max-width: @screen-md) {
+  :global(.ant-divider-vertical) {
+    vertical-align: unset;
+  }
+
+  .name {
+    display: none;
+  }
+
+  i.trigger {
+    padding: 22px 12px;
+  }
+
+  .logo {
+    position: relative;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .headerright {
+    display: inline-flex;
+    height: 100%;
+    // overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .headerright::-webkit-scrollbar {
+    display: none;
+  }
+
+  .right {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    background: #fff;
+
+    .account {
+      .avatar {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+//notification-area
+.noticeDrawerTitle {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+    margin-right: 2px;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+  }
+}
+
+.noticeListItem {
+  position: relative;
+  font-size: var(--font-size-base);
+  padding: 12px !important;
+  cursor: pointer;
+  transition: all .3s;
+
+  .noticeListTitle {
+    font-size: var(--font-size-lg);
+    position: relative;
+
+    .itemUnReadPoint {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  div {
+    width: 100%;
+  }
+
+  .itemBaseInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .linkView {
+    transition: all .3s;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .noticehHide {
+    visibility: hidden;
+    height: 0;
+  }
+
+  .noticeShow {
+    visibility: visible;
+    height: auto;
+  }
+
+
+  &:hover {
+    .deleteIcon {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .deleteIcon {
+    transition: all 0.3s;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: none;
+    visibility: hidden;
+    opacity: 0;
+    border: 18px;
+    border-style: solid;
+    border-color: #202020 #202020 transparent transparent;
+    cursor: pointer;
+    color: #fff;
+
+    i {
+      position: relative;
+      font-size: var(--font-size-lg);
+      top: -14px;
+      left: 3px;
+    }
+  }
+
+}
+
+.noticeListItemActive {
+  cursor: inherit;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 6px inset;
+}
+
+.noticeViewMore {
+  padding: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 10px 0 0 0;
+    }
+  }
+
+  &:hover {
+    color: var(--primary-color);
+    transition: all 0.3s;
+  }
+}
+
+.modalBody {
+  :global {
+    .ant-modal-body {
+      padding: 0px !important
+    }
+
+    .ant-tabs .ant-tabs-left-bar .ant-tabs-tab {
+      text-align: left;
+      min-width: 150px;
+    }
+  }
+}
+
+
+.shortcutList {
+  padding-left: 0px;
+  margin-bottom: 0px;
+  line-height: 24px;
+  padding: 10px;
+
+  li {
+    margin: 10px 0;
+  }
+}

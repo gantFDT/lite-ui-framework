@@ -1,0 +1,298 @@
+html {
+
+  .ant-pagination {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-pagination-total-text {
+    height: var(--pagination-item-size);
+    line-height: calc(var(--pagination-item-size) - 2px)
+  }
+
+  .ant-pagination-item {
+    min-width: var(--pagination-item-size);
+    height: var(--pagination-item-size);
+    font-family: var(--pagination-font-family);
+    line-height: calc(var(--pagination-item-size) - 2px);
+    background-color: var(--component-background);
+    border: var(--border-width-base) var(--border-style-base) var(--border-color-base);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-pagination-item a {
+    color: var(--text-color)
+  }
+
+  .ant-pagination-item:focus,
+  .ant-pagination-item:hover {
+    border-color: var(--primary-color)
+  }
+
+  .ant-pagination-item:focus a,
+  .ant-pagination-item:hover a {
+    color:var(--primary-color);
+    // background-color: var(--primary-5);
+    border-color: var(--primary-6);
+  }
+
+  .ant-pagination-item-active {
+    font-weight: var(--pagination-font-weight-active);
+    background: var(--pagination-item-bg-active);
+    border-color: var(--primary-color)
+  }
+
+  .ant-pagination-item-active a {
+    color: #fff;
+    background-color: var(--primary-6);
+    border-color: var(--primary-7);
+  }
+
+  .ant-pagination-item-active:focus,
+  .ant-pagination-item-active:hover {
+    border-color: var(--primary-6)
+  }
+
+  .ant-pagination-item-active:focus a,
+  .ant-pagination-item-active:hover a {
+    color: #fff;
+    background-color: var(--primary-6);
+    border-color: var(--primary-7);
+  }
+
+  .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
+  .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+    color: var(--primary-color)
+  }
+
+  :root .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
+  :root .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis,
+  .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
+    color: var(--disabled-color)
+  }
+
+  .ant-pagination-prev,
+  .ant-pagination-next,
+  .ant-pagination-jump-prev,
+  .ant-pagination-jump-next {
+    min-width: var(--pagination-item-size);
+    height: var(--pagination-item-size);
+    color: var(--text-color);
+    font-family: var(--pagination-font-family);
+    line-height: var(--pagination-item-size);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-pagination-prev a,
+  .ant-pagination-next a {
+    color: var(--text-color)
+  }
+
+  .ant-pagination-prev:hover a,
+  .ant-pagination-next:hover a {
+    border-color: var(--primary-5)
+  }
+
+  .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination-next .ant-pagination-item-link {
+    background-color: var(--component-background);
+    border: var(--border-width-base) var(--border-style-base) var(--border-color-base);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-pagination-prev:focus .ant-pagination-item-link,
+  .ant-pagination-next:focus .ant-pagination-item-link,
+  .ant-pagination-prev:hover .ant-pagination-item-link,
+  .ant-pagination-next:hover .ant-pagination-item-link {
+    color: var(--primary-color);
+    border-color: var(--primary-color)
+  }
+
+  .ant-pagination-disabled a,
+  .ant-pagination-disabled:hover a,
+  .ant-pagination-disabled:focus a,
+  .ant-pagination-disabled .ant-pagination-item-link,
+  .ant-pagination-disabled:hover .ant-pagination-item-link,
+  .ant-pagination-disabled:focus .ant-pagination-item-link {
+    color: var(--disabled-color);
+    border-color: var(--border-color-base)
+  }
+
+  .ant-pagination-options-quick-jumper {
+    height: var(--input-height-base);
+    line-height: var(--input-height-base)
+  }
+
+  .ant-pagination-options-quick-jumper input {
+    height: var(--input-height-base);
+    padding: var(--input-padding-vertical-base) var(--input-padding-horizontal-base);
+    color: var(--input-color);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background-color: var(--input-bg);
+    border: var(--border-width-base) var(--border-style-base) var(--input-border-color);
+    border-bottom-color: var(--input-border-bottom-color);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-pagination-options-quick-jumper input::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-pagination-options-quick-jumper input:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-pagination-options-quick-jumper input::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-pagination-options-quick-jumper input:hover {
+    border-color: var(--input-hover-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-pagination-options-quick-jumper input:focus {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-pagination-options-quick-jumper input-disabled {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-pagination-options-quick-jumper input-disabled:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-pagination-options-quick-jumper input[disabled] {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-pagination-options-quick-jumper input[disabled]:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  textarea.ant-pagination-options-quick-jumper input {
+    min-height: var(--input-height-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-pagination-options-quick-jumper input-lg {
+    height: var(--input-height-lg);
+    padding: var(--input-padding-vertical-lg) var(--input-padding-horizontal-lg);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-pagination-options-quick-jumper input-sm {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-pagination-simple .ant-pagination-prev,
+  .ant-pagination-simple .ant-pagination-next {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination-simple .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination-simple .ant-pagination-next .ant-pagination-item-link {
+    height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination-simple .ant-pagination-prev .ant-pagination-item-link::after,
+  .ant-pagination-simple .ant-pagination-next .ant-pagination-item-link::after {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination-simple .ant-pagination-simple-pager {
+    height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination-simple .ant-pagination-simple-pager input {
+    background-color: var(--component-background);
+    border: var(--border-width-base) var(--border-style-base) var(--border-color-base);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-pagination-simple .ant-pagination-simple-pager input:hover {
+    border-color: var(--primary-color)
+  }
+
+  .ant-pagination.mini .ant-pagination-total-text,
+  .ant-pagination.mini .ant-pagination-simple-pager {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination.mini .ant-pagination-item {
+    min-width: var(--pagination-item-size-sm);
+    height: var(--pagination-item-size-sm);
+    line-height: calc(var(--pagination-item-size-sm) - 2px)
+  }
+
+  .ant-pagination.mini .ant-pagination-prev,
+  .ant-pagination.mini .ant-pagination-next {
+    min-width: var(--pagination-item-size-sm);
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination.mini .ant-pagination-prev .ant-pagination-item-link::after,
+  .ant-pagination.mini .ant-pagination-next .ant-pagination-item-link::after {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination.mini .ant-pagination-jump-prev,
+  .ant-pagination.mini .ant-pagination-jump-next {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination.mini .ant-pagination-options-quick-jumper {
+    height: var(--pagination-item-size-sm);
+    line-height: var(--pagination-item-size-sm)
+  }
+
+  .ant-pagination.mini .ant-pagination-options-quick-jumper input {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item {
+    background: var(--disabled-bg);
+    border-color: var(--border-color-base)
+  }
+
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item a {
+    color: var(--disabled-color)
+  }
+
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item-active {
+    background: var(--darken-disabled-bg-10)
+  }
+
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item-link,
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item-link:hover,
+  .ant-pagination.ant-pagination-disabled .ant-pagination-item-link:focus {
+    color: var(--text-color-secondary);
+    background: var(--disabled-bg);
+    border-color: var(--border-color-base)
+  }
+
+}

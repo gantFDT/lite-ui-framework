@@ -1,0 +1,83 @@
+.tab {
+    clear: both;
+    overflow: hidden;
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color-split);
+
+    // .title {
+    //     font-size: 13px;
+    //     .num {
+    //         font-size: 12px;
+    //     }
+    // }
+    .tabcontent {
+      border-right: 1px solid var(--border-color-split);
+      padding-right: 20px;
+
+      .badge {
+        margin-top: -2px;
+        margin-left: 10px;
+      }
+
+    }
+
+    :global {
+      .ant-tabs-top-bar {
+        margin-bottom: 0px !important;
+      }
+
+      .ant-tabs-tab {
+        margin-right: 0px;
+        padding-right: 0px!important;
+      }
+      .ant-tabs-extra-content{
+        line-height: 35px;
+        margin-right: 5px;
+      }
+    }
+}
+
+.listTabs {
+    :global {
+        .ant-tabs-bar {
+            display: none;
+        }
+    }
+}
+
+.genderBox{
+  display: inline-block;
+  border-radius: 9px;
+  padding: 0 5px;
+  vertical-align: text-bottom;
+  font-size: 12px;
+  .gender{
+    color: #fff;
+  }
+  .age{
+    margin-left: 5px;
+    color: #fff;
+  }
+}
+.score{
+  position: absolute;
+  right: 10px;
+  font-size: 28px;
+  line-height: 24px;
+}
+.grade{
+  font-size: 12px;
+  color: #aeaeae;
+}
+.position{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+.toDetail{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #aeaeae !important;
+  font-size: 18px;
+}

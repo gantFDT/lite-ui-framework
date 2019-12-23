@@ -1,0 +1,22 @@
+.wrapper {
+  outline: none;
+}
+
+.formBody {
+  position: relative;
+  &Hidden {
+    display: none;
+  }
+
+  :global {
+    .ant-form-item-control-wrapper {
+      .ant-form-item-control {
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+}
+
+.borderBottom {
+  border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split);
+}

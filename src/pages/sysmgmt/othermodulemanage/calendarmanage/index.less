@@ -1,0 +1,91 @@
+.calenderMan {
+  background: '#fff'
+}
+
+.monthCell {
+  position   : absolute;
+  left       : 0;
+  top        : 50%;
+  z-index    : 1;
+  height     : 100px;
+  width      : 100%;
+  text-align : center;
+  font-size  : 100px;
+  color      : #bbb6b629;
+  line-height: 100px;
+  transform  : translateY(-50%);
+}
+
+:global {
+  .claDropdown {
+    >div {
+      height: 320px;
+    }
+  }
+}
+
+.calenderMan {
+  :global {
+    .ant-fullcalendar-fullscreen {
+      position: relative;
+
+      .ant-fullcalendar,
+      .ant-fullcalendar-full,
+      .ant-fullcalendar-fullscreen {
+        position: relative;
+        z-index : 4;
+      }
+    }
+  }
+  :global{
+
+    .antd-pro-pages-sysmgmt-othermodulemanage-calendarmanage-index-calenderMan {
+      >div:nth-last-child(1) {
+        // height: calc(86vh);
+        // overflow-y: scroll;
+      }
+    }
+  }
+
+  :global {
+    .ant-fullcalendar {
+      border-top: none !important;
+    }
+
+    .ant-fullcalendar-column-header-inner {
+      text-align: center !important;
+    }
+  }
+
+  :global {
+    .ant-fullcalendar-fullscreen .ant-fullcalendar-column-header {
+      border-left     : 1px solid #bbb6b629;
+      border-top      : 1px solid #bbb6b629;
+      background-color: #bbb6b629;
+      padding         : 5px 0;
+    }
+
+    .ant-fullcalendar-month-panel-cell table {
+      border-right : 1px solid #bbb6b629;
+      border-bottom: 1px solid #bbb6b629;
+    }
+
+    .ant-fullcalendar-month-panel-cell table td {
+      border-left: 1px solid #bbb6b629;
+      border-top : 1px solid #bbb6b629;
+    }
+
+    .ant-fullcalendar-month-panel-cell thead>tr>th:nth-last-child(1),
+    .ant-fullcalendar-month-panel-cell thead>tr>th:nth-last-child(2) {
+      color: red;
+    }
+  }
+}
+
+.page{
+  :global{
+    .ant-fullcalendar-header{
+      display:none;
+    }
+  }
+}

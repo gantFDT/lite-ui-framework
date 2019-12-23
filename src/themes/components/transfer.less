@@ -1,0 +1,111 @@
+html {
+
+  .ant-transfer-customize-list .ant-transfer-list {
+    min-height: var(--transfer-list-height)
+  }
+
+  .ant-transfer-customize-list .ant-table-wrapper .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th {
+    background: var(--table-header-bg)
+  }
+
+  .ant-transfer-customize-list .ant-table-wrapper .ant-table-small>.ant-table-content .ant-table-row:last-child td {
+    border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split)
+  }
+
+  .ant-transfer {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-transfer-disabled .ant-transfer-list {
+    background: var(--transfer-disabled-bg)
+  }
+
+  .ant-transfer-list {
+    height: var(--transfer-list-height);
+    padding-top: var(--transfer-header-height);
+    border: var(--border-width-base) var(--border-style-base) var(--border-color-base);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-transfer-list-search {
+    padding: 0 var(--control-padding-horizontal-sm)
+  }
+
+  .ant-transfer-list-search-action {
+    color: var(--disabled-color);
+    line-height: var(--input-height-base)
+  }
+
+  .ant-transfer-list-search-action .anticon {
+    color: var(--disabled-color)
+  }
+
+  .ant-transfer-list-search-action .anticon:hover {
+    color: var(--text-color-secondary)
+  }
+
+  .ant-transfer-list-header {
+    padding: calc(var(--transfer-header-vertical-padding) - 1px) var(--control-padding-horizontal) var(--transfer-header-vertical-padding);
+    color: var(--text-color);
+    background: var(--component-background);
+    border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split);
+    border-radius: var(--border-radius-base) var(--border-radius-base) 0 0
+  }
+
+  .ant-transfer-list-body {
+    font-size: var(--font-size-base)
+  }
+
+  .ant-transfer-list-body-with-search {
+    padding-top: calc(var(--input-height-base) + 24px)
+  }
+
+  .ant-transfer-list-content-item {
+    padding: 6px var(--control-padding-horizontal)
+  }
+
+  .ant-transfer-list-content-item:not(.ant-transfer-list-content-item-disabled):hover {
+    background-color: var(--item-hover-bg)
+  }
+
+  .ant-transfer-list-content-item-disabled {
+    color: var(--btn-disable-color)
+  }
+
+  .ant-transfer-list-body-not-found {
+    color: var(--disabled-color)
+  }
+
+  .ant-transfer-list-body-with-search .ant-transfer-list-body-not-found {
+    margin-top: calc(var(--input-height-base) / 2)
+  }
+
+  .ant-transfer-list-footer {
+    border-top: var(--border-width-base) var(--border-style-base) var(--border-color-split);
+    border-radius: 0 0 var(--border-radius-base) var(--border-radius-base)
+  }
+
+  .has-error .ant-transfer-list {
+    border-color: var(--error-color)
+  }
+
+  .has-error .ant-transfer-list-search:not([disabled]) {
+    border-color: var(--input-border-color)
+  }
+
+  .has-error .ant-transfer-list-search:not([disabled]):hover {
+    border-color: var(--input-hover-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .has-error .ant-transfer-list-search:not([disabled]):focus {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+}

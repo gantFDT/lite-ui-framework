@@ -1,0 +1,33 @@
+.dynamic_action_button_wrap {
+  display: inline-flex;
+
+  .dynamic_action_text {
+    flex: 1;
+    display: inline-block;
+  }
+
+  :global {
+    .anticon {
+      line-height: 18px;
+      margin: 0 3px;
+      display: none;
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+    .delete_icon{
+      &:hover {
+        color: var(--btn-danger-color);
+      }
+    }
+  }
+  
+}
+
+:global {
+  .ant-table-row-selected {
+    .anticon {
+      display: inline-block;
+    }
+  }
+}

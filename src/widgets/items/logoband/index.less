@@ -1,0 +1,66 @@
+.aligncenter {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.logoband {
+  
+
+  .logo {
+    width: auto;
+    height: 90px;
+    background-size: cover !important;
+    align-self: center;
+  }
+
+  .content {
+    flex: 1;
+    
+    text-align: left;
+
+    .name {
+      width: 100%;
+
+      :global(p) {
+        display: inline;
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        background-size: cover !important;
+      }
+
+      :global(.level) {
+        width: 20px;
+        height: 20px;
+        background-size: cover !important;
+        display: inline-block;
+        line-height: 20px;
+        vertical-align: bottom;
+        margin-left: 10px;
+        margin-bottom: 0px;
+      }
+    }
+
+    .intro {
+      width: 100%;
+      margin-top: 10px;
+      max-height:110px;
+      font-size:12px;
+    }
+  }
+}

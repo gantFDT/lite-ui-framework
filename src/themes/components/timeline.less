@@ -1,0 +1,66 @@
+html {
+
+  .ant-timeline {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-timeline-item {
+    font-size: var(--font-size-base)
+  }
+
+  .ant-timeline-item-tail {
+    border-left: var(--timeline-width) solid var(--timeline-color)
+  }
+
+  .ant-timeline-item-pending .ant-timeline-item-head {
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-timeline-item-head {
+    background-color: var(--timeline-dot-bg);
+    border: var(--timeline-dot-border-width) solid transparent
+  }
+
+  .ant-timeline-item-head-blue {
+    color: var(--primary-color);
+    border-color: var(--primary-color)
+  }
+
+  .ant-timeline-item-head-red {
+    color: var(--error-color);
+    border-color: var(--error-color)
+  }
+
+  .ant-timeline-item-head-green {
+    color: var(--success-color);
+    border-color: var(--success-color)
+  }
+
+  .ant-timeline-item-head-gray {
+    color: var(--disabled-color);
+    border-color: var(--disabled-color)
+  }
+
+  .ant-timeline-item-content {
+    top: calc(0px - (var(--font-size-base) * var(--line-height-base) - var(--font-size-base)) + 1px)
+  }
+
+  .ant-timeline.ant-timeline-right .ant-timeline-item-right .ant-timeline-item-tail,
+  .ant-timeline.ant-timeline-right .ant-timeline-item-right .ant-timeline-item-head,
+  .ant-timeline.ant-timeline-right .ant-timeline-item-right .ant-timeline-item-head-custom {
+    left: calc(100% - 4px - var(--timeline-width))
+  }
+
+  .ant-timeline.ant-timeline-pending .ant-timeline-item-last .ant-timeline-item-tail {
+    border-left: 2px dotted var(--timeline-color)
+  }
+
+  .ant-timeline.ant-timeline-reverse .ant-timeline-item-pending .ant-timeline-item-tail {
+    border-left: 2px dotted var(--timeline-color)
+  }
+}

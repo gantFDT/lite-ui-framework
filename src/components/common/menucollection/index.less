@@ -1,0 +1,142 @@
+
+@title-height: 40px;
+@item-height: 30px;
+@item-width: 230px;
+@indent: 10px;
+.title(){
+    height: @title-height;
+    line-height: @title-height;
+    // font-size: 13px;
+    font-weight: 700;// var(--sider-menu-font-weight);
+    margin:0;
+}
+.click-item(){
+    height: @item-height;
+    line-height: @item-height;
+    padding-left: @indent;
+    font-weight: normal;
+    // color: rgba(0,0,0,.65);
+    cursor:pointer;
+    display: block;
+    &:hover{
+        background-color: rgba(0,0,0,.06);
+        border-radius:3px;
+    }
+}
+
+// .all-menu{
+//     // position: relative;
+//         cursor: auto;
+//     .event{
+//         display: block;
+//         cursor: pointer;
+//     }
+    
+// }
+.all-menu-popover{
+    position: fixed;
+    top: var(--layout-header-height);
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0, .45);
+    color: var(--text-color);
+    overflow: hidden;
+    z-index:1;
+    :global(.anticon){
+        margin: 0;
+    }
+    .all-menu-popover-inner-wrapper{
+        height: 100%;
+        max-height: 100%;
+        padding: 30px 30px 0;
+        // background-color: var(--table-header-bg);
+        background-color: var(--component-background);
+        position: relative;
+        left: -100%;
+        transition: all .5s;
+        .all-menu-popover-inner{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .all-menu-popover-inner-content{
+                flex: 1;
+                overflow: hidden;
+                position: relative;
+                .all-menu-popover-inner-content-scroll{
+                    scroll-behavior: smooth;
+                    height: 100%;
+                    overflow: auto;  
+                    // 给anchor留地方
+                    padding-right:200px;                      
+                    .categories{
+                        display: flex;
+                        position: relative;
+                        scroll-behavior: smooth;
+                        // 一列
+                        .category-list{
+                            &+.category-list{
+                                margin-left: 10px;
+                            }
+                            // 一个区块
+                            .category-item{
+                                width: @item-width;
+                                &:last-child{
+                                    padding-bottom: 30px;
+                                }
+                                // 一个区块的title
+                                .category-item-title{
+                                    .title();
+                                }  
+                                .category-item-menu{
+                                    list-style: none;
+                                    margin:0;
+                                    padding: 0;
+                                    & .category-item-menu{
+                                        padding-left: @indent;
+                                    }
+                                    // 可以点击的菜单项
+                                    .category-item-menuitem{
+                                        .click-item()
+                                    }
+                                } 
+                                &+.category-item{
+                                    margin-top: 10px;
+                                }
+                            }
+                        }  
+                    }
+                    .history{
+                        .history-title{
+                            .title();
+                        }
+                        .history-content{
+                            @gap: 0 10px;
+                            display: grid;
+                            grid-gap: @gap;
+                            gap: @gap;
+                            grid-template-columns: repeat(auto-fill,@item-width);
+                            .history-item{
+                                .click-item()
+                            }
+                        }
+                    }
+                }
+                .anchor{
+                    position: absolute;
+                    width: 180px;
+                    min-height: 300px;
+                    right: 20px;
+                    top:0;
+                }
+                                  
+            }
+        }
+        .all-menu-popover-inner-close{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    }
+}

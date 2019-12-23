@@ -1,0 +1,757 @@
+@import '~antd/lib/style/color/colors';
+@import '~antd/lib/style/themes/default';
+@card-skeleton-bg: #cfd8dc;
+// @border-radius-base: 12px;
+@text-color: #000;
+@font-size-base: 12px;
+@background-color-light: #fff;
+//所有css var 
+:root {
+  --antd-wave-shadow-color: @primary-color;
+
+  // fade|shade|darken|max|extract|tint
+  --fade-primary-color-20: fade(@primary-color, 20%);
+  --fade-radio-dot-color-6: fade(@radio-dot-color, 6%);
+  --fade-radio-dot-color-8: fade(@radio-dot-color, 8%);
+  --fade-card-skeleton-bg-20: fade(@card-skeleton-bg, 20%);
+  --fade-card-skeleton-bg-40: fade(@card-skeleton-bg, 40%);
+  --fade-switch-color-20: fade(@switch-color, 20%);
+  --shade-text-color-secondary-40: shade(@text-color-secondary, 40%);
+  --shade-skeleton-color-5: shade(@skeleton-color, 5%);
+  --darken-disabled-bg-10: darken(@disabled-bg, 10%);
+  --darken-table-header-bg-3: darken(@table-header-bg, 3%);
+  --darken-table-header-bg-3-5: darken(darken(@table-header-bg, 3%), 5%);
+  --tabs-horizontal-padding-extract-1: extract(@tabs-horizontal-padding, 1);
+  --tabs-horizontal-padding-lg-extract-1: extract(@tabs-horizontal-padding-lg, 1);
+  --tabs-horizontal-padding-sm-extract-1: extract(@tabs-horizontal-padding-sm, 1);
+  --tint-layout-sider-background-10: tint(@layout-sider-background, 10%);
+
+  // -------- Colors ----------- 颜色
+  --primary-color: @blue-6;
+  --primary-1: color(~`colorPalette('@{primary-color}', 1) `); // replace tint(@primary-color, 90%)
+  --primary-2: color(~`colorPalette('@{primary-color}', 2) `); // replace tint(@primary-color, 80%)
+  --primary-3: color(~`colorPalette('@{primary-color}', 3) `); // unused
+  --primary-4: color(~`colorPalette('@{primary-color}', 4) `); // unused
+  --primary-5: color(~`colorPalette('@{primary-color}', 5) `); // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+  --primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
+  --primary-7: color(~`colorPalette('@{primary-color}', 7) `); // replace shade(@primary-color, 5%)
+  --primary-8: color(~`colorPalette('@{primary-color}', 8) `); // unused
+  --primary-9: color(~`colorPalette('@{primary-color}', 9) `); // unused
+  --primary-10: color(~`colorPalette('@{primary-color}', 10) `); // unused
+
+
+  --info-color: @blue-6;
+  --success-color: @green-6;
+  --processing-color: @blue-6;
+  --error-color: @red-6;
+  --error-1: color(~`colorPalette('@{error-color}', 1) `);
+  --error-2: color(~`colorPalette('@{error-color}', 2) `);
+  --error-3: color(~`colorPalette('@{error-color}', 3) `);
+  --error-4: color(~`colorPalette('@{error-color}', 4) `);
+  --error-5: color(~`colorPalette('@{error-color}', 5) `);
+  --error-6: color(~`colorPalette('@{error-color}', 6) `);
+  --error-7: color(~`colorPalette('@{error-color}', 7) `);
+  --error-8: color(~`colorPalette('@{error-color}', 8) `);
+  --error-9: color(~`colorPalette('@{error-color}', 9) `);
+  --error-10: color(~`colorPalette('@{error-color}', 10) `);
+
+  --highlight-color: @red-6;
+  --warning-color: @gold-6;
+  --warning-1: color(~`colorPalette('@{warning-color}', 1) `);
+  --warning-2: color(~`colorPalette('@{warning-color}', 2) `);
+  --warning-3: color(~`colorPalette('@{warning-color}', 3) `);
+  --warning-4: color(~`colorPalette('@{warning-color}', 4) `);
+  --warning-5: color(~`colorPalette('@{warning-color}', 5) `);
+  --warning-6: color(~`colorPalette('@{warning-color}', 6) `);
+  --warning-7: color(~`colorPalette('@{warning-color}', 7) `);
+  --warning-8: color(~`colorPalette('@{warning-color}', 8) `);
+  --warning-9: color(~`colorPalette('@{warning-color}', 9) `);
+  --warning-10: color(~`colorPalette('@{warning-color}', 10) `);
+  --normal-color: #d9d9d9;
+
+  // Scrollbar
+  --scrollbar-color: hsv(0, 0, 85%);
+  --scrollbar-size: 10px;
+  --scrollbar-border-radius: 0;
+
+  // Color used by default to control hover and active backgrounds and for
+  // alert info backgrounds.
+
+
+  // Base Scaffolding Variables
+  // ---
+
+  // Background color for `<body>`
+  --body-background: #fff;
+  // Base background color for most components
+  --component-background: rgba(255,255,255,1);
+  --component-background-1:rgba(255,255,255,0.1);
+  --component-background-2: rgba(255,255,255,0.2);
+  --component-background-3: rgba(255,255,255,0.3);
+  --component-background-4:rgba(255,255,255,0.4);
+  --component-background-5: rgba(255,255,255,0.5);
+  --component-background-6: rgba(255,255,255,0.6);
+  --component-background-7: rgba(255,255,255,0.7);
+  --component-background-8: rgba(255,255,255,0.8);
+  --component-background-9: rgba(255,255,255,0.9);
+  --component-background-10: rgba(255,255,255,1);
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  --code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --text-color: fade(@black, 65%);
+  --text-color-1:fade(@black, 10%);
+  --text-color-2:fade(@black, 20%);
+  --text-color-3:fade(@black, 30%);
+  --text-color-4:fade(@black, 40%);
+  --text-color-5:fade(@black, 50%);
+  --text-color-6:fade(@black, 60%);
+  --text-color-7:fade(@black, 70%);
+  --text-color-8:fade(@black, 80%);
+  --text-color-9:fade(@black, 90%);
+  --text-color-10:fade(@black, 100%);
+
+  --text-color-secondary: fade(@black, 45%);
+  --text-color-inverse: @white;
+  --icon-color: inherit;
+  --icon-color-hover: fade(@black, 75%);
+  --heading-color: fade(#000, 85%);
+  --heading-color-dark: fade(@white, 100%);
+  --text-color-dark: fade(@white, 85%);
+  --text-color-secondary-dark: fade(@white, 65%);
+  --text-selection-bg: @primary-color;
+  --font-variant-base: tabular-nums;
+  --font-feature-settings-base: 'tnum';
+  --font-size-base: 12px;
+  --font-size-lg: calc(@font-size-base + 2px);
+  --font-size-sm: 12px;
+  --heading-1-size: ceil(@font-size-base * 2.71);
+  --heading-2-size: ceil(@font-size-base * 2.14);
+  --heading-3-size: ceil(@font-size-base * 1.71);
+  --heading-4-size: ceil(@font-size-base * 1.42);
+  --line-height-base: 1.5;
+  --border-radius-base: 4px;
+  --border-radius-sm: 2px;
+
+  // vertical paddings
+  --padding-lg: 24px; // containers
+  --padding-md: 16px; // small containers and buttons
+  --padding-sm: 12px; // Form controls and items
+  --padding-xs: 8px; // small items
+
+  // vertical padding for all form controls
+  --control-padding-horizontal: @padding-sm;
+  --control-padding-horizontal-sm: @padding-xs;
+
+  // The background colors for active and hover states for things like
+  // list items or table cells.
+  --item-active-bg: @primary-1;
+  --item-hover-bg: @primary-1;
+  --item-hover-color: @text-color;
+
+  // LINK
+  --link-color: @primary-color;
+  --link-hover-color: color(~`colorPalette('@{link-color}', 5) `);
+  --link-active-color: color(~`colorPalette('@{link-color}', 7) `);
+  --link-decoration: none;
+  --link-hover-decoration: none;
+
+  // Border color
+  --border-color-base: hsv(0, 0, 85%); // base border outline a component
+  --border-color-split: hsv(0, 0, 91%); // split border inside a component
+  --border-color-inverse: @white;
+  --border-width-base: 1px; // width of the border for a component
+  --border-style-base: solid; // style of a components border
+
+  // Outline
+  --outline-blur-size: 0;
+  --outline-width: 2px;
+  --outline-color: @primary-color;
+
+  --background-color-light: hsv(0, 0, 98%); // background of header and selected item
+  --background-color-base: hsv(0, 0, 96%); // Default grey background color
+
+  // Disabled states
+  --disabled-color: fade(#000, 25%);
+  --disabled-bg: @background-color-base;
+  --disabled-color-dark: fade(#fff, 35%);
+
+  // Shadow
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --shadow-color-inverse: @component-background;
+  --box-shadow-base: @shadow-1-down;
+  --shadow-1-up: 0 -2px 8px @shadow-color;
+  --shadow-1-down: 0 2px 8px @shadow-color;
+  --shadow-1-left: -2px 0 8px @shadow-color;
+  --shadow-1-right: 2px 0 8px @shadow-color;
+  --shadow-2: 0 4px 12px @shadow-color;
+
+  // Buttons 按钮
+  --btn-font-weight: 400;
+  --btn-border-radius-base: 4px;
+  --btn-border-radius-sm: 4px;
+  --btn-border-width: @border-width-base;
+  --btn-border-style: @border-style-base;
+  --btn-shadow: @btn-shadow;
+  --btn-primary-shadow: @btn-primary-shadow;
+  --btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+  --btn-primary-color: @primary-color;
+  --btn-primary-bg: #fff;
+
+  --btn-default-color:rgba(0,0,0,0.5);
+  --btn-default-bg: #fff;
+  --btn-default-border-color: rgba(0,0,0,0.2);
+
+  --btn-warning-color: color(~`colorPalette('@{warning-color}', 5) `);
+  --btn-warning-bg: #fff;
+  --btn-warning-border: color(~`colorPalette('@{warning-color}', 5) `);
+
+  --btn-danger-color: color(~`colorPalette('@{error-color}', 5) `);
+  --btn-danger-bg: #fff;
+  --btn-danger-border: color(~`colorPalette('@{error-color}', 5) `);
+
+  --btn-disable-color: @disabled-color;
+  --btn-disable-bg: @disabled-bg;
+  --btn-disable-border: @border-color-base;
+
+  // --btn-padding-base:@btn-padding-base;
+  // --btn-padding-sm:@btn-padding-sm;
+  --btn-padding-base: 0 15px;
+  --btn-font-size-lg: @font-size-lg;
+  --btn-font-size-sm: @font-size-base;
+  --btn-padding-lg: @btn-padding-base;
+  --btn-padding-sm: 0 15px;
+
+  --btn-height-base: 32px;
+  --btn-height-lg: 40px;
+  --btn-height-sm: 24px;
+
+  --btn-circle-size: @btn-height-base;
+  --btn-circle-size-lg: @btn-height-lg;
+  --btn-circle-size-sm: @btn-height-sm;
+
+  --btn-square-size: @btn-height-base;
+  --btn-square-size-lg: @btn-height-lg;
+  --btn-square-size-sm: @btn-height-sm;
+
+  --btn-group-border: @primary-5;
+
+  // Checkbox
+  --checkbox-size: 16px;
+  --checkbox-color: @primary-color;
+  --checkbox-check-color: #fff;
+  --checkbox-border-width: @border-width-base;
+
+  // Descriptions
+  --descriptions-bg: #fafafa;
+
+  // Dropdown
+  --dropdown-selected-color: @primary-color;
+
+  // Empty
+  --empty-font-size: @font-size-base;
+
+  // Radio
+  --radio-size: 16px;
+  --radio-dot-color: @primary-color;
+  --radio-dot-size: 8px;
+
+  // Radio buttons
+  --radio-button-bg: @btn-default-bg;
+  --radio-button-checked-bg: @btn-default-bg;
+  --radio-button-color: @btn-default-color;
+  --radio-button-hover-color: @primary-5;
+  --radio-button-active-color: @primary-7;
+
+  // Layout
+  --layout-body-background: #f0f2f5;
+  --layout-header-background: #001529;
+  --layout-footer-background: @layout-body-background;
+  --layout-header-height: 40px;
+  --layout-header-padding: 0 50px;
+  --layout-footer-padding: 24px 50px;
+  --layout-sider-background: @component-background;
+  --layout-trigger-height: 48px;
+  --layout-trigger-background: #002140;
+  --layout-trigger-color: #fff;
+  --layout-zero-trigger-width: 36px;
+  --layout-zero-trigger-height: 42px;
+  --nav-header-height: 40px;
+  // Layout light theme
+  --layout-sider-background-light: #fff;
+  --layout-trigger-background-light: #fff;
+  --layout-trigger-color-light: @text-color;
+
+  //CollapsePanel
+  --collapse-panel-border-radius: @border-radius-base;
+
+  //Dropdown
+  --dropdown-vertical-padding: 5px;
+  --dropdown-font-size: @font-size-base;
+  --dropdown-line-height: 22px;
+
+  // Form
+  // ---
+  --label-required-color: @highlight-color;
+  --label-color: rgba(0,0,0,0.65);
+  --form-warning-input-bg: @input-bg;
+  --form-item-margin-bottom: 24px;
+  --form-item-trailing-colon: true;
+  --form-vertical-label-padding: 0 0 0px 0px;
+  --form-vertical-label-margin: 0;
+  --form-error-input-bg: @input-bg;
+
+  --form-component-height: @input-height-base;
+  --form-component-max-height: @input-height-lg;
+  --form-feedback-icon-size: @font-size-base;
+  // --form-help-margin-top: (@form-component-height - @form-component-max-height) / 2 + 2px;
+  --form-help-margin-top: (@input-height-base - @input-height-lg) / 2 + 2px;
+  --form-explain-font-size: @font-size-base;
+  --form-explain-precision: 1px;
+  // --form-explain-height: floor(@form-explain-font-size * @line-height-base);
+  --form-explain-height: floor(@font-size-base * @line-height-base);
+
+  // Input
+  // ---
+  --input-height-base: 32px;
+  --input-height-lg: 40px;
+  --input-height-sm: 24px;
+  --input-padding-horizontal: calc(@control-padding-horizontal - 1px);
+  --input-padding-horizontal-base: @input-padding-horizontal;
+  --input-padding-horizontal-sm: calc(@control-padding-horizontal-sm - 1px);
+  --input-padding-horizontal-lg: @input-padding-horizontal;
+  --input-padding-vertical-base: 4px;
+  --input-padding-vertical-sm: 1px;
+  --input-padding-vertical-lg: 6px;
+  --input-placeholder-color: hsv(0, 0, 75%);
+  --input-color: @text-color;
+  --input-border-color: @border-color-base;
+  --input-border-bottom-color: @border-color-base;
+  --input-border-hover-color:@primary-color;
+  --input-border-focus-color:@primary-color;
+  --input-border-focus-box-shadow:0 1px 1px rgba(0,0,0,0);
+  --input-border-radius:4px;
+  --input-bg: @component-background;
+  --input-number-handler-active-bg: #f4f4f4;
+  --input-number-handler-hover-bg: @primary-5;
+  --input-number-handler-bg: @component-background;
+  --input-number-handler-border-color: @border-color-base;
+  --input-addon-bg: @background-color-light;
+  --input-hover-border-color: @primary-5;
+  --input-disabled-bg: @disabled-bg;
+  --input-outline-offset: 0 0;
+  --input-affix-width:20px;
+
+  // Select
+  // ---
+  --select-border-color: @border-color-base;
+  --select-item-selected-font-weight: 600;
+  --select-dropdown-bg: @component-background;
+  --select-item-selected-bg: @background-color-light;
+  --select-item-active-bg: @item-active-bg;
+
+  // Anchor
+  // ---
+  --anchor-border-color: @border-color-split;
+
+  // Tooltip
+  // ---
+  // Tooltip max width
+  --tooltip-max-width: 250px;
+  // Tooltip text color
+  --tooltip-color: #fff;
+  // Tooltip background color
+  --tooltip-bg: rgba(0, 0, 0, 0.75);
+  // Tooltip arrow width
+  --tooltip-arrow-width: 5px;
+  // Tooltip distance with trigger
+  --tooltip-distance: calc(@tooltip-arrow-width - 1px + 4px);
+  // Tooltip arrow color
+  --tooltip-arrow-color: @tooltip-bg;
+  --tooltip-arrow-shadow-width:5px;
+  --tooltip-arrow-rotate-width:16px;
+
+  // Popover
+  // ---
+  // Popover body background color
+  --popover-bg: @component-background;
+  // Popover text color
+  --popover-color: @text-color;
+  // Popover maximum width
+  --popover-min-width: 177px;
+  // Popover arrow width
+  --popover-arrow-width: 6px;
+  // Popover arrow color
+  --popover-arrow-color: @popover-bg;
+  // Popover outer arrow width
+  // Popover outer arrow color
+  --popover-arrow-outer-color: @popover-bg;
+  // Popover distance with trigger
+  --popover-distance:calc(@popover-arrow-width + 4px);
+
+  // Modal
+  // --
+  --modal-body-padding: 10px;
+  --modal-header-bg: @component-background;
+  --modal-footer-bg: transparent;
+  --modal-footer-reset-color: rgba(0,0,0,1);
+  --modal-footer-border-color-split: @border-color-split;
+  --modal-mask-bg: fade(@black, 45%);
+  --modal-header-bg:@component-background;
+  --modal-header-color: @text-color;
+  --modal-header-hover-color: rgba(0,0,0,1);
+  --modal-header-icon-hover-color: #fff;
+  --model-header-danger-icon-bg: color(~`colorPalette('@{error-color}', 5) `);
+  --model-header-default-icon-bg: rgba(0,0,0,0.5);
+  // Progress
+  // --
+  --progress-default-color: @processing-color;
+  --progress-remaining-color: @background-color-base;
+  --progress-text-color: @text-color;
+  --progress-radius: 100px;
+
+  // Menu
+  // ---
+  --menu-inline-toplevel-item-height: 40px;
+  --menu-item-height: 40px;
+  --menu-collapsed-width: 40px;
+  --menu-bg: @component-background;
+  --menu-popup-bg: @component-background;
+  --menu-item-color: @text-color;
+  --menu-item-dark-color:rgba(255,255,255,0.8);
+  --menu-highlight-color: @primary-color;
+  --menu-item-active-bg: @item-active-bg;
+  --menu-item-active-border-width: 3px;
+  --menu-item-group-title-color: @text-color-secondary;
+  --menu-icon-size: @font-size-base;
+  --menu-icon-size-lg: @font-size-lg;
+
+  --menu-item-vertical-margin: 0px;
+  --menu-item-font-size: @font-size-base;
+  --menu-item-boundary-margin: 8px;
+  --menu-icon-size: @font-size-base;
+  --menu-icon-size-lg: @font-size-lg;
+  --menu-dark-selected-item-icon-color: @white;
+  --menu-dark-selected-item-text-color: @white;
+  --dark-menu-item-hover-bg: transparent;
+
+  // dark theme
+  --menu-dark-color: @text-color-secondary-dark;
+  --menu-dark-bg: @layout-header-background;
+  --menu-dark-arrow-color: #fff;
+  --menu-dark-submenu-bg: #000c17;
+  --menu-dark-highlight-color: #fff;
+  --menu-dark-item-active-bg: @primary-color;
+  --menu-dark-selected-item-icon-color: @white;
+  --menu-dark-selected-item-text-color: @white;
+  --menu-dark-item-hover-bg: transparent;
+
+  // Spin
+  // ---
+  --spin-dot-size-sm: 14px;
+  --spin-dot-size: 20px;
+  --spin-dot-size-lg: 32px;
+
+  // Table
+  // --
+  --table-header-bg: @background-color-light;
+  --table-header-color: @heading-color;
+  --table-header-sort-bg: @background-color-base;
+  --table-body-sort-bg: rgba(0, 0, 0, 0.01);
+  --table-row-hover-bg: @primary-1;
+  --table-selected-row-color: inherit;
+  --table-selected-row-bg: #fafafa;
+  --table-body-selected-sort-bg: @table-selected-row-bg;
+  --table-selected-row-hover-bg: @table-selected-row-bg;
+  --table-expanded-row-bg: #fbfbfb;
+  --table-padding-vertical: 10px;
+  --table-padding-horizontal: 10px;
+  --table-border-radius-base: 0px;
+  --table-footer-bg: @background-color-light;
+  --table-footer-color: @heading-color;
+
+  --table-padding-vertical-md: @table-padding-vertical * 3 / 4;
+  --table-padding-horizontal-md: @table-padding-horizontal / 2;
+  --table-padding-vertical-sm: @table-padding-vertical / 2;
+  --table-padding-horizontal-sm: @table-padding-horizontal / 2;
+
+  // Tag
+  // --
+  --tag-default-bg: @background-color-light;
+  --tag-default-color: @text-color;
+  --tag-font-size: @font-size-sm;
+
+  // TimePicker
+  // ---
+  --time-picker-panel-column-width: 56px;
+  --time-picker-panel-width: @time-picker-panel-column-width * 3;
+  --time-picker-selected-bg: @background-color-base;
+
+  // Carousel
+  // ---
+  --carousel-dot-width: 16px;
+  --carousel-dot-height: 3px;
+  --carousel-dot-active-width: 24px;
+
+  // Badge
+  // ---
+  --badge-height: 20px;
+  --badge-dot-size: 6px;
+  --badge-font-size: @font-size-sm;
+  --badge-font-weight: normal;
+  --badge-status-size: 6px;
+  --badge-text-color: @component-background;
+
+  // Rate
+  // ---
+  --rate-star-color: @yellow-6;
+  --rate-star-bg: @border-color-split;
+
+  // Card
+  // ---
+  --card-head-color: @heading-color;
+  --card-head-background: transparent;
+  --card-head-padding: 16px;
+  --card-inner-head-padding: 12px;
+  --card-padding-base: 10px;
+  --card-actions-background: @background-color-light;
+  --card-skeleton-bg: #cfd8dc;
+  --card-background: @component-background;
+  --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  --card-border-radius: @border-radius-sm;
+
+  // Comment
+  // ---
+  --comment-padding-base: 16px 0;
+  --comment-nest-indent: 44px;
+  --comment-font-size-base: @font-size-base;
+  --comment-font-size-sm: @font-size-sm;
+  --comment-author-name-color: @text-color-secondary;
+  --comment-author-time-color: #ccc;
+  --comment-action-color: @text-color-secondary;
+  --comment-action-hover-color: #595959;
+
+  // Tabs
+  // ---
+  --tabs-card-head-background: @background-color-light;
+  --tabs-card-height: 40px;
+  --tabs-card-active-color: @primary-color;
+  --tabs-title-font-size: @font-size-base;
+  --tabs-title-font-size-lg: @font-size-lg;
+  --tabs-title-font-size-sm: @font-size-base;
+  --tabs-ink-bar-color: @primary-color;
+  --tabs-bar-margin: 0 0 16px 0;
+  --tabs-horizontal-margin: 0 32px 0 0;
+  --tabs-horizontal-padding: 12px 16px;
+  --tabs-horizontal-padding-lg: 16px;
+  --tabs-horizontal-padding-sm: 8px 16px;
+  --tabs-vertical-padding: 8px 24px;
+  --tabs-vertical-margin: 0 0 16px 0;
+  --tabs-scrolling-size: 32px;
+  --tabs-highlight-color: @primary-color;
+  --tabs-hover-color: @primary-5;
+  --tabs-active-color: @primary-7;
+  --tabs-card-gutter: 2px;
+  --tabs-card-tab-active-border-top: 2px solid transparent;
+
+  // BackTop
+  // ---
+  --back-top-color: #fff;
+  --back-top-bg: @text-color-secondary;
+  --back-top-hover-bg: @text-color;
+
+  // Avatar
+  // ---
+  --avatar-size-base: 32px;
+  --avatar-size-lg: 40px;
+  --avatar-size-sm: 24px;
+  --avatar-font-size-base: 18px;
+  --avatar-font-size-lg: 24px;
+  --avatar-font-size-sm: 14px;
+  --avatar-bg: #fff;
+  --avatar-color: #fff;
+  --avatar-border-radius: @border-radius-base;
+
+  // Switch
+  // ---
+  --switch-height: 22px;
+  --switch-sm-height: 16px;
+  --switch-sm-checked-margin-left: -(@switch-sm-height - 3px);
+  --switch-disabled-opacity: 0.4;
+  --switch-color: @primary-color;
+  --switch-shadow-color: fade(#00230b, 20%);
+
+  // Pagination
+  // ---
+  --pagination-item-size: 32px;
+  --pagination-item-size-sm: 24px;
+  --pagination-font-family: Arial;
+  --pagination-font-weight-active: 500;
+  --pagination-item-bg-active: @component-background;
+
+  // PageHeader
+  // ---
+  --page-header-padding: 24px;
+  --page-header-padding-vertical: 16px;
+  --page-header-padding-breadcrumb: 12px;
+
+  // Breadcrumb
+  // ---
+  --breadcrumb-base-color: @text-color-secondary;
+  --breadcrumb-last-item-color: @text-color;
+  --breadcrumb-font-size: @font-size-base;
+  --breadcrumb-icon-font-size: @font-size-base;
+  --breadcrumb-link-color: @text-color-secondary;
+  --breadcrumb-link-color-hover: @primary-5;
+  --breadcrumb-separator-color: @text-color-secondary;
+  --breadcrumb-separator-margin: 0 @padding-xs;
+
+  // Slider
+  // ---
+  --slider-margin: 14px 6px 10px;
+  --slider-rail-background-color: @background-color-base;
+  --slider-rail-background-color-hover: #e1e1e1;
+  --slider-track-background-color: @primary-3;
+  --slider-track-background-color-hover: @primary-4;
+  --slider-handle-border-width: 2px;
+  --slider-handle-background-color: @component-background;
+  --slider-handle-color: @primary-3;
+  --slider-handle-color-hover: @primary-4;
+  --slider-handle-color-focus: tint(@primary-color, 20%);
+  --slider-handle-color-focus-shadow: fade(@primary-color, 20%);
+  --slider-handle-color-tooltip-open: @primary-color;
+  --slider-handle-shadow: 0;
+  --slider-dot-border-color: @border-color-split;
+  --slider-dot-border-color-active: tint(@primary-color, 50%);
+  --slider-disabled-color: @disabled-color;
+  --slider-disabled-background-color: @component-background;
+
+  // Tree
+  // ---
+  --tree-title-height: 24px;
+  --tree-child-padding: 18px;
+  --tree-directory-selected-color: #fff;
+  --tree-directory-selected-bg: @primary-color;
+  --tree-node-hover-bg: @item-hover-bg;
+  --tree-node-selected-bg: @primary-2;
+
+  // Collapse
+  // ---
+  --collapse-header-padding: 12px 16px;
+  --collapse-header-padding-extra: 40px;
+  --collapse-header-bg: @background-color-light;
+  --collapse-content-padding: @padding-md;
+  --collapse-content-bg: @component-background;
+
+  // Skeleton
+  // ---
+  --skeleton-color: #f2f2f2;
+
+  // Transfer
+  // ---
+  --transfer-header-height: 40px;
+  --transfer-disabled-bg: @disabled-bg;
+  --transfer-list-height: 200px;
+
+  // Message
+  // ---
+  --message-notice-content-padding: 10px 16px;
+
+  // Motion
+  // ---
+  --wave-animation-width: 6px;
+
+  // Alert
+  // ---
+  --alert-success-border-color:~`colorPalette('@{success-color}', 3) `;
+  --alert-success-bg-color:~`colorPalette('@{success-color}', 1) `;
+  --alert-success-icon-color: @success-color;
+  --alert-info-border-color:~`colorPalette('@{info-color}', 3) `;
+  --alert-info-bg-color:~`colorPalette('@{info-color}', 1) `;
+  --alert-info-icon-color: @info-color;
+  --alert-warning-border-color:~`colorPalette('@{warning-color}', 3) `;
+  --alert-warning-bg-color:~`colorPalette('@{warning-color}', 1) `;
+  --alert-warning-icon-color: @warning-color;
+  --alert-error-border-color:~`colorPalette('@{error-color}', 3) `;
+  --alert-error-bg-color:~`colorPalette('@{error-color}', 1) `;
+  --alert-error-icon-color: @error-color;
+
+  // List
+  // ---
+  --list-header-background: transparent;
+  --list-footer-background: transparent;
+  --list-empty-text-padding: @padding-md;
+  --list-item-padding: @padding-sm 0;
+  --list-item-meta-margin-bottom: @padding-md;
+  --list-item-meta-avatar-margin-right: @padding-md;
+  --list-item-meta-title-margin-bottom: @padding-sm;
+
+  // Statistic
+  // ---
+  --statistic-title-font-size: @font-size-base;
+  --statistic-content-font-size: 24px;
+  --statistic-unit-font-size: 16px;
+  --statistic-font-family: @font-family;
+
+  // Drawer
+  // ---
+  --drawer-header-padding: 16px 24px;
+  --drawer-body-padding: 24px;
+
+  // Timeline
+  // ---
+  --timeline-width: 2px;
+  --timeline-color: @border-color-split;
+  --timeline-dot-border-width: 2px;
+  --timeline-dot-color: @primary-color;
+  --timeline-dot-bg: @component-background;
+
+  // Typography
+  // ---
+  --typography-title-font-weight: 600;
+
+
+  //smart search 查询表单 
+  --search-input-label-line-height:33px;
+  --search-input-padding-vertical:4px;
+  --search-input-padding-horizontal:11px;
+  --search-header-background:transparent;
+  //ant-pro-layout 
+  --global-header-background: #fff;
+  --global-header-text-color:rgba(0,0,0,0.8);
+  --global-header-box-shadow:none;
+  --global-header-box-border-bottom:1px solid rgba(0,0,0,0.1);
+  --global-header-action-border-right:none;
+  --global-header-trigger-background:transparent;
+  --global-header-trigger-color:@text-color;
+  --header-hover-background:rgba(0,0,0,0.1);
+  --header-hover-color:@text-color;
+
+  --sider-menu-background:#001529;
+  --sider-menu-logo-box-shadow:none;
+  --sider-menu-logo-border-bottom:1px solid rgba(0,0,0,0.1);
+  --sider-menu-logo-color:rgba(0,0,0,0.8);
+  --sider-menu-logo-background:#001529;
+  --sider-menu-font-weight:normal;
+  --sider-menu-item-active-bg: rgba(0,0,0,.2);
+
+  --sider-box-shadow:none;
+  --sider-border-right:1px solid rgba(0,0,0,0.1);
+  
+  --card-box-shadow:none;
+  --card-border-radius:3px;
+  --card-border:1px solid rgba(0, 0, 0, 0.1);
+
+  --ant-menu-sub-open-box-shadow:none;
+  --sider-menu-border-bottom:none;
+  --comment-reply-background-color: #fafbfc;
+
+  //upload上传组件
+  --upload-bg:'#f1f1f1';
+  --upload-border-color:@border-color-base;
+
+  --steps-icon-size:32px;
+  
+}

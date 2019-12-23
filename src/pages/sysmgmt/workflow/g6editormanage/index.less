@@ -1,0 +1,57 @@
+.editor {
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.editorHd {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color-base);
+}
+
+.editorBd {
+  display: flex;
+  height: calc(100% - 44px);
+  justify-content: space-between;
+}
+
+.editorSidebar,
+.canvasContent,
+.editorContent {
+  height: 100%;
+}
+
+.editorContent {
+  width: 130px;
+}
+
+.canvasContent {
+  width: calc(100% - 330px);
+}
+
+.editorSidebar {
+  width: 200px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:first-child {
+    border-right: 1px solid var(--border-color-base);
+  }
+
+  &:last-child {
+    border-left: 1px solid var(--border-color-base);
+  }
+}
+
+.flow {
+  height: 100%;
+
+  canvas {
+    position: relative;
+  }
+}

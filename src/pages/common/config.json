@@ -1,0 +1,58 @@
+{
+  "order": 0,
+  "routes": [
+    {
+      "path": "/",
+      "name": "root",
+      "exact": true,
+      "redirect": "/dashboard"
+    },
+    {
+      "path": "/dashboard",
+      "name": "仪表板",
+      "nameEn": "Dsahboard",
+      "routes": [
+        {
+          "path": "/dashboard",
+          "exact": true,
+          "redirect": "/dashboard/default"
+        },
+        {
+          "path": "/dashboard/boardmgmt",
+          "name": "仪表板管理",
+          "nameEn": "Dsahboard Mgmt",
+          "exact": true,
+          "component": "./common/dashboardmgmt"
+        },
+        {
+          "path": "/dashboard/:id?",
+          "icon": "dashboard",
+          "hideInMenu": true,
+          "hideInBreadcrumb": true,
+          "component": "./common/dashboard"
+        }
+      ]
+    },
+    {
+      "path": "/common",
+      "icon": "icon-jichushuju",
+      "routes": [
+        {
+          "path": "/common/user",
+          "name": "员工详情",
+          "nameEn": "Employee",
+          "routes": [
+            {
+              "path": "/common/user/:id?",
+              "icon": "icon-gongyingshang",
+              "name": "员工详情",
+              "nameEn": "Employee",
+              "hideInMenu": true,
+              "component": "./common/user"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

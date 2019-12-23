@@ -1,0 +1,64 @@
+.container {
+  background: var(--component-background);
+  overflow: hidden;
+  padding: 5px;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px 5px;
+  border-radius: 3px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background: var(--primary-color);
+
+    .icon {
+      transform: scale(1.5);
+      transition: transform .2s ease-in-out;
+    }
+  }
+
+  .icon {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  .id {
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+  }
+
+}
+
+.input-wrapper {
+  padding: 10px;
+  border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split);
+
+  .simple-search-input {
+
+    &-focus,
+    &:hover {
+      :global {
+        .ant-input {
+          border-color: var(--input-border-hover-color);
+        }
+
+        .ant-input-search-icon {
+          color: var(--input-border-hover-color);
+        }
+      }
+    }
+  }
+}

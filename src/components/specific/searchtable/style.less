@@ -1,0 +1,154 @@
+.container {
+  margin: 8px;
+  border: 1px solid var(--border-color-split);
+}
+
+.headerLeft {
+  button {
+    margin-left: 5px;
+  }
+}
+
+.searchContainer {
+  background-color: var(--component-background);
+  margin-bottom: 15px;
+
+  .searchTool {
+    position: relative;
+
+    .searchTips {
+      margin-right: 60px;
+    }
+
+    .searchRest {
+      position: absolute;
+      top: 3px;
+      right: 0px;
+    }
+  }
+}
+
+.draw {
+  margin-top: 0px;
+
+  :global {
+    .ant-drawer-header {
+      padding: 9px 10px !important;
+    }
+
+    .gant-blockheader {
+      margin-top: 15px;
+    }
+
+    .ant-form {
+      padding-right: 12px;
+    }
+
+    .ant-form-item {
+      margin-bottom: 10px !important;
+    }
+
+    .ant-drawer-body {
+      padding: 0 15px !important;
+    }
+
+    .ant-col {
+      padding: 0 !important;
+    }
+
+    .ant-calendar-picker {
+      width: 100%;
+    }
+  }
+}
+
+.searchForm {
+  :global {
+    .ant-form-item {
+      display: flex;
+    }
+
+    .ant-form-item-control-wrapper {
+      flex: 1
+    }
+
+    .ant-calendar-picker {
+      width: 100%;
+    }
+  }
+}
+
+.searchHistory {
+  position: relative;
+  padding: 10px 0 5px 0;
+  border-bottom: 1px solid var(--border-color-split);
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+  padding: 15px 15px 10px 15px;
+
+  .wrap,
+  .expend {
+    max-height: 29px;
+    overflow: hidden;
+
+    .tag {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+  }
+
+  .expend {
+    max-height: 9999px;
+  }
+
+  .expendIcon {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    text-align: right;
+  }
+}
+
+.filterBtn {
+  display: inline-flex;
+
+  .label {
+    line-height: 30px;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+  }
+
+  .btn {
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+.searchTable {
+  .table {
+    margin: 0px;
+
+  }
+
+  :global {
+    .gant-blockheader {
+      border-bottom: 1px solid var(--border-color-split);
+    }
+  }
+}
+
+.modalForm {
+  :global {
+    .ant-calendar-picker {
+      width: 100%;
+    }
+  }
+}
+
+.sortableHelper {
+  z-index: 10000 !important;
+  text-decoration: none;
+  list-style: none;
+  background: #fff;
+  cursor: move;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+}

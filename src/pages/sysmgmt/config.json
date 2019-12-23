@@ -1,0 +1,429 @@
+{
+  "order": 1,
+  "proxyTarget": "http://v5.ip2fw.gantcloud.com",
+  "routes": [
+    {
+      "name": "待处理任务",
+      "nameEn": "current process",
+      "path": "/**/currentprocess",
+      "component": "./sysmgmt/accountcenter/currentprocess"
+    },
+    {
+      "name": "已处理任务",
+      "nameEn": "history process",
+      "path": "/**/historyprocess",
+      "component": "./sysmgmt/accountcenter/historyprocess"
+    },
+    {
+      "name": "我发起的流程",
+      "nameEn": "my start process",
+      "path": "/**/mystartprocess",
+      "component": "./sysmgmt/accountcenter/mystartprocess"
+    },
+    {
+      "name": "用户代理",
+      "nameEn": "delegation",
+      "path": "/**/userdelegation",
+      "component": "./sysmgmt/accountcenter/delegation"
+    },
+    {
+      "name": "任务详情",
+      "path": "/**/taskdetail",
+      "nameEn": "Task Detail",
+      "component": "./sysmgmt/accountcenter/taskdetail"
+    },
+    {
+      "name": "待办用户模板",
+      "path": "/**/todousertemplate",
+      "nameEn": "Todo User Template",
+      "component": "./sysmgmt/accountcenter/todousertemplate"
+    },
+    {
+      "path": "/**/multifilemanage",
+      "name": "多文件上传",
+      "nameEN": "Multiple File Upload",
+      "component": "./sysmgmt/demo/commonfilemanage"
+    },
+    {
+      "path": "/**/usermanagement",
+      "name": "用户管理",
+      "nameEN": "User Management",
+      "routes": [
+        {
+          "path": "/**/usermanagement",
+          "component": "./sysmgmt/demo/usermanage",
+          "exact": true
+        },
+        {
+          "path": "/**/usermanagement/detail/:id",
+          "name": "用户管理详情",
+          "component": "./sysmgmt/demo/usermanage/detail"
+        }
+      ]
+    },
+    {
+      "path": "/**/measureunit",
+      "name": "测量单位",
+      "nameEN": "Measureunit Unit",
+      "component": "./sysmgmt/demo/measureunit"
+    },
+    {
+      "path": "/**/functionmgmt",
+      "name": "成本模型库",
+      "nameEN": "Cost model library",
+      "component": "./sysmgmt/demo/functionmgmt"
+    },
+    {
+      "path": "/**/ajax",
+      "name": "ajax演示",
+      "nameEN": "Ajax Demo",
+      "component": "./sysmgmt/demo/ajaxinfo"
+    },
+    {
+      "path": "/**/commentmanagepanel",
+      "name": "评论管理",
+      "component": "./sysmgmt/demo/commentmanage"
+    },
+    {
+      "path": "/**/gencode",
+      "name": "代码生成器演示",
+      "nameEN": "genCode",
+      "authorized": false,
+      "component": "./sysmgmt/demo/gencode"
+    },
+    {
+      "path": "/**/filemanage",
+      "name": "文件管理",
+      "nameEN": "filemanagement",
+      "component": "./sysmgmt/demo/filemanage"
+    },
+    {
+      "path": "/**/notificationdemo",
+      "name": "消息通知演示",
+      "nameEN": "notificationdemo",
+      "component": "./sysmgmt/demo/notification"
+    },
+    {
+      "path": "/**/customlanguage",
+      "name": "客制化语言",
+      "nameEN": "Custom Language",
+      "component": "./sysmgmt/customlanguage"
+    },
+    {
+      "path": "/**/officefileonlinemanage",
+      "name": "office文件在线管理",
+      "nameEN": "Office File Online Management",
+      "component": "./sysmgmt/platformmanage/officefileonlinemanage"
+    },
+    {
+      "path": "/**/mainmenumanage",
+      "name": "主菜单管理",
+      "nameEN": "Main menu management",
+      "component": "./sysmgmt/sysrightmanage/mainmenumanage"
+    },
+    {
+      "path": "/**/rolemanage",
+      "name": "角色管理",
+      "nameEN": "Role management",
+      "component": "./sysmgmt/sysrightmanage/rolemanage"
+    },
+    {
+      "path": "/**/groupmanage",
+      "name": "用户组管理",
+      "nameEN": "Group management",
+      "component": "./sysmgmt/sysrightmanage/groupmanage"
+    },
+    {
+      "path": "/**/mobilemenumanage",
+      "name": "移动菜单管理",
+      "nameEN": "Main menu management",
+      "component": "./sysmgmt/sysrightmanage/mobilemenumanage"
+    },
+    {
+      "path": "/**/contextmenumanage",
+      "name": "上下文菜单管理",
+      "nameEN": "Context menu management",
+      "component": "./sysmgmt/sysrightmanage/contextmenumanage"
+    },
+    {
+      "path": "/**/usermanage",
+      "name": "用户账号管理",
+      "nameEN": "Mobile menu management",
+      "component": "./sysmgmt/sysrightmanage/usermanage"
+    },
+    {
+      "path": "/**/abilitymanage",
+      "name": "功能点管理",
+      "nameEN": "Ability management",
+      "component": "./sysmgmt/sysrightmanage/abilitymanage"
+    },
+    {
+      "path": "/**/hierarchicalmanage",
+      "name": "分级管理授权",
+      "nameEN": "Hierarchical management authorization",
+      "component": "./sysmgmt/sysrightmanage/hierarchicalmanage"
+    },
+    {
+      "path": "/**/datapermission",
+      "name": "数据级权限定义",
+      "nameEN": "Data level permission definition",
+      "component": "./sysmgmt/sysrightmanage/datapermission"
+    },
+    {
+      "path": "/**/orgstructuremanage",
+      "name": "组织结构管理",
+      "nameEN": "Orgnazation structure manage",
+      "component": "./sysmgmt/sysrightmanage/orgstructuremanage"
+    },
+    {
+      "path": "/**/preferencesmanage",
+      "name": "系统参数",
+      "component": "./sysmgmt/othermodulemanage/preferencesmanage"
+    },
+    {
+      "path": "/**/codelistmanage",
+      "name": "编码维护",
+      "component": "./sysmgmt/othermodulemanage/codelistmanage"
+    },
+    {
+      "path": "/**/calendarmanage",
+      "name": "工作日历",
+      "component": "./sysmgmt/othermodulemanage/calendarmanage"
+    },
+    {
+      "path": "/**/notification",
+      "name": "通知管理",
+      "component": "./sysmgmt/othermodulemanage/notification"
+    },
+    {
+      "path": "/**/mailtemplate",
+      "name": "邮件模版管理",
+      "param": {
+        "isiP2Admin": true
+      },
+      "component": "./sysmgmt/othermodulemanage/mailtemplate"
+    },
+    {
+      "path": "/**/commonfilemanage",
+      "name": "文件管理",
+      "nameEN": "File Management",
+      "component": "./sysmgmt/platformmanage/commonfilemanage"
+    },
+    {
+      "path": "/**/iconmgtmanage",
+      "name": "图标管理",
+      "nameEN": "Icon",
+      "component": "./sysmgmt/platformmanage/iconmanage"
+    },
+    {
+      "path": "/**/officefileonlinemanage",
+      "name": "office文件在线管理",
+      "nameEN": "Office File Online Management",
+      "component": "./sysmgmt/platformmanage/officefileonlinemanage"
+    },
+    {
+      "path": "/**/eventmanage",
+      "name": "业务事件",
+      "nameEN": "Monitor",
+      "component": "./sysmgmt/platformmanage/eventmanage"
+    },
+    {
+      "path": "/**/cachemanage",
+      "name": "缓存管理",
+      "nameEN": "Cache",
+      "component": "./sysmgmt/platformmanage/cachemanage"
+    },
+    {
+      "path": "/**/resourcelockmanage",
+      "name": "锁管理",
+      "nameEN": "Resource Lock Management",
+      "component": "./sysmgmt/platformmanage/resourcelockmanage"
+    },
+    {
+      "path": "/**/onlineclient",
+      "name": "在线连接",
+      "nameEN": "Online Client",
+      "component": "./sysmgmt/platformmanage/onlineclient"
+    },
+    {
+      "path": "/**/loglevelmanage",
+      "name": "日志级别调整",
+      "nameEN": "Log Level",
+      "component": "./sysmgmt/platformmanage/loglevelmanage"
+    },
+    {
+      "path": "/**/messagemanage",
+      "name": "消息管理",
+      "nameEN": "Message Management",
+      "component": "./sysmgmt/platformmanage/messagemanage"
+    },
+    {
+      "path": "/**/licensemanage",
+      "name": "许可证管理",
+      "nameEN": "License",
+      "component": "./sysmgmt/platformmanage/licensemanage"
+    },
+    {
+      "path": "/**/superpwdmanage",
+      "name": "设置超级管理员密码",
+      "nameEN": "Set super administrator password",
+      "component": "./sysmgmt/platformmanage/superpwdmanage"
+    },
+    {
+      "path": "/**/dbmigration",
+      "name": "数据库脚本维护",
+      "nameEN": "SQL Maintain",
+      "component": "./sysmgmt/platformmanage/dbmigration"
+    },
+    {
+      "path": "/**/graphdb",
+      "name": "图数据库维护",
+      "nameEN": "Graph DB",
+      "component": "./sysmgmt/platformmanage/graphdb"
+    },
+    {
+      "path": "/**/uristatistics",
+      "name": "业务功能访问统计",
+      "nameEN": "Uri Statistics",
+      "component": "./sysmgmt/platformmanage/uristatistics"
+    },
+    {
+      "path": "/**/globalhelpdoc",
+      "name": "帮助文档",
+      "nameEN": "Help Document",
+      "component": "./sysmgmt/help/doc/show"
+    },
+    {
+      "path": "/**/helpdoc",
+      "name": "帮助文档管理",
+      "nameEN": "Help Document Management",
+      "component": "./sysmgmt/help/doc/management"
+    },
+    {
+      "path": "/**/endpointmanage",
+      "name": "服务端口管理",
+      "nameEN": "Endpoint Manage",
+      "component": "./sysmgmt/sysintegramanage/endpointmanage"
+    },
+    {
+      "path": "/**/serverlogmanage",
+      "name": "服务端日志",
+      "nameEN": "Server Logmanage",
+      "component": "./sysmgmt/sysintegramanage/serverlogmanage"
+    },
+    {
+      "path": "/**/clientlogmanage",
+      "name": "客户端日志",
+      "nameEN": "Client Logmanage",
+      "component": "./sysmgmt/sysintegramanage/clientlogmanage"
+    },
+    {
+      "path": "/**/taskmanage",
+      "name": "定时任务管理",
+      "nameEN": "Task management",
+      "component": "./sysmgmt/servertaskmanage/taskmanage"
+    },
+    {
+      "path": "/**/asynctasklogmanage",
+      "name": "异步任务管理",
+      "nameEN": "Async task management",
+      "component": "./sysmgmt/servertaskmanage/asynctasklogmanage"
+    },
+    {
+      "path": "/**/importorg",
+      "name": "导入用户组织数据",
+      "nameEN": "Import user organization data",
+      "component": "./sysmgmt/import/importorg"
+    },
+    {
+      "path": "/**/importuser",
+      "name": "导入用户账号数据",
+      "nameEN": "Import user account data",
+      "component": "./sysmgmt/import/importuser"
+    },
+    {
+      "path": "/**/workflowtemplatemanage",
+      "name": "流程模板管理",
+      "nameEN": "Work Flow Template",
+      "component": "./sysmgmt/workflow/workflowtemplatemanage"
+    },
+    {
+      "path": "/**/processemanage",
+      "name": "流程实例管理",
+      "nameEN": "Work Flow Process",
+      "component": "./sysmgmt/workflow/processemanage"
+    },
+    {
+      "path": "/**/g6editormanage",
+      "name": "流程设计器",
+      "nameEN": "Work Flow Editor",
+      "component": "./sysmgmt/workflow/g6editormanage"
+    },
+    {
+      "path": "/**/approvedetail",
+      "name": "审批信息详情",
+      "nameEN": "Approve Detail",
+      "component": "./sysmgmt/workflow/approvedetail"
+    },
+    {
+      "path": "/**/loginlog",
+      "name": "登录日志",
+      "nameEN": "Login Log",
+      "component": "./sysmgmt/syslog/loginlog"
+    },
+    {
+      "path": "/**/acllog",
+      "name": "权限变更日志",
+      "nameEN": "Permission change log",
+      "component": "./sysmgmt/syslog/acllog"
+    },
+    {
+      "path": "/**/dataacllog",
+      "name": "数据级权限变更日志",
+      "nameEN": "Data level permission change log",
+      "component": "./sysmgmt/syslog/dataacllog"
+    },
+    {
+      "path": "/**/filedownloadlog",
+      "name": "文件日志",
+      "nameEN": "File log",
+      "component": "./sysmgmt/syslog/filedownloadlog"
+    },
+    {
+      "path": "/**/maillog",
+      "name": "邮件日志",
+      "nameEN": "Mail log",
+      "component": "./sysmgmt/syslog/maillog"
+    },
+    {
+      "path": "/**/account",
+      "nameEN": "Account",
+      "redirect": "/sysmgmt/account/personal",
+      "exact": true
+    },
+    {
+      "name": "个人信息",
+      "nameEN": "Personal",
+      "path": "/**/account/personal",
+      "component": "./sysmgmt/account/settings/_layout"
+    },
+    {
+      "name": "修改密码",
+      "nameEN": "Edit Password",
+      "path": "/**/account/editpwd",
+      "component": "./sysmgmt/account/settings/_layout"
+    },
+    {
+      "name": "界面配置",
+      "nameEN": "UI Config",
+      "path": "/**/account/uiconfig",
+      "component": "./sysmgmt/account/settings/_layout"
+    },
+    {
+      "name": "缓存清理",
+      "nameEN": "Storage Clear",
+      "path": "/**/account/storage",
+      "component": "./sysmgmt/account/settings/_layout"
+    }
+  ]
+}

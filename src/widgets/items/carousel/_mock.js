@@ -1,0 +1,29 @@
+export const mockData = [{
+  title:tr('公告1'),
+  content:tr('服务器马上要进行升级，请及时进行数据备份'),
+  pictureId:15,
+  layoutH:'l',
+  layoutV:'t',
+  colorMode:'white'
+},{
+  title:tr('公告2'),
+  content:tr('服务器马上要进行升级，请及时进行数据备份'),
+  pictureId:14,
+  layoutH:'l',
+  layoutV:'t',
+  colorMode:'white'
+},{
+  title:tr('公告3'),
+  content:tr('服务器马上要进行升级，请及时进行数据备份'),
+  pictureId:13,
+  layoutH:'l',
+  layoutV:'t',
+  colorMode:'white'
+},{
+  title:tr('公告4'),
+  content:tr('服务器马上要进行升级，请及时进行数据备份'),
+  pictureId:12,
+  layoutH:'l',
+  layoutV:'t',
+  colorMode:'white'
+}]

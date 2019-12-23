@@ -1,0 +1,91 @@
+html {
+
+  .ant-progress {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-progress-line {
+    font-size: var(--font-size-base)
+  }
+
+  .ant-progress-small.ant-progress-line,
+  .ant-progress-small.ant-progress-line .ant-progress-text .anticon {
+    font-size: var(--font-size-sm)
+  }
+
+  .ant-progress-inner {
+    background-color: var(--progress-remaining-color);
+    border-radius: var(--progress-radius)
+  }
+
+  .ant-progress-circle-trail {
+    stroke: var(--progress-remaining-color)
+  }
+
+  .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+    stroke: var(--progress-default-color)
+  }
+
+  .ant-progress-success-bg,
+  .ant-progress-bg {
+    background-color: var(--progress-default-color);
+    border-radius: var(--progress-radius)
+  }
+
+  .ant-progress-success-bg {
+    background-color: var(--success-color)
+  }
+
+  .ant-progress-text {
+    color: var(--text-color-secondary)
+  }
+
+  .ant-progress-text .anticon {
+    font-size: var(--font-size-base)
+  }
+
+  .ant-progress-status-active .ant-progress-bg::before {
+    background: var(--component-background)
+  }
+
+  .ant-progress-status-exception .ant-progress-bg {
+    background-color: var(--error-color)
+  }
+
+  .ant-progress-status-exception .ant-progress-text {
+    color: var(--error-color)
+  }
+
+  .ant-progress-status-exception .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+    stroke: var(--error-color)
+  }
+
+  .ant-progress-status-success .ant-progress-bg {
+    background-color: var(--success-color)
+  }
+
+  .ant-progress-status-success .ant-progress-text {
+    color: var(--success-color)
+  }
+
+  .ant-progress-status-success .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+    stroke: var(--success-color)
+  }
+
+  .ant-progress-circle .ant-progress-text {
+    color: var(--progress-text-color)
+  }
+
+  .ant-progress-circle.ant-progress-status-exception .ant-progress-text {
+    color: var(--error-color)
+  }
+
+  .ant-progress-circle.ant-progress-status-success .ant-progress-text {
+    color: var(--success-color)
+  }
+}

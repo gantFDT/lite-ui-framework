@@ -1,0 +1,40 @@
+html {
+
+  .ant-skeleton-header .ant-skeleton-avatar {
+    background: var(--skeleton-color);
+    width: var(--avatar-size-base);
+    height: var(--avatar-size-base);
+    line-height: var(--avatar-size-base)
+  }
+
+  .ant-skeleton-header .ant-skeleton-avatar-lg {
+    width: var(--avatar-size-lg);
+    height: var(--avatar-size-lg);
+    line-height: var(--avatar-size-lg)
+  }
+
+  .ant-skeleton-header .ant-skeleton-avatar-sm {
+    width: var(--avatar-size-sm);
+    height: var(--avatar-size-sm);
+    line-height: var(--avatar-size-sm)
+  }
+
+  .ant-skeleton-content .ant-skeleton-title {
+    background: var(--skeleton-color)
+  }
+
+  .ant-skeleton-content .ant-skeleton-paragraph>li {
+    background: var(--skeleton-color)
+  }
+
+  .ant-skeleton.ant-skeleton-active .ant-skeleton-content .ant-skeleton-title,
+  .ant-skeleton.ant-skeleton-active .ant-skeleton-content .ant-skeleton-paragraph>li {
+    background: -webkit-gradient(linear, left top, right top, color-stop(25%, var(--skeleton-color)), color-stop(37%, var(--shade-skeleton-color-5)), color-stop(63%, var(--skeleton-color)));
+    background: linear-gradient(90deg, var(--skeleton-color) 25%, var(--shade-skeleton-color-5) 37%, var(--skeleton-color) 63%)
+  }
+
+  .ant-skeleton.ant-skeleton-active .ant-skeleton-avatar {
+    background: -webkit-gradient(linear, left top, right top, color-stop(25%, var(--skeleton-color)), color-stop(37%, var(--shade-skeleton-color-5)), color-stop(63%, var(--skeleton-color)));
+    background: linear-gradient(90deg, var(--skeleton-color) 25%, var(--shade-skeleton-color-5) 37%, var(--skeleton-color) 63%)
+  }
+}

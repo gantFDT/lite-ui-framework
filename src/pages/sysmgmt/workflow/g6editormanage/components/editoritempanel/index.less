@@ -1,0 +1,61 @@
+.itemPanel {
+  height: 100%;
+  background: #fafafa;
+  border-right: 1px solid var(--border-color-base);
+
+  .startNode, .stepNode, .splitNode {
+    width: 120px;
+    height: 50px;
+    border: 1px solid #CED4D9;
+    border-radius: 50%;
+    color: #333;
+    background-color: #fff;
+    line-height: 50px;
+    text-align: center;
+    margin-bottom: 5px;
+    .nodeLogo {
+      display: inline-block;
+      width: 16px;
+      margin-right: 5px;
+      vertical-align: text-bottom;
+    }
+  }
+  .stepNode {
+    height: 60px;
+    line-height: 60px;
+    border-radius: 4px;
+  }
+  .splitNode {
+    height: 60px;
+    line-height: 60px;
+    border: none;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgaGVpZ2h0PSI2MCIgd2lkdGg9IjEyMCI+CiAgPHBhdGggZD0iTSA1MCA1IFEgNjAgMCA3MCA1IEwgMTEwIDI1IFEgMTIwIDMwIDExMCAzNSBMIDcwIDU1IFEgNjAgNjAgNTAgNTUgTCAxMCAzNSBRIDAgMzAgMTAgMjUgWiIgc3Ryb2tlPSIjQ0VENEQ5IiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9IiNmZmZmZmYiIC8+Cjwvc3ZnPg==');
+    background-color: transparent;
+  }
+
+  .nodePanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0 10px;
+  }
+}
+.edgePanel {
+  .edgePanelTitle{
+    background-color: #fff;
+    border-top: 1px solid var(--border-color-base);
+    border-bottom: 1px solid var(--border-color-base);
+    padding-left: 30px;
+    line-height: 40px;
+    height: 40px;
+  }
+  .edgePanelContent{
+    padding: 30px;
+
+    :global {
+      .ant-radio-wrapper {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

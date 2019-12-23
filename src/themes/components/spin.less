@@ -1,0 +1,81 @@
+html {
+  
+  .ant-spin {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    color: var(--primary-color)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin .ant-spin-dot {
+    margin: calc(0px - var(--spin-dot-size) / 2)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin .ant-spin-text {
+    padding-top: calc((var(--spin-dot-size) - var(--font-size-base)) / 2 + 2px);
+    text-shadow: 0 1px 2px var(--shadow-color-inverse)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin.ant-spin-show-text .ant-spin-dot {
+    margin-top: calc(0px - var(--spin-dot-size) / 2 - 10px)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-sm .ant-spin-dot {
+    margin: calc(0px - var(--spin-dot-size-sm) / 2)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-sm .ant-spin-text {
+    padding-top: calc((var(--spin-dot-size-sm) - var(--font-size-base)) / 2 + 2px)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-sm.ant-spin-show-text .ant-spin-dot {
+    margin-top: calc(0px - var(--spin-dot-size-sm) / 2 - 10px)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-lg .ant-spin-dot {
+    margin: calc(0px - var(--spin-dot-size-lg) / 2)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-lg .ant-spin-text {
+    padding-top: calc((var(--spin-dot-size-lg) - var(--font-size-base)) / 2 + 2px)
+  }
+
+  .ant-spin-nested-loading>div>.ant-spin-lg.ant-spin-show-text .ant-spin-dot {
+    margin-top: calc(0px - var(--spin-dot-size-lg) / 2 - 10px)
+  }
+
+  .ant-spin-container::after {
+    background: var(--component-background)
+  }
+
+  .ant-spin-tip {
+    color: var(--text-color-secondary)
+  }
+
+  .ant-spin-dot {
+    font-size: var(--spin-dot-size)
+  }
+
+  .ant-spin-dot-item {
+    background-color: var(--primary-color)
+  }
+
+  .ant-spin-sm .ant-spin-dot {
+    font-size: var(--spin-dot-size-sm)
+  }
+
+  .ant-spin-lg .ant-spin-dot {
+    font-size: var(--spin-dot-size-lg)
+  }
+
+}
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  html .ant-spin-blur {
+    background: var(--component-background)
+  }
+}

@@ -1,0 +1,32 @@
+.simple-search-input {
+
+  &-focus,
+  &:hover {
+    :global(button) {
+      color: var(--btn-primary-color) !important;
+      background-color: var(--btn-primary-bg) !important;
+      border-color: var(--btn-primary-color) !important;
+      text-shadow: var(--btn-text-shadow) !important;
+      box-shadow: var(--btn-primary-shadow) !important;
+
+      &:hover {
+        background: var(--primary-7) !important;
+        border-color: var(--primary-8) !important;
+        color: #fff !important;
+      }
+    }
+
+    :global(.ant-input) {
+      border-color: var(--input-border-hover-color);
+    }
+  }
+}
+
+.queryBtn {
+  margin-left: 10px;
+  display: inline-block;
+  color: var(--text-color);
+  font-weight: normal;
+  font-size: 12px;
+  cursor: pointer;
+}

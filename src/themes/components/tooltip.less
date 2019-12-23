@@ -1,0 +1,118 @@
+html {
+  
+  .ant-tooltip {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    max-width: var(--tooltip-max-width)
+  }
+
+  .ant-tooltip-placement-top,
+  .ant-tooltip-placement-topLeft,
+  .ant-tooltip-placement-topRight {
+    padding-bottom: var(--tooltip-distance)
+  }
+
+  .ant-tooltip-placement-right,
+  .ant-tooltip-placement-rightTop,
+  .ant-tooltip-placement-rightBottom {
+    padding-left: var(--tooltip-distance)
+  }
+
+  .ant-tooltip-placement-bottom,
+  .ant-tooltip-placement-bottomLeft,
+  .ant-tooltip-placement-bottomRight {
+    padding-top: var(--tooltip-distance)
+  }
+
+  .ant-tooltip-placement-left,
+  .ant-tooltip-placement-leftTop,
+  .ant-tooltip-placement-leftBottom {
+    padding-right: var(--tooltip-distance)
+  }
+
+  .ant-tooltip-inner {
+    color: var(--tooltip-color);
+    background-color: var(--tooltip-bg);
+    border-radius: var(--border-radius-base);
+    -webkit-box-shadow: var(--box-shadow-base);
+    box-shadow: var(--box-shadow-base)
+  }
+
+  .ant-tooltip-arrow {
+    width: calc(var(--tooltip-arrow-width) * 1.4142 + var(--tooltip-arrow-shadow-width) * 2);
+    height: calc(var(--tooltip-arrow-width) * 1.4142 + var(--tooltip-arrow-shadow-width) * 2)
+  }
+
+  .ant-tooltip-arrow::before {
+    width: var(--tooltip-arrow-width);
+    height: var(--tooltip-arrow-width);
+    background-color: var(--tooltip-bg)
+  }
+
+  .ant-tooltip-placement-top .ant-tooltip-arrow,
+  .ant-tooltip-placement-topLeft .ant-tooltip-arrow,
+  .ant-tooltip-placement-topRight .ant-tooltip-arrow {
+    bottom: calc(var(--tooltip-distance) - var(--tooltip-arrow-rotate-width))
+  }
+
+  .ant-tooltip-placement-top .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-topLeft .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-topRight .ant-tooltip-arrow::before {
+    -webkit-transform: translateY(calc(0px - var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    -ms-transform: translateY(calc(0px - var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    transform: translateY(calc(0px - var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg)
+  }
+
+  .ant-tooltip-placement-right .ant-tooltip-arrow,
+  .ant-tooltip-placement-rightTop .ant-tooltip-arrow,
+  .ant-tooltip-placement-rightBottom .ant-tooltip-arrow {
+    left: calc(var(--tooltip-distance) - var(--tooltip-arrow-rotate-width))
+  }
+
+  .ant-tooltip-placement-right .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-rightTop .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-rightBottom .ant-tooltip-arrow::before {
+    -webkit-box-shadow: calc(0px - var(--tooltip-arrow-shadow-width)) var(--tooltip-arrow-shadow-width) 7px rgba(0, 0, 0, .07);
+    box-shadow: calc(0px - var(--tooltip-arrow-shadow-width)) var(--tooltip-arrow-shadow-width) 7px rgba(0, 0, 0, .07);
+    -webkit-transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    -ms-transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg)
+  }
+
+  .ant-tooltip-placement-left .ant-tooltip-arrow,
+  .ant-tooltip-placement-leftTop .ant-tooltip-arrow,
+  .ant-tooltip-placement-leftBottom .ant-tooltip-arrow {
+    right: calc(var(--tooltip-distance) - var(--tooltip-arrow-rotate-width))
+  }
+
+  .ant-tooltip-placement-left .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-leftTop .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-leftBottom .ant-tooltip-arrow::before {
+    -webkit-box-shadow: var(--tooltip-arrow-shadow-width) calc(0px - var(--tooltip-arrow-shadow-width)) 7px rgba(0, 0, 0, .07);
+    box-shadow: var(--tooltip-arrow-shadow-width) calc(0px - var(--tooltip-arrow-shadow-width)) 7px rgba(0, 0, 0, .07);
+    -webkit-transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    -ms-transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    transform: translateX(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg)
+  }
+
+  .ant-tooltip-placement-bottom .ant-tooltip-arrow,
+  .ant-tooltip-placement-bottomLeft .ant-tooltip-arrow,
+  .ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+    top: calc(var(--tooltip-distance) - var(--tooltip-arrow-rotate-width))
+  }
+
+  .ant-tooltip-placement-bottom .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-bottomLeft .ant-tooltip-arrow::before,
+  .ant-tooltip-placement-bottomRight .ant-tooltip-arrow::before {
+    -webkit-box-shadow: var(--tooltip-arrow-shadow-width) calc(0px - var(--tooltip-arrow-shadow-width)) 7px rgba(0, 0, 0, .07);
+    box-shadow: var(--tooltip-arrow-shadow-width) calc(0px - var(--tooltip-arrow-shadow-width)) 7px rgba(0, 0, 0, .07);
+    -webkit-transform: translateY(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    -ms-transform: translateY(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg);
+    transform: translateY(calc(var(--tooltip-arrow-rotate-width) / 2)) rotate(45deg)
+  }
+
+}

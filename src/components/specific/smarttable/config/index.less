@@ -1,0 +1,52 @@
+@import '~antd/es/style/themes/default.less';
+
+.sortableList{
+  overflow: hidden;
+  .sortableItem{
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 3px 3px 3px 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}
+.sortableHelper {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 3px 3px 3px 10px;
+  z-index: 9999;
+  width: 100%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.disabledIcon{
+  cursor: pointer;
+}
+
+.dragHandler {
+  margin-left: 5px;
+
+  &:hover {
+    cursor: move;
+  }
+}
+
+.viewPickerRow{
+  cursor: pointer;
+
+  .opreator{
+    display: none;
+    cursor: pointer;
+
+    &>*:hover{
+      color: var(--primary-color);
+    }
+  }
+  &:hover{
+    background-color: var(--primary-1);
+    .opreator{
+      display: block;
+    }
+  }
+}

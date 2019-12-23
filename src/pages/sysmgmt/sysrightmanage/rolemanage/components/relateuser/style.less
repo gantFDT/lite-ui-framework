@@ -1,0 +1,75 @@
+@primary: #1890ff;
+@danger: #f5222d;
+.container {
+    margin: 8px;
+    border: 1px solid #e8e8e8;
+}
+
+.headerLeft {
+    button {
+        margin-left: 5px;
+    }
+}
+
+.searchContainer {
+    background-color: #ffffff;
+    padding: 15px 15px 0 15px;
+    .searchTool {
+        position: relative;
+        .searchTips {
+            margin-right: 60px;
+        }
+        .searchRest {
+            position: absolute;
+            top: 3px;
+            right: 0px;
+        }
+    }
+}
+
+.searchForm {
+    margin-top: 5px;
+    :global {
+        .ant-form-item {
+            display: flex;
+        }
+        .ant-form-item-control-wrapper {
+            flex: 1
+        }
+        .ant-calendar-picker {
+            width: 100%;
+        }
+    }
+}
+
+.draw {
+    :global {
+        .ant-drawer-header {
+            border-bottom: none;
+        }
+    }
+}
+
+.drawSearchForm {
+    margin-top: 0px;
+    :global {
+        .ant-form-item {
+            margin-bottom: 10px !important;
+        }
+    }
+}
+
+.modalForm {
+    .footer {
+        padding: 15px 0px;
+        text-align: right;
+        button {
+            margin-right: 5px;
+        }
+    }
+    :global {
+        .ant-calendar-picker {
+            width: 100%;
+        }
+    }
+}

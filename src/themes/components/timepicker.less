@@ -1,0 +1,214 @@
+html {
+
+  .ant-time-picker-panel {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base);
+    font-family: var(--font-family)
+  }
+
+  .ant-time-picker-panel-inner {
+    font-size: var(--font-size-base);
+    background-color: var(--component-background);
+    border-radius: var(--border-radius-base);
+    -webkit-box-shadow: var(--box-shadow-base);
+    box-shadow: var(--box-shadow-base)
+  }
+
+  .ant-time-picker-panel-input {
+    max-width: calc(var(--time-picker-panel-column-width) * 3 - var(--control-padding-horizontal) - 2px)
+  }
+
+  .ant-time-picker-panel-input::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-panel-input:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-panel-input::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-panel-input-wrap {
+    padding: 7px 2px 7px var(--control-padding-horizontal);
+    border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split)
+  }
+
+  .ant-time-picker-panel-input-invalid {
+    border-color: var(--error-color)
+  }
+
+  .ant-time-picker-panel-narrow .ant-time-picker-panel-input-wrap {
+    max-width: calc(var(--time-picker-panel-column-width) * 2)
+  }
+
+  .ant-time-picker-panel-select {
+    width: var(--time-picker-panel-column-width);
+    max-height: calc(var(--timepicker-item-height) * 6);
+    font-size: var(--font-size-base);
+    border-left: var(--border-width-base) var(--border-style-base) var(--border-color-split)
+  }
+
+  .ant-time-picker-panel-select ul {
+    width: var(--time-picker-panel-column-width);
+    padding: 0 0 calc(var(--timepicker-item-height) * 5)
+  }
+
+  .ant-time-picker-panel-select li {
+    padding: 0 0 0 var(--control-padding-horizontal)
+  }
+
+  .ant-time-picker-panel-select li:focus {
+    color: var(--primary-color)
+  }
+
+  .ant-time-picker-panel-select li:hover {
+    background: var(--item-hover-bg)
+  }
+
+  li.ant-time-picker-panel-select-option-selected {
+    background: var(--time-picker-selected-bg)
+  }
+
+  li.ant-time-picker-panel-select-option-selected:hover {
+    background: var(--time-picker-selected-bg)
+  }
+
+  li.ant-time-picker-panel-select-option-disabled {
+    color: var(--btn-disable-color)
+  }
+
+  .ant-time-picker-panel-addon {
+    border-top: var(--border-width-base) var(--border-style-base) var(--border-color-split)
+  }
+
+  .ant-time-picker {
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-variant: var(--font-variant-base);
+    line-height: var(--line-height-base);
+    -webkit-font-feature-settings: var(--font-feature-settings-base);
+    font-feature-settings: var(--font-feature-settings-base)
+  }
+
+  .ant-time-picker-input {
+    height: var(--input-height-base);
+    padding: var(--input-padding-vertical-base) var(--input-padding-horizontal-base);
+    color: var(--input-color);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background-color: var(--input-bg);
+    border: var(--border-width-base) var(--border-style-base) var(--input-border-color);
+    border-bottom-color: var(--input-border-bottom-color);
+    border-radius: var(--border-radius-base)
+  }
+
+  .ant-time-picker-input::-moz-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-input:-ms-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-input::-webkit-input-placeholder {
+    color: var(--input-placeholder-color)
+  }
+
+  .ant-time-picker-input:hover {
+    border-color: var(--input-hover-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-time-picker-input:focus {
+    border-right-width: var(--border-width-base) !important;
+    -webkit-box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20);
+    box-shadow: var(--input-outline-offset) var(--outline-blur-size) var(--outline-width) var(--fade-primary-color-20)
+  }
+
+  .ant-time-picker-input-disabled {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-time-picker-input-disabled:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-time-picker-input[disabled] {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-time-picker-input[disabled]:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  textarea.ant-time-picker-input {
+    min-height: var(--input-height-base);
+    line-height: var(--line-height-base)
+  }
+
+  .ant-time-picker-input-lg {
+    height: var(--input-height-lg);
+    padding: var(--input-padding-vertical-lg) var(--input-padding-horizontal-lg);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-time-picker-input-sm {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-time-picker-input[disabled] {
+    color: var(--disabled-color);
+    background-color: var(--input-disabled-bg)
+  }
+
+  .ant-time-picker-input[disabled]:hover {
+    border-color: var(--input-border-color);
+    border-right-width: var(--border-width-base) !important
+  }
+
+  .ant-time-picker-icon,
+  .ant-time-picker-clear {
+    right: calc(var(--control-padding-horizontal) - 1px);
+    color: var(--disabled-color)
+  }
+
+  .ant-time-picker-icon .ant-time-picker-clock-icon,
+  .ant-time-picker-clear .ant-time-picker-clock-icon {
+    color: var(--disabled-color)
+  }
+
+  .ant-time-picker-clear {
+    background: var(--input-bg)
+  }
+
+  .ant-time-picker-clear:hover {
+    color: var(--text-color-secondary)
+  }
+
+  .ant-time-picker-large .ant-time-picker-input {
+    height: var(--input-height-lg);
+    padding: var(--input-padding-vertical-lg) var(--input-padding-horizontal-lg);
+    font-size: var(--font-size-lg)
+  }
+
+  .ant-time-picker-small .ant-time-picker-input {
+    height: var(--input-height-sm);
+    padding: var(--input-padding-vertical-sm) var(--input-padding-horizontal-sm)
+  }
+
+  .ant-time-picker-small .ant-time-picker-icon,
+  .ant-time-picker-small .ant-time-picker-clear {
+    right: calc(var(--control-padding-horizontal-sm) - 1px)
+  }
+}

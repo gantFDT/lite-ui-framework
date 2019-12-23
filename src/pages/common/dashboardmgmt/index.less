@@ -1,0 +1,43 @@
+.list {
+  -webkit-column-break-inside: avoid;
+
+}
+.active{
+  border:1px solid var(--primary-color);
+}
+.extra {
+  position: absolute!important;
+  bottom:0;
+  left:0;
+  width: 100%;
+  border-top: 1px solid var(--text-color-1);
+  .iconStyle {
+    height: 100%;
+    border-right: 1px solid var(--text-color-1);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 30px;
+    background: var(--component-background);
+
+    &:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+  }
+}
+
+.plus{
+  margin: 5px;
+  height: 200px;
+  border: 1px dashed var(--text-color-1);
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  float: left;
+  text-align: center;
+  line-height: 200px;
+  background: var(--component-background-5);
+}

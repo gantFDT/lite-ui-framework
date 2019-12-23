@@ -1,0 +1,34 @@
+.sortFiledItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    :global {
+        .ant-select {
+            width: 100%;
+        }
+    }
+
+    .mainSelector {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .minorSelector {
+        width: 20%;
+        margin-right: 10px;
+    }
+
+    .sortFiledItemRight {
+        i {
+            padding: 2px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 3px;
+        }
+
+        .dragHandler {
+            cursor: move;
+        }
+    }
+}

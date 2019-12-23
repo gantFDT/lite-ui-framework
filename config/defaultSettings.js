@@ -1,0 +1,65 @@
+export default {
+  "pwa": false,
+  // iconfontUrl: '//at.alicdn.com/t/font_1252237_z80y83696r9.js', // 公共图标库
+  // iconWareHouse: '//at.alicdn.com/t/font_1252237_z80y83696r9.js', // 图标仓库，由项目组自身维护
+  "BASE_CONFIG": {
+    "favicon": "assets/images/logo.png",
+    "logoImage": "assets/images/logo.png",
+    "logoImageWhite": "assets/images/logo_white.png",
+    "logoName": "甘棠软件",
+    "appTitle": "精简版前端开发框架",
+    "slogan": "本框架基于React技术栈,采用了Umi、Antd、Gantd等框架或UI库来封装构建，支持产品、项目分模块开发。",
+    "logoNameEn": "Gant Software",
+    "appTitleEn": "Gant Software UI-Framework",
+    "sloganEn": "This framework is based on the React technology stack, which uses Umi, Antd, Gantd and other frameworks or UI libraries to package and build, and supports product and project sub-module development",
+    "copyright": "Copyright ©2012-{now} Gant Software All rights reserved."
+  },
+  "LOGIN_CONFIG": {
+    "loginAlign": "right",
+    "loginFormStyle": null,
+    "loginFormShowLogo": false,
+    "loginFormShowName": true,
+    "headerTheme": "dark",
+    "backgroundColor": "#fff",
+    "backgroundImage": "assets/images/login-background.png",
+    "backgroundBlur": "",
+    "customHeader": null,
+    "customFooter": null,
+    "langulageIconColor": "#fff",
+    "copyrightAlign": "center"
+  },
+  "MAIN_CONFIG": {
+    "primaryColor": "#1890FF",
+    "siderMenuBackground": '#fff', // 导航背景色
+    "siderMenuTextColor": '#000', // 导航文字色
+    "siderMenuLogoBackground": "#fff", // logo背景色
+    "siderMenuLogoColor": "#000", // logo文字色
+    "globalHeaderBackground": "#fff", // header背景色
+    "globalHeaderTextColor": "rgba(0,0,0,0.8)", // header文字色
+    "theme": "classic",
+    
+    "themeType": "light",
+    "navTheme": "light",
+    "layout": "sidemenu",
+    "contentWidth": "Fluid",
+    "fixedHeader": true,
+    "autoHideHeader": false,
+    "fixSiderbar": true,
+    "showTaskBar": false,
+    "showBreadcrumb": true,
+    "headerHeight": 40,
+    "slideWidth": 220,
+    "slideCollapsedWidth": 40,
+    "navBackgroundOpacity": 1, // 导航背景透明度
+    "waterFontSize": 14,
+    "lightWaterFontColor": "#666",
+    'darkWaterFontColor': "#fefefe",
+    "waterFontAlpha": 0.1,
+    "waterFontRotate": 30,
+    "waterText": "甘棠软件",
+    "waterPadding": 10,
+    "waterStatus": "company",
+    "waterShowTime": false,
+    "fullscreen": false,
+  },
+};

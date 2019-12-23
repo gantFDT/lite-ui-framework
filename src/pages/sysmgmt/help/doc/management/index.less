@@ -1,0 +1,66 @@
+@activeColor: #1890FF;
+
+.operates {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 5px;
+  }
+}
+
+.docsContainer {
+  overflow: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.docsItemWrapper {
+
+  &Selected {
+    background: @activeColor
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .docsItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.exportWrapper {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.treeSelector {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.treeSelect {
+  :global {
+    .ant-select-tree li {
+      margin: 0;
+      outline: 0;
+    }
+  }
+}
+
+.filterBtn {
+  color: red;
+}
