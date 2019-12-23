@@ -1,5 +1,6 @@
-const getNotices = (req, res) =>
-  res.json([
+
+const getNotices = (req, res) =>{
+  return res.json([
     {
       id: '000000001',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
@@ -96,6 +97,7 @@ const getNotices = (req, res) =>
       type: 'event',
     },
   ]);
+}
 
 export default {
   'GET /api/notices': getNotices,

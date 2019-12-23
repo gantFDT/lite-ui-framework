@@ -2,10 +2,12 @@ import lodash from 'lodash'
 import { any } from 'prop-types';
 declare interface Window {
   tr: Function;
+  db: object
 }
 
 declare global { // 全局变量设置
   const _: typeof lodash;
+  const db:object;
   const ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION: string;
 }
 

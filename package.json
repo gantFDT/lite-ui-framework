@@ -1,6 +1,5 @@
 {
   "name": "ui-framework",
-  
   "version": "1.0.0",
   "private": true,
   "description": "An out-of-box UI solution for enterprise applications",
@@ -64,6 +63,7 @@
     "array-move": "^2.1.0",
     "classnames": "^2.2.6",
     "css-vars-ponyfill": "^2.1.2",
+    "dexie": "^2.0.4",
     "dva": "^2.4.1",
     "element-resize-detector": "^1.1.15",
     "expire-cache": "^1.0.0",

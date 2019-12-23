@@ -35,7 +35,7 @@ export default class Notification extends React.Component {
     }
     componentDidMount() {
         // process.env.NODE_ENV === 'production' && this.init();
-        this.init()
+        // this.init()
     }
     //初始化
     init = () => {

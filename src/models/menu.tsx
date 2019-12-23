@@ -334,6 +334,7 @@ export default {
   effects: {
     * getMenu({ payload: { route } }, { call, put }) {
       const menuData: ServerMenuList = yield call(getReactStartMenuAPI)
+      console.log('menuData',menuData)
       const res = yield call(fetchDashboards)
       let dashboardMenu: ServerMenuList = []
       let dashboards: Dashboards = []

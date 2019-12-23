@@ -28,57 +28,57 @@ const reduxModel: Model = {
       let res = yield call(fetch, {
         ...payload
       })
-      if (res) {
-        const data = JSON.parse(res.bigData).data
-        if (type == 'user') {
-          if (!_.find(data, (item) => item['id'] === 'default')) {
-            data.unshift({
-              id: 'default',
-              name: tr('基础仪表板'),
-              description: tr('默认系统自带仪表板') + ',' + tr('不能删除') + ',' + tr('可以设计') + ',' + tr('可以通过此仪表板复制')
-            })
-          }
-        }
-        // _.uniqWith(data, (arrVal: any, othVal: any) => arrVal['id'] == othVal['id']);
-        for (const item of data) {
-          const { id } = item
-          const layoutRes = yield call(fetchCurrentLayout, { id, type })
-          if (layoutRes && layoutRes.bigData) {
-            item.currentLayout = JSON.parse(layoutRes.bigData).currentLayout
-            item.currentLayoutCopy = JSON.parse(layoutRes.bigData).currentLayout
-            item.currentLayout && item.currentLayout.map((item: object) => {
-              const widgetType = getWidgetType(item['i'])
-              if (!widgetType) { return }
-              item['widgetType'] = widgetType
-              item['name'] = widgets[widgetType]['name']
-              item['iconBackground'] = widgets[widgetType]['iconBackground']
-              item['icon'] = widgets[widgetType]['icon']
-              item['snapShot'] = widgets[widgetType]['snapShot']
-            })
-          }
-        }
-        if (type == 'user') {
-          yield put({
-            type: 'save',
-            payload: {
-              data
-            }
-          })
-          yield put({
-            type: 'menu/saveDashBoards',
-            payload: {
-              dashboards: data
-            }
-          })
-        } else {
-          yield put({
-            type: 'save',
-            payload: {
-              repositoryData: data
-            }
+      let data = []
+      if (res) { data = JSON.parse(res.bigData).data }
+      if (type == 'user') {
+        if (!_.find(data, (item) => item['id'] === 'default')) {
+          data.unshift({
+            id: 'default',
+            name: tr('基础仪表板'),
+            description: tr('默认系统自带仪表板') + ',' + tr('不能删除') + ',' + tr('可以设计') + ',' + tr('可以通过此仪表板复制')
           })
         }
       }
+      // _.uniqWith(data, (arrVal: any, othVal: any) => arrVal['id'] == othVal['id']);
+      for (const item of data) {
+        const { id } = item
+        const layoutRes = yield call(fetchCurrentLayout, { id, type })
+        if (layoutRes && layoutRes.bigData) {
+          item.currentLayout = JSON.parse(layoutRes.bigData).currentLayout
+          item.currentLayoutCopy = JSON.parse(layoutRes.bigData).currentLayout
+          item.currentLayout && item.currentLayout.map((item: object) => {
+            const widgetType = getWidgetType(item['i'])
+            if (!widgetType) { return }
+            item['widgetType'] = widgetType
+            item['name'] = widgets[widgetType]['name']
+            item['iconBackground'] = widgets[widgetType]['iconBackground']
+            item['icon'] = widgets[widgetType]['icon']
+            item['snapShot'] = widgets[widgetType]['snapShot']
+          })
+        }
+      }
+      if (type == 'user') {
+        yield put({
+          type: 'save',
+          payload: {
+            data
+          }
+        })
+        yield put({
+          type: 'menu/saveDashBoards',
+          payload: {
+            dashboards: data
+          }
+        })
+      } else {
+        yield put({
+          type: 'save',
+          payload: {
+            repositoryData: data
+          }
+        })
+      }
+
     },
     *create({ payload, callback }, { call, put, select }) {
       const { row, type } = payload

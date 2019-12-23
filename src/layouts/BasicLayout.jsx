@@ -26,15 +26,15 @@ import { getCompanyData } from '@/services/api'
 import { IEVersion } from '@/utils/utils'
 const nowDate = moment().format("YYYY-MM-DD")
 const locale = getLocale();
-getCompanyData({
-  dataType: 'REACT_LOCALE',
-  dataId: locale
-}).then(response => {
-  if (response && response.bigData) {
-    window.remoteLangulages = {}
-    window.remoteLangulages[locale] = JSON.parse(response.bigData).langulage;
-  }
-});
+// getCompanyData({
+//   dataType: 'REACT_LOCALE',
+//   dataId: locale
+// }).then(response => {
+//   if (response && response.bigData) {
+//     window.remoteLangulages = {}
+//     window.remoteLangulages[locale] = JSON.parse(response.bigData).langulage;
+//   }
+// });
 
 let initFlag = false;
 
@@ -149,10 +149,10 @@ const BasicLayout = props => {
   useEffect(() => {
     if (dispatch) {
       dispatch({ type: 'user/fetchCurrent' });// 获取当前用户信息
-      dispatch({ type: 'user/findPermission' }); // 获取用户可访问权限
+      // dispatch({ type: 'user/findPermission' }); // 获取用户可访问权限
       dispatch({ type: 'menu/getMenu', payload: { route } })
-      dispatch({ type: 'login/fetchDelegateInfo' })//获取代理信息
-      dispatch({ type: 'organization/fetchAllOrg' })// 获取公司组织架构
+      // dispatch({ type: 'login/fetchDelegateInfo' })//获取代理信息
+      // dispatch({ type: 'organization/fetchAllOrg' })// 获取公司组织架构
       dispatch({ type: 'settings/getSetting' });// 获取本地配置信息
     }
   }, [])
