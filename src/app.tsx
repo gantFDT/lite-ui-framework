@@ -1,8 +1,8 @@
 import { isEmpty, get } from 'lodash'
 import { getLocale } from 'umi/locale'
 import router from 'umi/router'
-import { getUserIdentity, IEVersion, getPerformanceTiming } from '@/utils/utils'
-import fixIE from '@/assets/fixIE'
+import { getUserIdentity, IEVersion } from '@/utils/utils'
+// import fixIE from '@/assets/fixIE'
 import cssVars from 'css-vars-ponyfill'
 import {initDB} from '../database'
 //ie cssvar兼容

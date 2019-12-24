@@ -26,15 +26,15 @@ import { getCompanyData } from '@/services/api'
 import { IEVersion } from '@/utils/utils'
 const nowDate = moment().format("YYYY-MM-DD")
 const locale = getLocale();
-// getCompanyData({
-//   dataType: 'REACT_LOCALE',
-//   dataId: locale
-// }).then(response => {
-//   if (response && response.bigData) {
-//     window.remoteLangulages = {}
-//     window.remoteLangulages[locale] = JSON.parse(response.bigData).langulage;
-//   }
-// });
+getCompanyData({
+  dataType: 'REACT_LOCALE',
+  dataId: locale
+}).then(response => {
+  if (response && response.bigData) {
+    window.remoteLangulages = {}
+    window.remoteLangulages[locale] = JSON.parse(response.bigData).langulage;
+  }
+});
 
 let initFlag = false;
 

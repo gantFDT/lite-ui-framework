@@ -18,7 +18,7 @@ export default {
         const { widgetKey } = payload;
         const response = yield call(fetchDataApi, payload);
         const activeIndex = 0;
-        if (!response.bigData) { return }
+        if (!response || !response.bigData) { return }
         let {list,...restParams} = JSON.parse(response.bigData)
         list && list.map((item) => {
           if (item.pictureId) {

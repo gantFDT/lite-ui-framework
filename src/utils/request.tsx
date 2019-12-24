@@ -107,18 +107,19 @@ extendRequest.interceptors.request.use(function requestInterceptor(url, options)
 
 
 //request 状况行为
-const requestAction = ({ state, msg, warnDescription, errorDescription, TraceId, showSuccess, successMessage, showWraning, serveData }: any) => {
+const requestAction = ({ showSuccess, successMessage, showWraning, serveData, TraceId }: any) => {
+  const { state, message, warnDescription, errorDescription } = serveData
   if (state === 'success') { // 后台返回成功
     if (showSuccess) {
       notification.success({
-        message: successMessage || msg || tr("操作成功")
+        message: successMessage || message || tr("操作成功")
       })
     }
   }
   // // 警告
   if (state === 'warn' && showWraning) {
     notification.warning({
-      message: warnDescription || msg,
+      message: warnDescription || message,
       description: (
         <>
           {tr('错误跟踪号')}:<Paragraph copyable>{TraceId}</Paragraph>
@@ -137,11 +138,12 @@ const requestAction = ({ state, msg, warnDescription, errorDescription, TraceId,
         </div>
       )
     })
-    if (msg.match(tr('无访问权限'))) {
+    if (message.match(tr('无访问权限'))) {
       delCookie('userIdentity')
       window.location.href = '/login'
     }
-    return Promise.reject(msg)
+    console.log('message',message)
+    // return Promise.reject(message)
   }
   if (state === 'sys-error') {
     Modal.error({
@@ -150,7 +152,7 @@ const requestAction = ({ state, msg, warnDescription, errorDescription, TraceId,
         <div style={{ marginTop: '10px' }}>
           <div>{tr('请将错误跟踪号')}{tr('提交给系统管理员以便进一步分析')}</div>
           <div><Paragraph copyable>{TraceId}</Paragraph></div>
-          <div>{tr('错误信息：')}<span>{msg}</span></div>
+          <div>{tr('错误信息：')}<span>{message}</span></div>
         </div>
       ),
       maskClosable: true,
@@ -162,7 +164,7 @@ const requestAction = ({ state, msg, warnDescription, errorDescription, TraceId,
         cb()
       }
     })
-    return Promise.reject(msg)
+    return Promise.reject(message)
   }
   return
 }
@@ -178,13 +180,11 @@ RequestTokenBucket.start()
 const request = (url: string, options: any, { showSuccess = false, successMessage = '', showWraning = true, isStream = false } = {}) => {
   RequestTokenBucket.use()
   return extendRequest(url, options).then(({ data: serveData, response }) => {
-    const { state, message: msg, warnDescription, errorDescription } = serveData
     const TraceId = response.headers.get(TraceIdKey)
-    requestAction({ state, msg, warnDescription, errorDescription, TraceId, showSuccess, successMessage, showWraning, serveData })
+    requestAction({ showSuccess, successMessage, showWraning, serveData, TraceId })
     return isStream ? response : serveData.data
   })
 }
-
 
 ['post', 'get', 'put', 'delete'].forEach(method => {
   request[method] = function namedRequest(url: string, options: any, ...behaver: any) {
@@ -199,10 +199,22 @@ const request = (url: string, options: any, { showSuccess = false, successMessag
 const IndexDbRequest = (url: string, options: any, { showSuccess = false, successMessage = '', showWraning = true, isStream = false } = {}) => {
   if (APIS[url]) {
     return new Promise((resolve, reject) => {
+      let serveData
       if (typeof APIS[url] === 'function') {
-        resolve(APIS[url](options['data']))
+        APIS[url](options['data']).then((res:any) => {
+          requestAction({ showSuccess, successMessage, showWraning, serveData: res, TraceId: '本地数据库崩了' })
+          console.log(url,res)
+          resolve(res.data) 
+        })
+      } else {
+        serveData = {
+          state: 'success',
+          data: APIS[url]
+        }
+        console.log(url,serveData)
+        requestAction({ showSuccess, successMessage, showWraning, serveData, TraceId: '本地数据库崩了' })
+        resolve(serveData.data)
       }
-      resolve(APIS[url])
     })
   }
   return request(url, options, { showSuccess = false, successMessage = '', showWraning = true, isStream = false } = {})

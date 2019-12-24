@@ -117,13 +117,17 @@ export function getUserIdentity(): any {
 }
 
 // 获取图片地址
+// export function getImageById(pictureId: string): string {
+//   const {
+//     userToken,
+//     userLoginName,
+//     userLanguage
+//   } = getUserIdentity();
+//   return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
+// }
+
 export function getImageById(pictureId: string): string {
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
+  return `https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture`
 }
 
 /**

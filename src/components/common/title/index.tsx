@@ -59,9 +59,9 @@ export default withRouter(function Title(props: TitleProps) {
     }
   }
 
-  useEffect(() => {
-    path && getDocs()
-  }, [path])
+  // useEffect(() => {
+  //   path && getDocs()
+  // }, [path])
 
   return (
     <div
