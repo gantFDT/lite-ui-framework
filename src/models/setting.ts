@@ -105,9 +105,9 @@ const formatImgPath = (config: object) => {
     }
   }
 }
+
 formatImgPath(mergedBaseConfig);
 formatImgPath(mergedLoginConfig);
-
 updateFavicon(mergedBaseConfig.favicon);
 buildIcon()
 

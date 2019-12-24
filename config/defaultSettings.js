@@ -8,7 +8,7 @@ export default {
     "logoImageWhite": "assets/images/logo_white.png",
     "logoName": "甘棠软件",
     "appTitle": "精简版前端开发框架",
-    "slogan": "本框架基于React技术栈,采用了Umi、Antd、Gantd等框架或UI库来封装构建，支持产品、项目分模块开发。",
+    "slogan": "本框架基于React技术栈,采用了Umi、Antd、Gantd等框架或UI库来封装构建，支持产品、项目分模块开发,精简版,不依赖后端",
     "logoNameEn": "Gant Software",
     "appTitleEn": "Gant Software UI-Framework",
     "sloganEn": "This framework is based on the React technology stack, which uses Umi, Antd, Gantd and other frameworks or UI libraries to package and build, and supports product and project sub-module development",
@@ -19,7 +19,7 @@ export default {
     "loginFormStyle": null,
     "loginFormShowLogo": false,
     "loginFormShowName": true,
-    "headerTheme": "dark",
+    "headerTheme": "light",
     "backgroundColor": "#fff",
     "backgroundImage": "assets/images/login-background.png",
     "backgroundBlur": "",
@@ -29,7 +29,7 @@ export default {
     "copyrightAlign": "center"
   },
   "MAIN_CONFIG": {
-    "primaryColor": "#1890FF",
+    "primaryColor": "#ff9d03",
     "siderMenuBackground": '#fff', // 导航背景色
     "siderMenuTextColor": '#000', // 导航文字色
     "siderMenuLogoBackground": "#fff", // logo背景色

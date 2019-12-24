@@ -16,6 +16,6 @@ export default {
 
   },
   'accountUser/getUserPicture': async () => {
-    return 'https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture'
+    return 'https://hbimg.huabanimg.com/5bf124eb9870173a7424391887efd94035dd652d36a5-yP7p4H_fw658'
   },
 }
