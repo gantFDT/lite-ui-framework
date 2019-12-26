@@ -41,6 +41,7 @@ const Page = (props: any) => {
     }
 
     const handleAddImage = (ret) => {
+        console.log('ret',ret)
         let { list = [] } = carouselWidget;
         list.push({
             title: '',

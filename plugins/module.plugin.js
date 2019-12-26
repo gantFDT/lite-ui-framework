@@ -192,6 +192,13 @@ export default function (api, options) {
           pathRewrite: {
             '^/api': ''
           }
+        },
+        '/qiniu':{
+          target: 'http://zzzia.net:8080/qiniu/',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/qiniu': ''
+          }
         }
       })
     }

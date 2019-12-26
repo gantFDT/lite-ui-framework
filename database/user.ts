@@ -12,7 +12,7 @@ export default {
     telephone: "021-45457812",
     email: "995749721@qq.com",
     isActive: true,
-    pictureId: 1
+    pictureId: 'avatar.png'
 
   },
   'accountUser/getUserPicture': async () => {

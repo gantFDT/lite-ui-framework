@@ -1,6 +1,7 @@
 import { get as _get } from 'lodash'
 import React, { ReactNode, useEffect, useCallback } from 'react'
 import { notification } from 'antd'
+
 export interface MainConfigProps {
   headerHeight: number,
   fullscreen: boolean,
@@ -126,8 +127,10 @@ export function getUserIdentity(): any {
 //   return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
 // }
 
-export function getImageById(pictureId: string): string {
-  return `https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture`
+export function getImageById(pictureId: string) {
+  const domain = 'http://q325861w1.bkt.clouddn.com'
+  const img = domain+'/'+pictureId;
+  return img
 }
 
 /**
@@ -875,3 +878,4 @@ export const getPerformanceTiming = () => {
   obj['loadTime'] = t.loadEventEnd - t.navigationStart;
   return obj;
 }
+

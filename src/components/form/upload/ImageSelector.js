@@ -61,8 +61,8 @@ export default class ImageSelectorCmp extends Component {
     })
 
     const body = new FormData()
-
     body.append(fileName, blob);
+    body.append('files', blob, fileName);
     //把请求相关参数放入formData中
     body.append('tempFile', false);
     body.append('recTypeId', 0);
@@ -111,7 +111,7 @@ export default class ImageSelectorCmp extends Component {
     const { closeModal, confirm, handlerSizeChange } = this;
     const { visible, imageSrc, sliderDisabled, uploadFile, uploading, modalWidth, modalHeight } = this.state;
     const { children, ratio, shape, style, className } = this.props
-    
+
     let cropperWidth;
     let cropperHeight;
     if (modalWidth - 150 >= (modalHeight - (41 + 45 + 20)) * ratio) {

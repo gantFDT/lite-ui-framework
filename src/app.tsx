@@ -2,9 +2,10 @@ import { isEmpty, get } from 'lodash'
 import { getLocale } from 'umi/locale'
 import router from 'umi/router'
 import { getUserIdentity, IEVersion } from '@/utils/utils'
+// import request from 'request'
 // import fixIE from '@/assets/fixIE'
 import cssVars from 'css-vars-ponyfill'
-import {initDB} from '../database'
+import { initDB } from '../database'
 //ie cssvar兼容
 const ieVersion = IEVersion();
 if (ieVersion !== -1 && ieVersion !== 'edge') {
@@ -39,26 +40,6 @@ export function render(oldRender: Function) {
   }
   oldRender()
 }
-
-// setTimeout(() => {
-//   let Timer = getPerformanceTiming();
-//   Timer && console.table({
-//     '重定向耗时': Timer['redirectTime'],
-//     'DNS解析时间': Timer['lookupDomainTime'],
-//     'TCP建立时间': Timer['connectTime'],
-//     'HTTP请求耗时': Timer['requestTime'],
-//     '解析dom树耗时': Timer['domReadyTime'],
-//     '白屏时间耗时': Timer['whiteTime'],
-//     'DOMready时间': Timer['domLoadTime'],
-//     '页面加载完成的时间': Timer['loadTime'],
-//   })
-// }, 5000)
-
-
-
-
-
-
 
 
 export const dva = {
