@@ -74,7 +74,7 @@ const Widget = (props: any) => {
 									style={{
 										textAlign: layout === 'h' ? 'left' : 'center',
 									}}
-								>{organizationInfo.fullOrgName} | {currentUser.position}</div>
+								>{organizationInfo.fullOrgName} {organizationInfo.fullOrgName && currentUser.position ? '|':''} {currentUser.position}</div>
 							</Col>
 						</Row>
 					</ReactResizeDetector>

@@ -128,7 +128,7 @@ export function getUserIdentity(): any {
 // }
 
 export function getImageById(pictureId: string) {
-  const domain = 'http://q325861w1.bkt.clouddn.com'
+  const domain = 'http://data.yiheyishun.com/'
   const img = domain+'/'+pictureId;
   return img
 }

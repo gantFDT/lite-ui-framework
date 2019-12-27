@@ -30,10 +30,10 @@ export default {
   },
   "MAIN_CONFIG": {
     "primaryColor": "#ff9d03",
-    "siderMenuBackground": '#fff', // 导航背景色
-    "siderMenuTextColor": '#000', // 导航文字色
-    "siderMenuLogoBackground": "#fff", // logo背景色
-    "siderMenuLogoColor": "#000", // logo文字色
+    "siderMenuBackground": '#fa8c16', // 导航背景色
+    "siderMenuTextColor": '#fff', // 导航文字色
+    "siderMenuLogoBackground": "#fa8c16", // logo背景色
+    "siderMenuLogoColor": "#fff", // logo文字色
     "globalHeaderBackground": "#fff", // header背景色
     "globalHeaderTextColor": "rgba(0,0,0,0.8)", // header文字色
     "theme": "classic",
@@ -58,7 +58,7 @@ export default {
     "waterFontRotate": 30,
     "waterText": "甘棠软件",
     "waterPadding": 10,
-    "waterStatus": "company",
+    "waterStatus": "none",
     "waterShowTime": false,
     "fullscreen": false,
   },
