@@ -1,2 +1,26 @@
+building:
+  image: node:latest
+  stage: build
+  script: 
+    - npm install --progress=false --no-optional
+    - npm run build
+  artifacts:
+    expire_in: 3 days
+    paths:
+      - dist
 
-include: 'https://operation.gantcloud.com/ci-script/ui-team/ui-framework/build.yaml'
+cache: 
+  paths: 
+    - node_modules/
+
+pages: 
+  stage: deploy
+  script:
+    - rm -rf public/*
+    - mv dist/* public
+  artifacts:
+    expire_in: 3 days
+    paths:
+      - public
+  only: 
+    - master
