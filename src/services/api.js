@@ -129,4 +129,10 @@ export async function fetchDashboards() {
   });
 }
 
-
+//获取系统参数
+export async function fetchSystemParameters() {
+  return request('/parameter/findAll', {
+    method: 'POST',
+    data: {},
+  });
+}

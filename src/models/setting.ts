@@ -4,7 +4,8 @@ import {
   JSONisEqual,
   deepCopy4JSON,
   cssVar2camel,
-  camel2cssVar
+  camel2cssVar,
+  IEVersion
 } from '@/utils/utils';
 import { themes as themeConfigs, JS_VAR_KEYS } from '@/themes/themes';
 import themes from '@/themes';
@@ -20,6 +21,7 @@ type BaseConfig = Readonly<typeof defaultSettings.BASE_CONFIG>
 type LoginConfig = Readonly<typeof defaultSettings.LOGIN_CONFIG>
 type MainConfig = Readonly<typeof defaultSettings.MAIN_CONFIG>
 
+const ieVersion = IEVersion();
 
 const updateFavicon = (img: string) => {
   var link = document.createElement('link');
@@ -105,9 +107,9 @@ const formatImgPath = (config: object) => {
     }
   }
 }
-
 formatImgPath(mergedBaseConfig);
 formatImgPath(mergedLoginConfig);
+
 updateFavicon(mergedBaseConfig.favicon);
 buildIcon()
 
@@ -138,7 +140,6 @@ const SettingModel: Settings = {
   state: initalState,
   reducers: {
     getSetting(state = defaultSettings) {
-
       let mainConfigCssVars;
       let personalConfig;
       if (!localeUIConfigStr) {
@@ -147,8 +148,7 @@ const SettingModel: Settings = {
 
         const theme = themeConfigs.find(V => V.value === state.MAIN_CONFIG.theme);
         if (theme) {
-          const { uiConfig } = theme
-
+          const { uiConfig } = theme;
           const themeStyles = themes[state.MAIN_CONFIG.theme];
 
           personalConfig = merge({}, uiConfig, {
@@ -156,20 +156,23 @@ const SettingModel: Settings = {
               ...cssVar2camel(themeStyles, JS_VAR_KEYS),
               theme: state.MAIN_CONFIG.theme
             }
-          }
-          )
+          })
         };
+      }
+
+      mainConfigCssVars = camel2cssVar(state.MAIN_CONFIG, JS_VAR_KEYS)
+      
+      if (ieVersion !== -1 && ieVersion !== 'edge') {
+        themeColor.changeTheme('antd', mainConfigCssVars)
       } else {
-        mainConfigCssVars = camel2cssVar(state.MAIN_CONFIG, JS_VAR_KEYS)
+        if (state.MAIN_CONFIG.theme !== 'antd') {
+          themeColor.changeTheme(state.MAIN_CONFIG.theme, mainConfigCssVars)
+        } else if (isObjectDiff(state.MAIN_CONFIG, MAIN_CONFIG, JS_VAR_KEYS)) {
+          themeColor.changeSomeCssVars(mainConfigCssVars);
+        }
       }
 
-      if (state.MAIN_CONFIG.theme !== 'antd') {
-        themeColor.changeTheme(state.MAIN_CONFIG.theme, mainConfigCssVars)
-      } else if (isObjectDiff(state.MAIN_CONFIG, MAIN_CONFIG, JS_VAR_KEYS)) {
-        themeColor.changeSomeCssVars(mainConfigCssVars);
-      }
-
-      const mergedState = merge({}, state, personalConfig);
+      const mergedState = merge({}, personalConfig, state);
       window.localStorage.setItem('UIConfig', JSON.stringify(mergedState))
       return mergedState;
     },

@@ -1,6 +1,7 @@
 
 import CONFIG from '@/.temp'
 import moment from 'moment'
+import { fetchSystemParameters } from '@/services/api';
 import { getLocale } from 'umi/locale'
 
 //处理config,按顺序深度覆盖合并,如果是数组，则会cancat，在使用config时请自行按主键去重
@@ -40,7 +41,23 @@ const Model = {
     ...config
   },
   effects: {
-
+    *fetchSystemParameters(_, { call, put, select }) {
+      const data = yield call(fetchSystemParameters);
+      const Locale = getLocale() === 'zh-CN' ? 'zh_CN' : 'en';
+      let paramsMap = {};
+      data.forEach((V: any) => {
+        if (V.name === 'FW_DEMO_PARAM_STRING_I18N' || V.name === 'USER_PASSWORD_VALIDATE_PROMPT') {
+          V.value = JSON.parse(V.value)[Locale] || '';
+        }
+        paramsMap[V.name] = V.value;
+      })
+      yield put({
+        type: 'save',
+        payload: {
+          systemParameters: paramsMap
+        },
+      });
+    }
   },
   reducers: {
     save(state, { payload }) {

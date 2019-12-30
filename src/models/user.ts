@@ -44,7 +44,6 @@ const UserModel: User = {
       const { userLoginName } = getUserIdentity();
       // const userloginname = window.localStorage.getItem('username')
       let user = yield call(getUserByUserLoginNameApi, { userLoginName });
-      console.log('user',user)
       user.avatar = getImageById(user.pictureId)
       user.isSuperAdmin = user.id === -1;
       yield put({
