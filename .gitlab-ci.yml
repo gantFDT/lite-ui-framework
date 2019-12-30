@@ -1,21 +1,13 @@
-building:
-  image: node:latest
-  stage: build
-  script: 
-    - npm install --progress=false --no-optional
-    - npm run build
-  artifacts:
-    expire_in: 3 days
-    paths:
-      - dist
+image: node:latest
 
 cache: 
   paths: 
     - node_modules/
 
 pages: 
-  stage: deploy
   script:
+    - npm install --progress=false --no-optional
+    - npm run build
     - rm -rf public/*
     - mv dist/* public
   artifacts:
