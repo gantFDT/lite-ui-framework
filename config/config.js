@@ -254,6 +254,7 @@ export default {
     }
   ],
   extraBabelPlugins,
+  publicPath:'/lite-ui-framework',
   chainWebpack: webpackPlugin,
   // proxy: {
   //   '/api': {
