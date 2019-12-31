@@ -24,6 +24,8 @@ if (gantdVersionMatch && gantdVersionMatch.length) {
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION, TEST, NODE_ENV, EXAMPLE } = process.env;
 
 
+const prefixPublicPath = NODE_ENV === 'production' ? '/lite-ui-framework/' : ''
+
 
 const plugins = [
   [
@@ -60,24 +62,24 @@ const plugins = [
         },
         {
           //iconfont全局引入
-          src: '/iconfont/iconfont.js'
+          src: `${prefixPublicPath}iconfont/iconfont.js`
         },
         {
           //react
           // src: 'https://unpkg.com/react@^16.8.6/umd/react.production.min.js' //支持语义化版本范围
           // src: 'https://gw.alipayobjects.com/os/lib/react/16.8.6/umd/react.production.min.js'
-          src: '/js/react.production.min.js'
+          src: `${prefixPublicPath}js/react.production.min.js`
         },
         {
           //react-dom
           // src: 'https://unpkg.com/react-dom@^16.8.6/umd/react-dom.production.min.js' //支持语义化版本范围
           // src: 'https://gw.alipayobjects.com/os/lib/react-dom/16.8.6/umd/react-dom.production.min.js'
-          src: '/js/react-dom.production.min.js'
+          src: `${prefixPublicPath}js/react-dom.production.min.js`
         },
         {
           //antv/data-set
           // src: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.2/dist/data-set.min.js'
-          src: '/js/data-set.min.js'
+          src: `${prefixPublicPath}js/data-set.min.js`
         },
         {
           //antv/g6-plugins
@@ -90,20 +92,20 @@ const plugins = [
         {
           //lodash
           // src: 'https://unpkg.com/lodash@^4.17.11/lodash.min.js'
-          src: '/js/lodash.min.js'
+          src: `${prefixPublicPath}js/lodash.min.js`
         },
         {
           //moment
           // src: 'https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js'
-          src: '/js/moment-with-locales.min.js'
+          src: `${prefixPublicPath}js/moment-with-locales.min.js`
         },
         {
           //bizcharts
           // src: 'https://unpkg.com/bizcharts@^3.5.5/umd/BizCharts.min.js'
-          src: '/js/BizCharts.min.js'
+          src: `${prefixPublicPath}js/BizCharts.min.js`
         },
         {
-          src: '/js/xlsx.min.js'
+          src: `${prefixPublicPath}js/xlsx.min.js`
         }
       ],
       ...(!TEST && os.platform() === 'darwin'
@@ -254,7 +256,8 @@ export default {
     }
   ],
   extraBabelPlugins,
-  publicPath:'/lite-ui-framework/',
+  publicPath: prefixPublicPath,
+  base:prefixPublicPath,
   chainWebpack: webpackPlugin,
   // proxy: {
   //   '/api': {
