@@ -24,7 +24,7 @@ if (gantdVersionMatch && gantdVersionMatch.length) {
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION, TEST, NODE_ENV, EXAMPLE } = process.env;
 
 
-const prefixPublicPath = NODE_ENV === 'production' ? '/lite-ui-framework/' : ''
+const prefixPublicPath = NODE_ENV === 'production' ? '/lite-ui-framework/' : '/'
 
 
 const plugins = [
