@@ -39,7 +39,7 @@ export default {
     "theme": "classic",
     
     "themeType": "light",
-    "navTheme": "light",
+    "navTheme": "dark",
     "layout": "sidemenu",
     "contentWidth": "Fluid",
     "fixedHeader": true,
