@@ -19,7 +19,6 @@ import { Exception, Icon as GantIcon } from 'gantd'
 import classnames from 'classnames'
 import styles from './index.less'
 import { Breadcrumb, History, MenuCollection } from '@/components/common'
-import { tr } from '@/components/common/formatmessage';
 import { getPathArr } from '@/utils/utils'
 import { textBecomeImg } from '@/utils/textToCanvas'
 import { getCompanyData } from '@/services/api'
@@ -400,8 +399,8 @@ const BasicLayout = props => {
                     {showBreadcrumb && (
                       <div className='page-header-box'>
                         <ButtonGroup className={styles.navigation}>
-                          <Button type="primary" size="small" icon="cloud" />
-                          <Button type="primary" size="small" icon="cloud-download" />
+                          <Button size="small" icon="left" onClick={()=>history.go(-1)}/>
+                          <Button size="small" icon="right" onClick={()=>history.go(1)}/>
                         </ButtonGroup>
                         <Breadcrumb breadcrumb={breadcrumb} />
                         <History {...props} />

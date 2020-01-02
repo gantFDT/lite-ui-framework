@@ -504,16 +504,16 @@ div.aligncenter {
     margin: 0 10px 10px 10px;
 
     .page-header-box {
-      display: grid;
-      height: 42px;
-      grid-template-columns: 1fr auto;
-      align-items: center;
+      display: flex;
+      height: 40px;
       font-size: 12px;
-      margin-top: -10px; // fix layout content padding
+      margin-top: -10px;
 
       .ant-breadcrumb {
-        padding: 10px 5px;
+        flex: 1;
+        padding: 0px 5px;
         font-size: 12px;
+        line-height: 40px;
       }
     }
   }

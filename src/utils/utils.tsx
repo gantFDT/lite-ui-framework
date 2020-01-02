@@ -672,7 +672,7 @@ export const getModelData = (path: string) => {
 // 上下margin高度
 export const MARGIN_HEIGHT = 10
 // 面包屑高度
-export const BREAD_CRUMB_HEIGHT = 42
+export const BREAD_CRUMB_HEIGHT = 40
 // Card border高度
 export const CARD_BORDER_HEIGHT = 2
 // Table border 高度

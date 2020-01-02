@@ -25,7 +25,13 @@ function getMenu(history, MAIN_CONFIG) {
 const History = ({ history, MAIN_CONFIG }) => {
   return (
     <Dropdown overlay={getMenu(history, MAIN_CONFIG)} placement="bottomRight">
-      <a href="#" onClick={e => e.preventDefault()} style={{ textAlign: 'right', color: 'var(--text-color)' }}>{tr('浏览历史')}</a>
+      <a href="#" onClick={e => e.preventDefault()} style={{
+        textAlign: 'right',
+        color: 'var(--text-color)',
+        padding:'5px 0',
+        height: '30px',
+        lineHeight: '30px'
+      }}>{tr('浏览历史')}</a>
     </Dropdown>
   )
 }
