@@ -8,10 +8,8 @@ export default {
     name: "系统管理",
     description: "",
     icon: "iconfont icon-xitongguanli",
-    seqNum: 2,
     leaf: false,
     children: [],
-    optCounter: 1
   }, {
     id: "ViYKC587a1kwTSRXnsA",
     parentResourceId: "8Xd6ismZdMPAMqP7GXl",
@@ -20,10 +18,18 @@ export default {
     name: "客制化语言",
     description: "",
     icon: "iconfont icon-xitongguanli",
-    seqNum: 6,
     leaf: true,
     children: [],
-    optCounter: 2
+  },{
+    id: "9Xd6ismZdMPAMqtfrwe",
+    parentResourceId: "ROOT",
+    type: "REACTMENU_CATEGORY_ITEM",
+    name: "示例",
+    path: "/example",
+    description: "",
+    icon: "iconfont icon-xitongguanli",
+    leaf: true,
+    children: [],
   }],
 
 

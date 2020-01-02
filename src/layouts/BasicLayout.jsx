@@ -24,6 +24,9 @@ import { getPathArr } from '@/utils/utils'
 import { textBecomeImg } from '@/utils/textToCanvas'
 import { getCompanyData } from '@/services/api'
 import { IEVersion } from '@/utils/utils'
+
+const ButtonGroup = Button.Group;
+
 const nowDate = moment().format("YYYY-MM-DD")
 const locale = getLocale();
 getCompanyData({
@@ -253,6 +256,7 @@ const BasicLayout = props => {
     }, MenuDelay);
     settimer(showTimer)
   }, []);
+
   const onMouseLeave = useCallback(
     () => {
       if (timer) {
@@ -395,6 +399,10 @@ const BasicLayout = props => {
                   <>
                     {showBreadcrumb && (
                       <div className='page-header-box'>
+                        <ButtonGroup className={styles.navigation}>
+                          <Button type="primary" size="small" icon="cloud" />
+                          <Button type="primary" size="small" icon="cloud-download" />
+                        </ButtonGroup>
                         <Breadcrumb breadcrumb={breadcrumb} />
                         <History {...props} />
                       </div>

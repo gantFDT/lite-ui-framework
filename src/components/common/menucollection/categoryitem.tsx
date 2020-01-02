@@ -18,7 +18,7 @@ const CategoryItem = (props: CategoryItemProps) => {
             return (
                 <ul className={classnames(styles['category-item-menu'])}>
                     {
-                        child.map((childItem, index: number) => {
+                        child && child.map((childItem, index: number) => {
                             const name = childItem.name || childItem.name
                             if (!get(childItem, 'children.length')) {
                                 return (
