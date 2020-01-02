@@ -223,7 +223,7 @@ const Comp = (props: Dashboard) => {
           :
           <>
             {!stateEditMode ? <Spin spinning={loading}>
-              <div className="emptyContent" style={{ height: 'calc(100vh - 80px)' }}>
+              <div className="emptyContent" style={{ height: 'calc(100vh - 92px)' }}>
                 {!loading && <Empty
                   description={
                     <span>
@@ -238,8 +238,7 @@ const Comp = (props: Dashboard) => {
               </div>
             </Spin>
               :
-              <div className={classnames('full', 'aligncenter')} style={{ height: 'calc(100vh - 80px)' }}>
-
+              <div className={classnames('full', 'aligncenter')} style={{ height: 'calc(100vh - 92px)' }}>
                 <WidgetSelector
                   widgets={widgets}
                   currentLayout={currentLayout}
