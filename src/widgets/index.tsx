@@ -95,6 +95,42 @@ const widgets = {
       minHeight: 4
     }
   },
+  ChartCard: {
+    icon: 'pie-chart',
+    name: tr('图表卡片'),
+    description: tr('小型图表') + ',' + tr('关键性信息') + '……',
+    configPanel: true,
+    maxLength: 4,
+    snapShot: Widgets['ChartCard']['snapShot'],
+    tags: [tr('全部'), tr('图表')],
+    iconBackground: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
+    rect: {
+      defaultWidth: 3,
+      defaultHeight: 8,
+      maxWidth: 12,
+      maxHeight: 16,
+      minWidth: 2,
+      minHeight: 4
+    }
+  },
+  NumberCard: {
+    icon: 'number',
+    name: tr('数字卡片'),
+    description: tr('关键数字') + ',' + tr('关键性信息') + '……',
+    configPanel: true,
+    maxLength: 6,
+    snapShot: Widgets['NumberCard']['snapShot'],
+    tags: [tr('全部'), tr('图表')],
+    iconBackground: 'linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)',
+    rect: {
+      minWidth: 2,
+      defaultWidth: 3,
+      maxWidth: 12,
+      minHeight: 3,
+      defaultHeight: 3,
+      maxHeight: 4
+    }
+  },
   // SmartChart: {
   //   icon: 'bar-chart',
   //   name: tr('智能图表'),

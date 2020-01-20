@@ -34,25 +34,25 @@ const AccountSettings = props => {
   const menuData = []
   const arr = [{
     name: tr('个人信息'),
-    icon: <Icon type="icon-xingming" />,
+    icon: <Icon type="idcard" />,
     path: 'personal',
     visible: true
   },
   {
     name: tr('修改密码'),
-    icon: <Icon type="icon-iconbi" />,
+    icon:<Icon type="lock" />,
     path: 'editpwd',
     visible: showUpdateSelfPassword
   },
   {
     name: tr('界面设置'),
-    icon: <Icon.Ant type="control" />,
+    icon: <Icon type="control" />,
     path: 'uiconfig',
     visible: showUIConfig
   },
   {
     name: tr('缓存清理'),
-    icon: <Icon.Ant type="database" />,
+    icon: <Icon type="database" />,
     path: 'storage',
     visible: showStorageClear
   }

@@ -118,6 +118,7 @@ const Comp = (props: Dashboard) => {
 
   //改变布局触发
   const onLayoutChange = useCallback(_.debounce((layout: any, layouts?: any, callback?: Function) => {
+    window.dispatchEvent(new Event('resize'));
     if (!stateEditMode) {
       return
     }
@@ -254,7 +255,7 @@ const Comp = (props: Dashboard) => {
             }
           </>
         }
-        {stateEditMode && <div className={styles.block} />}
+        {stateEditMode && !_.isEmpty(currentLayout) && <div className={styles.block} />}
         {
           stateEditMode &&
           <FooterToolbar style={{ width: '100%' }}>
@@ -265,7 +266,7 @@ const Comp = (props: Dashboard) => {
             }>
               <Icon className="marginh10" type="exclamation-circle" />
             </Tooltip>
-            <Button size="small" onClick={() => { setStateEditMode(false); exitEditCallback() }}>{tr('退出')}</Button>
+            <Button size="small" onClick={() => { setStateEditMode(false); exitEditCallback() }}>{tr('完成')}</Button>
             {!_.isEmpty(currentLayout) && <Button size="small" type="danger" onClick={() => reset()}>{tr('一键清空')}</Button>}
             <WidgetSelector
               widgets={widgets}

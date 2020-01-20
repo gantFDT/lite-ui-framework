@@ -24,21 +24,21 @@ export default {
     }
     const key = generateUuid() + '.png'
     // qiniu.compressImage(content, options).then(data => {
-      var observable = qiniu.upload(content, key, token, putExtra, config)
-      var subscription = observable.subscribe({
-        next(res) {
-          console.log('res1', res)
-        },
-        error(err) {
-          console.log('err', err)
-        },
-        async complete(res) {
-          const file = res['key']
-          console.log('res3', res)
-          if (file) { data = await db['file'].add({ id: key, data: file }) }
+    var observable = qiniu.upload(content, key, token, putExtra, config)
+    var subscription = observable.subscribe({
+      next(res) {
+        console.log('res1', res)
+      },
+      error(err) {
+        console.log('err', err)
+      },
+      async complete(res) {
+        const file = res['key']
+        console.log('res3', res)
+        if (file) { data = await db['file'].add({ id: key, data: file }) }
 
-        }
-      })
+      }
+    })
     // })
     data = gStatus('success', { id: key })
     return data

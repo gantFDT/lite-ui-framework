@@ -6,6 +6,8 @@ import UserCard, { SnapShot as UserCardSnapShot, modelRegisterKey as UserCardMod
 import SmartChart, { SnapShot as SmartChartSnapShot, modelRegisterKey as SmartChartModelRegisterKey } from './smartchart'
 import SmartTable, { SnapShot as SmartTableSnapShot, modelRegisterKey as SmartTableModelRegisterKey } from './smarttable'
 import TodoList, { SnapShot as TodoListSnapShot, modelRegisterKey as TodoListModelRegisterKey } from './todolist'
+import ChartCard, { SnapShot as ChartCardSnapShot, modelRegisterKey as ChartCardModelRegisterKey } from './chartcard'
+import NumberCard, { SnapShot as NumberCardSnapShot, modelRegisterKey as NumberCardModelRegisterKey } from './numbercard'
 
 
 export default {
@@ -48,6 +50,16 @@ export default {
     component: TodoList,
     snapShot: TodoListSnapShot,
     modelRegisterKey: TodoListModelRegisterKey,
+  },
+  ChartCard: {
+    component: ChartCard,
+    snapShot: ChartCardSnapShot,
+    modelRegisterKey: ChartCardModelRegisterKey,
+  },
+  NumberCard: {
+    component: NumberCard,
+    snapShot: NumberCardSnapShot,
+    modelRegisterKey: NumberCardModelRegisterKey,
   },
 
 

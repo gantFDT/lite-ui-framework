@@ -4,7 +4,7 @@ export default {
   '/security/getUserByUserLoginName': {
     id: 91,
     userLoginName: "TEST",
-    userName: "样例用户",
+    userName: "Gant Tom",
     staffNumber: "001",
     gender: "MALE",
     organizationId: "sH47bl7MkZcQc9I6OZG",

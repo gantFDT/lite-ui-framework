@@ -208,7 +208,7 @@ class GlobalHeaderRight extends Component {
             <span
               className={styles.action}
             >
-              <GantIcon type="icon-kuaijiejian" className="paddingh5" />
+              <GantIcon type="icon-keyboard" className="paddingh5" />
             </span>
           </Popover>
 

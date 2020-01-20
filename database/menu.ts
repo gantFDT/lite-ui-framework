@@ -7,7 +7,7 @@ export default {
     type: "REACTMENU_CATEGORY",
     name: "系统管理",
     description: "",
-    icon: "iconfont icon-xitongguanli",
+    icon: "setting",
     leaf: false,
     children: [],
   }, {
@@ -17,7 +17,7 @@ export default {
     path: "/sysrightmanage/customlanguage",
     name: "客制化语言",
     description: "",
-    icon: "iconfont icon-xitongguanli",
+    icon: "global",
     leaf: true,
     children: [],
   },{
@@ -27,7 +27,7 @@ export default {
     name: "示例",
     path: "/example",
     description: "",
-    icon: "iconfont icon-xitongguanli",
+    icon: "appstore",
     leaf: true,
     children: [],
   }],

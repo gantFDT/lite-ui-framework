@@ -195,6 +195,7 @@ const SettingModel: Settings = {
       } else if (isObjectDiff(state.MAIN_CONFIG, MAIN_CONFIG, JS_VAR_KEYS)) {
         cssVars = _.merge(state.cssVars, mainConfig)
         themeColor.changeSomeCssVars(mainConfig);
+        formatImgPath(BASE_CONFIG)
       }
       payload.cssVars = cssVars;
       setTimeout(() => {
