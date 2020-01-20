@@ -35,7 +35,7 @@ export default {
     "siderMenuLogoBackground": "#fa8c16", // logo背景色
     "siderMenuLogoColor": "#fff", // logo文字色
     "globalHeaderBackground": "#fff", // header背景色
-    "globalHeaderTextColor": "rgba(0,0,0,0.8)", // header文字色
+    "globalHeaderTextColor": "#202020", // header文字色
     "theme": "classic",
     
     "themeType": "light",

@@ -88,6 +88,7 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-cropper": "^1.2.0",
     "react-document-title": "^2.0.3",
+    "react-fittext": "^1.0.0",
     "react-grid-layout": "^0.16.6",
     "react-media": "^1.9.2",
     "react-media-hook2": "^1.1.2",

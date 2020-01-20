@@ -21,7 +21,8 @@ const Page = (props: any) => {
     fetch,
     update,
     widgetKey,
-    state
+    state,
+    handleClose
   } = props;
 
   const { getFieldDecorator } = form;
@@ -34,7 +35,7 @@ const Page = (props: any) => {
       }
       update({
         data: fieldsValue
-      })
+      },handleClose)
     });
   };
 

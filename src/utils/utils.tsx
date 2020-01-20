@@ -129,7 +129,7 @@ export function getUserIdentity(): any {
 
 export function getImageById(pictureId: string) {
   const domain = 'http://data.yiheyishun.com/'
-  const img = domain+'/'+pictureId;
+  const img = domain + '/' + pictureId;
   return img
 }
 
@@ -879,3 +879,18 @@ export const getPerformanceTiming = () => {
   return obj;
 }
 
+
+
+/**
+*
+*
+* @param {*} str
+*/
+export const copy = (str: string) => {
+  var save = function (e: any) {
+    e.clipboardData.setData('text/plain', str);//下面会说到clipboardData对象
+    e.preventDefault();//阻止默认行为
+  }
+  document.addEventListener('copy', save);
+  document.execCommand("copy");//使文档处于可编辑状态，否则无效
+}

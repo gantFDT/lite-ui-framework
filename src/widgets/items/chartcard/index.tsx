@@ -17,7 +17,7 @@ import { ConfigBar, ConfigWrap, registerModel } from '@/widgets/utils'
 import ConfigPanel from './ConfigPanel'
 import { reducer } from '@/utils/utils'
 import { fetchApi, updateApi } from './service'
-
+import Pie from './components/pie'
 export interface VisitDataType {
   x: string;
   y: number;
@@ -164,11 +164,11 @@ const Widget = (props: any) => {
       footer={
         <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
           <Trend flag="up" style={{ marginRight: 16 }}>
-            {tr('转化率')}
+            {tr('周同比')}
             <span className={styles.trendText}>12%</span>
           </Trend>
           <Trend flag="down">
-            {tr('转化率')}
+            {tr('日同比')}
             <span className={styles.trendText}>11%</span>
           </Trend>
         </div>
@@ -177,6 +177,47 @@ const Widget = (props: any) => {
     >
       <MiniProgress percent={78} strokeWidth={8} target={80} color="#13C2C2" />
     </ChartCard>
+
+    const pie = <ChartCard
+      bordered={false}
+      title={
+        tr('项目进度')
+      }
+      action={
+        <Tooltip
+          title={
+            tr('项目进度')
+          }
+        >
+          <Icon type='info-circle' />
+        </Tooltip>
+      }
+      total="64%"
+      footer={
+        <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
+          <Trend flag="up" style={{ marginRight: 16 }}>
+            {tr('周同比')}
+            <span className={styles.trendText}>12%</span>
+          </Trend>
+          <Trend flag="down">
+            {tr('日同比')}
+            <span className={styles.trendText}>11%</span>
+          </Trend>
+        </div>
+      }
+      contentHeight={itemHeight - 135}
+    >
+      <Pie
+        animate={false}
+        inner={0.55}
+        tooltip={false}
+        margin={[0, 0, 0, 0]}
+        percent={0.64 * 100}
+        height={itemHeight - 135}
+      />
+    </ChartCard>
+
+
     let result = <></>
     switch (type) {
       case 'area':
@@ -187,6 +228,9 @@ const Widget = (props: any) => {
         break;
       case 'progress':
         result = progress
+        break;
+      case 'pie':
+        result = pie
         break;
       default:
         break;

@@ -21,7 +21,8 @@ const Page = (props: any) => {
     fetch,
     update,
     widgetKey,
-    state
+    state,
+    handleClose
   } = props;
 
   const { getFieldDecorator } = form;
@@ -34,7 +35,7 @@ const Page = (props: any) => {
       }
       update({
         data: fieldsValue
-      })
+      },handleClose)
     });
   };
 
@@ -54,6 +55,7 @@ const Page = (props: any) => {
             <Radio.Button value='area' >{tr('访问量')}</Radio.Button>
             <Radio.Button value="bar">{tr('支付笔数')}</Radio.Button>
             <Radio.Button value="progress">{tr('转化率')}</Radio.Button>
+            <Radio.Button value="pie">{tr('项目进度')}</Radio.Button>
           </Radio.Group>
         )}
       </Form.Item>

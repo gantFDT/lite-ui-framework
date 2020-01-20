@@ -49,7 +49,7 @@ const menu = (
 );
 
 const Widget = (props: any) => {
-  const number = Math.ceil(Math.random()*10000); 
+  const number = Math.ceil(Math.random() * 10000);
   const {
     itemHeight, editMode, widgetKey, handleDeleteWidget
   } = props;
@@ -88,7 +88,7 @@ const Widget = (props: any) => {
 
 
   //更新数据
-  const update = useCallback(async (payload: any, callback: Function) => {
+  const update = useCallback(async (payload: any, callback: Function = () => setConfigVisible(false)) => {
     setLoading(true)
     const { data } = payload;
     await updateApi({
@@ -132,7 +132,7 @@ const Widget = (props: any) => {
         </div>
       </div>
     </>
-  }, [title,icon,number])
+  }, [title, icon, number])
 
   return (
     <div

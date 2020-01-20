@@ -1,8 +1,10 @@
 import {gStatus} from './utils'
-
+import {copy} from '@/utils/utils'
 export default {
   '/accountUserSelf/getUserData': async (params: any) => {
     const { dataType, dataId } = params
+    let data1 = await db['userData'].toArray();
+    copy(JSON.stringify(data1))
     let data = await db['userData'].where({ dataType, dataId }).toArray();
     if (!_.isEmpty(data)) {
       data = data[0]
