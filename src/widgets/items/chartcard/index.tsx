@@ -7,8 +7,6 @@ import { Icon } from 'gantd'
 import classnames from 'classnames'
 import SnapShot from './snapshot.png'
 import ChartCard from './components/chartcard'
-
-
 import numeral from 'numeral'
 import { ConfigBar, ConfigWrap, registerModel } from '@/widgets/utils'
 import ConfigPanel from './ConfigPanel'
