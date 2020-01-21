@@ -7,17 +7,18 @@ import { Icon } from 'gantd'
 import classnames from 'classnames'
 import SnapShot from './snapshot.png'
 import ChartCard from './components/chartcard'
-import MiniBar from './components/minibar'
-import MiniArea from './components/miniarea'
-import Trend from './components/trend'
-import MiniProgress from './components/miniprogress'
-import Field from './components/field'
+
+
 import numeral from 'numeral'
 import { ConfigBar, ConfigWrap, registerModel } from '@/widgets/utils'
 import ConfigPanel from './ConfigPanel'
 import { reducer } from '@/utils/utils'
 import { fetchApi, updateApi } from './service'
-import Pie from './components/pie'
+import Field from './components/field'
+
+import { Pie, MiniBar, MiniArea, Trend, MiniProgress } from '@/components/chart'
+
+
 export interface VisitDataType {
   x: string;
   y: number;

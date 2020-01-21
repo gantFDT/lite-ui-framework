@@ -2,14 +2,14 @@
 import React from 'react'
 import { Form } from 'antd'
 import { EditStatus } from 'gantd'
-import { compose } from 'recompose'
+import { compose, withHandlers, renameProp } from 'recompose'
 import SchemaForm from './SchemaForm'
 import { isEmpty, isEqual } from 'lodash'
 import { bindAll } from 'lodash-decorators'
 import { Props, Context, Schema, OptionalProps } from './interface'
 import classnames from 'classnames'
-import dependencies, { Inner, findDependencies } from './compose'
-
+import dependencies, { Inner, findDependencies, refHoc, } from './compose'
+import { getNewValue, getDateToForm } from './utils';
 export const FormContext = React.createContext({} as Context);
 export * from './interface'
 export * from './maps'
@@ -22,7 +22,7 @@ class FormSchema extends React.Component<Props>{
 		customFileds: [],
 		backgroundColor: "transparent"
 	}
-	resetFields(names: string[]) {
+	resetFields(names?: string[]) {
 		const { form: { resetFields } } = this.props;
 		return resetFields(names)
 	}
@@ -32,15 +32,16 @@ class FormSchema extends React.Component<Props>{
 			validateFieldsAndScroll(names, (errors, values) => resolve({ errors, values }))
 		})
 	}
-	getFieldsValue(names: string[]) {
+	getFieldsValue(names?: string[]) {
 		const { form: { getFieldsValue } } = this.props;
 		return getFieldsValue(names)
 	}
 	componentDidUpdate(pervPops: Props) {
-		const { data, form: { setFieldsValue } } = this.props;
-		if (!isEqual(pervPops.data, data)) {
-			const vals: object = data ? data : {}
-			setFieldsValue(vals);
+		const { data, schema, form: { getFieldsValue, setFieldsValue } } = this.props;
+		const vals = getFieldsValue();
+		if (!isEqual(pervPops.data, data) && !isEqual(vals, getDateToForm(data, schema))) {
+			const newVals: any = getNewValue(vals, data);
+			setFieldsValue(newVals)
 		}
 	}
 	setFieldsValue(data: object) {
@@ -48,12 +49,12 @@ class FormSchema extends React.Component<Props>{
 		setFieldsValue(data)
 	}
 	render() {
-		const { schema, form, edit, uiSchema, titleConfig, onSave, data, customFileds, backgroundColor, className } = this.props;
+		const { schema, form, edit, uiSchema, titleConfig, onSave, data, customFileds, backgroundColor, className, emitDependenciesChange } = this.props;
 		if (isEmpty(schema)) {
 			console.warn('schema is null')
 			return null
 		}
-		return <FormContext.Provider value={{ form, edit, onSave, data, customFileds }} >
+		return <FormContext.Provider value={{ form, edit, onSave, data, customFileds, emitDependenciesChange }} >
 			<div className={classnames(className)} style={{ backgroundColor }} >
 				{
 					<SchemaForm schema={schema} uiSchema={uiSchema} titleConfig={titleConfig} />
@@ -65,19 +66,21 @@ class FormSchema extends React.Component<Props>{
 
 
 export default compose<Props, OptionalProps>(
+	refHoc,
 	dependencies,
 	Form.create<Inner>({
 		onValuesChange: (props, changedValue, allValues) => {
-			const { schema, setSchema, form, onSchemaChange, mapSubSchema } = props
-			const newSchema = findDependencies(changedValue, '', schema, mapSubSchema, form)
-			if (!isEqual(schema, newSchema)) {
-				if (onSchemaChange) {
-					onSchemaChange(newSchema)
-				}
-				setSchema(newSchema)
-			}
+			const { schema, form, mapSubSchema } = props
+			findDependencies(changedValue, '', schema, mapSubSchema, form)
 			props.onChange && props.onChange(changedValue, allValues)
 		}
-	})
+	}),
+	withHandlers({
+		emitDependenciesChange: ({ schema, form, mapSubSchema }: Inner) => (key: string, value: any) => {
+			const changedValue = [...key.split('.'), value].reverse().reduce((v, k) => ({ [k]: v }))
+			findDependencies(changedValue, '', schema, mapSubSchema, form)
+		}
+	}),
+	renameProp('onRef', 'ref')
 )(FormSchema)
 

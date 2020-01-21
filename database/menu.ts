@@ -30,6 +30,16 @@ export default {
     icon: "appstore",
     leaf: true,
     children: [],
+  },{
+    id: "9Xd6ismghyPAMqtfrwe",
+    parentResourceId: "ROOT",
+    type: "REACTMENU_CATEGORY_ITEM",
+    name: "智能表格",
+    path: "/list/smarttable",
+    description: "",
+    icon: "appstore",
+    leaf: true,
+    children: [],
   }],
 
 

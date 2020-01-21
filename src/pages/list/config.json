@@ -1,0 +1,11 @@
+{
+  "order": 2,
+  "routes": [
+    {
+      "name": "智能表格",
+      "nameEn": "smartTable",
+      "path": "/**/smarttable",
+      "component": "./list/smarttable"
+    }
+  ]
+}

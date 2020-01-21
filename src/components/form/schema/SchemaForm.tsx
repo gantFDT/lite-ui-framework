@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react'
 import { BlockHeader, EditStatus } from 'gantd'
 import { Form, Row } from 'antd';
-import { Schema, Types, UISchema, TitleSchema } from './interface'
+import { Schema, UISchema, TitleSchema } from './interface'
 import { FormContext } from './index'
 import SchemaFiled from './SchemaFiled'
 import SchemaTable from './SchemaTable'
@@ -20,15 +20,16 @@ export default function SchemaForm(props: SchemaFormProps) {
 	const { uiSchema, schema, titleConfig } = props;
 	const { edit, form: { getFieldDecorator }, data } = useContext(FormContext);
 	const renderPropTypeContent: any = useCallback((item: Schema, pathName: string, required: string[]) => {
-		const { type } = item;
+		const { type, hide } = item;
 		switch (type) {
-			case Types.object:
+			case "object":
 				return renderContent(pathName);
 
-			case Types.table:
+			case "table":
 				return renderTable(item, pathName)
 			default:
 				if (isEmpty(item)) return null;
+				if (hide) return null;
 				const nameArray = pathName.split('.');
 				const itemName = nameArray[nameArray.length - 1];
 				const isRequired = required && required.indexOf(itemName) >= 0;
@@ -56,7 +57,7 @@ export default function SchemaForm(props: SchemaFormProps) {
 		const { orders, gutter, backgroundColor, padding } = getUIData(uiSchema, pathName);
 		const { propertyType, required, title, type } = schemaData;
 		// 渲染table
-		if (type === Types.table) return renderTable(schemaData, pathName)
+		if (type === "table") return renderTable(schemaData, pathName)
 
 		if (isEmpty(propertyType)) return null
 		const propertyTypeArray = Object.keys(propertyType);

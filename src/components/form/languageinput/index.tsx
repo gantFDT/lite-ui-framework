@@ -28,7 +28,8 @@ type Locale = Array<LocaleItem>;
 interface InputLangProps {
     value: string,
     onChange?: (v: string) => void,
-    onBlur: Function
+    onBlur: Function,
+    [propsname: string]: any
 }
 
 const LanguageInput = React.forwardRef((props: InputLangProps, ref) => {

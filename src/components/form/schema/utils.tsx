@@ -1,4 +1,4 @@
-import { UISchema, TitleSchema } from './interface'
+import { UISchema, TitleSchema, Schema } from './interface'
 import { EditStatus } from 'gantd'
 import { get } from 'lodash'
 export function getOrders(orders: string[], targetArray: string[]): string[] {
@@ -34,7 +34,13 @@ export function getUIData(uiSchema: UISchema, pathName?: string): any {
 		alias: "gutter",
 		name: 'ui:gutter',
 		defaultValue: 10
-	}, {
+	},
+	{
+		alias: "extra",
+		name: "ui:extra",
+		defaultValue: ""
+	},
+	{
 		alias: "labelAlign",
 		name: "ui:labelAlign",
 		defaultValue: "left"
@@ -192,6 +198,34 @@ export function getColumns(items: any, required?: string[]) {
 
 export function getBackgroundColor(backgroundColor: string, len: number): string {
 	if (backgroundColor) return backgroundColor;
-	if (len === 0) return "#fff";
+	if (len === 0) return "var(--component-background)";
 	return `rgba(0,0,0,0.04)`;
+}
+
+export function getNewValue(formVals: any, data: any) {
+	const newVals: any = {};
+	formVals = formVals ? formVals : {};
+	data = data ? data : {}
+	Object.keys(formVals).map((keyname: string) => {
+		if (formVals[keyname] && typeof formVals[keyname] === 'object' && !Array.isArray(formVals[keyname])) {
+			newVals[keyname] = getNewValue(formVals[keyname], data[keyname])
+		} else {
+			newVals[keyname] = get(data, `${keyname}`, undefined)
+		}
+	})
+	return { ...data, ...newVals }
+}
+
+export function getDateToForm(data: any, schema: Schema) {
+	const newVals: any = {};
+	data = data ? data : {};
+	schema = schema ? schema : {}
+	Object.keys(data).map((keyname: string) => {
+		if (data[keyname] && typeof data[keyname] === 'object' && !Array.isArray(data[keyname])) {
+			newVals[keyname] = getDateToForm(data[keyname], get(schema, "propertyType", {}))
+		} else {
+			if (get(schema, `propertyType.${keyname}`, undefined)) newVals[keyname] = get(data, `${keyname}`, undefined)
+		}
+	})
+	return newVals
 }

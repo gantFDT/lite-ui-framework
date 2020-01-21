@@ -58,7 +58,7 @@ const Widget = (props: any) => {
   const [state, dispatch] = useReducer(reducer, {
     title: '标题',
     icon: 'alipay',
-    backgroundImage: 'linear-gradient(to right, #F94E25 0%, #F01F6E 100%)'
+    backgroundImage: 'linear-gradient(to right, #fff 0%, #fff 100%)'
   })
 
   const {

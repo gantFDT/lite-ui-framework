@@ -3,6 +3,7 @@ import { EditStatus } from 'gantd'
 import { ColProps } from 'antd/lib/grid/col'
 import { WrappedFormUtils, GetFieldDecoratorOptions } from 'antd/lib/form/Form.d'
 import { FormLabelAlign } from 'antd/lib/form/FormItem'
+export type Type = "object" | "table" | "array" | "number" | "string" | "boolean" | "date"
 export enum Types {
 	object = "object",
 	table = "table",
@@ -18,14 +19,15 @@ export interface Context {
 	data?: object | undefined,
 	customFileds?: CustomFileds[],
 	backgroundColor?: string,
-	edit?: EditStatus | EditObject
+	edit?: EditStatus | EditObject,
+	emitDependenciesChange: (key: string, value: any) => void
 }
 export interface Schema {
 	name?: string,
 	title?: string,
 	operator?: string,
-	type: Types | string,
-	componentType?: string | React.ElementType
+	type?: Type | string,
+	componentType?: string,
 	propertyType?: {
 		[propsname: string]: Schema
 	},
@@ -55,16 +57,19 @@ export interface OptionalProps {
 	customFileds?: CustomFileds[],
 	backgroundColor?: string,
 	wrappedComponentRef?: any,
+	onRef?: any,
 	className?: any,
 	ref?: any | ReactElement | ReactHTML | HTMLDivElement
 }
 export interface Props extends OptionalProps {
 	onSave: (id: any, value: any, cb: any) => any,
 	form: WrappedFormUtils,
+	emitDependenciesChange: (key: string, value: any) => void
 }
 export interface UISchema {
 	"ui:orders"?: string[],
 	"ui:col"?: ColProps | number,
+	"ui:extra"?: string,
 	"ui:labelCol"?: ColProps | number,
 	"ui:wrapperCol"?: ColProps | number,
 	"ui:gutter"?: number | object,

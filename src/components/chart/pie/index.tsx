@@ -233,7 +233,7 @@ class Pie extends Component<PieProps, PieState> {
       }),
     ];
 
-    const padding = [12, 0, 12, 0] as [number, number, number, number];
+    const padding = [0, 0, 0, 0] as [number, number, number, number];
 
     const dv = new DataView();
     dv.source(data).transform({

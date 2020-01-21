@@ -5,6 +5,7 @@ import user from './user'
 import userdata from './userdata'
 import authentication from './authentication'
 import file from './file'
+import smarttable from './smarttable'
 
 const APIS = {
   ...companydata,
@@ -12,7 +13,8 @@ const APIS = {
   ...user,
   ...userdata,
   ...authentication,
-  ...file
+  ...file,
+  ...smarttable
 }
 
 export default APIS

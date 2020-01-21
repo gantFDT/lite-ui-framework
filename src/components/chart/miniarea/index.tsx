@@ -26,6 +26,7 @@ export interface MiniAreaProps {
     x: number | string;
     y: number;
   }[];
+  showTooltip?: boolean;
 }
 
 const MiniArea: React.FC<MiniAreaProps> = props => {
@@ -41,6 +42,7 @@ const MiniArea: React.FC<MiniAreaProps> = props => {
     xAxis,
     yAxis,
     animate = true,
+    showTooltip = true
   } = props;
 
   const padding: [number, number, number, number] = [36, 5, 30, 5];
@@ -97,7 +99,7 @@ const MiniArea: React.FC<MiniAreaProps> = props => {
               grid={null}
               {...yAxis}
             />
-            <Tooltip showTitle={false} crosshairs={false} />
+            {showTooltip && <Tooltip showTitle={false} crosshairs={false} />}
             <Geom
               type="area"
               position="x*y"
@@ -118,8 +120,8 @@ const MiniArea: React.FC<MiniAreaProps> = props => {
                 tooltip={false}
               />
             ) : (
-              <span style={{ display: 'none' }} />
-            )}
+                <span style={{ display: 'none' }} />
+              )}
           </Chart>
         )}
       </div>

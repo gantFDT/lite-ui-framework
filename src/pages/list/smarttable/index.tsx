@@ -12,7 +12,7 @@ import { ModelProps } from './model';
 const { confirm } = Modal;
 
 const Page = (props: any) => {
-  const pageKey: string = 'pageName';
+  const pageKey: string = 'exampleSmartTable';
 
   const {
     MAIN_CONFIG, route, userId,
@@ -130,7 +130,6 @@ const Page = (props: any) => {
   }, [])
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
-
   return (<Card bodyStyle={{ padding: '0px' }}>
     <SmartSearch
       searchPanelId={pageKey}
@@ -215,14 +214,14 @@ const Page = (props: any) => {
 }
 
 export default connect(
-  ({ pageName, settings, loading, user }: { pageName: ModelProps, settings: SettingsState, loading: any, user: UserState }) => ({
+  ({ exampleSmartTable, settings, loading, user }: { exampleSmartTable: ModelProps, settings: SettingsState, loading: any, user: UserState }) => ({
     MAIN_CONFIG: settings.MAIN_CONFIG,
     userId: user.currentUser.id,
-    ...pageName,
-    listLoading: loading.effects['pageName/fetch'] || loading.effects['pageName/reload'],
-    createLoading: loading.effects['pageName/create'],
-    updateLoading: loading.effects['pageName/update'],
-    removeLoading: loading.effects['pageName/remove'],
+    ...exampleSmartTable,
+    listLoading: loading.effects['exampleSmartTable/fetch'] || loading.effects['exampleSmartTable/reload'],
+    createLoading: loading.effects['exampleSmartTable/create'],
+    updateLoading: loading.effects['exampleSmartTable/update'],
+    removeLoading: loading.effects['exampleSmartTable/remove'],
   }),
   (dispatch: any) => {
     const mapProps = {};
@@ -233,7 +232,7 @@ export default connect(
       }
       mapProps[method] = (payload: object, callback: Function, final: Function) => {
         dispatch({
-          type: `pageName/${method}`,
+          type: `exampleSmartTable/${method}`,
           payload,
           callback,
           final,

@@ -882,7 +882,7 @@ export const getPerformanceTiming = () => {
 
 
 /**
-*
+*复制字符串到系统剪切板
 *
 * @param {*} str
 */
@@ -893,4 +893,21 @@ export const copy = (str: string) => {
   }
   document.addEventListener('copy', save);
   document.execCommand("copy");//使文档处于可编辑状态，否则无效
+}
+
+ /**
+ *
+ *整理对象，清除空属性
+ * @param {object} obj
+ * @returns
+ */
+export const clearObject = (obj:object)=>{
+  console.log('obj',obj)
+  console.log('Object.keys(obj)',Object.keys(obj))
+  Object.keys(obj).map((key)=>{
+    if(!obj[key]){
+      delete obj[key]
+    }
+  })
+  return obj
 }
