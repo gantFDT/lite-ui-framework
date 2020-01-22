@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
-function useDrag(x, y, onDrag = _ => _) {
+function useDrag(x: number, y: number, onDrag = (c: { x: number, y: number }) => { }) {
     const [dragging, setDragging] = useState(false);
     const [initialDragState, setInitialDragState] = useState({
         initX: 0,
@@ -9,7 +9,7 @@ function useDrag(x, y, onDrag = _ => _) {
         mouseDownY: 0,
     });
 
-    const onMouseDown = useCallback((e) => {
+    const onMouseDown = useCallback((e: React.MouseEvent) => {
         e.preventDefault()
         setInitialDragState({
             initX: x,
@@ -21,7 +21,7 @@ function useDrag(x, y, onDrag = _ => _) {
     }, [x, y, setDragging, setInitialDragState])
 
     useEffect(() => {
-        const onMouseMove = (e) => {
+        const onMouseMove = (e: MouseEvent) => {
             if (dragging) {
                 const { initX, mouseDownX, initY, mouseDownY } = initialDragState
                 let dx = e.clientX - mouseDownX
@@ -46,7 +46,9 @@ function useDrag(x, y, onDrag = _ => _) {
     return onMouseDown
 }
 
-function useResize(x, y, width, height, onResize = _ => _) {
+type OnResize = (c: { x: number, y: number, width: number, height: number }) => void
+
+function useResize(x: number, y: number, width: number, height: number, onResize: OnResize = _ => _) {
     const [dragging, setDragging] = useState(false)
     const [initialDragState, setInitialDragState] = useState({
         initX: 0,
@@ -74,7 +76,7 @@ function useResize(x, y, width, height, onResize = _ => _) {
     )
 
     useEffect(() => {
-        const onMouseMove = (e) => {
+        const onMouseMove = (e: MouseEvent) => {
             if (dragging) {
                 const {
                     initX,
@@ -106,7 +108,7 @@ function useResize(x, y, width, height, onResize = _ => _) {
     return onMouseDown
 }
 
-function usePrev(value = null) {
+function usePrev(value: boolean) {
     const ref = useRef(value);
     useEffect(() => { ref.current = value })
     return ref.current

@@ -25,6 +25,10 @@
             flex-direction: column;
             overflow: hidden;
 
+            .ant-modal-close {
+                transition: none;
+            }
+
             .ant-modal-close-x {
                 &:hover {
                     background-color: var(--model-header-danger-icon-bg);
@@ -70,36 +74,28 @@
         position: absolute;
 
         i {
+            font-size: 16px;
             position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--modal-header-color);
         }
 
         &:hover {
             background-color: var(--model-header-default-icon-bg);
 
-            .maximizeIcon {
-                border-color: @activeIconColor;
-            }
-
-            .resetIcon {
+            i {
                 color: @activeIconColor;
             }
         }
 
-        .maximizeIcon {
-            width: 14px;
-            right: 13px;
-            height: 12px;
-            bottom: 14px;
-            border: 2px solid var(--modal-header-color);
-            border-radius: 1px;
-        }
-
-        .resetIcon {
-            color: var(--modal-footer-reset-color);
-            font-size: 16px;
-            right: 14px;
-            bottom: 12px;
-        }
+        // &:active {
+        //     background-color: var(--model-header-default-icon-bg);
+        //     i {
+        //         color: @activeIconColor;
+        //     }
+        // }
     }
 
     .resizeAnchor {
@@ -133,4 +129,9 @@
             }
         }
     }
+}
+
+.defaultFooterContent {
+    display: flex;
+    justify-content: space-between;
 }

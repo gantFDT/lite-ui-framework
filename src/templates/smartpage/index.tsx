@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react';
 import { Card } from 'gantd';
 import { connect } from 'dva';
-import { Button, Tooltip, Modal } from 'antd';
+import { Button, Tooltip, Modal,Checkbox } from 'antd';
 import { Title } from '@/components/common';
 import { SmartSearch, SmartTable, SmartModal } from '@/components/specific';
 import { getTableHeight, TABLE_HEADER_HEIGHT, CARD_BORDER_HEIGHT } from '@/utils/utils'
@@ -35,6 +35,8 @@ const Page = (props: any) => {
   const [modalCreateVisible, setModalCreateVisible] = useState(false);
   const [modalUpdateVisible, setModalUpdateVisible] = useState(false);
 
+  const [continueNext, setContinueNext] = useState(false)
+
   //smart高度改变
   const onSearchFormSizeChange = useCallback(({ height, width }) => {
     setSearchFormHei(height)
@@ -63,10 +65,10 @@ const Page = (props: any) => {
 
   //执行创建
   const handleCreate = useCallback((values) => {
-    create(values,()=>{
-      setModalCreateVisible(false)
+    create(values, () => {
+      !continueNext && setModalCreateVisible(false)
     })
-  }, [])
+  }, [continueNext])
 
   //弹出更新窗口
   const handleShowUpdate = useCallback(() => {
@@ -117,6 +119,16 @@ const Page = (props: any) => {
     if (isInit) { return }
     reload(params)
   }, [reload])
+
+  //更改继续创建
+  const handleContinueNextChange = useCallback((e) => {
+    const value = e.target.checked
+    if (value) {
+      setContinueNext(true)
+    } else {
+      setContinueNext(false)
+    }
+  }, [])
 
   //table schema 预留处理schema
   const getSchema = useMemo(() => {
@@ -199,6 +211,7 @@ const Page = (props: any) => {
       schema={modalSchema}
       onSubmit={handleCreate}
       onCancel={() => setModalCreateVisible(false)}
+      footerRightExtra={<Checkbox checked={continueNext} onChange={handleContinueNextChange}>{tr('继续创建下一个')}</Checkbox>}
     />
     <SmartModal
       id={pageKey + '_modal_update'}

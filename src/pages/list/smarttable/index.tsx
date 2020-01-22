@@ -1,16 +1,19 @@
 import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react';
 import { Card } from 'gantd';
 import { connect } from 'dva';
-import { Button, Tooltip, Modal } from 'antd';
+import { Button, Tooltip, Modal, Checkbox, Avatar, Tag, Icon } from 'antd';
 import { Title } from '@/components/common';
 import { SmartSearch, SmartTable, SmartModal } from '@/components/specific';
 import { getTableHeight, TABLE_HEADER_HEIGHT, CARD_BORDER_HEIGHT } from '@/utils/utils'
-import { smartSearchSchema, smartTableSchema, modalSchema } from './schema';
+import { smartSearchSchema, smartTableSchema, modalSchema, getVisitData, avatars } from './schema';
 import { SettingsState } from '@/models/setting';
 import { UserState } from '@/models/user';
 import { ModelProps } from './model';
-const { confirm } = Modal;
+import styles from './index.less'
 
+import { CardList } from '@/components/list';
+import { MiniArea, Pie, Trend } from '@/components/chart'
+const { confirm } = Modal;
 const Page = (props: any) => {
   const pageKey: string = 'exampleSmartTable';
 
@@ -35,6 +38,10 @@ const Page = (props: any) => {
   const [modalCreateVisible, setModalCreateVisible] = useState(false);
   const [modalUpdateVisible, setModalUpdateVisible] = useState(false);
 
+  const [continueNext, setContinueNext] = useState(false)
+
+  const [activeViewType, setActiveViewType] = useState('card')
+
   //smart高度改变
   const onSearchFormSizeChange = useCallback(({ height, width }) => {
     setSearchFormHei(height)
@@ -42,6 +49,7 @@ const Page = (props: any) => {
 
   //选中
   const handleSelect = useCallback((selectedRowKeys, selectedRows) => {
+    // debugger
     setRowKeys(selectedRowKeys)
     setRows(selectedRows)
   }, [setRowKeys, setRows])
@@ -63,10 +71,10 @@ const Page = (props: any) => {
 
   //执行创建
   const handleCreate = useCallback((values) => {
-    create(values,()=>{
-      setModalCreateVisible(false)
+    create(values, () => {
+      !continueNext && setModalCreateVisible(false)
     })
-  }, [])
+  }, [continueNext])
 
   //弹出更新窗口
   const handleShowUpdate = useCallback(() => {
@@ -118,6 +126,88 @@ const Page = (props: any) => {
     reload(params)
   }, [reload])
 
+  const onSimpleSearch = useCallback((params) => {
+    console.log('onSimpleSearch params', params)
+    // const { searchKeyword, pageInfo } = params;
+    // let filters = {
+    //   orderList: [{ fieldName: "name", orderType: "ASC" }],
+    //   pageInfo,
+    //   whereList: [{ fieldName: 'keyword', operator: 'EMPTY', value: searchKeyword }]
+    // };
+    // setFilterInfo(filters);
+    // setPageInfo(pageInfo)
+    // fetch(filters)
+  }, [])
+
+  //view改变
+  const viewButtonGroup = useMemo(() => {
+    return <Button.Group className="marginh5">
+      <Button
+        icon="table"
+        size="small"
+        disabled={activeViewType === 'table'}
+        onClick={() => {
+          setActiveViewType('table')
+        }}
+      />
+      <Button
+        icon="appstore"
+        size="small"
+        disabled={activeViewType === 'card'}
+        onClick={() => setActiveViewType('card')}
+      />
+    </Button.Group>
+  }, [activeViewType])
+
+  const onLoadMore = useCallback((beginIndex, pageSize) => {
+    // setIsLoadMore(true);
+    // setPageInfo({ beginIndex, pageSize });
+    // fetchMore({ ...filterInfo, pageInfo: { beginIndex, pageSize } });
+  }, [pageInfo])
+
+  //更改继续创建
+  const handleContinueNextChange = useCallback((e) => {
+    const value = e.target.checked
+    if (value) {
+      setContinueNext(true)
+    } else {
+      setContinueNext(false)
+    }
+  }, [])
+
+  const CardItemRender = (value: object, index: number) => {
+    return <Card bordered={false} className={styles.card} style={{ background: value['selected'] ? 'rgba(128,128,128,0.01)' : 'var(--component-background)' }}>
+      <div className={styles.top}>
+        <div className={styles.left}>{<>
+          {value['sex'] === 'male' && <Icon style={{ color: '#1890FF', marginLeft: '5px' }} type="man" />}
+          {value['sex'] === 'female' && <Icon style={{ color: '#EA4C89', marginLeft: '5px' }} type="woman" />}
+          <span style={{marginLeft:5}}>{value['age']}</span>
+        </>}</div>
+        <div className={styles.right}>{Math.ceil(Math.random() * 10000)}</div>
+      </div>
+      <div className={styles.middle}>
+        <div>
+          <Avatar size={60} icon="user" src={avatars[index > 9 ? Math.floor(index % 10) : index]} />
+          <div className={styles.name}>{value['name']}</div>
+          <div className={styles.goodat}>
+        <span>{value['domain']}</span>
+          </div>
+          <div className={styles.tags}>
+            {value['hobby'] && value['hobby'].map((words: string) => <Tag style={{ marginBottom: 3, marginRight: 3 }}>{words}</Tag>)}
+          </div>
+          <div className={styles.motto}>
+            {value['motto']}
+          </div>
+
+        </div>
+      </div>
+      <div className={styles.bottom}>
+        <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={false} forceFit={true} className={styles.area}/>
+
+      </div>
+    </Card>
+  }
+
   //table schema 预留处理schema
   const getSchema = useMemo(() => {
     let newTableSchema = smartTableSchema;
@@ -130,6 +220,8 @@ const Page = (props: any) => {
   }, [])
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
+  const cardHeight = getTableHeight(MAIN_CONFIG, searchFormHei, false)
+  console.log('selectedRows', selectedRows)
   return (<Card bodyStyle={{ padding: '0px' }}>
     <SmartSearch
       searchPanelId={pageKey}
@@ -138,19 +230,20 @@ const Page = (props: any) => {
       schema={smartSearchSchema}
       isCompatibilityMode
       onSearch={handleSearch}
+      onSimpleSearch={onSimpleSearch}
       onSizeChange={onSearchFormSizeChange}
       pageInfo={pageInfo}
       totalCount={totalCount}
       ref={searchRef}
     />
-    <SmartTable
+    {activeViewType === 'table' && <SmartTable
       tableKey={`${pageKey}:${userId}`}
       rowKey="id"
       schema={getSchema}
       dataSource={dataSource}
       loading={listLoading}
       rowSelection={{
-        type: 'radio',
+        type: 'checkbox',
         selectedRowKeys,
         onChange: handleSelect
       }}
@@ -169,7 +262,7 @@ const Page = (props: any) => {
             size="small"
             icon="edit"
             className="marginh5"
-            disabled={!selectedRows.length}
+            disabled={!(selectedRows.length === 1)}
             onClick={handleShowUpdate}
           />
         </Tooltip>
@@ -179,16 +272,46 @@ const Page = (props: any) => {
             icon="delete"
             type="danger"
             className="marginh5"
-            disabled={!selectedRows.length}
+            disabled={!(selectedRows.length === 1)}
             onClick={handleremove}
           />
         </Tooltip>
+        {viewButtonGroup}
       </>}
       pageSize={pageSize}
       pageIndex={beginIndex}
       onPageChange={onPageChange}
       totalCount={totalCount}
-    />
+    />}
+    {activeViewType === 'card' && <CardList
+      bodyHeight={cardHeight}
+      headerRight={
+        <>
+          {viewButtonGroup}
+        </>
+      }
+      rowKey="id"
+      selectedRowKeys={selectedRowKeys}
+      onSelectChange={handleSelect}
+      // selectedType="single"
+      columnNumber={4}
+      columnGutter={10}
+      itemRender={CardItemRender}
+      dataSource={dataSource}
+
+      waterfallsFlow
+      loadType="scroll"
+      triggerDistance={50}
+      pageSize={pageInfo.pageSize}
+      totalCount={totalCount}
+      loading={listLoading}
+      pageIndex={pageInfo.beginIndex}
+      onLoadMore={onLoadMore}
+      bodyStyle={{
+        background: 'rgba(128,128,128,0.1)'
+      }}
+    // onPageChange={onPageChange}
+    />}
     <SmartModal
       id={pageKey + '_modal_create'}
       title={tr('创建')}
@@ -198,6 +321,7 @@ const Page = (props: any) => {
       schema={modalSchema}
       onSubmit={handleCreate}
       onCancel={() => setModalCreateVisible(false)}
+      footerRightExtra={<Checkbox checked={continueNext} onChange={handleContinueNextChange}>{tr('继续创建下一个')}</Checkbox>}
     />
     <SmartModal
       id={pageKey + '_modal_update'}

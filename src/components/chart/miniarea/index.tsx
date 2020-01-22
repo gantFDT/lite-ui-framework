@@ -1,8 +1,7 @@
 import { Axis, Chart, Geom, Tooltip, AxisProps } from 'bizcharts';
-
 import React from 'react';
-
 import styles from './index.less';
+import classnames from 'classnames'
 
 export interface MiniAreaProps {
   color?: string;
@@ -27,6 +26,7 @@ export interface MiniAreaProps {
     y: number;
   }[];
   showTooltip?: boolean;
+  className?: any
 }
 
 const MiniArea: React.FC<MiniAreaProps> = props => {
@@ -42,7 +42,8 @@ const MiniArea: React.FC<MiniAreaProps> = props => {
     xAxis,
     yAxis,
     animate = true,
-    showTooltip = true
+    showTooltip = true,
+    className = ''
   } = props;
 
   const padding: [number, number, number, number] = [36, 5, 30, 5];
@@ -70,7 +71,7 @@ const MiniArea: React.FC<MiniAreaProps> = props => {
   const chartHeight = height + 54;
 
   return (
-    <div className={styles.miniChart} style={{ height }}>
+    <div className={classnames(className, styles.miniChart)} style={{ height }}>
       <div className={styles.chartContent}>
         {height > 0 && (
           <Chart

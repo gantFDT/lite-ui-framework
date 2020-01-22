@@ -1,13 +1,16 @@
-import react, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { ModalContext } from './Context';
-import { resizableReducer } from './Reducer';
+import { resizableReducer, ActionTypes } from './Reducer';
 
-const getWindowSize = () => ({
+/// <reference path='types.d.ts' />
+
+
+const getWindowSize = (): WindowSize => ({
     width: window.innerWidth || 0,
     height: window.innerHeight || 0,
 })
 
-const initialModalState = {
+const initialModalState: ModalStateOutter = {
     x: 0,
     y: 0,
     width: 520,
@@ -17,9 +20,16 @@ const initialModalState = {
     maximized: false,
 }
 
-export const ResizableProvider = ({ initalState = {}, maxZIndex = 0, minWidth = 200, minHeight = 200, children }) => {
+interface ResizableProviderProps {
+    initalState: ModalStateOutter,
+    maxZIndex: number,
+    minWidth: number,
+    minHeight: number
+}
 
-    const initialModalsState = {
+export const ResizableProvider: React.FC<ResizableProviderProps> = ({ initalState = {}, maxZIndex = 0, minWidth = 200, minHeight = 200, children }) => {
+
+    const initialModalsState: ModalsState = {
         modals: {},
         maxZIndex,
         minWidth,
@@ -32,7 +42,7 @@ export const ResizableProvider = ({ initalState = {}, maxZIndex = 0, minWidth = 
 
     useEffect(() => {
         if (typeof window !== 'object') return;
-        const onResize = () => dispatch({ type: 'windowResize', size: getWindowSize() })
+        const onResize = () => dispatch({ type: ActionTypes.windowResize, size: getWindowSize() })
         window.addEventListener('resize', onResize)
         onResize()
         return () => window.removeEventListener('resize', onResize)

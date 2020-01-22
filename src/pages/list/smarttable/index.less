@@ -1,0 +1,37 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+
+    .left {}
+
+    .right {}
+  }
+
+  .middle {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    text-align:center;
+    .name {text-align:center;}
+
+    .goodat {text-align:center;}
+  }
+
+  .bottom {
+    width:100%;
+    .area{
+      width:100%;
+      :global{
+        span+div{
+          top:0!important;
+          left:0!important;
+        }
+      }
+    }
+  }
+}

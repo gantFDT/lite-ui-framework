@@ -1,19 +1,37 @@
 import React from 'react';
 
-export const getModalState = (state, id) => state.modals[id] || state.initialModalState;
+/// <reference path='types.d.ts' />
 
-const clamp = (min, max, value) => Math.max(min, Math.min(max, value));
+export enum ActionTypes {
+    mount = 'mount',
+    unmount = 'unmount',
+    focus = 'focus',
+    show = 'show',
+    hide = 'hide',
+    max = 'max',
+    reset = 'reset',
+    resize = 'resize',
+    drag = 'drag',
+    windowResize = 'windowResize',
 
-const mapObject = (obj, fn) => Object.assign({}, ...Object.keys(obj).map(key => ({ [key]: fn(obj[key]) })))
+}
 
-const getNextZIndex = (state, id) => {
+type Action = { type: ActionTypes, [key: string]: any }
+
+export const getModalState = (state: ModalsState, id: string) => state.modals[id] || state.initialModalState;
+
+const clamp = (min: number, max: number, value: number) => Math.max(min, Math.min(max, value));
+
+const mapObject = <R, K extends keyof R>(obj: R, fn: (v: R[K]) => R[K]): R => Object.assign({}, ...Object.keys(obj).map(key => ({ [key]: fn(obj[key]) })))
+
+const getNextZIndex = (state: ModalsState, id: string) => {
     const { modals, maxZIndex } = state;
-    if (modals.length === 1) return maxZIndex;
+    if (Object.keys(modals).length === 1) return maxZIndex;
     let modalState = getModalState(state, id);
     return modalState.zIndex === maxZIndex ? maxZIndex : maxZIndex + 1;
 }
 
-const clampDrag = (windowWidth, windowHeight, x, y, width, height) => {
+const clampDrag = (windowWidth: number, windowHeight: number, x: number, y: number, width: number, height: number): { x: number, y: number } => {
     const maxX = windowWidth - width;
     const maxY = windowHeight - height;
     const clampedX = clamp(0, maxX, x)
@@ -21,7 +39,7 @@ const clampDrag = (windowWidth, windowHeight, x, y, width, height) => {
     return { x: clampedX, y: clampedY }
 }
 
-const clampResize = (minWidth, minHeight, windowWidth, windowHeight, x, y, width, height) => {
+const clampResize = (minWidth: number, minHeight: number, windowWidth: number, windowHeight: number, x: number, y: number, width: number, height: number): { width: number, height: number } => {
     const maxWidth = windowWidth - x;
     const maxHeight = windowHeight - y;
     const clampedWidth = clamp(minWidth, maxWidth, width)
@@ -29,11 +47,11 @@ const clampResize = (minWidth, minHeight, windowWidth, windowHeight, x, y, width
     return { width: clampedWidth, height: clampedHeight }
 }
 
-export const resizableReducer = (state, action) => {
+export const resizableReducer: React.Reducer<ModalsState, Action> = (state, action) => {
     const { minWidth, minHeight, initialModalState } = state;
     const needIncrease = Object.keys(state.modals).length != 1;
     switch (action.type) {
-        case 'mount':
+        case ActionTypes.mount:
             let combineState = _.assign(initialModalState, action.itemState || {});
             let inital = { width: combineState.width, height: combineState.height };
             return {
@@ -50,14 +68,14 @@ export const resizableReducer = (state, action) => {
                     },
                 },
             }
-        case 'unmount':
+        case ActionTypes.unmount:
             const modalsClone = { ...state.modals }
             delete modalsClone[action.id]
             return {
                 ...state,
                 modals: modalsClone,
             }
-        case 'focus':
+        case ActionTypes.focus:
             const modalState = state.modals[action.id]
             const maxZIndex = needIncrease ? state.maxZIndex + 1 : state.maxZIndex
             return {
@@ -71,7 +89,7 @@ export const resizableReducer = (state, action) => {
                     },
                 },
             }
-        case 'show': {
+        case ActionTypes.show: {
             const modalState = state.modals[action.id]
             const maximized = modalState.maximized;
             const maxZIndex = needIncrease ? state.maxZIndex + 1 : state.maxZIndex
@@ -113,7 +131,7 @@ export const resizableReducer = (state, action) => {
                 },
             }
         }
-        case 'hide': {
+        case ActionTypes.hide: {
             const modalState = state.modals[action.id]
             return {
                 ...state,
@@ -129,7 +147,7 @@ export const resizableReducer = (state, action) => {
                 },
             }
         }
-        case 'max': {
+        case ActionTypes.max: {
             const modalState = state.modals[action.id]
             return {
                 ...state,
@@ -146,7 +164,7 @@ export const resizableReducer = (state, action) => {
                 }
             }
         }
-        case 'reset': {
+        case ActionTypes.reset: {
             const modalState = state.modals[action.id]
             const inital = modalState.inital;
             const centerX = (state.windowSize.width - inital.width) / 2
@@ -182,7 +200,7 @@ export const resizableReducer = (state, action) => {
                 },
             }
         }
-        case 'resize':
+        case ActionTypes.resize:
             const size = clampResize(
                 minWidth,
                 minHeight,
@@ -205,7 +223,7 @@ export const resizableReducer = (state, action) => {
                     },
                 },
             }
-        case 'drag':
+        case ActionTypes.drag:
             return {
                 ...state,
                 maxZIndex: getNextZIndex(state, action.id),
@@ -225,7 +243,7 @@ export const resizableReducer = (state, action) => {
                     },
                 },
             }
-        case 'windowResize':
+        case ActionTypes.windowResize:
             return {
                 ...state,
                 windowSize: action.size,

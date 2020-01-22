@@ -1,12 +1,12 @@
 import React from 'react';
 import { Avatar, Tag } from 'antd'
-import { Icon, Selector } from 'gantd';
+import { Icon } from 'gantd';
 import { SmartSearchCompatibilityModeSchema } from '@/components/specific/smartsearch';
 import { findDomain } from './service'
 import moment from 'moment'
 import { MiniArea, Pie, Trend } from '@/components/chart'
 
-const avatars = [
+export const avatars = [
   'http://www.duoziwang.com/uploads/1512/1-1512291K2430-L.jpg',
   'http://www.duoziwang.com/uploads/1512/1-1512291K3400-L.jpg',
   'http://www.duoziwang.com/uploads/1512/1-1512292055010-L.jpg',
@@ -20,7 +20,7 @@ const avatars = [
 
 ]
 
-const sexs = [{
+export const sexs = [{
   name: tr('男'),
   value: 'male'
 }, {
@@ -34,7 +34,7 @@ export interface VisitDataType {
   y: number;
 }
 
-const getVisitData = () => {
+export const getVisitData = () => {
   const visitData: VisitDataType[] = [];
   const beginDay = new Date().getTime();
   const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
@@ -118,7 +118,7 @@ export const smartTableSchema = [
     fieldName: "name",
     title: tr('姓名'),
     render: (value: string, row: object, index: number) => {
-      let avatarIndex = index > 10 ? Math.floor(index / 10) + 1 : index
+      let avatarIndex = index > 9 ? Math.floor(index % 10) : index
       return <><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</>
     }
   },

@@ -1,19 +1,26 @@
+
 import React, { useContext, useEffect, useMemo, useCallback, memo } from 'react';
 import { Button } from 'antd';
 import classnames from 'classnames';
 import { Modal } from 'antd';
 import { Icon } from 'gantd';
-import { getKey } from '@/utils/utils';
 import { useDrag, useResize, usePrev } from './Hooks';
 import { ModalContext } from './Context';
 import { getModalState } from './Reducer';
+import { ActionTypes } from './Reducer'
+
 import styles from './styles.less';
+
+
 
 const modalStyle = { margin: 0, paddingBottom: 0 };
 const cancelTextDefault = tr('取消');
 const okTextDefault = tr('确认');
 
-function ModalInner(props) {
+
+type Props = ModalInnerProps & Partial<typeof defaultProps>
+
+const ModalInner: React.FC<Props> = function ModalInner(props) {
     const {
         id,             //弹窗唯一标识
         itemState,      //单个弹窗的自定义属性
@@ -25,6 +32,8 @@ function ModalInner(props) {
         canResize,      //是否可以拖动
         confirmLoading, //弹窗加载状态
         isModalDialog,  //是否为模态窗口
+        footerLeftExtra,//默认的footer左侧插槽
+        footerRightExtra,//默认的footer右侧插槽
         disabled,       //提交按钮是否禁用
         okBtnSolid,     //提交按钮是否实心
         cancelText,     //取消按钮文案
@@ -40,12 +49,12 @@ function ModalInner(props) {
     const visiblePrev = usePrev(visible)
 
     useEffect(() => {
-        dispatch({ type: 'mount', id, itemState })
-        return () => dispatch({ type: 'unmount', id })
+        dispatch({ type: ActionTypes.mount, id, itemState })
+        return () => dispatch({ type: ActionTypes.unmount, id })
     }, [])
 
     useEffect(() => {
-        const backtop = document.querySelector('.ant-back-top');
+        const backtop = document.querySelector('.ant-back-top') as HTMLElement;
         if (backtop) {
             if (visible && visiblePrev && visible === visiblePrev) {
                 backtop.style.opacity = '0'
@@ -57,32 +66,32 @@ function ModalInner(props) {
         }
         if (visible !== visiblePrev) {
             if (visible) {
-                dispatch({ type: 'show', id })
+                dispatch({ type: ActionTypes.show, id })
             } else {
-                dispatch({ type: 'hide', id })
+                dispatch({ type: ActionTypes.hide, id })
             }
         }
     }, [visible, visiblePrev, id])
 
-    const { zIndex, x, y, width, height, maximize, maximized } = modalState
+    const { zIndex, x, y, width, height, maximize } = modalState
 
     const _style = useMemo(() => ({ ...style, ...modalStyle, top: y, left: x, height }), [y, x, height])
 
     const onFocus = useCallback(() => dispatch({
-        type: 'focus', id
+        type: ActionTypes.focus, id
     }), [id])
 
     const onDrag = useCallback(payload => dispatch({
-        type: 'drag', id, ...payload
+        type: ActionTypes.drag, id, ...payload
     }), [id])
 
     const onResize = useCallback(payload => dispatch({
-        type: 'resize', id, ...payload
+        type: ActionTypes.resize, id, ...payload
     }), [id])
 
     const toggleMaximize = useCallback(() => {
         if (!canMaximize) return;
-        dispatch({ type: maximize ? 'reset' : 'max', id })
+        dispatch({ type: maximize ? ActionTypes.reset : ActionTypes.max, id })
     }, [id, maximize, canMaximize])
 
     const onMouseDrag = useDrag(x, y, onDrag)
@@ -117,16 +126,21 @@ function ModalInner(props) {
         maskClosable={isModalDialog}
         destroyOnClose
         onCancel={onCancel}
-        footer={<div>
-            <Button size="small" onClick={onCancel}>{cancelText}</Button>
-            <Button
-                size="small"
-                type='primary'
-                className={okBtnSolid ? 'btn-solid' : ''}
-                loading={confirmLoading}
-                disabled={disabled}
-                onClick={onOk}
-            >{okText}</Button>
+
+        footer={<div className={footerLeftExtra ? styles.defaultFooterContent : null}>
+            {footerLeftExtra && <div>{footerLeftExtra}</div>}
+            <div>
+                {footerRightExtra}
+                <Button size="small" onClick={onCancel}>{cancelText}</Button>
+                <Button
+                    size="small"
+                    type='primary'
+                    className={okBtnSolid ? 'btn-solid' : ''}
+                    loading={confirmLoading}
+                    disabled={disabled}
+                    onClick={onOk}
+                >{okText}</Button>
+            </div>
         </div>}
         {...restProps}
     >
@@ -134,24 +148,27 @@ function ModalInner(props) {
             {children}
         </div>
         {canMaximize && <div className={styles.maximizeAnchor} onClick={toggleMaximize}>
-            {maximize ? <Icon className={styles.resetIcon} type='icon-zuidahua' /> : <i className={styles.maximizeIcon} />}
+            <Icon type={maximize ? 'icon-maximize' : 'icon-rectangle'} />
         </div>}
         {canResize && !maximize && <div className={styles.resizeAnchor} onMouseDown={onMouseResize}><i></i></div>}
     </Modal>
 }
 
-ModalInner.defaultProps = {
-    itemState: {},
+const defaultProps = {
+    itemState: {} as ModalStateOutter,
     style: {},
     canMaximize: true,
     canResize: true,
     isModalDialog: false,
+    footerLeftExtra: null,
+    footerRightExtra: null,
     disabled: false,
     okBtnSolid: false,
     cancelText: cancelTextDefault,
     okText: okTextDefault,
-    onCancel: _ => _,
-    onOk: _ => _,
+    onCancel: () => { },
+    onOk: () => { },
 }
+ModalInner.defaultProps = defaultProps
 
-export const ResizableModal = memo(ModalInner);
+export const ResizableModal = memo<Props>(ModalInner);

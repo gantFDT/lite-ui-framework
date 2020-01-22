@@ -40,6 +40,16 @@ export default {
     icon: "appstore",
     leaf: true,
     children: [],
+  },{
+    id: "6456ismghyPAMqtfrwe",
+    parentResourceId: "ROOT",
+    type: "REACTMENU_CATEGORY_ITEM",
+    name: "智能详情",
+    path: "/detail/detail",
+    description: "",
+    icon: "appstore",
+    leaf: true,
+    children: [],
   }],
 
 
