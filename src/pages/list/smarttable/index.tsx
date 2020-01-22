@@ -40,7 +40,7 @@ const Page = (props: any) => {
 
   const [continueNext, setContinueNext] = useState(false)
 
-  const [activeViewType, setActiveViewType] = useState('card')
+  const [activeViewType, setActiveViewType] = useState('table')
 
   //smart高度改变
   const onSearchFormSizeChange = useCallback(({ height, width }) => {
@@ -202,7 +202,7 @@ const Page = (props: any) => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={false} forceFit={true} className={styles.area}/>
+        <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={true} className={styles.area}/>
 
       </div>
     </Card>

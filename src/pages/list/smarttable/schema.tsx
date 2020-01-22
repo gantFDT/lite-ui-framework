@@ -120,7 +120,8 @@ export const smartTableSchema = [
     render: (value: string, row: object, index: number) => {
       let avatarIndex = index > 9 ? Math.floor(index % 10) : index
       return <><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</>
-    }
+    },
+    locked: 'left'
   },
   {
     fieldName: 'sex',
