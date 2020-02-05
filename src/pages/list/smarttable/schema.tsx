@@ -5,6 +5,7 @@ import { SmartSearchCompatibilityModeSchema } from '@/components/specific/smarts
 import { findDomain } from './service'
 import moment from 'moment'
 import { MiniArea, Pie, Trend } from '@/components/chart'
+import { Link } from '@/components/common';
 
 export const avatars = [
   'http://www.duoziwang.com/uploads/1512/1-1512291K2430-L.jpg',
@@ -119,7 +120,7 @@ export const smartTableSchema = [
     title: tr('姓名'),
     render: (value: string, row: object, index: number) => {
       let avatarIndex = index > 9 ? Math.floor(index % 10) : index
-      return <><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</>
+      return <Link to={`smartdetail/${row['id']}`}><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</Link>
     },
     locked: 'left'
   },

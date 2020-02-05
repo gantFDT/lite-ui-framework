@@ -16,6 +16,17 @@ export default {
     data = gStatus('success', data)
     return data
   },
+  '/smarttable/getApi': async (params: any) => {
+    let { id } = params
+    console.log('id', id)
+    // let data1 = await db['smarttable'].toArray();
+    // copy(JSON.stringify({ a: data1 }))
+    let data
+    data = await db['smarttable'].get(parseInt(id));
+    console.log('data',data)
+    data = gStatus('success', data)
+    return data
+  },
   '/smarttable/createApi': async (params: any) => {
     const res = await db['smarttable'].add(params);
     let data = gStatus('success', res)

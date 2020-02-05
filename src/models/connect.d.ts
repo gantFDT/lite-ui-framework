@@ -35,6 +35,12 @@ export type Loading = {
     }
 }
 
+export type LoadingIF = {
+    effects: {
+        [prop: string]: boolean
+    }
+}
+
 export type Effect = (
     action: AnyAction,
     effects: {
