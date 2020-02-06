@@ -20,6 +20,7 @@ export async function removeApi(params: object) {
 }
 
 export async function updateApi(params: object) {
+  console.log('params1',params)
   return request('/smarttable/updateApi', {
     method: 'POST',
     data: params

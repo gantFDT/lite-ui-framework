@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useMemo} from 'react';
 import { Avatar, Tag } from 'antd'
 import { Icon } from 'gantd';
 import { SmartSearchCompatibilityModeSchema } from '@/components/specific/smartsearch';
@@ -18,7 +18,6 @@ export const avatars = [
   'http://www.duoziwang.com/2016/10/05/2025046706.jpg',
   'http://www.duoziwang.com/2016/10/05/21102913178.png',
   'http://www.duoziwang.com/uploads/1512/1-1512292051490-L.jpg',
-
 ]
 
 export const sexs = [{
@@ -175,7 +174,6 @@ export const smartTableSchema = [
     fieldName: 'popularIndex',
     title: tr('受欢迎指数'),
     render: (value: string, row: object) => {
-
       return <Pie
         animate={false}
         inner={0.55}

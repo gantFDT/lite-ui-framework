@@ -44,14 +44,13 @@ const reduxModel: Model = {
       let res = yield call(removeApi, payload);
       if (res) {
         callback && callback()
-        yield put({ type: 'fetch' });
       }
     },
     *update({ payload, callback, final }, { call, put, select }) {
       let res = yield call(updateApi, payload);
       if (res) {
         callback && callback()
-        yield put({ type: 'fetch' });
+        yield put({ type: 'fetch',payload });
       }
     }
   },

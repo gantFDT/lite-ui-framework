@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const sexs = [{
   name: tr('男'),
   value: 'male'
@@ -15,6 +17,24 @@ export const booleanList = [{
 }]
 
 
+export interface VisitDataType {
+  x: string;
+  y: number;
+}
+
+export const getVisitData = () => {
+  const visitData: VisitDataType[] = [];
+  const beginDay = new Date().getTime();
+  const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
+  for (let i = 0; i < fakeY.length; i += 1) {
+    visitData.push({
+      x: moment(new Date(beginDay + 1000 * 60 * 60 * 24 * i)).format('YYYY-MM-DD'),
+      y: fakeY[Math.floor(Math.random() * 10 + 1)],
+    });
+  }
+  return visitData
+}
+
 export const formSchema = {
   type: "object",
   propertyType: {
@@ -27,7 +47,7 @@ export const formSchema = {
           "type": "string",
           "componentType": "Input",
         },
-        gender: {
+        sex: {
           title: tr('性别'),
           "type": "string",
           componentType: 'Selector',
@@ -55,10 +75,16 @@ export const formSchema = {
         view: {
           title: tr('浏览量'),
           type: "string",
+          props: {
+            disabled: true
+          }
         },
         popularIndex: {
           title: tr('受欢迎指数'),
           type: "number",
+          props: {
+            disabled: true
+          }
         }
       }
     },
@@ -68,7 +94,10 @@ export const formSchema = {
       propertyType: {
         hobby: {
           title: tr('爱好'),
-          componentType: "input",
+          componentType: "Select",
+          props: {
+            mode: 'tags'
+          }
         },
         motto: {
           title: tr('座右铭'),

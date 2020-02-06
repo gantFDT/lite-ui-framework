@@ -2,5 +2,15 @@ export const userData = [{ "dataId": "default", "dataType": "dashboard", "bigDat
 
 
 
-export const smartTableData = [{ "name": "曾珊珊", "id": 5, "age": 15, "sex": "female", "domain": "python", "hobby": ["看电影", "旅游", "美食"], "motto": "hello" }, { "name": "王建安", "id": 6, "age": 65, "sex": "male", "domain": "c", "hobby": ["写代码", "吃鸡"], "motto": "走自己的路，让别人去说吧" }, { "name": "周进", "id": 7, "age": 34, "sex": "female", "domain": "php", "hobby": ["看电视", "美剧"], "motto": "走别人的路，让别人无路可走" }, { "name": "Mac 💻", "id": 8, "age": 44, "sex": "male", "domain": "swift", "hobby": ["ios", "apple"], "motto": "开发别人开发不了的程序" }, { "name": "吴莲", "age": 54, "sex": "female", "domain": "java", "hobby": ["水果"], "motto": "下周回国", "id": 11 }, { "name": "王丽丽", "age": 45, "sex": "female", "domain": "javascript", "hobby": ["鱼", "🐟"], "motto": "我爱吃沸腾鱼", "id": 12 }, { "name": "勾治", "age": 23, "sex": "male", "domain": "javascript", "hobby": ["吃鱼", "打游戏"], "motto": "哈哈哈👌", "id": 13 }, { "name": "尼噶", "age": 66, "sex": "male", "domain": "javascript", "hobby": ["吃肉", "打仗"], "motto": "我是超人", "id": 14 }, { "name": "托尼", "age": 45, "sex": "male", "domain": "javascript", "hobby": ["青龙偃月刀", "胡子"], "motto": " 🐌🐹🐰🐻", "id": 15 }]
+export const smartTableData = [
+  { "name": "曾珊珊", "id": 1, "age": 15, "sex": "female", "domain": "python", "hobby": ["看电影", "旅游", "美食"], "motto": "hello" },
+  { "name": "王建安", "id": 2, "age": 65, "sex": "male", "domain": "c", "hobby": ["写代码", "吃鸡"], "motto": "走自己的路，让别人去说吧" },
+  { "name": "周进", "id": 3, "age": 34, "sex": "female", "domain": "php", "hobby": ["看电视", "美剧"], "motto": "走别人的路，让别人无路可走" },
+  { "name": "Mac 💻", "id": 4, "age": 44, "sex": "male", "domain": "swift", "hobby": ["ios", "apple"], "motto": "开发别人开发不了的程序" },
+  { "name": "吴莲", "age": 54, "sex": "female", "domain": "java", "hobby": ["水果"], "motto": "下周回国", "id": 5 },
+  { "name": "王丽丽", "age": 45, "sex": "female", "domain": "javascript", "hobby": ["鱼", "🐟"], "motto": "我爱吃沸腾鱼", "id": 6 },
+  { "name": "勾治", "age": 23, "sex": "male", "domain": "javascript", "hobby": ["吃鱼", "打游戏"], "motto": "哈哈哈👌", "id": 7 },
+  { "name": "尼噶", "age": 66, "sex": "male", "domain": "javascript", "hobby": ["吃肉", "打仗"], "motto": "我是超人", "id": 8 },
+  { "name": "托尼", "age": 45, "sex": "male", "domain": "javascript", "hobby": ["青龙偃月刀", "胡子"], "motto": " 🐌🐹🐰🐻", "id": 9 }
+]
 

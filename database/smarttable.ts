@@ -23,7 +23,7 @@ export default {
     // copy(JSON.stringify({ a: data1 }))
     let data
     data = await db['smarttable'].get(parseInt(id));
-    console.log('data',data)
+    console.log('data', data)
     data = gStatus('success', data)
     return data
   },
@@ -33,14 +33,15 @@ export default {
     return data
   },
   '/smarttable/removeApi': async (params: any) => {
-    const { id } = params
-    let res = await db['smarttable'].where({ id }).delete();
+    let { id } = params
+    let res = await db['smarttable'].where({ id:parseInt(id) }).delete();
     let data = gStatus('success', res)
     return data
   },
   '/smarttable/updateApi': async (params: any) => {
+    console.log('params', params)
     const { id, ...restParams } = params
-    let res = await db['smarttable'].where({ id }).modify({ ...restParams });
+    let res = await db['smarttable'].where({ id:parseInt(id) }).modify({ ...restParams });
     let data = gStatus('success', res)
     return data
   },

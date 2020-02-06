@@ -10,7 +10,7 @@ import { SettingsState } from '@/models/setting';
 import { UserState } from '@/models/user';
 import { ModelProps } from './model';
 import styles from './index.less'
-
+import { Link } from '@/components/common';
 import { CardList } from '@/components/list';
 import { MiniArea, Pie, Trend } from '@/components/chart'
 const { confirm } = Modal;
@@ -187,8 +187,10 @@ const Page = (props: any) => {
       </div>
       <div className={styles.middle}>
         <div>
+        <Link to={`smartdetail/${value['id']}`}>
           <Avatar size={60} icon="user" src={avatars[index > 9 ? Math.floor(index % 10) : index]} />
           <div className={styles.name}>{value['name']}</div>
+          </Link>
           <div className={styles.goodat}>
         <span>{value['domain']}</span>
           </div>
@@ -350,17 +352,12 @@ export default connect(
   (dispatch: any) => {
     const mapProps = {};
     ['fetch', 'reload', 'create', 'remove', 'update', 'save'].forEach(method => {
-      let stateName = '';
-      if (method == 'fetch') {
-        stateName = 'dataSource'//stateName == 数据源参数key值
-      }
       mapProps[method] = (payload: object, callback: Function, final: Function) => {
         dispatch({
           type: `exampleSmartTable/${method}`,
           payload,
           callback,
-          final,
-          stateName
+          final
         })
       }
     })

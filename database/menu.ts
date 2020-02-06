@@ -16,7 +16,7 @@ export default {
     parentResourceId: "ROOT",
     type: "REACTMENU_CATEGORY_ITEM",
     name: "智能详情",
-    path: "/list/smartdetail",
+    path: "/list/smartdetail/5",
     description: "",
     icon: "form",
     leaf: true,
