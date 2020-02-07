@@ -130,61 +130,7 @@ const widgets = {
       defaultHeight: 3,
       maxHeight: 4
     }
-  },
-  // SmartChart: {
-  //   icon: 'bar-chart',
-  //   name: tr('智能图表'),
-  //   description: tr('动态的图表小程序') + ',' + tr('可快速配置想要统计的业务信息图表') + tr('主要用作数据分析'),
-  //   configPanel: true,
-  //   maxLength: 10,
-  //   snapShot: Widgets['SmartChart']['snapShot'],
-  //   tags: [tr('全部'), tr('图表')],
-  //   iconBackground: 'linear-gradient(to right, #fa709a 0%, #fee140 100%)',
-  //   rect: {
-  //     defaultWidth: 6,
-  //     defaultHeight: 8,
-  //     maxWidth: 12,
-  //     maxHeight: 16,
-  //     minWidth: 2,
-  //     minHeight: 4
-  //   }
-  // },
-  // SmartTable: {
-  //   icon: 'table',
-  //   name: tr('智能表格'),
-  //   description: tr('动态的表格小程序') + ',' + tr('可快速配置想要统计的业务信息表格') + tr('主要用作数据简要信息展示'),
-  //   configPanel: true,
-  //   maxLength: 10,
-  //   snapShot: Widgets['SmartTable']['snapShot'],
-  //   tags: [tr('全部'), tr('列表')],
-  //   iconBackground: 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)',
-  //   rect: {
-  //     defaultWidth: 6,
-  //     defaultHeight: 8,
-  //     maxWidth: 12,
-  //     maxHeight: 16,
-  //     minWidth: 2,
-  //     minHeight: 4
-  //   }
-  // },
-  // TodoList: {
-  //   icon: 'schedule',
-  //   name: tr('待处理任务'),
-  //   description: tr('当前用户待处理的任务') + ',' + tr('可快进行转派') + ',' + tr('审批'),
-  //   configPanel: false,
-  //   maxLength: 1,
-  //   snapShot: Widgets['TodoList']['snapShot'],
-  //   tags: [tr('全部'), tr('列表')],
-  //   iconBackground: 'linear-gradient(to top, #0ba360 0%, #3cba92 100%)',
-  //   rect: {
-  //     defaultWidth: 6,
-  //     defaultHeight: 8,
-  //     maxWidth: 12,
-  //     maxHeight: 16,
-  //     minWidth: 2,
-  //     minHeight: 4
-  //   }
-  // }
+  }
 };
 
 

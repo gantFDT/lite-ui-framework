@@ -3,7 +3,7 @@ import { Icon as AntIcon, Tooltip } from 'antd'
 import pathToRegexp from 'path-to-regexp'
 import withRouter from 'umi/withRouter'
 import { RouteComponentProps } from 'react-router-dom'
-import { findHelpTopicByPathApi } from '@/pages/sysmgmt/help/doc/service'
+// import { findHelpTopicByPathApi } from '@/pages/sysmgmt/help/doc/service'
 import { Link } from 'umi'
 import classnames from 'classnames'
 import { getModelData } from '@/utils/utils'
@@ -45,19 +45,19 @@ export default withRouter(function Title(props: TitleProps) {
     return empty
   }, [pathname, menu])
 
-  const getDocs = async () => {
-    try {
-      let res = await findHelpTopicByPathApi({
-        topicPath: path,
-        language: 'zh_CN'
-      })
-      if (res.length > 0) {
-        setShowQuetion(true)
-      }
-    } catch (error) {
-      console.log('getDocs error\n', error)
-    }
-  }
+  // const getDocs = async () => {
+  //   try {
+  //     let res = await findHelpTopicByPathApi({
+  //       topicPath: path,
+  //       language: 'zh_CN'
+  //     })
+  //     if (res.length > 0) {
+  //       setShowQuetion(true)
+  //     }
+  //   } catch (error) {
+  //     console.log('getDocs error\n', error)
+  //   }
+  // }
 
   // useEffect(() => {
   //   path && getDocs()

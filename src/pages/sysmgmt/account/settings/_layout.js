@@ -1,5 +1,5 @@
 import router from 'umi/router';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { connect } from 'dva';
 import { SubMenu, Icon, Card, BlockHeader } from 'gantd';
 import { Avatar } from 'antd';
@@ -40,7 +40,7 @@ const AccountSettings = props => {
   },
   {
     name: tr('修改密码'),
-    icon:<Icon type="lock" />,
+    icon: <Icon type="lock" />,
     path: 'editpwd',
     visible: showUpdateSelfPassword
   },
@@ -67,7 +67,7 @@ const AccountSettings = props => {
 
   const getActiveKey = (_pathname) => {
     const currentTab = menuData.find(item => _pathname.includes(item.path));
-    return currentTab ? currentTab.name : menuData[0].name;
+    return currentTab ? currentTab.path : menuData[0].path;
   }
 
   const onSelectedChange = (_path, _name) => {
@@ -97,15 +97,22 @@ const AccountSettings = props => {
     }
   }, [])
 
+  const activeItem = useMemo(() => {
+    const item = _.find(arr, (i) => i['path'] === selectKey)
+    if (_.isEmpty(item)) { return }
+    return item
+  }, [selectKey])
+
   const renderChildren = () => {
+    console.log('selectKey', selectKey)
     switch (selectKey) {
-      case tr('个人信息'):
+      case 'personal':
         return <PersonalView />
-      case tr('修改密码'):
+      case 'editpwd':
         return <EditPwdView showBottomBtn />
-      case tr('界面设置'):
+      case 'uiconfig':
         return <UIConfig />
-      case tr('缓存清理'):
+      case 'storage':
         return <StorageClear />
       default:
         break;
@@ -123,7 +130,7 @@ const AccountSettings = props => {
           width={150}
           onSelectedChange={onSelectedChange}
           onSwitchChange={onSwitchChange}
-          style={{background:'var(--component-background)'}}
+          style={{ background: 'var(--component-background)' }}
           extra={
             <div className="aligncenter" style={{ padding: '20px' }}>
               <Link to={`/common/user/${id}`}>
@@ -136,7 +143,7 @@ const AccountSettings = props => {
           }
         >
           <div>
-            <BlockHeader title={selectKey} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+            <BlockHeader title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['name']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

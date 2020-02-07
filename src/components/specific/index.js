@@ -44,6 +44,5 @@ export { default as Dashboard } from './dashboard'
 
 export { default as NotificationProgress } from './notificationprogress'
 
-export { default as MiniTaskApprovePanel } from './workflow/minitaskapprovepanel'
 
 export { default as FileManagement } from './filemanagement'

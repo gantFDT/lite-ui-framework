@@ -171,7 +171,7 @@ class GlobalHeaderRight extends Component {
       <>
         <div className={className} id='rightHeaderId'>
           {globalHeaderExtra && globalHeaderExtra}
-          {showGlobalSearch && <HeaderSearch
+          {/* {showGlobalSearch && <HeaderSearch
             className={`${styles.action} ${styles.search}`}
             placeholder={tr('全局搜索')}
             dataSource={[
@@ -179,7 +179,7 @@ class GlobalHeaderRight extends Component {
             ]}
             onSearch={globalSearch}
             onPressEnter={globalSearch}
-          />}
+          />} */}
           {/* <Tooltip
           title={formatMessage({
             id: 'component.globalHeader.help',
@@ -195,14 +195,14 @@ class GlobalHeaderRight extends Component {
           </a>
         </Tooltip> */}
 
-          {EXAMPLE !== 'NONE' ?
+          {/* {EXAMPLE !== 'NONE' ?
             <Tooltip title={tr('实验室')}>
               <Link to="/example" className={styles.action}>
                 <Icon type="experiment" />
               </Link>
             </Tooltip>
             : null
-          }
+          } */}
 
           <Popover placement="bottom" title={tr('快捷键')} content={shortcutList()} trigger="click" width={300}>
             <span
@@ -212,7 +212,7 @@ class GlobalHeaderRight extends Component {
             </span>
           </Popover>
 
-          {showMsgBtn && <Notification />}
+          {/* {showMsgBtn && <Notification />} */}
 
           {showUIConfig && <Tooltip title={tr('界面设置')}>
             <span href="#" className={styles.action} onClick={this.showUIConfig}>

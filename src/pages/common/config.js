@@ -1,19 +1,8 @@
 
-import FilterDemo1 from '@/pages/sysmgmt/sysrightmanage/datapermission/demo/FilterDemo'
+
 import { Tooltip, Icon } from 'antd'
 // import Link from 'umi/link'
 import actionStyles from '@/components/layout/globalheader/index.less'
-
-import { UserSelector, UserGroupSelector, RoleSelector, GroupSelector } from '@/components/specific'
-const { View: UserSelectorView } = UserSelector
-const { View: UserGroupSelectorView } = UserGroupSelector
-const { View: RoleSelectorView } = RoleSelector
-const { View: GroupSelectorView } = GroupSelector
-
-import { getUserInfo } from '@/utils/user'
-import { getRoleInfo } from '@/utils/role'
-import { getOrganizationInfo } from '@/utils/organization'
-import { getUserGroupInfo } from '@/utils/usergroup'
 
 const ORDER = 0;
 
@@ -23,8 +12,6 @@ const COMMON_CONFIG = {
   defaultDateFormat: 'YYYY-MM-DD HH:mm:ss',
   //上传文件的大小的最大值(M)
   uploadFileSize: 10,
-
-
 
   //单点登录相关
   //按顺序加载登录链js文件及方法
@@ -89,96 +76,7 @@ const COMMON_CONFIG = {
 }
 
 
-//数据级权限配置信息
-const DATA_ACL_CONFIG = {
-  registerFilter: [{
-    code: 'FW_ALL_DATA_FILTER',
-    label: (parameter = '') => {
-      return tr('全部数据')
-    },
-    view: null
-  }],
-  registerTarget: [{
-    code: 'FW_ORGANIZATION_TARGET',
-    label: (parameter = '') => {
-      let text = '';
-      if (parameter) {
-        const name = getOrganizationInfo(parameter) ? getOrganizationInfo(parameter)['orgName'] : ''
-        text = '-' + name
-      }
-      return tr('指定组织') + text
-    },
-    view: GroupSelectorView
-  }, {
-    code: 'FW_USER_TARGET',
-    label: (parameter = '') => {
-      let text = '';
-      if (parameter) {
-        const name = getUserInfo(parameter) ? getUserInfo(parameter)['userName'] : ''
-        text = `-${name}`
-      }
-      return tr('指定用户') + text
-    },
-    view: UserSelectorView
-  }, {
-    code: 'FW_ROLE_TARGET',
-    label: (parameter = '') => {
-      let text = '';
-      if (parameter) {
-        const name = getRoleInfo(parameter) ? getRoleInfo(parameter)['roleName'] : ''
-        text = `-${name}`
-      }
-      return tr('指定角色') + text
-    },
-    view: RoleSelectorView
-  }, {
-    code: 'FW_GROUP_TARGET',
-    label: (parameter = '') => {
-      let text = '';
-
-      if (parameter) {
-        const group = getUserGroupInfo(parameter);
-        const name = group ? group['groupName'] : ''
-        text = `-${name}`
-      }
-      return tr('指定用户组') + text
-    },
-    view: UserGroupSelectorView
-  }, {
-    code: 'FW_CREATOR_TARGET',
-    label: (parameter = '') => {
-      return tr('记录创建人')
-    },
-    view: null
-  }],
-  registerAction: [{
-    code: 'READ',
-    label: tr('读')
-  }, {
-    code: 'WRITE',
-    label: tr('写')
-  }, {
-    code: 'DELETE',
-    label: tr('删除')
-  }, {
-    code: 'AUTHORIZE',
-    label: tr('授权')
-  }, {
-    code: 'ALLOW',
-    label: tr('允许')
-  }, {
-    code: 'DENY',
-    label: tr('拒绝')
-  }, {
-    code: 'UNKNOWN',
-    label: tr('未知')
-  }]
-}
-
-
-
 export default {
   COMMON_CONFIG,
-  DATA_ACL_CONFIG,
   ORDER
 }

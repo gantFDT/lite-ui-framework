@@ -76,14 +76,14 @@ export const formSchema = {
           title: tr('浏览量'),
           type: "string",
           props: {
-            disabled: true
+            allowEdit:false
           }
         },
         popularIndex: {
           title: tr('受欢迎指数'),
           type: "number",
           props: {
-            disabled: true
+            allowEdit:false
           }
         }
       }
