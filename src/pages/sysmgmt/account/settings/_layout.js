@@ -99,7 +99,7 @@ const AccountSettings = props => {
 
   const activeItem = useMemo(() => {
     const item = _.find(arr, (i) => i['path'] === selectKey)
-    if (_.isEmpty(item)) { return }
+    if (_.isEmpty(item)) { return arr[0]}
     return item
   }, [selectKey])
 
@@ -120,6 +120,7 @@ const AccountSettings = props => {
     return null;
   }
 
+  console.log('activeItem',activeItem)
   return (
     <>
       {
