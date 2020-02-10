@@ -5,13 +5,13 @@
       "name": "智能表格",
       "nameEn": "smartTable",
       "path": "/**/smarttable",
-      "component": "./list/smarttable"
+      "component": "./smart/smarttable"
     },
     {
       "name": "智能详情",
       "nameEn": "smartDetail",
       "path": "/**/smartdetail/:id",
-      "component": "./list/smartdetail"
+      "component": "./smart/smartdetail"
     }
   ]
 }
