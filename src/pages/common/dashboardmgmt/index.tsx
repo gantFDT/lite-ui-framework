@@ -134,7 +134,6 @@ const Page = (props: any) => {
 
   //打开复制弹窗
   const showCopyModal = useCallback(() => {
-    console.log('selectedRows',selectedRows)
     setNowType('user')
     setCopyVisible(true)
     setFormContent({

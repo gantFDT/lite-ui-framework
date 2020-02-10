@@ -102,14 +102,12 @@ const Page = (props: any) => {
   }
   async function onSaveForm(id: string) {
     const { errors, values } = await formRef['current'].validateForm([id])
-    console.log('values', values)
     if (errors) return
     // onSave(values, setItemEdit(id, EditStatus.SAVE))
     update(values[id])
   }
   async function onSaveAll() {
     const { errors, values } = await formRef['current'].validateForm()
-    console.log('values', values)
     if (errors) return
     // onSave(values, setItemEdit(id, EditStatus.SAVE))
     update({ id: parseInt(id), ...values['base'], ...values['code'], ...values['more'] }, () => {
@@ -169,7 +167,6 @@ const Page = (props: any) => {
         item.complete = item.required && eval(item['dataSourceName']).length ? true : false
       }
     })
-    console.log('anchorList', anchorList)
     return anchorList;
   }, [data, anchorList])
 

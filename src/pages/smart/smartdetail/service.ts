@@ -2,7 +2,6 @@ import request, { sucMessage } from '@/utils/request';
 const { createMes, removeMes, saveMes } = sucMessage;
 
 export async function fetchApi(params: object) {
-  console.log('params',params)
   return request('/smarttable/getApi', {
     method: 'POST',
     data: params
@@ -20,7 +19,6 @@ export async function removeApi(params: object) {
 }
 
 export async function updateApi(params: object) {
-  console.log('params1',params)
   return request('/smarttable/updateApi', {
     method: 'POST',
     data: params

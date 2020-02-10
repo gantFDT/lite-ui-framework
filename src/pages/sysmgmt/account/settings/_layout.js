@@ -104,7 +104,6 @@ const AccountSettings = props => {
   }, [selectKey])
 
   const renderChildren = () => {
-    console.log('selectKey', selectKey)
     switch (selectKey) {
       case 'personal':
         return <PersonalView />
@@ -120,7 +119,6 @@ const AccountSettings = props => {
     return null;
   }
 
-  console.log('activeItem',activeItem)
   return (
     <>
       {

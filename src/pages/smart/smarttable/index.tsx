@@ -127,7 +127,6 @@ const Page = (props: any) => {
   }, [reload])
 
   const onSimpleSearch = useCallback((params) => {
-    console.log('onSimpleSearch params', params)
     // const { searchKeyword, pageInfo } = params;
     // let filters = {
     //   orderList: [{ fieldName: "name", orderType: "ASC" }],
@@ -223,7 +222,6 @@ const Page = (props: any) => {
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
   const cardHeight = getTableHeight(MAIN_CONFIG, searchFormHei, false)
-  console.log('selectedRows', selectedRows)
   return (<Card bodyStyle={{ padding: '0px' }}>
     <SmartSearch
       searchPanelId={pageKey}

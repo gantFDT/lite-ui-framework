@@ -16,7 +16,6 @@ const reduxModel: Model = {
   effects: {
     *fetch({ payload }, { call, put, select }) {
       // const { id } = payload
-      console.log('payload',payload)
       let detail = yield call(fetchApi, payload);
 
       yield put({

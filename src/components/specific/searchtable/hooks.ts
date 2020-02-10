@@ -56,7 +56,7 @@ export const usePagination = (props:usePaginationProps):PaginationConfig | undef
     }
   }, [tableParams,pageSize,pagination,onPageChange,pageIndex])
   const handlerPageChange = useCallback((page:number = 1,pageSize:number = 50):void => {
-    console.log('pagination',pagination)
+    // console.log('pagination',pagination)
     if(pagination!==undefined || !onPageChange) return;
 
     let fakePageIndex = (page - 1) * pageSize;

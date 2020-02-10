@@ -22,7 +22,6 @@ export default {
         employee.orgInfo = getOrganizationInfo(employee.organizationId)
         employee.genderName = yield getCodeName('FW_USER_GENDER', employee.gender)
         employee.userTypeName = yield getCodeName('FW_USER_TYPE', employee.userType)
-        // console.log('a',a)
         const avatarUrl = getImageById(employee.pictureId) || emptyblock;
         employee.avatarUrl = avatarUrl
         yield put({

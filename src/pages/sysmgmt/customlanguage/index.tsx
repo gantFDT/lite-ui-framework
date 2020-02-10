@@ -86,10 +86,7 @@ const Page = (props: any) => {
 
   const wheel = useCallback(() => {
     const visibleDataTemp = _.cloneDeep(visibleData)
-    console.log('visibleData', visibleData)
-    console.log('currentLangulage', currentLangulage)
     visibleDataTemp[currentLangulage] = mergeLangulage[currentLangulage].slice(0, visibleData[currentLangulage].length + 20);
-    console.log('visibleDataTemp', visibleDataTemp)
     setVisibleData(visibleDataTemp)
   }, [visibleData, currentLangulage, mergeLangulage])
 
