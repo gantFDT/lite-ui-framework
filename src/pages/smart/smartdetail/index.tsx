@@ -100,12 +100,6 @@ const Page = (props: any) => {
   const onSelectedChange = (path: string, eventKey: string) => {
     setSelectedKey(eventKey);
   }
-  async function onSaveForm(id: string) {
-    const { errors, values } = await formRef['current'].validateForm([id])
-    if (errors) return
-    // onSave(values, setItemEdit(id, EditStatus.SAVE))
-    update(values[id])
-  }
   async function onSaveAll() {
     const { errors, values } = await formRef['current'].validateForm()
     if (errors) return
