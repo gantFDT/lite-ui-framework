@@ -223,7 +223,7 @@ const Page = (props: any) => {
           fixedTop={fixedHeader ? 40 : 0}
           anchorList={currentAnchorList}
           onClick={(e) => { e.preventDefault() }}
-          cardContent={
+          content={
             <>
               <BlockHeader title={
                 <>

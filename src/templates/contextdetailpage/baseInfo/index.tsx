@@ -112,7 +112,7 @@ function Page(props: any) {
       fixedHeader={fixedHeader}
       anchorList={currentAnchorList}
       minHeight={minHeight}
-      cardContent={
+      content={
         <>
           <div style={{ padding: '10px 0 0', marginTop: 10 }}>
             <Steps style={{ flexWrap: 'wrap' }} current={2} size='small' labelPlacement='vertical'>

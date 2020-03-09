@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { GantAnchor } from 'gantd';
+import { Anchor as GantAnchor } from 'gantd';
 import { useLocalStorage } from '@/utils/hooks';
 import _ from 'lodash'
 
@@ -26,6 +26,7 @@ function Anchor(props: AnchorProps) {
         anchorKey,
         initalValue = inital,
         anchorList = [],
+        offsetTop = 80,
         ...nextProps
     } = props;
 
@@ -36,10 +37,12 @@ function Anchor(props: AnchorProps) {
     }, [])
 
     return <GantAnchor
-        anchorMode={localData.anchorMode}
-        onSwitchChange={onSwitchChange}
-        anchorList={anchorList}
+        layout={localData.anchorMode}
+        onLayoutChange={onSwitchChange}
+        list={anchorList}
+        offsetTop={offsetTop}
         {...nextProps}
     />
 }
+
 export default Anchor;

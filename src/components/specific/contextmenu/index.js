@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react'
 import dynamic from 'umi/dynamic'
-import { Card, Icon, SubMenu } from 'gantd'
-import { Menu, Modal, Skeleton } from 'antd'
+import { Card } from 'gantd'
+import { SubMenu } from 'gantd'
 import styles from './index.less'
 import { connect } from 'dva'
 import { findIndex } from 'lodash'
 import event from '@/utils/events'
 import { importModel } from '@/utils/utils'
-import { Link } from 'umi'
 import { useLocalStorage } from '@/utils/hooks'
 import { getContextMenuAPI } from './service'
 import { getBizSummary } from '@/services/api'
@@ -46,7 +45,6 @@ function ContextMenu(props) {
   const [menuDataName, setMenuDataName] = useState(null);
   const [selectedKey, setSelectedKey] = useState(defaultSelectedKey);
   const [cmProps, setCmpProps] = useState(dynamicCmpProps);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [contextmenuData, setContextmenuData] = useState([]);
   const [menuLoading, setMenuLoading] = useState(false);
   const [localData, setLocalStorage] = useLocalStorage(`contextMenu:${currentUser.id}`, initalStorage, contextMenuKey);
@@ -122,7 +120,8 @@ function ContextMenu(props) {
       setMenuLoading(true);
       const data = await getContextMenuAPI(category) || [];
       setStaticComponent(data);
-      const actualMenuData = menuDataAhead ? menuData.concat(data) : data.concat(menuData);
+      let actualMenuData = menuDataAhead ? menuData.concat(data) : data.concat(menuData);
+      actualMenuData = actualMenuData.map(item => ({ ...item, title: item.name, key: item.name }));
       if (!actualMenuData.length) {
         setMenuLoading(false)
         return
@@ -184,22 +183,11 @@ function ContextMenu(props) {
     }
   }, [menuDataName, menuData])
 
-  const onSelectedChange = useCallback((_path, name) => {
-    let index = contextmenuData.findIndex(item => {
-      return _path ? item.name == name && item.path : item.name == name && item.component;
-    });
-    let targetMenu = contextmenuData[index];
-    if (!targetMenu) return;
-    setCurrentIndex(index);
-    setComponentPathAndName(_path, name);
-    onMenuChange && onMenuChange(name, targetMenu);
+  const onSelectedChange = useCallback((name, record) => {
+    if (!record) return;
+    setComponentPathAndName(record.path, name);
+    onMenuChange && onMenuChange(name, record);
   }, [contextmenuData])
-
-  //底部页面跳转
-  const onFooterChangePage = useCallback((parameter) => {
-    const item = parameter == 'before' ? contextmenuData[currentIndex - 1] : contextmenuData[currentIndex + 1]
-    item && onSelectedChange(item.path, item.name)
-  }, [contextmenuData, currentIndex])
 
   //上下文menu方向切换
   const onSwitchChange = useCallback((mode) => {
@@ -213,110 +201,6 @@ function ContextMenu(props) {
     contextMenuKey && setLocalStorage({ collapsed })
   }, [])
 
-  //切换submenu方向时改变submenu的宽度
-  useEffect(() => {
-    const fixedEle = document.querySelector('.gant-submenu-wrap'); //定位元素
-    const fixedEleParent = document.querySelector('.gant-submenu-menubox'); //定位元素的父级
-    const gantAnchorActive = document.querySelector('.gant-gantanchor-activeScroll');
-    const anchorBoxId = document.getElementById('anchorBoxId');
-    const submenupagecard = document.querySelector('.gant-submenu-pagecard');
-    const fixedTopHeight = fixedHeader ? headerHeight : 0;
-    if (fixedEleParent) { //上下文菜单切换方向时menu宽度
-      fixedEle.style.width = `${fixedEleParent.offsetWidth - (mode == 'inline' ? 1 : 0)}px`;
-    }
-    if (anchorBoxId) { anchorBoxId.style.width = `${submenupagecard.offsetWidth - 2}px` }
-    if (mode == 'inline' && gantAnchorActive) {
-      gantAnchorActive.style.top = `${fixedTopHeight}px`
-    } else if (mode == 'horizontal' && gantAnchorActive) {
-      gantAnchorActive.style.top = `${fixedEle.offsetHeight + fixedTopHeight}px`
-    }
-    handleAnchorFooter()
-  }, [mode, collapsed])
-
-
-  //切换锚点方向时底部footer宽度的变化
-  const handleAnchorFooter = useCallback((e) => {
-    const submenupagecard = document.querySelector('.gant-submenu-pagecard');
-    const footerbox = document.querySelector('.antd-pro-components-specific-contextmenu-index-footerbox');
-    const anchorverticalbox = document.querySelector('.gant-anchor-verticalbox'); //左右布局锚点
-    const anchorBottom = document.querySelector('.antd-pro-components-specific-contextmenu-index-anchorBottom');
-    if (anchorverticalbox && footerbox) { //锚点切换方向时，下方footer变化
-      footerbox.style.width = `${submenupagecard.offsetWidth - anchorverticalbox.offsetWidth}px`
-      anchorBottom.style.width = `${anchorverticalbox.offsetWidth - 1}px`
-    } else if (!anchorverticalbox && footerbox) {
-      footerbox.style.width = `100%`
-      anchorBottom.style.width = '0px'
-    }
-  })
-
-  //监听页面呢滚动事件
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll) //监听滚动
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  })
-
-  //页面滚动事件
-  const handleScroll = useCallback((e) => {
-    const fixedEle = document.querySelector('.gant-submenu-wrap'); //定位元素
-    const fixedEleParent = document.querySelector('.gant-submenu-menubox'); //定位元素的父级
-    const anchorBoxId = document.getElementById('anchorBoxId');
-    const horEle = document.querySelector('.gant-submenu-menuboxhor');
-    if (!fixedEle) return;
-    //submenu下面的内容
-    const parentClientTop = fixedEleParent ? fixedEleParent.getBoundingClientRect().top : 0 //定位元素父级距离浏览器的高度
-    const fixedTopHeight = fixedHeader ? headerHeight : 0;
-    if (parentClientTop <= fixedTopHeight) {
-      fixedEle.classList.add('gantd-contextmenu-submenu-fixed')
-      const active = document.querySelector('.gantd-contextmenu-submenu-fixed');
-      active.style.top = `${fixedTopHeight}px`;
-      active.style.width = `${fixedEleParent.offsetWidth - (mode == 'inline' ? 1 : 0)}px`;
-      if (anchorBoxId) {
-        anchorBoxId.classList.add('gant-contextmenu-boxShow')
-      } else if (!anchorBoxId && horEle) {
-        fixedEle.classList.add('gant-contextmenu-boxShow')
-      }
-    }
-    if (parentClientTop > fixedTopHeight) {
-      fixedEle.classList.remove('gantd-contextmenu-submenu-fixed')
-      if (anchorBoxId) {
-        anchorBoxId.classList.remove('gant-contextmenu-boxShow')
-      } else if (!anchorBoxId) {
-        fixedEle.classList.remove('gant-contextmenu-boxShow')
-      }
-    }
-    if (anchorBoxId) {
-      fixedEle.classList.remove('gant-contextmenu-boxShow')
-    }
-    handleAnchorFooter()
-  })
-
-  const contextFooter = useMemo(() => {
-    if (!isShowFooter || !contextmenuData.length || contextmenuData.length == 1) return;
-    return <div className={styles.contextfooter} style={{ textAlign: 'left' }}>
-      <div className={styles.footerbox}>
-        <div className={styles.footerdiv}>
-          <a
-            onClick={onFooterChangePage.bind(null, 'before')}
-            style={{ display: currentIndex == 0 ? 'none' : 'block' }}>
-            <span>{tr('上一篇')}</span>
-            <h6>{currentIndex == 0 ? '' : contextmenuData[currentIndex - 1].name}</h6>
-          </a>
-        </div>
-        <div className={styles.footerdiv} style={{ textAlign: 'right' }}>
-          <a
-            onClick={onFooterChangePage.bind(null, 'after')}
-            style={{ display: currentIndex + 1 == contextmenuData.length ? 'none' : 'block' }}>
-            <span>{tr('下一篇')}</span>
-            <h6>{currentIndex + 1 == contextmenuData.length ? '' : contextmenuData[currentIndex + 1].name}</h6>
-          </a>
-        </div>
-      </div>
-      <div className={styles.anchorBottom}></div>
-    </div>
-  }, [currentIndex, contextmenuData])
-
   return (
     <Card
       title={title}
@@ -327,7 +211,7 @@ function ContextMenu(props) {
       style={{ border: 0 }}
       extra={extra}
     >
-      <SubMenu
+      {contextmenuData.length > 0 && <SubMenu
         mode={mode}
         collapsed={collapsed}
         menuData={contextmenuData}
@@ -338,16 +222,17 @@ function ContextMenu(props) {
         onSelectedChange={onSelectedChange}
         subMinHeight={minHeight}
         width={width}
+        showFlipOverFooter
+        showMenuMagnet
         {...nextProps}
       >
         <div>
           <React.Fragment>
             {dynamicComponent}
             {customComponent}
-            {contextFooter}
           </React.Fragment>
         </div>
-      </SubMenu>
+      </SubMenu>}
     </Card>
   )
 }
