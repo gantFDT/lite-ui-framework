@@ -5,13 +5,13 @@ import {
   EditStatus,
   InputNumber,
   RangePicker,
-  Select,
-  Url,
-  Location,
-  TelePhone,
-  CellPhone,
-  Email,
-  InputLang,
+  // Select,
+  InputUrl,
+  LocationSelector,
+  InputTelePhone,
+  InputCellPhone,
+  InputEmail,
+  InputLanguage,
   InputMoney,
 } from 'gantd'
 import moment from 'moment'
@@ -74,15 +74,15 @@ export const mapComponents = (ComponentName,props) => {
     // Gant
     case 'Number': return <InputNumber  {...props}/>;
     case 'DateRange': return <RangePicker {...props}/>;
-    case 'Select': return <Select {...props}/>;
-    case 'Url': return <Url {...props}/>;
-    case 'Location': return <Location  {...props}/>;
-    case 'TelePhone': return <TelePhone {...props}/>;
-    case 'CellPhone': return <CellPhone {...props}/>;
-    case 'Email': return <Email {...props}/>;
+    // case 'Select': return <Select {...props}/>;
+    case 'Url': return <InputUrl {...props}/>;
+    case 'Location': return <LocationSelector  {...props}/>;
+    case 'TelePhone': return <InputTelePhone {...props}/>;
+    case 'CellPhone': return <InputCellPhone {...props}/>;
+    case 'Email': return <InputEmail {...props}/>;
     case 'ImageUpload': return <ImageUpload  {...props}/>;
     case 'FileUpload': return <FileUpload  {...props}/>;
-    case 'InputLang': return <InputLang {...props}/>;
+    case 'InputLang': return <InputLanguage {...props}/>;
     case 'InputMoney': return <InputMoney {...props}/>;
     default: return <Input {...props}/>
   }

@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react'
-import { Table, EditStatus, Generator, SwitchStatus, Card, Input as GantInput } from 'gantd'
+import { Table, EditStatus, SwitchStatus, Card, Input as GantInput } from 'gantd'
 import { Button, Icon, Input, Tabs } from 'antd'
 import { Title } from '@/components/common';
 import { SettingsProps } from '@/models/settings'
