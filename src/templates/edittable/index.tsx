@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react'
 import { Button, Tooltip, Modal } from 'antd';
-import { Card, EditStatus, Input } from 'gantd'
+import { Card, EditStatus, Input, IconSelector } from 'gantd'
 import { connect } from 'dva';
 import { Title } from '@/components/common';
 import { SmartSearch, SmartTable, SmartModal } from '@/components/specific'
@@ -10,7 +10,7 @@ import { SettingsProps } from '@/models/settings'
 import { UserProps } from '@/models/user'
 import { ModelProps } from './model'
 import { Loading } from '@/models/connect';
-import { IconHouse, ExportExcel } from '@/components/common'
+import {  ExportExcel } from '@/components/common'
 import { getTableHeight, TABLE_HEADER_HEIGHT } from '@/utils/utils'
 
 const { confirm } = Modal;
@@ -169,7 +169,7 @@ const Page = (props: any) => {
     smartTableSchema[4].editConfig = {
       render: (text, record, index) => {
         return (
-          <IconHouse inForm={false} />
+          <IconSelector inForm={false} />
         )
       }
     }

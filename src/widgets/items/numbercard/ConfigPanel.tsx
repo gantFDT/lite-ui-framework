@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Button, Input, Select, Switch, Form, Radio } from 'antd'
-import { BlockHeader, Icon } from 'gantd'
-import IconHouse from '@/components/common/iconhouse'
+import { BlockHeader, Icon, IconSelector } from 'gantd'
 
 const { Option } = Select;
 const formItemLayout = {
@@ -58,7 +57,7 @@ const Page = (props: any) => {
         {getFieldDecorator('icon', {
           initialValue: '',
         })(
-          <IconHouse />
+          <IconSelector />
         )}
       </Form.Item>
       <Form.Item label={tr('背景')} {...formItemLayout} style={{ marginTop: '-3px' }}>

@@ -118,7 +118,7 @@ export const modalSchema = {
     icon: {
       title: tr('图标'),
       type: "string",
-      componentType: "IconHouse",
+      componentType: "IconSelector",
     },
     baseUnitName: {
       title: tr('基础单位'),

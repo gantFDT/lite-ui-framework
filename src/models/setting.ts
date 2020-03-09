@@ -63,9 +63,6 @@ const buildIcon = () => {
   Icon.updateFromIconfontCN({
     scriptUrl: iconfontUrl
   })
-  Icon.createFromIconfontCN('House', {
-    scriptUrl: iconWareHouse
-  })
 }
 
 //获取用户本地UI配置信息

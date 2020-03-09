@@ -1,6 +1,5 @@
 export { default as Breadcrumb } from './breadcrumb'
 export { default as History } from './history'
-export { default as IconHouse } from './iconhouse'
 export { default as tr } from './formatmessage'
 export { default as Anchor } from './anchor'
 export { default as MenuCollection } from './menucollection'
