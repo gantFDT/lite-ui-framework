@@ -1,4 +1,4 @@
-import SmartTable from './SmartTable';
+import { SmartTable } from 'gantd';
 
 export { default as TableConfig } from './config/UIContent'
 
