@@ -1,8 +1,7 @@
 import React, { useMemo, useCallback, useReducer, useEffect, useRef, useState } from 'react';
 import { connect } from 'dva';
 import { Button, Tooltip, Spin } from 'antd'
-import { Header } from 'gantd'
-import UpdateTime from '@/components/common/updatetime'
+import { Header, AutoReload } from 'gantd'
 import Chart from './chart'
 import { SaveAsViewModal, SaveViewModal, ChartConfigModal } from './modal'
 //工具
@@ -31,7 +30,7 @@ function SmartChart(props: Props): any {
     indexView = indexView < 0 ? 0 : indexView;
     return indexView
   }, [schema, userId, smartChartId])
-  const [updateTime, setUpdateTime] = useState(moment().format(timeformat))
+  const [AutoReload, setAutoReload] = useState(moment().format(timeformat))
   const [state, dispatch] = useReducer(reducer, { ...initState, defaultIndex: initIndex, index: initIndex, editSchema: schema[initIndex] })
   const [chartHeight, setChartHeight] = useState(600);
 
@@ -223,8 +222,8 @@ function SmartChart(props: Props): any {
 
 
   useEffect(() => {
-    setUpdateTime(moment().format(timeformat))
-  }, [dataSource, setUpdateTime])
+    setAutoReload(moment().format(timeformat))
+  }, [dataSource, setAutoReload])
   const renderRight = useMemo(() => {
     if (typeof headerRight != 'undefined' && headerRight instanceof Function) return headerRight(activeView);
     return headerRight
@@ -237,7 +236,7 @@ function SmartChart(props: Props): any {
       extra={<>
         {renderRight}
         <div style={{ lineHeight: "34px", display: "inline-block", margin: "0px 5px" }} >
-          <UpdateTime time={updateTime} refresh={onRefresh} />
+          <AutoReload time={AutoReload} refresh={onRefresh} />
         </div>
       </>}
     />
