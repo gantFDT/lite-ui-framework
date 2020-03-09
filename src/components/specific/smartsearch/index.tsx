@@ -13,7 +13,7 @@ import { useLocalStorage, getNormalInitSearchParams, getOrderInfo, getSchema, is
 import styles from './index.less'
 import { BaseSupportFilterField, SupportFilterField, SupportOrderField, View, CompatibilityModeView, Filter as FilterProps, CompatibilityModeFilter, PageInfo, SearchData, UiConfigProps, LocalFilterProps, FilterData, CustomComponent, FilterItem } from './interface'
 import { getViewsApi, updateViewsApi } from './service'
-import { UISchema } from '@/components/form/schema/index'
+import { UISchema } from 'schema-form-g'
 import SearchForm from '../searchform'
 import { getValues, resolveValue } from '../searchform/subcomponents/filter/utils'
 

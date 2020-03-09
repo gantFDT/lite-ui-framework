@@ -1,5 +1,5 @@
 import { anchorListProps } from '@/components/common/anchor';
-import { Schema } from '@/components/form/schema';
+import { Schema } from 'schema-form-g';
 
 const formSchema: Schema = {
     type: "object",

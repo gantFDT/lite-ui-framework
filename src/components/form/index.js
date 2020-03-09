@@ -12,6 +12,4 @@ export { default as FileUpload } from './fileupload'
 
 export { default as LanguageInput } from './languageinput'
 
-export { default as FormSchema } from './schema'
-
 export { default as RichTextEditor } from "./richtexteditor"

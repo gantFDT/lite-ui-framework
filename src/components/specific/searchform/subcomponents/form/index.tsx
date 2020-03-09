@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
-import FormSchema, { UISchema } from '@/components/form/schema'
+import  { UISchema } from 'schema-form-g'
+import { SchemaForm } from 'gantd'
 import { isEmpty as _isEmpty } from 'lodash'
 import { CustomComponent } from '../../interface'
 import styles from './index.less'
@@ -94,7 +95,7 @@ export default function Form(props: FormProps) {
 
   return (
     <div className={styles.searchform} >
-      <FormSchema
+      <SchemaForm
         schema={schema_}
         wrappedComponentRef={formRef}
         uiSchema={uiSchema as any}

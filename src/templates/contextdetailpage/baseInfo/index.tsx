@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { connect } from 'dva';
 import { Steps, Tooltip, Button } from 'antd';
 import { Anchor } from '@/components/common';
-import FormSchema from '@/components/form/schema';
+import { SchemaForm } from 'gantd';
 import { formSchema, anchorList } from './schema';
 import { SettingsProps } from '@/models/settings';
 import { UserProps } from '@/models/user';
@@ -129,7 +129,7 @@ function Page(props: any) {
               <Step title={tr('完成')} />
             </Steps>
           </div>
-          <FormSchema
+          <SchemaForm
             wrappedComponentRef={formRef}
             data={data}
             schema={formSchema}

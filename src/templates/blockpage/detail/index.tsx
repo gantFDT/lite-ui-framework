@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, useMemo } from 'react';
-import FormSchema from '@/components/form/schema';
+import { SchemaForm } from 'gantd';
 import { Button } from 'antd';
 import { BlockHeader } from 'gantd';
 import { Title } from '@/components/common';
@@ -36,7 +36,7 @@ const DetailContent = (props: any): React.ReactElement => {
                 >{tr('保存')}</Button>
             </>}
         />
-        <FormSchema
+        <SchemaForm
             key={values.id || 'schema'}
             wrappedComponentRef={formRef}
             data={values}

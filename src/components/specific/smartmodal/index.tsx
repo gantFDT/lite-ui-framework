@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useMemo, useContext, memo, useEffect } from 'react';
 import { ResizableModal, ResizableProvider, ModalContext } from '@/components/common/modal';
-import FormSchema, { UISchema, TitleSchema, Schema, Props as SchemaProps } from '@/components/form/schema';
+import  { UISchema, TitleSchema, Schema, Props as SchemaProps } from 'schema-form-g';
+import { SchemaForm } from 'gantd'
 import { spanCalculate } from '@/utils/utils';
 
 const defaultSpan = 24; //默认栅格占位格数
@@ -51,7 +52,7 @@ const FormContent = memo((props: FormContentProps): React.ReactElement => {
         ...restProps
     } = props;
 
-    return <FormSchema
+    return <SchemaForm
         wrappedComponentRef={formRef}
         data={values}
         schema={schema}

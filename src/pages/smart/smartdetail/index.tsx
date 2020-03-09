@@ -4,7 +4,7 @@ import { SubMenu, Card, EditStatus, SwitchStatus, BlockHeader, Icon } from 'gant
 import { Avatar, Button, Tooltip, Radio, Modal } from 'antd'
 import { connect } from 'dva';
 import { Title } from '@/components/common';
-import FormSchema from '@/components/form/schema'
+import { SchemaForm } from 'gantd'
 import { LoadingIF } from '@/models/connect';
 import { SettingsState } from '@/models/setting';
 import { UserState } from '@/models/user';
@@ -257,7 +257,7 @@ const Page = (props: any) => {
 
                 </>}
               />
-              <FormSchema
+              <SchemaForm
                 edit={edit}
                 wrappedComponentRef={formRef}
                 // edit={'CANCEL'}

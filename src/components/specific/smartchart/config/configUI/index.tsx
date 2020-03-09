@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import FormSchema from '@/components/form/schema'
+import { SchemaForm } from 'gantd'
 import RadioGroup from './RadioGroup'
 import { ChartTypes } from '../../enum'
 import { ConfigUIProps } from '../../interface'
@@ -63,7 +63,7 @@ export default function ConfigUI(props: ConfigUIProps) {
 			}
 		}
 	}, [type, dataConfig, columns, uiData])
-	return <FormSchema
+	return <SchemaForm
 		schema={setUIschema}
 		data={uiData}
 		uiSchema={{

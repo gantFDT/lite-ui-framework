@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo, useRef } from 'react';
 import { Row, Col, Icon, Tooltip, Button, Switch, notification } from 'antd';
 import classnames from 'classnames';
 import { SmartModal } from '@/components/specific';
-import FormSchema from '@/components/form/schema';
+import { SchemaForm } from 'gantd';
 import { normalSchema, withLinkSchema } from './schema';
 import { getUserInfo } from '@/utils/user';
 import { sendNotificationApi, sendLinkNotificationApi } from '@/services/notification';
@@ -120,7 +120,7 @@ export default function ContactButtonGroup(props: ContactButtonGroupProps) {
                 </div>
             }
         >
-            <FormSchema
+            <SchemaForm
                 wrappedComponentRef={formRef}
                 schema={schema}
             />
