@@ -5,7 +5,7 @@ import styles from './index.less'
 import { Widget, widgets as widgetsTemp } from '@/widgets'
 import { generateUuid, confirmUtil, reducer } from '@/utils/utils'
 import WidgetSelector from '@/widgets/selector'
-import FooterToolbar from '@/components/layout/footertoolbar';
+import { Toolbar } from 'gantd'
 import classnames from 'classnames'
 import { getWidgetType } from '@/widgets/utils'
 import { fetch as fetchApi, update as updateApi, removeWidgetApi } from './service'
@@ -258,7 +258,7 @@ const Comp = (props: Dashboard) => {
         {stateEditMode && !_.isEmpty(currentLayout) && <div className={styles.block} />}
         {
           stateEditMode &&
-          <FooterToolbar style={{ width: '100%' }}>
+          <Toolbar style={{ width: '100%' }}>
             <Tooltip placement="top" title={
               tr('在布局时请尽量不要改变浏览器大小') + ',' +
               tr('布局宽度可以随浏览器变小') + ',' +
@@ -274,7 +274,7 @@ const Comp = (props: Dashboard) => {
               addWidget={addWidget}
             />
 
-          </FooterToolbar>
+          </Toolbar>
         }
       </div >
     </Spin>
