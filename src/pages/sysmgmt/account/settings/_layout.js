@@ -33,48 +33,48 @@ const AccountSettings = props => {
   } } = config
   const menuData = []
   const arr = [{
-    name: tr('个人信息'),
+    title: tr('个人信息'),
     icon: <Icon type="idcard" />,
-    path: 'personal',
+    key: 'personal',
     visible: true
   },
   {
-    name: tr('修改密码'),
+    title: tr('修改密码'),
     icon: <Icon type="lock" />,
-    path: 'editpwd',
+    key: 'editpwd',
     visible: showUpdateSelfPassword
   },
   {
-    name: tr('界面设置'),
+    title: tr('界面设置'),
     icon: <Icon type="control" />,
-    path: 'uiconfig',
+    key: 'uiconfig',
     visible: showUIConfig
   },
   {
-    name: tr('缓存清理'),
+    title: tr('缓存清理'),
     icon: <Icon type="database" />,
-    path: 'storage',
+    key: 'storage',
     visible: showStorageClear
   }
   ]
   arr.map((item, index, arr) => {
     if (item.visible) {
-      menuData.push({ ...item, key: item.path })
+      menuData.push({ ...item, key: item.key })
     }
   });
 
   const avatarUrl = getImageById(pictureId);
 
   const getActiveKey = (_pathname) => {
-    const currentTab = menuData.find(item => _pathname.includes(item.path));
-    return currentTab ? currentTab.path : menuData[0].path;
+    const currentTab = menuData.find(item => _pathname.includes(item.key));
+    return currentTab ? currentTab.key : menuData[0].key;
   }
 
-  const onSelectedChange = (_path, _name) => {
-    router.push(_path)
+  const onSelectedChange = (key, item) => {
+    router.push(key)
     dispatch({
       type: 'accountSettings/save',
-      payload: { selectKey: _name, mode }
+      payload: { selectKey: key, mode }
     });
   };
 
@@ -98,7 +98,7 @@ const AccountSettings = props => {
   }, [])
 
   const activeItem = useMemo(() => {
-    const item = _.find(arr, (i) => i['path'] === selectKey)
+    const item = _.find(arr, (i) => i['key'] === selectKey)
     if (_.isEmpty(item)) { return arr[0]}
     return item
   }, [selectKey])
@@ -142,7 +142,7 @@ const AccountSettings = props => {
           }
         >
           <div>
-            <BlockHeader title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['name']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+            <BlockHeader title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

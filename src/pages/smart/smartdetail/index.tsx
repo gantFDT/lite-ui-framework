@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
 import { Anchor } from '@/components/common'
 import { SubMenu, Card, EditStatus, SwitchStatus, BlockHeader, Icon } from 'gantd'
-import { Avatar, Button, Tooltip, Radio,Modal } from 'antd'
+import { Avatar, Button, Tooltip, Radio, Modal } from 'antd'
 import { connect } from 'dva';
 import { Title } from '@/components/common';
 import FormSchema from '@/components/form/schema'
@@ -14,7 +14,7 @@ import { formSchema, formUISchema, getVisitData } from './schema'
 import { MiniArea, Pie } from '@/components/chart'
 import router from 'umi/router'
 
-const confirm=Modal.confirm
+const confirm = Modal.confirm
 const ids = Object.keys(formSchema.propertyType);
 const avatars = [
   'http://www.duoziwang.com/uploads/1512/1-1512291K2430-L.jpg',
@@ -30,16 +30,16 @@ const avatars = [
 ]
 const menuData = [
   {
-    name: '基本信息',
+    title: '基本信息',
     icon: 'user',
-    path: 'baseInfo',
+    key: 'baseInfo',
   },
   {
-    name: '社区',
+    title: '社区',
     icon: 'global',
-    path: 'community',
+    key: 'community',
   }
-].map(item => ({ ...item, key: item.path }));
+].map(item => ({ ...item, key: item.key }));
 
 interface AnchorListIF {
   id: string,
@@ -76,7 +76,7 @@ const Page = (props: any) => {
     MAIN_CONFIG, route, userId,
     dispatch,
     detail,
-    fetch, update,remove,
+    fetch, update, remove,
     removeLoading
   } = props;
 
@@ -92,13 +92,13 @@ const Page = (props: any) => {
     detailRef.current = detail
   }, [detail]);
 
-  const [selectedKey, setSelectedKey] = useState(menuData[0].path)
+  const [selectedKey, setSelectedKey] = useState(menuData[0].key)
 
   const formRef = useRef(null)
   const detailRef = useRef(null)
 
-  const onSelectedChange = (path: string, eventKey: string) => {
-    setSelectedKey(eventKey);
+  const onSelectedChange = (key: string, item: object) => {
+    setSelectedKey(key);
   }
   async function onSaveAll() {
     const { errors, values } = await formRef['current'].validateForm()
@@ -164,6 +164,13 @@ const Page = (props: any) => {
     return anchorList;
   }, [data, anchorList])
 
+  //单个字段编辑
+  const onItemSave = useCallback((key,value,cb)=>{
+    key = key.split('.')[1]
+    update({ id: parseInt(id), [key]:value }, cb())
+  },[data,id])
+
+  //删除
   const handleremove = useCallback(() => {
     confirm({
       title: `${tr('提示')}?`,
@@ -188,7 +195,7 @@ const Page = (props: any) => {
       },
       onCancel() { },
     });
-  }, [id,removeLoading])
+  }, [id, removeLoading])
 
   return <Card title={<>
     <span className="marginh5"><Icon type="form" /></span>
@@ -226,7 +233,7 @@ const Page = (props: any) => {
               }
                 bottomLine
                 extra={<>
-                {edit === EditStatus.EDIT && <Tooltip title={tr("保存")}>
+                  {edit === EditStatus.EDIT && <Tooltip title={tr("保存")}>
                     <Button size="small" icon="save"
                       // disabled={itemEdit != EditStatus.EDIT}
                       className="marginh5"
@@ -247,7 +254,7 @@ const Page = (props: any) => {
                       onClick={() => setEdit(EditStatus.CANCEL)}
                     />
                   </Tooltip>}
-                  
+
                 </>}
               />
               <FormSchema
@@ -258,7 +265,7 @@ const Page = (props: any) => {
                 schema={formSchema}
                 uiSchema={formUISchema}
                 titleConfig={titleConfig}
-              // onSave={onItemSave}
+                onSave={onItemSave}
               />
               <div style={{ padding: 10 }}><Button type='danger' style={{ width: '100%' }} onClick={handleremove}>{tr('删除')}</Button></div>
             </>
