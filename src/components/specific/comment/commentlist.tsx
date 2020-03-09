@@ -7,7 +7,7 @@ import {
 	modifyThumbUpApi, modifyThumbDownApi
 } from './service'
 import CommentItem, { Item } from './commentItem'
-import { ResizableModal, ResizableProvider } from '@/components/common/modal'
+import { ResizableModal, ResizableProvider } from 'modal-g'
 import CardList from '@/components/list/cardlist'
 import { findIndex } from 'lodash'
 import styles from './index.less'

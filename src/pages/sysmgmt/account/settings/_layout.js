@@ -6,7 +6,6 @@ import { Avatar } from 'antd';
 import Link from 'umi/link'
 import styles from './style.less';
 import { getImageById, getContentHeight } from '@/utils/utils';
-import { UpdateRouteName } from '@/components/compose'
 import EditPwdView from './components/EditPwd';
 import PersonalView from './components/Personal';
 import UIConfig from './components/UIConfig';
