@@ -3,7 +3,7 @@ import { Tag, Row, Col, Empty } from 'antd'
 import _ from 'lodash'
 import { Filter, LocalFilter } from '../../interface'
 import styles from './index.less'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 
 interface PanelProps {
   filterType: 'system' | 'custom' // 筛选器类型
@@ -40,7 +40,7 @@ export default (props: PanelProps) => {
   return (
     <>
       <div className={styles.panel}>
-        <BlockHeader
+        <Header
           title={title}
           type="none"
           extra={extra}

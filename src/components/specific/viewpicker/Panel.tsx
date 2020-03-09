@@ -3,7 +3,7 @@ import { Icon, Tag, Tooltip, Popconfirm, Empty } from 'antd'
 import _ from 'lodash'
 import styles from './index.less'
 import { UpdateViewProps, ViewType, DefaultView } from './index'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 interface PanelProps {
   viewId?: string // 当前视图id
   viewType: ViewType// 视图类型
@@ -71,7 +71,7 @@ export default (props: PanelProps) => {
 
   return (
     <div className={styles.panel}>
-      <BlockHeader title={title} type="none" extra={extra} />
+      <Header title={title} type="none" extra={extra} />
       <ul className={styles.content}>
         {views.length === 0 && (<Empty
           image={Empty.PRESENTED_IMAGE_SIMPLE}

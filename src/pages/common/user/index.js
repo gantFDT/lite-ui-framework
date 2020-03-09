@@ -3,7 +3,7 @@ import { Avatar, Row, Col, Form, Icon, Tooltip,Button } from 'antd';
 import { connect } from 'dva'
 import router from 'umi/router'
 import classnames from 'classnames'
-import { ProfileCard, BlockHeader, Card } from 'gantd'
+import { ProfileCard, Header, Card } from 'gantd'
 import Link from 'umi/link'
 import { getContentHeight } from '@/utils/utils'
 import { ContactButtonGroup } from '@/components/common'
@@ -90,7 +90,7 @@ const Page = (props) => {
     }
   ] : []
   return (<Card bodyStyle={{ padding: 0, height: minHeight }}>
-    <BlockHeader
+    <Header
       style={{ borderBottom: '1px solid rgb(0,0,0,0.1)', height: 'auto', marginBottom: '0px' }}
       title={
         <><Icon type="user" /> {tr('用户详情')}</>

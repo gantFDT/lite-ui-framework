@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useReducer, useEffect, useRef, useState } from 'react';
 import { connect } from 'dva';
 import { Button, Tooltip, Spin } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import UpdateTime from '@/components/common/updatetime'
 import Chart from './chart'
 import { SaveAsViewModal, SaveViewModal, ChartConfigModal } from './modal'
@@ -230,7 +230,7 @@ function SmartChart(props: Props): any {
     return headerRight
   }, [activeView, headerRight])
   return <div className={`${styles.smartChart} ${wrapperStyles['view-picker-wrapper']}`} style={{ height }} ref={divRef}   >
-    <BlockHeader
+    <Header
       type=""
       size="big"
       title={ViewConfig}

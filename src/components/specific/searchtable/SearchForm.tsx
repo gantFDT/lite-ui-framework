@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo, Dispatch } from 'react'
 import { Form, Col, Row, Button, Tooltip, Drawer,Icon } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import { connect } from 'dva'
 import classnames from 'classnames'
 import { debounce } from 'lodash'
@@ -186,7 +186,7 @@ function SearchForm(props: SearchFormProps) {
       blocks.map((block, idx) => {
         return (
           <div key={block || idx}>
-            {block && filterDisplay !== 'tile' && <BlockHeader bottomLine title={block} />}
+            {block && filterDisplay !== 'tile' && <Header bottomLine title={block} />}
             <Form layout='horizontal' style={{ marginTop: !block && filterDisplay !== 'tile' ? 15 : 0 }} labelCol={{ span: 6 }} wrapperCol={{ span: 16, offset: 1 }}>
               <Row gutter={24} >
                 {
@@ -223,7 +223,7 @@ function SearchForm(props: SearchFormProps) {
         <div className={styles.searchContainer} >
           <div className={styles.searchTool} >
             <div className={styles.searchTips} >
-              <BlockHeader size="big" bottomLine={false} title={title} />
+              <Header size="big" bottomLine={false} title={title} />
             </div>
             <div className={styles.searchRest} >
               <Tooltip title={tr(`重置`)}>

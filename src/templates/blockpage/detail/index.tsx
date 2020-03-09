@@ -1,7 +1,7 @@
 import React, { useRef, useCallback, useMemo } from 'react';
 import { SchemaForm } from 'gantd';
 import { Button } from 'antd';
-import { BlockHeader } from 'gantd';
+import { Header } from 'gantd';
 import { Title } from '@/components/common';
 
 const DetailContent = (props: any): React.ReactElement => {
@@ -22,7 +22,7 @@ const DetailContent = (props: any): React.ReactElement => {
     }, [values, onSubmit])
 
     return <>
-        <BlockHeader
+        <Header
 
             title={<Title title={tr(values.categoryName)} showShortLine={true} showSplitLine={true} />}
             extra={<>

@@ -9,7 +9,7 @@ import { Dispatch } from 'redux';
 import { IStateType } from './model';
 import { FormComponentProps } from 'antd/es/form';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 const { UserName, Password, Submit } = LoginComponents;
 import { setLocale, getLocale } from 'umi/locale'
 import Link from 'umi/link'
@@ -253,7 +253,7 @@ class Login extends Component<LoginProps, LoginState> {
                   }
                 </div>
 
-                <BlockHeader title={tr('登录')} bottomLine={false} />
+                <Header title={tr('登录')} bottomLine={false} />
                 {status === 'error' &&
                   loginType === 'account' &&
                   !submitting &&

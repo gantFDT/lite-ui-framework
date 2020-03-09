@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState, useRef, useMemo, useLayoutEffect } from 'react'
 import { Spin, Pagination } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import styles from './styles.less'
 
 // 分页相关
@@ -157,7 +157,7 @@ function CardList(props: CardListProps) {
 
   return <div>
     {
-      (title || headerLeft || headerRight) && <BlockHeader
+      (title || headerLeft || headerRight) && <Header
         title={title}
         {...headerProps}
         beforeExtra={headerLeft}

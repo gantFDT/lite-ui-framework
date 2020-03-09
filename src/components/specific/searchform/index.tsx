@@ -1,5 +1,5 @@
 import React, { ReactNode, useRef, useState, useCallback, useEffect, useMemo, KeyboardEvent } from 'react'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import _ from 'lodash'
 import ReactResizeDetector from 'react-resize-detector'
 import { UISchema } from 'schema-form-g'
@@ -172,7 +172,7 @@ export default React.forwardRef((props: SearchFormProps, ref: any) => {
       tabIndex={0}
     >
       <ReactResizeDetector handleWidth handleHeight onResize={onResize}>
-        <BlockHeader
+        <Header
           type=''
           title={title}
           size='big'

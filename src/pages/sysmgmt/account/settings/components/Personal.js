@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button, Popconfirm, notification, PageHeader, Modal, Progress } from 'antd';
-import { Input, BlockHeader, EditStatus } from 'gantd';
+import { Input, Header, EditStatus } from 'gantd';
 import { connect } from 'dva';
 import styles from './personal.less';
 
@@ -308,7 +308,7 @@ class AccountSettingsPersonal extends Component {
     return (
       <div className={styles.baseView}>
         <div className={styles.left}>
-          <BlockHeader
+          <Header
             // style={{ padding: '20px 0' }}
             extra={
               showUpdateSelfInfo && (this.state.showEditButton ? (

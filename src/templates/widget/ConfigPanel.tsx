@@ -1,6 +1,6 @@
 import React, { useEffect,useState,useRef } from 'react';
 import {  Form, Input, Radio,  Icon as IconAntd, Row, Col } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import { connect } from 'dva';
 import styles from './index.less'
 import classnames from 'classnames'
@@ -151,7 +151,7 @@ const Page = (props: any) => {
             </Col>
             <Col span={12} style={{ height: '100%', padding: '10px' }}>
                 {(activeIndex || activeIndex == 0) && !_.isEmpty(list) && <Form layout="vertical" style={{ width: '100%' }} ref={thisRef}>
-                    <BlockHeader title="信息" type='num' num={1} bottomLine={false} />
+                    <Header title="信息" type='num' num={1} bottomLine={false} />
 
                     <Form.Item {...formItemLayout} label={tr('标题')}>
                         {getFieldDecorator('title', {
@@ -173,7 +173,7 @@ const Page = (props: any) => {
                             <TextArea placeholder={tr('请输入内容')} autoSize={{ minRows: 2, maxRows: 6 }} onChange={(e)=>onChange('content',e)} />
                         )}
                     </Form.Item>
-                    <BlockHeader title={tr("链接")} type='num' num={2} bottomLine={false} />
+                    <Header title={tr("链接")} type='num' num={2} bottomLine={false} />
                     <Form.Item {...formItemLayout} label={tr('链接地址')}>
                         {getFieldDecorator('url', {
                             rules: [{
@@ -199,7 +199,7 @@ const Page = (props: any) => {
                             </Radio.Group>
                         )}
                     </Form.Item>
-                    <BlockHeader title={tr("文字布局")} type='num' num={3} bottomLine={false} />
+                    <Header title={tr("文字布局")} type='num' num={3} bottomLine={false} />
                     <Form.Item {...formItemLayout} label={tr('横向')} >
                         {getFieldDecorator('layoutH', {
                             rules: [{
@@ -229,7 +229,7 @@ const Page = (props: any) => {
                         )}
                     </Form.Item>
 
-                    <BlockHeader title={tr("文字颜色")} type='num' num={4} bottomLine={false} />
+                    <Header title={tr("文字颜色")} type='num' num={4} bottomLine={false} />
                     <Form.Item {...formItemLayout} >
                         {getFieldDecorator('colorMode', {
                             rules: [{

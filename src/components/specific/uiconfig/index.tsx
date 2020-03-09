@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Form, Button, Switch, Tabs, Icon, Radio, Row, Col, Progress, Input, InputNumber } from 'antd';
-import { BlockHeader, ColorPicker, Icon as GantIcon } from 'gantd';
+import { Header, ColorPicker, Icon as GantIcon } from 'gantd';
 import { merge } from 'lodash';
 // import PictureWall from './PictureWall';
 import { cssVar2camel } from '@/utils/utils';
@@ -125,7 +125,7 @@ const Page = (props: any) => {
               >
                 <div style={{ height }} className={styles.fixheight}>
 
-                  <BlockHeader title={
+                  <Header title={
                     < span className="primary-color">
                       <Icon type="desktop" className="marginhr5" />
                       {tr('基础')}
@@ -140,7 +140,7 @@ const Page = (props: any) => {
                       <ColorPicker />
                     )}
                   </Form.Item>
-                  <BlockHeader title={
+                  <Header title={
                     < span className="primary-color">
                       <Icon type="layout" className="marginhr5" />
                       {tr('主菜单')}
@@ -253,7 +253,7 @@ const Page = (props: any) => {
                     )}
                   </Form.Item>
 
-                  <BlockHeader title={
+                  <Header title={
                     < span className="primary-color">
                       <Icon type="layout" className="marginhr5" />
                       {tr('头部设置')}
@@ -339,7 +339,7 @@ const Page = (props: any) => {
                 key="3"
               >
                 <div style={{ height }} className={styles.fixheight}>
-                  <BlockHeader
+                  <Header
                     title={
                       < span className="primary-color">
                         <Icon type="table" className="marginhr5" />
@@ -372,7 +372,7 @@ const Page = (props: any) => {
                 key="4"
               >
                 <div style={{ height }} className={styles.fixheight}>
-                  <BlockHeader title={
+                  <Header title={
                     < span className="primary-color">
                       <Icon type="highlight" className="marginhr5" />
                       {tr('水印')}

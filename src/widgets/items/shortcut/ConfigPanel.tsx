@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Input, Radio, TreeSelect, message } from 'antd'
-import { BlockHeader, Icon } from 'gantd'
+import { Header, Icon } from 'gantd'
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { connect } from 'dva';
@@ -129,7 +129,7 @@ class LogoBandConfig extends Component {
         } = this.props.form;
 
         return (<>
-            <BlockHeader title={tr("快捷方式")} type='num' num={1} bottomLine={false} />
+            <Header title={tr("快捷方式")} type='num' num={1} bottomLine={false} />
             {!_.isEmpty(shortcut) && <MySortableContainer onSortEnd={this.onSortEnd} helperClass={styles.sortableHelper} useDragHandle>
                 {shortcut.map((value, index) => (
                     <SortableItem key={`item-${value.id}`} index={index} value={value} onDelete={this.onDelete.bind(this)} />
@@ -150,7 +150,7 @@ class LogoBandConfig extends Component {
                 treeData={menuData}
             >
             </TreeSelect>
-            {/* <BlockHeader title="布局" type='num' num={2} bottomLine={false} />
+            {/* <Header title="布局" type='num' num={2} bottomLine={false} />
             <Radio.Group defaultValue="3" value={columns} buttonStyle="solid" onChange={this.radioChange}>
                 <Radio value="1">1列</Radio>
                 <Radio value="2">2列</Radio>

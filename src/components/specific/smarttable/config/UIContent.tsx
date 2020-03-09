@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react'
 import { Switch, Radio } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import { getType } from '@/utils/utils'
 import Sortable from '../sortable'
 import { generColumns } from '../fieldgenerator'
@@ -92,27 +92,27 @@ function UIContent(props: UIContentProps) {
               switch (K) {
                 case 'wrap':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('单元格文字是否折行')} />
+                    <Header type='num' num={I + 1} title={tr('单元格文字是否折行')} />
                     <Switch checked={wrap} disabled={hasFixed} onChange={handlerChange.bind(null, 'wrap')} checkedChildren={tr('折行')} unCheckedChildren={tr('不折行')} />
                   </>
                 case 'isZebra':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('是否显示斑马线')} />
+                    <Header type='num' num={I + 1} title={tr('是否显示斑马线')} />
                     <Switch checked={isZebra} onChange={handlerChange.bind(null, 'isZebra')} checkedChildren={tr('是')} unCheckedChildren={tr('否')} />
                   </>
                 case 'bordered':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('是否显示列边框')} />
+                    <Header type='num' num={I + 1} title={tr('是否显示列边框')} />
                     <Switch checked={bordered} onChange={handlerChange.bind(null, 'bordered')} checkedChildren={tr('是')} unCheckedChildren={tr('否')} />
                   </>
                 case 'clickable':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('点击行选中')} />
+                    <Header type='num' num={I + 1} title={tr('点击行选中')} />
                     <Switch checked={clickable} onChange={handlerChange.bind(null, 'clickable')} checkedChildren={tr('是')} unCheckedChildren={tr('否')} />
                   </>
                 case 'footerDirection':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('分页条位置')} />
+                    <Header type='num' num={I + 1} title={tr('分页条位置')} />
                     <Radio.Group
                       options={[
                         { label: tr('左下'), value: 'row-reverse' },
@@ -124,7 +124,7 @@ function UIContent(props: UIContentProps) {
                   </>
                 case 'heightMode':
                   return <>
-                    <BlockHeader type='num' num={I + 1} title={tr('表格高度策略')} />
+                    <Header type='num' num={I + 1} title={tr('表格高度策略')} />
                     <Radio.Group
                       options={[
                         { label: tr('按内容扩充高度'), value: 'auto' },

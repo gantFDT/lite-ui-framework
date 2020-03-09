@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback } from 'react'
 import { Icon, Tooltip, List, Checkbox, Pagination, Row, Col, Empty } from 'antd'
-import { BlockHeader } from 'gantd'
+import { Header } from 'gantd'
 import classnames from 'classnames'
 import _ from 'lodash'
 import { ContextMenuTrigger } from 'react-contextmenu'
@@ -131,7 +131,7 @@ export default function ListShow(props: ListShowProps) {
 
   return (
     <>
-      <BlockHeader
+      <Header
         type=''
         size='big'
         title={title}

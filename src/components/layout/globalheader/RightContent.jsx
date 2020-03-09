@@ -9,7 +9,7 @@ import TaskBar from './Taskbar';
 import { connect } from 'dva';
 import router from 'umi/router'
 import Link from 'umi/link'
-import { Icon as GantIcon, BlockHeader } from 'gantd'
+import { Icon as GantIcon, Header } from 'gantd'
 import { Icon, Tooltip, Popover, Tag, Menu, Dropdown } from 'antd'
 import UIConfig from './UIConfig'
 import { setLocale, getLocale } from 'umi/locale'
@@ -22,15 +22,15 @@ const { EXAMPLE } = process.env
 
 const shortcutList = () => {
   return <div style={{ margin: '-10px' }}><ul className={styles.shortcutList} >
-    <BlockHeader title={"Ctrl" + tr("类")} type="num" num='1' />
+    <Header title={"Ctrl" + tr("类")} type="num" num='1' />
     <li> <Tag>Ctrl+B</Tag> {tr("主菜单的收缩")}</li>
-    <BlockHeader title={"Alt" + tr("类")} type="num" num='2' />
+    <Header title={"Alt" + tr("类")} type="num" num='2' />
     {/* <li><Tag>Alt+M </Tag>{tr("打开消息侧边栏" )}(message)</li> */}
     {/* <li> <Tag>Alt+S</Tag> {tr("打开工作空间抽屉" )}(space)</li> */}
     <li><Tag>Alt+H</Tag> {tr("回到首页")}</li>
     {/* <li><Tag>Alt +T</Tag> {tr("打开待办任务页面" )}（todolist）</li> */}
     <li><Tag>Alt +↑</Tag>{tr("回到顶部")}</li>
-    <BlockHeader title={"Esc" + tr("类")} type="num" num='3' />
+    <Header title={"Esc" + tr("类")} type="num" num='3' />
     <li><Tag>Esc</Tag>{tr("关闭模态窗口")}</li>
   </ul>
   </div>

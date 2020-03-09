@@ -1,6 +1,6 @@
 import React, { memo, useState, useCallback } from 'react';
 import { Radio } from 'antd';
-import { BlockHeader } from 'gantd';
+import { Header } from 'gantd';
 import { getType } from '@/utils/utils';
 import { UiConfigProps } from '../../../interface'
 
@@ -20,7 +20,7 @@ function UiContent(props: UiContentProps) {
   }, [])
 
   return <>
-    <BlockHeader type='num' num='1' title={tr('查询方式')} />
+    <Header type='num' num='1' title={tr('查询方式')} />
     <Radio.Group
       options={[
         { label: tr('自动应用'), value: 'auto' },
@@ -29,7 +29,7 @@ function UiContent(props: UiContentProps) {
       value={searchType}
       onChange={handleChange.bind(null, 'searchType')}
     />
-    {/* <BlockHeader type='num' num='2' title={tr('label对齐方式')} />
+    {/* <Header type='num' num='2' title={tr('label对齐方式')} />
         <Radio.Group
             options={[
                 { label: tr('左边'), value: 'left' },

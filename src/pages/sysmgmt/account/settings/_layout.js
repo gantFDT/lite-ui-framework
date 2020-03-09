@@ -1,7 +1,7 @@
 import router from 'umi/router';
 import React, { useState, useEffect, useMemo } from 'react';
 import { connect } from 'dva';
-import { SubMenu, Icon, Card, BlockHeader } from 'gantd';
+import { SubMenu, Icon, Card, Header } from 'gantd';
 import { Avatar } from 'antd';
 import Link from 'umi/link'
 import styles from './style.less';
@@ -142,7 +142,7 @@ const AccountSettings = props => {
           }
         >
           <div>
-            <BlockHeader title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+            <Header title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

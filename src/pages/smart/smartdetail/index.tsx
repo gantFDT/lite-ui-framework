@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
 import { Anchor } from '@/components/common'
-import { SubMenu, Card, EditStatus, SwitchStatus, BlockHeader, Icon } from 'gantd'
+import { SubMenu, Card, EditStatus, SwitchStatus, Header, Icon } from 'gantd'
 import { Avatar, Button, Tooltip, Radio, Modal } from 'antd'
 import { connect } from 'dva';
 import { Title } from '@/components/common';
@@ -225,7 +225,7 @@ const Page = (props: any) => {
           onClick={(e) => { e.preventDefault() }}
           content={
             <>
-              <BlockHeader title={
+              <Header title={
                 <>
                   <span className="marginh5"><Icon type="user" /></span>
                   {tr('基本信息')}
@@ -273,7 +273,7 @@ const Page = (props: any) => {
         />
         }
         {selectedKey == 'community' && <>
-          <BlockHeader title={
+          <Header title={
             <>
               <span className="marginh5"><Icon type="global" /></span>
               {tr('社区')}
@@ -282,7 +282,7 @@ const Page = (props: any) => {
             bottomLine
           />
           <div style={{ padding: 10 }}>
-            <BlockHeader title={
+            <Header title={
               <>
                 {tr('受欢迎指数')}
               </>
@@ -301,7 +301,7 @@ const Page = (props: any) => {
           </div>
           <div style={{ padding: 10 }}>
 
-            <BlockHeader title={
+            <Header title={
               <>
                 {tr('代码提交频度')}
               </>

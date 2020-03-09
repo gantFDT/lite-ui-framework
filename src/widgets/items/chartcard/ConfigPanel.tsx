@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Button, Input, Select, Switch, Form, Radio } from 'antd'
-import { BlockHeader, Icon, IconSelector } from 'gantd'
+import { Header, Icon, IconSelector } from 'gantd'
 
 const { Option } = Select;
 const formItemLayout = {
@@ -43,7 +43,7 @@ const Page = (props: any) => {
   }, [])
 
   return (<>
-    {/* <BlockHeader title={tr('标题')} type='num' num={1} bottomLine={false} /> */}
+    {/* <Header title={tr('标题')} type='num' num={1} bottomLine={false} /> */}
     <Form layout='vertical' onSubmit={handleSubmit}>
       <Form.Item label={tr('业务统计类型')} {...formItemLayout} style={{ marginTop: '-3px' }}>
         {getFieldDecorator('type', {
