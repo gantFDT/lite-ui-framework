@@ -10,6 +10,4 @@ export { default as ImageUpload } from './upload'
 
 export { default as FileUpload } from './fileupload'
 
-export { default as LanguageInput } from './languageinput'
-
 export { default as RichTextEditor } from "./richtexteditor"
