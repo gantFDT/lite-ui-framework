@@ -83,7 +83,7 @@ export default function Form(props: FormProps) {
     }
   }, [uiSchemaProps])
 
-  const customFileds = useMemo(() => {
+  const customFields = useMemo(() => {
     let res: any[] = customComponents.map(({ name, component }) => {
       return ({
         type: name,
@@ -100,7 +100,7 @@ export default function Form(props: FormProps) {
         wrappedComponentRef={formRef}
         uiSchema={uiSchema as any}
         onChange={onValuesChange}
-        customFileds={customFileds}
+        customFields={customFields}
         {...extraProps}
       />
     </div>

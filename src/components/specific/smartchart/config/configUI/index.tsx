@@ -70,10 +70,11 @@ export default function ConfigUI(props: ConfigUIProps) {
 			"ui:labelCol": 24,
 			"ui:wrapperCol": 24,
 		}}
-		customFileds={[{
+		customFields={[{
 			type: "RadioGroup",
 			component: RadioGroup
 		}]}
 		onChange={changeUIConfig}
+		
 	/>
 }
