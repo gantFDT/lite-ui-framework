@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
 import { Anchor } from '@/components/common'
-import { SubMenu, Card, EditStatus, SwitchStatus, Header, Icon } from 'gantd'
+import { Submenu, Card, EditStatus, SwitchStatus, Header, Icon } from 'gantd'
 import { Avatar, Button, Tooltip, Radio, Modal } from 'antd'
 import { connect } from 'dva';
 import { Title } from '@/components/common';
@@ -201,7 +201,7 @@ const Page = (props: any) => {
     <span className="marginh5"><Icon type="form" /></span>
     {tr('智能详情')}
   </>} bodyStyle={{ padding: 0 }}>
-    <SubMenu
+    <Submenu
       menuData={menuData}
       selectedKey={selectedKey}
       width={180}
@@ -315,7 +315,7 @@ const Page = (props: any) => {
         </>}
       </div>
 
-    </SubMenu>
+    </Submenu>
   </Card>
 
 

@@ -1,5 +1,5 @@
 import { anchorListProps } from '@/components/common/anchor';
-import { Schema } from 'schema-form-g';
+import { Schema } from 'gantd/lib/schema-form';
 
 const formSchema: Schema = {
     type: "object",

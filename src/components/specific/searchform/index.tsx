@@ -2,7 +2,7 @@ import React, { ReactNode, useRef, useState, useCallback, useEffect, useMemo, Ke
 import { Header } from 'gantd'
 import _ from 'lodash'
 import ReactResizeDetector from 'react-resize-detector'
-import { UISchema } from 'schema-form-g'
+import { UISchema } from 'gantd/lib/schema-form'
 import classnames from 'classnames'
 import { GetFieldDecoratorOptions } from 'antd/lib/form/Form.d'
 import { Form, Filter } from './subcomponents'

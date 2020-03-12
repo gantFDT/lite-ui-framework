@@ -1,7 +1,7 @@
 import { ImageUpload, FileUpload, CodeList } from '../index'
 import { UserSelector, RoleSelector, GroupSelector, UserGroupSelector } from '@/components/specific'
 import SelectEdit from '../selectedit'
-import { setFields } from 'schema-form-g/lib/maps'
+import { setFields } from 'gantd/lib/schema-form'
 
 export enum Fields {
     ImageUpload = "ImageUpload",

@@ -17,7 +17,7 @@ const extraBabelPlugins = [
     "import",
     {
       "libraryName": "gantd",
-      "libraryDirectory": "packages/gantd/lib",
+      "libraryDirectory": "lib",
       "style": "css"
     }
   ]

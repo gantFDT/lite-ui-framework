@@ -3,7 +3,7 @@ import { Tabs, Radio, Tooltip, Button, Icon } from 'antd';
 import _ from 'lodash';
 import arrayMove from 'array-move';
 import { deepCopy4JSON } from '@/utils/utils';
-import { ResizableModal, ResizableProvider } from 'modal-g';
+import { ResizableModal, ResizableProvider } from 'gantd/lib/modal';
 import { UiContent, SortableList, SaveAsModal } from './components';
 import { SupportFilterField, SupportOrderField, View, SearchField, OrderField, CompatibilityMode } from '../../interface';
 import { UiConfigProps } from '../../interface';

@@ -1,7 +1,7 @@
 import router from 'umi/router';
 import React, { useState, useEffect, useMemo } from 'react';
 import { connect } from 'dva';
-import { SubMenu, Icon, Card, Header } from 'gantd';
+import { Submenu, Icon, Card, Header } from 'gantd';
 import { Avatar } from 'antd';
 import Link from 'umi/link'
 import styles from './style.less';
@@ -121,7 +121,7 @@ const AccountSettings = props => {
   return (
     <>
       {
-        <SubMenu
+        <Submenu
           menuData={menuData}
           selectedKey={selectKey}
           mode={mode}
@@ -146,7 +146,7 @@ const AccountSettings = props => {
               {renderChildren()}
             </div>
           </div>
-        </SubMenu>
+        </Submenu>
       }
     </>
   );

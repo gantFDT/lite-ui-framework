@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useMemo, useContext, memo, useEffect } from 'react';
 import { SchemaForm } from 'gantd';
-import { ResizableModal, ResizableProvider, ModalContext } from 'modal-g';
-import { UISchema, TitleSchema, Schema, Props as SchemaProps } from 'schema-form-g';
+import { ResizableModal, ResizableProvider, ModalContext } from 'gantd/lib/modal';
+import { UISchema, TitleSchema, Schema, Props as SchemaProps } from 'gantd/lib/schema-form';
 import { spanCalculate } from '@/utils/utils';
 
 const defaultSpan = 24; //默认栅格占位格数

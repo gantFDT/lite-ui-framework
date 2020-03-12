@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import  { UISchema } from 'schema-form-g'
+import  { UISchema } from 'gantd/lib/schema-form'
 import { SchemaForm } from 'gantd'
 import { isEmpty as _isEmpty } from 'lodash'
 import { CustomComponent } from '../../interface'
