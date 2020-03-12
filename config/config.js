@@ -11,7 +11,19 @@ const { pwa, MAIN_CONFIG: { primaryColor } } = defaultSettings; // preview.pro.a
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
 
-const extraBabelPlugins = ['dynamic-import-node']
+const extraBabelPlugins = [
+  'dynamic-import-node',
+  [
+    "import",
+    {
+      "libraryName": "gantd",
+      "libraryDirectory": "packages/gantd/lib",
+      "style": "css"
+    }
+  ]
+]
+
+
 // const gantdVersionMatch = pkg.dependencies.gantd.match(/\d+/g)
 // if (gantdVersionMatch && gantdVersionMatch.length) {
 //   const version = gantdVersionMatch.slice(-1)[0]
@@ -156,7 +168,7 @@ const uglifyJSOptions =
       },
     }
     : {};
-const routes =  [] 
+const routes = []
 
 // const routes = EXAMPLE === 'NONE' ? [] : [demoRouter.routes]
 export default {
@@ -259,7 +271,7 @@ export default {
   ],
   extraBabelPlugins,
   publicPath: prefixPublicPath,
-  base:prefixPublicPath,
+  base: prefixPublicPath,
   chainWebpack: webpackPlugin,
   // proxy: {
   //   '/api': {
