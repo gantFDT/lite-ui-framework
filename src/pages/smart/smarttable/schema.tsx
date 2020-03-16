@@ -76,7 +76,7 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
     title: tr('性别'),
     componentType: 'Selector',
     props: {
-      defaultList: sexs,
+      dataSource: sexs,
       valueProp: 'value',
       labelProp: 'name',
     },
@@ -155,9 +155,9 @@ export const smartTableSchema = [
       const view = Math.ceil(Math.random() * 10000);
       return <>
         {view > 8000 ? <Trend flag="up">
-          <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : '#000' }}> {view}</span >
+          <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : 'var(--text-color)' }}> {view}</span >
         </Trend> : <Trend flag="down">
-            <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : '#000' }}> {view}</span >
+            <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : 'var(--text-color)' }}> {view}</span >
           </Trend>}
       </>
     }
@@ -234,7 +234,7 @@ export const modalSchema = {
       type: "string",
       componentType: "Selector",
       props: {
-        defaultList: sexs,
+        dataSource: sexs,
         valueProp: 'value',
         labelProp: 'name',
       },

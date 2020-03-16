@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { formatMessage } from 'umi-plugin-react/locale';
 import HeaderSearch from '@/components/layout/headersearch';
-import SelectLang from '@/components/common/selectlang';
 import styles from './index.less';
 import Notification from './notification';
 import Avatar from './AvatarDropdown';
@@ -263,10 +262,7 @@ class GlobalHeaderRight extends Component {
               <Icon type="ellipsis" />
             </a>
           </Dropdown>
-
-
           <Avatar />
-          {/* <SelectLang className={styles.action} /> */}
         </div>
 
         <UIConfig {...UIConfigProps} />

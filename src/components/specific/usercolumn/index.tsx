@@ -4,7 +4,6 @@ import { ProfileCard } from 'gantd'
 import { getUserInfo } from '@/utils/user'
 import { Avatar } from 'antd'
 import classnames from 'classnames'
-import ContactButtonGroup from '@/components/common/contactbuttongroup';
 import styles from './styles.less';
 ;
 
@@ -59,7 +58,6 @@ const UserColumn = (props: UserColumnProps) => {
         wrapperCol: { span: 16 },
       }}
       placement="right"
-      extraBottom={showContactBtns && <ContactButtonGroup userInfo={userInfo} modalZindex={1031} />}
       onAvatarClick={() => { router.push(`/common/user/${userInfo.id}`) }}
     >
       <a href="javascript:void(0)">

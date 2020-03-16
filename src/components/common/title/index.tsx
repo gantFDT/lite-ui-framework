@@ -45,24 +45,6 @@ export default withRouter(function Title(props: TitleProps) {
     return empty
   }, [pathname, menu])
 
-  // const getDocs = async () => {
-  //   try {
-  //     let res = await findHelpTopicByPathApi({
-  //       topicPath: path,
-  //       language: 'zh_CN'
-  //     })
-  //     if (res.length > 0) {
-  //       setShowQuetion(true)
-  //     }
-  //   } catch (error) {
-  //     console.log('getDocs error\n', error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   path && getDocs()
-  // }, [path])
-
   return (
     <div
       className={classnames(styles.title, {

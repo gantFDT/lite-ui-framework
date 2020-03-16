@@ -1,7 +1,5 @@
 export default {
   "pwa": false,
-  // iconfontUrl: '//at.alicdn.com/t/font_1252237_z80y83696r9.js', // 公共图标库
-  // iconWareHouse: '//at.alicdn.com/t/font_1252237_z80y83696r9.js', // 图标仓库，由项目组自身维护
   "BASE_CONFIG": {
     "favicon": "assets/images/logo.png",
     "logoImage": "assets/images/logo.png",

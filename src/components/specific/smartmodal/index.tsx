@@ -1,8 +1,8 @@
 import React, { useCallback, useRef, useMemo, useContext, memo, useEffect } from 'react';
-import { SchemaForm } from 'gantd';
-import { ResizableModal, ResizableProvider, ModalContext } from 'gantd/lib/modal';
+import { SchemaForm, Modal } from 'gantd';
 import { UISchema, TitleSchema, Schema, Props as SchemaProps } from 'gantd/lib/schema-form';
 import { spanCalculate } from '@/utils/utils';
+const { ResizableModal, ResizableProvider, ModalContext } = Modal;
 
 const defaultSpan = 24; //默认栅格占位格数
 const defaultValues = {}; //默认回填数据值
@@ -158,3 +158,4 @@ SmartModal.defaultProps = {
     formSchemaProps: {}
 }
 export default SmartModal;
+

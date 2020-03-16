@@ -25,20 +25,6 @@ function getModulePackageName(module) {
 }
 
 export default config => {
-
-  // config.plugin('webpack-theme-color-replacer').use(ThemeColorReplacer, [
-  //   {
-  //     fileName: 'css/theme-colors-[contenthash:8].css',
-  //     matchColors: ['var\\(\\-\\-'], // 主色系列
-  //     resolveCss(resultCss) { // 最终生成的style文件， rgb|rgba 格式替换
-  //       console.log('resultCss', resultCss)
-  //       fs.writeFileSync('./styles.css',resultCss);
-  //       return resultCss;
-  //     },
-  //     isJsUgly: process.env.NODE_ENV !== 'development'
-  //   },
-  // ]);
-
   config.optimization
     .runtimeChunk(false) // share the same chunks across different modules
     .splitChunks({

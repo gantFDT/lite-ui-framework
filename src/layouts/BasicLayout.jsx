@@ -9,7 +9,6 @@ import pathToRegexp from 'path-to-regexp';
 import { get, filter, isEmpty, map } from 'lodash'
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import router from 'umi/router'
-import Authorized from '@/utils/Authorized';
 import { formatMessage, getLocale } from 'umi-plugin-react/locale';
 import { BasicLayout as ProLayoutComponents, RouteContext, GridContent } from '@ant-design/pro-layout';
 import WithKeyEvent from '@/components/common/withkeyevent';

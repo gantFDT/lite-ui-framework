@@ -9,5 +9,6 @@ export default {
 
   '--sider-menu-background': '#001529',
   '--sider-menu-text-color': '#fff',
+  
 
 }

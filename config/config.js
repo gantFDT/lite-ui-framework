@@ -24,15 +24,6 @@ const extraBabelPlugins = [
 ]
 
 
-// const gantdVersionMatch = pkg.dependencies.gantd.match(/\d+/g)
-// if (gantdVersionMatch && gantdVersionMatch.length) {
-//   const version = gantdVersionMatch.slice(-1)[0]
-//   if (version >= 37) {
-//     extraBabelPlugins.push(['import', require('gantd/babel-plugin-import-gantd-options')])
-//   }
-// }
-
-
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION, TEST, NODE_ENV, EXAMPLE } = process.env;
 
 

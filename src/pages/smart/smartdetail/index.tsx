@@ -165,10 +165,10 @@ const Page = (props: any) => {
   }, [data, anchorList])
 
   //单个字段编辑
-  const onItemSave = useCallback((key,value,cb)=>{
+  const onItemSave = useCallback((key, value, cb) => {
     key = key.split('.')[1]
-    update({ id: parseInt(id), [key]:value }, cb())
-  },[data,id])
+    update({ id: parseInt(id), [key]: value }, cb())
+  }, [data, id])
 
   //删除
   const handleremove = useCallback(() => {
@@ -197,15 +197,15 @@ const Page = (props: any) => {
     });
   }, [id, removeLoading])
 
-  return <Card title={<>
-    <span className="marginh5"><Icon type="form" /></span>
-    {tr('智能详情')}
-  </>} bodyStyle={{ padding: 0 }}>
+  return <Card
+    title={<><span className="marginh5"><Icon type="form" /></span>{tr('智能详情')}</>}
+    bodyStyle={{ padding: 0 }}>
     <Submenu
       menuData={menuData}
       selectedKey={selectedKey}
       width={180}
       onSelectedChange={onSelectedChange}
+      bordered={false}
       extra={
         <div id='menuExtra' style={{ padding: '10px', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', width: 'auto' }}>
           <div>
