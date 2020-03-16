@@ -27,7 +27,7 @@ export default {
   '--text-color-secondary': fade('#fff', .65),
   '--item-hover-bg': '#171F22',
   '--item-hover-color': '#0A53B0',
-  '--item-active-bg': 'rgba(128,128,128,0.1)',
+  '--item-active-bg': fade(blue[5], .4),
   '--layout-body-background': '#171717',
   '--background-color-base': '#262626',
   '--body-background': '#404041',

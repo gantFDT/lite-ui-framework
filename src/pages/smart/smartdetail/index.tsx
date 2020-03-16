@@ -223,8 +223,9 @@ const Page = (props: any) => {
           fixedTop={fixedHeader ? 40 : 0}
           anchorList={currentAnchorList}
           onClick={(e) => { e.preventDefault() }}
+          
           content={
-            <>
+            <div style={{borderRight:'1px solid rgba(128,128,128,0.2)'}}>
               <Header title={
                 <>
                   <span className="gant-margin-h-5"><Icon type="user" /></span>
@@ -268,7 +269,7 @@ const Page = (props: any) => {
                 onSave={onItemSave}
               />
               <div style={{ padding: 10 }}><Button type='danger' style={{ width: '100%' }} onClick={handleremove}>{tr('删除')}</Button></div>
-            </>
+            </div>
           }
         />
         }
