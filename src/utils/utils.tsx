@@ -2,34 +2,8 @@ import { get as _get } from 'lodash'
 import React, { ReactNode, useEffect, useCallback } from 'react'
 import { notification } from 'antd'
 
-export interface MainConfigProps {
-  headerHeight: number,
-  fullscreen: boolean,
-  showBreadcrumb: boolean
-}
 
-/* eslint no-useless-escape:0 import/prefer-default-export:0 */
-const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
-export function isUrl(path: string): boolean {
-  return reg.test(path);
-} // 给官方演示站点用，用于关闭真实开发环境不需要使用的特性
-
-export function isAntDesignProOrDev(): boolean {
-  const {
-    NODE_ENV
-  } = process.env;
-
-  if (ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site') {
-    return true;
-  }
-
-  if (NODE_ENV === 'development') {
-    return true;
-  }
-
-  return window.location.hostname === 'preview.pro.ant.design';
-}
-
+//不包含业务信息的公共utils
 /**
  * 判断ie版本
  */
@@ -59,7 +33,13 @@ export function IEVersion() {
     return 11; // IE11
   }
   return -1; // 不是ie浏览器
-
+}
+/**
+ * 判断是否为ie浏览器
+ */
+export function isIE() {
+  let ieVersion = IEVersion()
+  return ieVersion !== -1 && ieVersion !== 'edge'
 }
 
 // 获取cookie、
@@ -100,75 +80,6 @@ export function setCookie(name: string, value: string, time: any = '', path: str
   } else {
     document.cookie = name + "=" + escape(value)
   }
-}
-
-//获取用户身份
-export function getUserIdentity(): any {
-  // 从cookie中导入
-  let userIdentity = getCookie('userIdentity')
-  if (userIdentity) {
-    try {
-      userIdentity = JSON.parse(decodeURIComponent(userIdentity))
-    } catch {
-      // message.error('用户数据被恶意篡改')
-    }
-  }
-
-  return userIdentity
-}
-
-// 获取图片地址
-// export function getImageById(pictureId: string): string {
-//   const {
-//     userToken,
-//     userLoginName,
-//     userLanguage
-//   } = getUserIdentity();
-//   return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
-// }
-
-export function getImageById(pictureId: string) {
-  const domain = 'http://data.yiheyishun.com/'
-  const img = domain + '/' + pictureId;
-  return img
-}
-
-/**
- * 解析url
- * @param {string} urlToken 地址
- */
-export function resolveWithUser(urlToken: string): string {
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  let url = urlToken.startsWith('/api') ? urlToken : ('/api' + urlToken);
-  if (url.indexOf('?') != -1) {
-    url = `${url}&userLanguage=${userLanguage}`;
-  } else {
-    url = `${url}?userLanguage=${userLanguage}`;
-  }
-  url = `${url}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`;
-
-  // if (!Ext.isEmpty(gantang.state.SessionHolder.delegateUserLoginName)) {
-  //   url = url + '&delegateUserLoginName=' + gantang.state.SessionHolder.delegateUserLoginName;
-  // }
-  // return proxyTarget + url;
-  return url;
-}
-
-// 通过id获取图片地址
-export function getImageByPreviewId(previewId: string): string {
-  if (!previewId) return ``;
-  if (~previewId.indexOf('/')) return previewId;
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  const path = `/api/file/previewFile?id=${previewId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
-  return path
 }
 
 /**
@@ -291,57 +202,13 @@ export const isParamsEmpty = (value: object) => {
   return !entries.length || Object.entries(value).every(([key, value]) => value === undefined)
 };
 
-// 初始格式请求接口参数
-export const initParams = {
-  pageInfo: {
-    pageSize: 50,
-    beginIndex: 0
-  },
-  filterInfo: {
-    filterModel: true
-  }
-}
 
-// 格式化请求接口参数
-export const formatParams = ({
-  beginIndex,
-  pageSize,
-  ...restParams
-}: any = {}) => {
-  const fakeParams: any = {
-    filterInfo: {
-      filterModel: true,
-      ...restParams
-    }
-  };
-  if (beginIndex !== undefined) {
-    fakeParams.pageInfo = {
-      pageSize,
-      beginIndex
-    }
-  }
-  return fakeParams
-}
+
+
 
 export const compose: <T extends (param: K) => K, K>(...args: Array<T>) => T = (...func: any[]) => func.filter(fun => typeof fun === 'function').reduce((a, b) => (...args: any[]) => a(b(...args)), (args: any) => args)
 
-// 根据后端返回的icon字符串，得到iconfont可识别的id
-export const getRealIcon = (icon: string): string => icon ? icon.replace(/^.*(icon-\w+).*$/, '$1') : 'icon-file-text-o'
 
-
-// 返回第一级路径
-export const getRootPath = (path: string) => path && path.replace(/^(\/.*?)\/.*$/, '$1');
-export const getPathArr = (path: string = ''): Array<string> => path.match(/(\/\w+)/g) as Array<string>
-
-
-
-// 动态加载model
-export function importModel(m: any, cb: Function) {
-  const hasThisMdoel = _.find(window['g_app']._models, item => item.namespace == m.default.namespace)
-  if (hasThisMdoel) { return }
-  window['g_app'].model(m.default);
-  cb();
-}
 
 // 通过key,value查找树节点
 export function getTreeNode(Data: any[], childrenKey: string, key: string, value: any): any {
@@ -361,36 +228,7 @@ export function getTreeNode(Data: any[], childrenKey: string, key: string, value
   }
 }
 
-// 格式化组织数Data
-export function formatTreeData(Data: any[], childrenKey: string = 'children', {
-  title,
-  value = 'id',
-  key = 'id'
-}: any = {}, cb?: (V: any) => void) {
-  let Deep; let V; let L;
-  for (L = Data.length; L;) {
-    V = Data[--L];
-    // 兼容 TreeSelect 组件
-    if (title) {
-      V.title = V[title];
-      V.value = V[value];
-      V.key = V[key];
-    }
-    if (cb) {
-      cb(V)
-    }
-    if (V[childrenKey]) {
-      if (V[childrenKey].length)
-        Deep = formatTreeData(V[childrenKey], childrenKey, {
-          title,
-          value,
-          key
-        }, cb)
-      else
-        delete V[childrenKey]
-    }
-  }
-}
+
 
 // 扁平化tree取id数组
 export function fromTree2arr(Data: any[], childrenKey: string = 'children', field: string = 'id'): any[] {
@@ -470,6 +308,282 @@ export function getFileUnit(size: number | string): string {
   return `${res} ${unit}`
 }
 
+// 获取两个时间的间隔描述
+export function getTimeInterval(startTimeStr: string, endTimeStr: string): string {
+  const startTime: any = new Date(startTimeStr); // 开始时间
+  const endTime: any = new Date(endTimeStr); // 结束时间
+  let seconds: number | string = Math.floor((endTime - startTime) / 1000); // 秒数
+  let minutes: number | string = Math.floor((endTime - startTime) / 1000 / 60); // 分钟
+  let hours: number | string = Math.floor((endTime - startTime) / 1000 / 60 / 60); // 小时
+  let days: number | string = Math.floor((endTime - startTime) / 1000 / 60 / 60 / 24); // 天数
+  if (seconds < 60) {
+    return `<1${tr('分钟')}`
+  }
+  days = days ? (days + tr('天')) : ''
+  hours = hours ? (hours + tr('时')) : ''
+  minutes = minutes ? (minutes + tr('分')) : ''
+  seconds = seconds ? (seconds + tr('秒')) : ''
+  return days + hours + minutes + seconds
+}
+
+/**
+*向上递归冒泡找节点
+*
+* @param {object} target    //当前节点
+* @param {string} className //节点class
+* @returns  //找到的节点
+*/
+export const findDomParentNode = (target: object, className: string) => {
+  let result = null;
+  const bubble = (_target: object) => {
+    if (!_target) { return }
+    if (typeof _target['className'] !== 'object' && _target['className'].indexOf(className) >= 0) {
+      result = _target
+    } else {
+      _target = _target['parentElement'];
+      bubble(_target);
+    }
+  }
+  bubble(target);
+  return result;
+}
+
+/**
+*
+*前端性能分析
+* @returns 计算后的分析数据
+*/
+export const getPerformanceTiming = () => {
+  var performance = window.performance; if (!performance) { console.log('您的浏览器不支持performance属性'); return; }
+  var t = performance.timing;
+  var obj = {};
+  // 重定向耗时
+  obj['redirectTime'] = t.redirectEnd - t.redirectStart;
+  // DNS查询耗时
+  obj['lookupDomainTime'] = t.domainLookupEnd - t.domainLookupStart;
+  // TCP链接耗时
+  obj['connectTime'] = t.connectEnd - t.connectStart;
+  // HTTP请求耗时
+  obj['requestTime'] = t.responseEnd - t.responseStart;
+  // 解析dom树耗时
+  obj['domReadyTime'] = t.domComplete - t.domInteractive;
+  // 白屏时间耗时
+  obj['whiteTime'] = t.responseStart - t.navigationStart;
+  // DOMready时间
+  obj['domLoadTime'] = t.domContentLoadedEventEnd - t.navigationStart;
+  // 页面加载完成的时间 即：onload时间
+  obj['loadTime'] = t.loadEventEnd - t.navigationStart;
+  return obj;
+}
+
+// 类型继承
+export type ProtoExtends<T, U> = U & {
+  [K in Exclude<keyof T, keyof U>]: T[K]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//包含业务信息的utils
+
+export interface MainConfigProps {
+  headerHeight: number,
+  fullscreen: boolean,
+  showBreadcrumb: boolean
+}
+
+/* eslint no-useless-escape:0 import/prefer-default-export:0 */
+const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
+export function isUrl(path: string): boolean {
+  return reg.test(path);
+} // 给官方演示站点用，用于关闭真实开发环境不需要使用的特性
+
+export function isAntDesignProOrDev(): boolean {
+  const {
+    NODE_ENV
+  } = process.env;
+
+  if (ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site') {
+    return true;
+  }
+
+  if (NODE_ENV === 'development') {
+    return true;
+  }
+
+  return window.location.hostname === 'preview.pro.ant.design';
+}
+
+
+//获取用户身份
+export function getUserIdentity(): any {
+  // 从cookie中导入
+  let userIdentity = getCookie('userIdentity')
+  if (userIdentity) {
+    try {
+      userIdentity = JSON.parse(decodeURIComponent(userIdentity.replace(",}", "}")))
+    } catch {
+      // message.error('用户数据被恶意篡改')
+    }
+  }
+
+  return userIdentity
+}
+
+//删除用户身份
+export function deleteUserIdentity(): any {
+  delCookie('userIdentity')
+}
+
+// 获取图片地址
+export function getImageById(pictureId: string | number): string {
+  const {
+    userToken,
+    userLoginName,
+    userLanguage
+  } = getUserIdentity();
+  return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
+}
+
+
+/**
+ * 解析url
+ * @param {string} urlToken 地址
+ */
+export function resolveWithUser(urlToken: string): string {
+  const {
+    userToken,
+    userLoginName,
+    userLanguage
+  } = getUserIdentity();
+  let url = urlToken.startsWith('/api') ? urlToken : ('/api' + urlToken);
+  if (url.indexOf('?') != -1) {
+    url = `${url}&userLanguage=${userLanguage}`;
+  } else {
+    url = `${url}?userLanguage=${userLanguage}`;
+  }
+  url = `${url}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`;
+
+  // if (!Ext.isEmpty(gantang.state.SessionHolder.delegateUserLoginName)) {
+  //   url = url + '&delegateUserLoginName=' + gantang.state.SessionHolder.delegateUserLoginName;
+  // }
+  // return proxyTarget + url;
+  return url;
+}
+
+
+// 通过id获取图片地址
+export function getImageByPreviewId(previewId: string): string {
+  if (!previewId) return ``;
+  if (~previewId.indexOf('/')) return previewId;
+  const {
+    userToken,
+    userLoginName,
+    userLanguage
+  } = getUserIdentity();
+  const path = `/api/file/previewFile?id=${previewId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
+  return path
+}
+
+// 初始格式请求接口参数
+export const initParams = {
+  pageInfo: {
+    pageSize: 50,
+    beginIndex: 0
+  },
+  filterInfo: {
+    filterModel: true
+  }
+}
+
+// 根据后端返回的icon字符串，得到iconfont可识别的id
+export const getRealIcon = (icon: string): string => icon ? icon.replace(/^.*(icon(-\w+)+).*$/, '$1') : 'icon-file-text-o'
+
+
+// 返回第一级路径
+export const getRootPath = (path: string) => path && path.replace(/^(\/.*?)\/.*$/, '$1');
+export const getPathArr = (path: string = ''): Array<string> => path.match(/(\/\w+)/g) as Array<string>
+
+
+
+// 动态加载model
+export function importModel(m: any, cb: Function) {
+  const hasThisMdoel = _.find(window['g_app']._models, item => item.namespace == m.default.namespace)
+  if (hasThisMdoel) { return }
+  window['g_app'].model(m.default);
+  cb();
+}
+
+// 格式化请求接口参数
+export const formatParams = ({
+  beginIndex,
+  pageSize,
+  ...restParams
+}: any = {}) => {
+  const fakeParams: any = {
+    filterInfo: {
+      filterModel: true,
+      ...restParams
+    }
+  };
+  if (beginIndex !== undefined) {
+    fakeParams.pageInfo = {
+      pageSize,
+      beginIndex
+    }
+  }
+  return fakeParams
+}
+
+
+// 格式化组织数Data
+export function formatTreeData(Data: any[], childrenKey: string = 'children', {
+  title,
+  value = 'id',
+  key = 'id'
+}: any = {}, cb?: (V: any) => void) {
+  let Deep; let V; let L;
+  for (L = Data.length; L;) {
+    V = Data[--L];
+    // 兼容 TreeSelect 组件
+    if (title) {
+      V.title = V[title];
+      V.value = V[value];
+      V.key = V[key];
+    }
+    if (cb) {
+      cb(V)
+    }
+    if (V[childrenKey]) {
+      if (V[childrenKey].length)
+        Deep = formatTreeData(V[childrenKey], childrenKey, {
+          title,
+          value,
+          key
+        }, cb)
+      else
+        delete V[childrenKey]
+    }
+  }
+}
+
 
 /**
  * 根据文件后缀名获取对应的图标名称
@@ -503,6 +617,7 @@ export function getIconNameByFileName(fileName: string) {
 
   return iconName
 }
+
 
 /**
  * 根据文件后缀名获取对应的图标图片
@@ -547,6 +662,7 @@ export function getIconImageByFileName(fileName: string, isFolder = false) {
   return `/fileicons/${iconName}.png`
 }
 
+
 /**
  * 根据文件名判断文件是否是图片
  * @param fileName
@@ -582,7 +698,6 @@ export function spanCalculate(width: number): number {
   return 6
 
 };
-
 // 将css变量格式装换成小驼峰 `--primary-color:blue;--sider-menu-bg:red` => `{primaryColor:'blue',siderMenuBg:'red'}`
 export function cssVar2camel(styles: string, keys2format: string[]) {
   function formatCamel(str: string) {
@@ -614,24 +729,6 @@ export function camel2cssVar(config: object, keys2format: string[]) {
     }, {})
 }
 
-// 获取两个时间的间隔描述
-export function getTimeInterval(startTimeStr: string, endTimeStr: string): string {
-  const startTime: any = new Date(startTimeStr); // 开始时间
-  const endTime: any = new Date(endTimeStr); // 结束时间
-  let seconds: number | string = Math.floor((endTime - startTime) / 1000); // 秒数
-  let minutes: number | string = Math.floor((endTime - startTime) / 1000 / 60); // 分钟
-  let hours: number | string = Math.floor((endTime - startTime) / 1000 / 60 / 60); // 小时
-  let days: number | string = Math.floor((endTime - startTime) / 1000 / 60 / 60 / 24); // 天数
-  if (seconds < 60) {
-    return `<1${tr('分钟')}`
-  }
-  days = days ? (days + tr('天')) : ''
-  hours = hours ? (hours + tr('时')) : ''
-  minutes = minutes ? (minutes + tr('分')) : ''
-  seconds = seconds ? (seconds + tr('秒')) : ''
-  return days + hours + minutes + seconds
-}
-
 /**
  * 解析路由的查询参数query
  * @param {Object} query
@@ -654,6 +751,7 @@ export function resolveLocationQuery(query: any): any {
   return res
 }
 
+
 /**
  * 获取model中的某个属性
  * @param path path可以是modal的namespace，或者state中某个具体的属性
@@ -667,6 +765,7 @@ export const getModelData = (path: string) => {
   }
   return _get(store, path)
 }
+
 
 
 // 上下margin高度
@@ -718,7 +817,7 @@ export const getTableHeight = (MAIN_CONFIG: MainConfigProps, diff?: number, with
   const { headerHeight, showBreadcrumb, fullscreen } = MAIN_CONFIG;
   const tempDiff = typeof diff === 'undefined' ? 0 : diff;
   const tempWithFooter = typeof withFooter === 'undefined' ? true : withFooter;
-  const tempwithTitle = typeof withTitle === 'undefined' ? true : withFooter
+  const tempwithTitle = typeof withTitle === 'undefined' ? true : withTitle
   const ContentPaddingTop = headerHeight + (showBreadcrumb ? 0 : MARGIN_HEIGHT)
   const BreadcrumbHeight = showBreadcrumb ? BREAD_CRUMB_HEIGHT : 0;
   const ContentMarginBottom = MARGIN_HEIGHT;
@@ -729,6 +828,7 @@ export const getTableHeight = (MAIN_CONFIG: MainConfigProps, diff?: number, with
 
   return `calc(100vh - ${FinalDiffHeight}px)`
 }
+
 
 //通用confirm
 import { Modal } from 'antd'
@@ -825,59 +925,6 @@ export class TokenBucket {
   }
 }
 
-
-
-
-
-/**
-*向上递归冒泡找节点
-*
-* @param {object} target    //当前节点
-* @param {string} className //节点class
-* @returns  //找到的节点
-*/
-export const findDomParentNode = (target: object, className: string) => {
-  let result = null;
-  const bubble = (_target: object) => {
-    if (!_target) { return }
-    if (_target['className'].indexOf(className) >= 0) {
-      result = _target
-    } else {
-      _target = _target['parentElement'];
-      bubble(_target);
-    }
-  }
-  bubble(target);
-  return result;
-}
-
-/**
-*
-*前端性能分析
-* @returns 计算后的分析数据
-*/
-export const getPerformanceTiming = () => {
-  var performance = window.performance; if (!performance) { console.log('您的浏览器不支持performance属性'); return; }
-  var t = performance.timing;
-  var obj = {};
-  // 重定向耗时
-  obj['redirectTime'] = t.redirectEnd - t.redirectStart;
-  // DNS查询耗时
-  obj['lookupDomainTime'] = t.domainLookupEnd - t.domainLookupStart;
-  // TCP链接耗时
-  obj['connectTime'] = t.connectEnd - t.connectStart;
-  // HTTP请求耗时
-  obj['requestTime'] = t.responseEnd - t.responseStart;
-  // 解析dom树耗时
-  obj['domReadyTime'] = t.domComplete - t.domInteractive;
-  // 白屏时间耗时
-  obj['whiteTime'] = t.responseStart - t.navigationStart;
-  // DOMready时间
-  obj['domLoadTime'] = t.domContentLoadedEventEnd - t.navigationStart;
-  // 页面加载完成的时间 即：onload时间
-  obj['loadTime'] = t.loadEventEnd - t.navigationStart;
-  return obj;
-}
 
 
 
