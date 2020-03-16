@@ -140,7 +140,7 @@ const Page = (props: any) => {
 
   //view改变
   const viewButtonGroup = useMemo(() => {
-    return <Button.Group className="marginh5">
+    return <Button.Group className="gant-margin-h-5">
       <Button
         icon="table"
         size="small"
@@ -253,7 +253,8 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="plus"
-            className="marginh5"
+            type="primary"
+            className="gant-margin-h-5"
             onClick={handleShowCreate}
           />
         </Tooltip>
@@ -261,7 +262,7 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="edit"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!(selectedRows.length === 1)}
             onClick={handleShowUpdate}
           />
@@ -271,7 +272,7 @@ const Page = (props: any) => {
             size="small"
             icon="delete"
             type="danger"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!(selectedRows.length === 1)}
             onClick={handleremove}
           />

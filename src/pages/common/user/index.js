@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import { ProfileCard, Header, Card } from 'gantd'
 import Link from 'umi/link'
 import { getContentHeight } from '@/utils/utils'
-import { ContactButtonGroup } from '@/components/common'
+
 import styles from './index.less'
 
 
@@ -107,7 +107,7 @@ const Page = (props) => {
         <Button
           size="small"
           icon='left'
-          clsssName='marginh5'
+          clsssName='gant-margin-h-5'
           onClick={() => window.history.back()}
         />
       }
@@ -153,7 +153,7 @@ const Page = (props) => {
             // borderTop: '1px solid rgb(0,0,0,0.1)'
           }}
         >
-          <ContactButtonGroup userInfo={employee} />
+
         </Col>
         }
       </Row>

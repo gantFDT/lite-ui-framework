@@ -119,7 +119,7 @@ function SmartChart(props: Props): any {
       loading: false,
       splitLine: false,
       config: <Tooltip title={tr("配置")} >
-        <Button size="small" icon="setting" className="marginh5" onClick={handleSetting} />
+        <Button size="small" icon="setting" className="gant-margin-h-5" onClick={handleSetting} />
       </Tooltip>,
       ...viewSchema
     }

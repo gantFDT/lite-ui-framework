@@ -198,7 +198,7 @@ const Page = (props: any) => {
   }, [id, removeLoading])
 
   return <Card
-    title={<><span className="marginh5"><Icon type="form" /></span>{tr('智能详情')}</>}
+    title={<><span className="gant-margin-h-5"><Icon type="form" /></span>{tr('智能详情')}</>}
     bodyStyle={{ padding: 0 }}>
     <Submenu
       menuData={menuData}
@@ -227,7 +227,7 @@ const Page = (props: any) => {
             <>
               <Header title={
                 <>
-                  <span className="marginh5"><Icon type="user" /></span>
+                  <span className="gant-margin-h-5"><Icon type="user" /></span>
                   {tr('基本信息')}
                 </>
               }
@@ -236,21 +236,21 @@ const Page = (props: any) => {
                   {edit === EditStatus.EDIT && <Tooltip title={tr("保存")}>
                     <Button size="small" icon="save"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => onSaveAll()}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.EDIT && <Tooltip title={tr("进入编辑")}>
                     <Button size="small" icon="edit"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.EDIT)}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.CANCEL && <Tooltip title={tr("结束编辑")}>
                     <Button size="small" icon="minus-circle"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.CANCEL)}
                     />
                   </Tooltip>}
@@ -275,7 +275,7 @@ const Page = (props: any) => {
         {selectedKey == 'community' && <>
           <Header title={
             <>
-              <span className="marginh5"><Icon type="global" /></span>
+              <span className="gant-margin-h-5"><Icon type="global" /></span>
               {tr('社区')}
             </>
           }

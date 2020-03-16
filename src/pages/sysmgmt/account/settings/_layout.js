@@ -141,7 +141,7 @@ const AccountSettings = props => {
           }
         >
           <div>
-            <Header title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+            <Header title={<><span className='gant-margin-h-5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

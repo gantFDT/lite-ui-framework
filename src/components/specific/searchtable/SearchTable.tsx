@@ -35,7 +35,7 @@ function CustomExpandIcon(props: ExpandIconProps<object>, isTree?: boolean) {
         prefix && <span className={"ant-table-row-expand-icon ant-table-row-" + prefix}></span>
       }
       <Icon
-        className="marginh5"
+        className="gant-margin-h-5"
         type={type}
         theme="filled"
       />
@@ -287,23 +287,23 @@ const SearchTable = (props: SearchTableProps) => {
       {(onFilter && filterDisplay !== 'tile') && Searcher}
       {!hideCreateButton && onCreate && (
         <Tooltip title={createButtonText}>
-          <Button size="small" icon="plus" className="marginh5" onClick={() => handlerClickCreate()}></Button>
+          <Button size="small" icon="plus" className="gant-margin-h-5" onClick={() => handlerClickCreate()}></Button>
         </Tooltip>
       )}
       {!hideUpdateButton && onUpdate && (
         <Tooltip title={updateButtonText}>
-          <Button size="small" disabled={selectedRowKeys.length != 1} icon="edit" className="marginh5" onClick={() => handlerClickUpdate()}></Button>
+          <Button size="small" disabled={selectedRowKeys.length != 1} icon="edit" className="gant-margin-h-5" onClick={() => handlerClickUpdate()}></Button>
         </Tooltip>
       )}
       {onRemove && (
         removeWithoutPopconfirm ? (
           <Tooltip title={removeButtonText}>
-            <Button size="small" disabled={isEmpty(selectedRowKeys)} type="danger" icon="delete" className="marginh5" onClick={handlerClickRemove}></Button>
+            <Button size="small" disabled={isEmpty(selectedRowKeys)} type="danger" icon="delete" className="gant-margin-h-5" onClick={handlerClickRemove}></Button>
           </Tooltip>
         ) : (
             <Tooltip title={removeButtonText}>
               <Popconfirm title={confirmRemoveText} okText={okText} cancelText={cancelText} onConfirm={handlerClickRemove}>
-                <Button size="small" disabled={isEmpty(selectedRowKeys)} type="danger" icon="delete" className="marginh5"></Button>
+                <Button size="small" disabled={isEmpty(selectedRowKeys)} type="danger" icon="delete" className="gant-margin-h-5"></Button>
               </Popconfirm>
             </Tooltip>
           )

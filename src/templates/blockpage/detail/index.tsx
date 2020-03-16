@@ -30,7 +30,7 @@ const DetailContent = (props: any): React.ReactElement => {
                     type='primary'
                     size='small'
                     style={{ borderRadius: 16, paddingLeft: 40, paddingRight: 40 }}
-                    className="marginh5"
+                    className="gant-margin-h-5"
                     loading={loading}
                     onClick={handleSubmit}
                 >{tr('保存')}</Button>

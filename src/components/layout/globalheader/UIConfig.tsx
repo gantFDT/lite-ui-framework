@@ -14,7 +14,7 @@ const Page = (props: any) => {
     <SmartModal
       id={'uiconfig' + '_modal_normal'}
       visible={UIConfigVisible}
-      title={<><Icon type="control" /><span className="marginh5">{tr('界面设置')}</span></>}
+      title={<><Icon type="control" /><span className="gant-margin-h-5">{tr('界面设置')}</span></>}
       onCancel={close}
       itemState={{
         width: 1200,

@@ -106,7 +106,7 @@ const WidgetSelector = (props: any) => {
           width,
           height
         }}
-        title={<><Icon type="appstore" className='marginh5' />{tr('选择小程序')}</>}
+        title={<><Icon type="appstore" className='gant-margin-h-5' />{tr('选择小程序')}</>}
         visible={visible}
         isModalDialog
         onCancel={() => { setVisible(false) }}

@@ -346,7 +346,7 @@ class Login extends Component<LoginProps, LoginState> {
                       margin: 0
                     }}
                   >
-                    <Icon type="download" className="marginh5" />{tr('为了更好地体验') + tr('请您下载客户端')}
+                    <Icon type="download" className="gant-margin-h-5" />{tr('为了更好地体验') + tr('请您下载客户端')}
                   </p>
                 </Link>}
                 <p

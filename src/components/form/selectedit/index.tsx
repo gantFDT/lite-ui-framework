@@ -131,9 +131,9 @@ const SelectEdit: React.SFC<SelectEditProps> = ({ value = null, defalueValue = i
 			<span className={styles.left} >{title}</span>
 			<span className={styles.right} >
 				<Tooltip title={tr("新增")} >
-					<Button className="marginh5" onClick={onItemAdd} size="small" icon="plus" ></Button>
+					<Button className="gant-margin-h-5" onClick={onItemAdd} size="small" icon="plus" ></Button>
 				</Tooltip>
-				<Button className="marginh5" size="small" onClick={batchOpen} >
+				<Button className="gant-margin-h-5" size="small" onClick={batchOpen} >
 					{tr("批量新增")}
 				</Button>
 			</span>

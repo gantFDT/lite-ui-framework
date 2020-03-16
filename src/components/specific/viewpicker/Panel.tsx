@@ -100,7 +100,7 @@ export default (props: PanelProps) => {
                   <>
                     <Tooltip title={tr('重命名')}>
                       <Icon
-                        className={`marginh5 ${styles.operate}`}
+                        className={`gant-margin-h-5 ${styles.operate}`}
                         type='edit'
                         onClick={onEditView.bind(null, item)}
                       />

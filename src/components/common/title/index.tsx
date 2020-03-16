@@ -52,7 +52,7 @@ export default withRouter(function Title(props: TitleProps) {
         [styles[`title-short-line`]]: showShortLine
       })}
     >
-      {icon && !title && <span className="marginh5">{icon}</span>}
+      {icon && !title && <span className="gant-margin-h-5">{icon}</span>}
       {title || name}
       {showQustion && (
         <Tooltip title={tr('查看帮助文档')}>

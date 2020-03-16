@@ -13,7 +13,7 @@ import SnapShot from './snapshot.png'
 const modelRegisterKey = ''
 
 const Widget = (props: any) => {
-	const { currentUser, organizationInfo, itemHeight, editMode, widgetKey, handleDeleteWidget, unreadCount } = props;
+	const { currentUser, organizationInfo, itemHeight, editMode, widgetKey, handleDeleteWidget } = props;
 	const [layout, setLayout] = useState('h')
 
 	const onResize = useCallback((w: number, h: number) => {
@@ -85,24 +85,9 @@ const Widget = (props: any) => {
 				borderTop: '1px solid rgba(125,125,125,0.1)'
 			}}>
 				<Row style={{ height: '100%' }}>
-
-					<a href="javascript:void(0);">
-						<Tooltip title={tr('消息通知')}>
-							<Col span={8}
-								className={styles.iconStyle}
-								onClick={() => {
-									jump(`notification`)
-								}}
-							>
-								<Badge count={unreadCount}>
-									<Icon type="message" />
-								</Badge>
-							</Col>
-						</Tooltip>
-					</a>
 					<Link to={`/common/user/${currentUser.id}`}>
 						<Tooltip title={tr('我的信息')}>
-							<Col span={8}
+							<Col span={12}
 								className={styles.iconStyle}
 							>
 								<Icon type="contacts" />
@@ -111,7 +96,7 @@ const Widget = (props: any) => {
 					</Link>
 					<Link to={`/sysmgmt/account/personal`}>
 						<Tooltip title={tr('个人设置')}>
-							<Col span={8}
+							<Col span={12}
 								className={styles.iconStyle}
 							>
 								<Icon type="setting" />
@@ -129,9 +114,8 @@ const Widget = (props: any) => {
 
 
 
-export default connect(({ user, notification }: { user: any }) => ({
+export default connect(({ user }: { user: any }) => ({
 	currentUser: user.currentUser,
-	unreadCount: notification.unreadCount,
 	organizationInfo: getOrganizationInfo(user.currentUser.organizationId)
 }))(Widget)
 

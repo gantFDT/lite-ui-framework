@@ -24,8 +24,6 @@ export interface LoginState extends UserIdentity {
   checkCookieRet: boolean,
 }
 
-
-
 interface Login extends Model {
   state: LoginState
 }
@@ -177,36 +175,8 @@ const login: Login = {
     },
     // 退出
     *logout(_, { put }) {
-      console.log('logout')
       delCookie('userIdentity')
-      // setTimeout(()=>{window.location.reload()},50000)
       window.location.reload()
-
-      // yield put({
-      //   type: 'save',
-      //   payload: {
-      //     userToken: undefined
-      //   }
-      // })
-      // const { redirect } = getPageQuery(); // redirect
-      // // if (window.location.pathname !== '/user/login' && !redirect) {
-      // yield put(
-      //   routerRedux.replace({
-      //     pathname: '/login',
-      //     // search: stringify({
-      //     //   redirect: window.location.href,
-      //     // }),
-      //   }),
-      // );
-      // // const models = window.g_app['_models']
-      // // models.map(item=>{
-      // //   if(item.namespace == '@@dva'){
-      // //     return
-      // //   }
-      // //   window.g_app.unmodel(item['namespace'])
-      // //   window.g_app.model(item)
-      // // })
-      // }
     },
   },
   reducers: {

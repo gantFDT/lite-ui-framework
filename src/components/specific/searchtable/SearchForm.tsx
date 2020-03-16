@@ -227,7 +227,7 @@ function SearchForm(props: SearchFormProps) {
             </div>
             <div className={styles.searchRest} >
               <Tooltip title={tr(`重置`)}>
-                <Button size="small" icon="undo" className="marginh5" onClick={onReset}></Button>
+                <Button size="small" icon="undo" className="gant-margin-h-5" onClick={onReset}></Button>
               </Tooltip>
               {
                 filterTrigger !== 'auto' &&
@@ -257,16 +257,16 @@ function SearchForm(props: SearchFormProps) {
                 />
                 {FormContent}
                 <div className="widgetconfigfooter">
-                  <Button size="small" disabled={isInitFilter(searchParams)} icon="undo" className="marginh5" onClick={onReset}>{tr('重置')}</Button>
+                  <Button size="small" disabled={isInitFilter(searchParams)} icon="undo" className="gant-margin-h-5" onClick={onReset}>{tr('重置')}</Button>
 
-                  <Button size="small" disabled={isInitFilter(searchParams)} icon="plus" className="marginh5" onClick={() => setFilterMemo(searchParams)}>{tr('记忆')}</Button>
+                  <Button size="small" disabled={isInitFilter(searchParams)} icon="plus" className="gant-margin-h-5" onClick={() => setFilterMemo(searchParams)}>{tr('记忆')}</Button>
 
-                  <Button size="small" type='primary' className="marginh5" icon="search" onClick={handlerClickDrawerSearch}>{tr('查询')}</Button>
+                  <Button size="small" type='primary' className="gant-margin-h-5" icon="search" onClick={handlerClickDrawerSearch}>{tr('查询')}</Button>
                 </div>
               </>
             </Drawer>
             <Tooltip title={tr(`刷新`)}>
-              <Button size="small" icon="reload" className="marginh5" onClick={handlerReload}></Button>
+              <Button size="small" icon="reload" className="gant-margin-h-5" onClick={handlerReload}></Button>
             </Tooltip>
             <Tooltip title={tr(`筛选`)}>
               {displayFilterLabel ? (
