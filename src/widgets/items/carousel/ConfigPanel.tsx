@@ -160,7 +160,7 @@ const Page = (props: any) => {
                             ratio={16 / 9}
                             cropperWidth={1000}
                             className={classnames(styles.displayItem, 'aligncenter')}
-                            style={{ border: '1px solid #edebe9', borderRadius: '3px', textAlign: 'center', }}
+                            style={{ border: '1px solid rgba(128,128,128,0.2)', borderRadius: '3px', textAlign: 'center', }}
                         >
                             <IconAntd type='plus' style={{
                                 height: _.isEmpty(list) ? 'calc(100vh - 80px)' : '60px',
