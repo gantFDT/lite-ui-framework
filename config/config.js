@@ -133,7 +133,7 @@ const plugins = [
   ],
   [path.join(__dirname, '../plugins/rebuild')],
   [path.join(__dirname, '../plugins/module.plugin')],
-  [path.join(__dirname, '../plugins/ui.plugin')],
+  // [path.join(__dirname, '../plugins/ui.plugin')],
 ];
 
 // 针对 preview.pro.ant.design 的 GA 统计代码
