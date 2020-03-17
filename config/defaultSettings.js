@@ -59,5 +59,6 @@ export default {
     "waterStatus": "none",
     "waterShowTime": false,
     "fullscreen": false,
+    "showNavigationButton": false,
   },
 };

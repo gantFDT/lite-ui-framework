@@ -66,7 +66,7 @@ export const themes: Themes = [{
   }
 }, {
   value: 'dark',
-  name: tr('Black 黑暗'),
+  name: tr('Black 暗黑'),
   intro: tr('暗色风格，关键词："背景暗色、文字白色、夜间模式"'),
   image: blackImg,
   uiConfig: {
