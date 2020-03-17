@@ -13,6 +13,7 @@ if (ieVersion !== -1 && ieVersion !== 'edge') {
   cssVars({});
 }
 
+
 schemaFormInit()
 export function render(oldRender: Function) {
   initDB()
