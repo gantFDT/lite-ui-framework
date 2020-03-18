@@ -89,7 +89,7 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
   systemViews: [
     {
       viewId: 'all',
-      name: tr("全字段"),
+      name: tr("全字段视图"),
       version: '2019-8-23 10:29:03',
       panelConfig: {
         searchFields: [{
@@ -108,8 +108,8 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
       }
     },
     {
-      viewId: 'all',
-      name: tr("简洁"),
+      viewId: 'simple',
+      name: tr("简洁视图"),
       version: '2019-8-23 10:29:03',
       panelConfig: {
         searchFields: [{
