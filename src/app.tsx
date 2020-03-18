@@ -1,4 +1,3 @@
-import { isEmpty, get } from 'lodash'
 import { getLocale } from 'umi/locale'
 import router from 'umi/router'
 import { getUserIdentity, IEVersion } from '@/utils/utils'
