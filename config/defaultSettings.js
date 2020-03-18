@@ -4,13 +4,13 @@ export default {
     "favicon": "assets/images/logo.png",
     "logoImage": "assets/images/logo.png",
     "logoImageWhite": "assets/images/logo_white.png",
-    "logoName": "甘棠软件",
-    "appTitle": "精简版前端开发框架",
+    "logoName": "Lite UI Framework",
+    "appTitle": "Lite UI Framework",
     "slogan": "本框架基于React技术栈,采用了Umi、Antd、Gantd等框架或UI库来封装构建，支持产品、项目分模块开发,精简版,不依赖后端",
-    "logoNameEn": "Gant Software",
-    "appTitleEn": "Gant Software UI-Framework",
+    "logoNameEn": "Lite UI Framework",
+    "appTitleEn": "Lite UI Framework",
     "sloganEn": "This framework is based on the React technology stack, which uses Umi, Antd, Gantd and other frameworks or UI libraries to package and build, and supports product and project sub-module development",
-    "copyright": "Copyright ©2012-{now} Gant Software All rights reserved."
+    "copyright": "©2020-{now} Made By 😜 Gant FDT | Sponsor byGantSoftware."
   },
   "LOGIN_CONFIG": {
     "loginAlign": "right",
@@ -54,7 +54,7 @@ export default {
     'darkWaterFontColor': "#fefefe",
     "waterFontAlpha": 0.1,
     "waterFontRotate": 30,
-    "waterText": "甘棠软件",
+    "waterText": "Lite UI Framework",
     "waterPadding": 10,
     "waterStatus": "none",
     "waterShowTime": false,

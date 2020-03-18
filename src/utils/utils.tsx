@@ -403,34 +403,6 @@ export type ProtoExtends<T, U> = U & {
 
 //包含业务信息的utils
 
-export interface MainConfigProps {
-  headerHeight: number,
-  fullscreen: boolean,
-  showBreadcrumb: boolean
-}
-
-/* eslint no-useless-escape:0 import/prefer-default-export:0 */
-const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
-export function isUrl(path: string): boolean {
-  return reg.test(path);
-} // 给官方演示站点用，用于关闭真实开发环境不需要使用的特性
-
-export function isAntDesignProOrDev(): boolean {
-  const {
-    NODE_ENV
-  } = process.env;
-
-  if (ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site') {
-    return true;
-  }
-
-  if (NODE_ENV === 'development') {
-    return true;
-  }
-
-  return window.location.hostname === 'preview.pro.ant.design';
-}
-
 
 //获取用户身份
 export function getUserIdentity(): any {
@@ -443,7 +415,6 @@ export function getUserIdentity(): any {
       // message.error('用户数据被恶意篡改')
     }
   }
-
   return userIdentity
 }
 
@@ -453,65 +424,12 @@ export function deleteUserIdentity(): any {
 }
 
 // 获取图片地址
-export function getImageById(pictureId: string | number): string {
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  return `/api/accountUser/getUserPicture?pictureId=${pictureId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
+export function getImageById(pictureId: string) {
+  const domain = 'http://data.yiheyishun.com/'
+  const img = domain + '/' + pictureId;
+  return img
 }
 
-
-/**
- * 解析url
- * @param {string} urlToken 地址
- */
-export function resolveWithUser(urlToken: string): string {
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  let url = urlToken.startsWith('/api') ? urlToken : ('/api' + urlToken);
-  if (url.indexOf('?') != -1) {
-    url = `${url}&userLanguage=${userLanguage}`;
-  } else {
-    url = `${url}?userLanguage=${userLanguage}`;
-  }
-  url = `${url}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`;
-
-  // if (!Ext.isEmpty(gantang.state.SessionHolder.delegateUserLoginName)) {
-  //   url = url + '&delegateUserLoginName=' + gantang.state.SessionHolder.delegateUserLoginName;
-  // }
-  // return proxyTarget + url;
-  return url;
-}
-
-
-// 通过id获取图片地址
-export function getImageByPreviewId(previewId: string): string {
-  if (!previewId) return ``;
-  if (~previewId.indexOf('/')) return previewId;
-  const {
-    userToken,
-    userLoginName,
-    userLanguage
-  } = getUserIdentity();
-  const path = `/api/file/previewFile?id=${previewId}&userLanguage=${userLanguage}&userLoginName=${userLoginName}&userToken=${encodeURIComponent(userToken)}`
-  return path
-}
-
-// 初始格式请求接口参数
-export const initParams = {
-  pageInfo: {
-    pageSize: 50,
-    beginIndex: 0
-  },
-  filterInfo: {
-    filterModel: true
-  }
-}
 
 // 根据后端返回的icon字符串，得到iconfont可识别的id
 export const getRealIcon = (icon: string): string => icon ? icon.replace(/^.*(icon(-\w+)+).*$/, '$1') : 'icon-file-text-o'
@@ -531,146 +449,7 @@ export function importModel(m: any, cb: Function) {
   cb();
 }
 
-// 格式化请求接口参数
-export const formatParams = ({
-  beginIndex,
-  pageSize,
-  ...restParams
-}: any = {}) => {
-  const fakeParams: any = {
-    filterInfo: {
-      filterModel: true,
-      ...restParams
-    }
-  };
-  if (beginIndex !== undefined) {
-    fakeParams.pageInfo = {
-      pageSize,
-      beginIndex
-    }
-  }
-  return fakeParams
-}
 
-
-// 格式化组织数Data
-export function formatTreeData(Data: any[], childrenKey: string = 'children', {
-  title,
-  value = 'id',
-  key = 'id'
-}: any = {}, cb?: (V: any) => void) {
-  let Deep; let V; let L;
-  for (L = Data.length; L;) {
-    V = Data[--L];
-    // 兼容 TreeSelect 组件
-    if (title) {
-      V.title = V[title];
-      V.value = V[value];
-      V.key = V[key];
-    }
-    if (cb) {
-      cb(V)
-    }
-    if (V[childrenKey]) {
-      if (V[childrenKey].length)
-        Deep = formatTreeData(V[childrenKey], childrenKey, {
-          title,
-          value,
-          key
-        }, cb)
-      else
-        delete V[childrenKey]
-    }
-  }
-}
-
-
-/**
- * 根据文件后缀名获取对应的图标名称
- * @param {string} fileName 文件名称
- */
-export function getIconNameByFileName(fileName: string) {
-  const suffix = fileName.slice(fileName.lastIndexOf('.') + 1).toLowerCase()
-  const map = {
-    'file-text': ['txt', 'html', 'htm', 'css', 'js'],
-    'file-image': ['bmp', 'jpg', 'jpeg', 'png', 'gif', 'svg'],
-    // 'file-audio': ['wav', 'aif', 'aiff', 'au', 'mp3', 'ra', 'rm', 'ram', 'mid', 'rmi', 'aac', 'flac', 'ape'],
-    // 'file-video': ['mp4', 'wmv', 'asf', 'asx', '3gp', 'rm', 'rmvb', 'mov', 'm4v', 'avi', 'dat', 'mkv', 'flv', 'vob'],
-    'file': ['wav', 'aif', 'aiff', 'au', 'mp3', 'ra', 'rm', 'ram', 'mid', 'rmi', 'aac', 'flac', 'ape', 'mp4', 'wmv', 'asf', 'asx', '3gp', 'rm', 'rmvb', 'mov', 'm4v', 'avi', 'dat', 'mkv', 'flv', 'vob'],
-    'file-word': ['doc', 'docx', 'docm', 'dotx', 'dotx'],
-    'file-excel': ['xls', 'xlsx', 'xlsm', 'xltx', 'xltm', 'xlsb', 'xlam'],
-    'file-ppt': ['ppt', 'pptx', 'pptm', 'ppsx', 'potx', 'potm', 'ppam'],
-    'file-pdf': ['pdf'],
-    'file-zip': ['zip', 'gzip', '7z', 'rar', 'cab', 'ace', 'tar', 'jar', 'gz', 'lzh', 'iso', 'uue', 'arj', 'bz2'],
-    'file-md': ['md']
-  }
-
-  let iconName = 'file-unknown'
-
-  Object.keys(map).some(key => {
-    const isMatch = map[key].indexOf(suffix) !== -1
-    if (isMatch) {
-      iconName = key
-    }
-    return isMatch
-  })
-
-  return iconName
-}
-
-
-/**
- * 根据文件后缀名获取对应的图标图片
- * @param {string} fileName 文件名称
- */
-export function getIconImageByFileName(fileName: string, isFolder = false) {
-  let iconName = 'unknow'
-  if (isFolder) {
-    iconName = 'filedir'
-  } else {
-    const suffix = fileName.slice(fileName.lastIndexOf('.') + 1).toLowerCase()
-    const map = {
-      'audio': ['wav', 'aif', 'aiff', 'au', 'ra', 'rm', 'ram', 'mid', 'rmi', 'aac', 'flac', 'ape'],
-      'css': ['css', 'less', 'scss', 'sass'],
-      'excel': ['xls', 'xlsx', 'xlsm', 'xltx', 'xltm', 'xlsb', 'xlam'],
-      'exe': ['exe'],
-      'file': [],
-      'html': ['html', 'htm', 'xml'],
-      'image': ['bmp', 'jpg', 'jpeg', 'png', 'gif', 'svg'],
-      'js': ['js'],
-      'markdown': ['md'],
-      'mp3': ['mp3'],
-      'mp4': ['mp4'],
-      'pdf': ['pdf'],
-      'ppt': ['ppt', 'pptx', 'pptm', 'ppsx', 'potx', 'potm', 'ppam'],
-      'text': ['txt'],
-      'video': ['asf', 'asx', '3gp', 'rm', 'rmvb', 'mov', 'm4v', 'avi', 'dat', 'mkv', 'flv', 'vob'],
-      'wmv': ['wmv'],
-      'word': ['doc', 'docx', 'docm', 'dotx', 'dotx'],
-      'zip': ['zip', 'gzip', '7z', 'rar', 'cab', 'ace', 'tar', 'jar', 'gz', 'lzh', 'iso', 'uue', 'arj', 'bz2']
-    }
-
-    Object.keys(map).some(key => {
-      const isMatch = map[key].indexOf(suffix) !== -1
-      if (isMatch) {
-        iconName = key
-      }
-      return isMatch
-    })
-  }
-
-  return `/fileicons/${iconName}.png`
-}
-
-
-/**
- * 根据文件名判断文件是否是图片
- * @param fileName
- */
-export function isImageByFilename(fileName: string) {
-  const suffix = fileName.slice(fileName.lastIndexOf('.') + 1).toLowerCase()
-  return ['bmp', 'jpg', 'jpeg', 'png', 'gif', 'svg'].includes(suffix)
-}
 
 // 基础reducer
 export function reducer(state: any, action: any) {
@@ -729,35 +508,14 @@ export function camel2cssVar(config: object, keys2format: string[]) {
     }, {})
 }
 
-/**
- * 解析路由的查询参数query
- * @param {Object} query
- */
-export function resolveLocationQuery(query: any): any {
-  const res = {}
-  if (typeof query !== 'object') {
-    return res
-  }
-  Object.keys(query).forEach((key) => {
-    let tempValue = ''
-    const value = query[key]
-    try {
-      tempValue = JSON.parse(value)
-    } catch (error) {
-      tempValue = value
-    }
-    res[key] = tempValue
-  })
-  return res
-}
 
 
-/**
- * 获取model中的某个属性
- * @param path path可以是modal的namespace，或者state中某个具体的属性
- * 例如path='config'获取到namespace为config的状态
- *     path = 'config.SYSMGMT_CONFIG.workflow'则可以获取到workflow的值
- */
+// /**
+//  * 获取model中的某个属性
+//  * @param path path可以是modal的namespace，或者state中某个具体的属性
+//  * 例如path='config'获取到namespace为config的状态
+//  *     path = 'config.SYSMGMT_CONFIG.workflow'则可以获取到workflow的值
+//  */
 export const getModelData = (path: string) => {
   const store = window['g_app']._store.getState()
   if (typeof store !== 'object') {

@@ -3,7 +3,6 @@ import router from 'umi/router'
 import { getUserIdentity, IEVersion } from '@/utils/utils'
 import cssVars from 'css-vars-ponyfill'
 import { initDB } from '../database'
-import { schemaFormInit } from '@/components/form/schema/maps'
 import tr from '@/components/common/formatmessage'
 window['tr'] = tr
 //ie cssvar兼容
@@ -13,7 +12,7 @@ if (ieVersion !== -1 && ieVersion !== 'edge') {
 }
 
 
-schemaFormInit()
+
 export function render(oldRender: Function) {
   initDB()
   const locale = getLocale()

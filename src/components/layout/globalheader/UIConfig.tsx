@@ -1,16 +1,15 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Icon } from 'antd';
 import { SmartModal } from '@/components/specific'
 import UIConfig from '@/components/specific/uiconfig'
 import styles from './index.less'
 const Page = (props: any) => {
-  const { settings, dispatch, UIConfigVisible, closeUIConfig } = props;
-  const [height,setHeight] = useState(720)
+  const { settings, UIConfigVisible, closeUIConfig } = props;
+  const [height, setHeight] = useState(720)
   const close = () => {
     closeUIConfig()
   }
   return (
-
     <SmartModal
       id={'uiconfig' + '_modal_normal'}
       visible={UIConfigVisible}
@@ -24,14 +23,13 @@ const Page = (props: any) => {
       className={styles.modalBody}
       isModalDialog
       maxZIndex={12}
-      onSizeChange={(width,height)=>{
+      onSizeChange={(width, height) => {
         setHeight(height)
       }}
     >
       <UIConfig settings={settings} tabPosition='left' height={height - 125} />
     </SmartModal>
   )
-
 }
 
 export default Page
