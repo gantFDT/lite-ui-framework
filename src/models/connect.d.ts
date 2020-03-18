@@ -9,10 +9,6 @@ import { GlobalModelState } from './global'
 import { LocaleState } from './locale'
 import { LoginState } from './login'
 import { MenuState } from './menu'
-import { NotificationState } from './notification'
-import { OrganizationState } from './organization'
-import { SelectorsState } from './selectors'
-import { ServermgtState } from './servermgt'
 import { UserState } from './user'
 import { SettingsState } from './setting'
 
@@ -21,10 +17,6 @@ export interface Store {
     locale: LocaleState,
     login: LoginState,
     menu: MenuState,
-    notification: NotificationState,
-    organization: OrganizationState,
-    selectors: SelectorsState,
-    servermgt: ServermgtState,
     user: UserState,
     settings: SettingsState,
 }

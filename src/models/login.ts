@@ -1,11 +1,11 @@
 import { notification } from 'antd'
-import { stringify, parse } from 'qs';
+import { parse } from 'qs';
 import { getLocale } from 'umi/locale';
 
 import { Model } from './connect'
 import event from '@/utils/events'
-import { getUserIdentity, getCookie, setCookie, delCookie } from '@/utils/utils'
-import { accountLogin, accountLoginWithValidateCode, getDelegateInfo, delegateLogin, delegateLogout, checkToken, ssoLogin, getProductName } from '@/services/api'
+import { getUserIdentity, setCookie, delCookie } from '@/utils/utils'
+import { accountLogin, accountLoginWithValidateCode,} from '@/services/api'
 
 
 const locale = getLocale()
@@ -17,29 +17,19 @@ export function getPageQuery() {
 const userIdentity: UserIdentity = getUserIdentity()
 
 
-
-export interface LoginState extends UserIdentity {
-  delegation: [],
-  delegateMode: boolean,
-  checkCookieRet: boolean,
+export interface LoginState extends Model {
+  state: UserIdentity
 }
 
-interface Login extends Model {
-  state: LoginState
-}
-
-const login: Login = {
+const login: LoginState = {
   namespace: 'login',
   state: {
-    delegation: [],//可代理账户列表
-    delegateMode: false,
-    checkCookieRet: false,
     ...userIdentity,
   },
   effects: {
     // 登录
     *login({ payload }, { call, put }) {
-      const { userName, password, type, autoLogin } = payload;
+      const { userName, password} = payload;
       try {
         const response = yield call(accountLogin, {
           userLoginName: userName,
@@ -103,16 +93,6 @@ const login: Login = {
         console.log(error)
       }
     },
-    //获取可代理账户列表信息
-    *fetchDelegateInfo({ payload }, { call, put }) {
-      const response = yield call(getDelegateInfo, {});
-      yield put({ // 缓存到redux
-        type: 'save',
-        payload: {
-          delegation: response.delegation
-        }
-      })
-    },
     *writeToCookie({ payload }, { call, put, select }) {
       const { userLoginName, userToken, delegateMode, delegateCertificateId, delegateUserLoginName } = payload;
       let userIdentity = {
@@ -126,52 +106,6 @@ const login: Login = {
       }
 
       setCookie('userIdentity', JSON.stringify(userIdentity), 7 * 24 * 3600, '/')
-    },
-    //切换用户代理
-    *delegateLogin({ payload }, { call, put, select }) {
-      const { delegateCertificateId, ownerUserLoginName } = payload;
-      const { userLoginName } = yield select(state => state.login);
-      const delegateMode = true
-      const response = yield call(delegateLogin, {
-        ...payload
-      });
-
-      if (response) {
-        const token = response.token
-        yield put({
-          type: 'writeToCookie',
-          payload: {
-            delegateMode,
-            userLoginName: ownerUserLoginName,
-            userToken: token,
-            delegateCertificateId,
-            delegateUserLoginName: userLoginName
-          }
-        })
-        window.location.reload()
-      }
-    },
-    //退出用户代理
-    *delegateLogout({ payload }, { call, put, select }) {
-      const { delegateCertificateId, delegateUserLoginName } = yield select(state => state.login);
-      const delegateMode = false
-      const response = yield call(delegateLogout, {
-        delegateCertificateId
-      });
-      if (response) {
-        const token = response.token
-        yield put({
-          type: 'writeToCookie',
-          payload: {
-            delegateMode,
-            userLoginName: delegateUserLoginName,
-            userToken: token,
-            delegateCertificateId: undefined,
-            delegateUserLoginName: undefined
-          }
-        })
-        window.location.reload()
-      }
     },
     // 退出
     *logout(_, { put }) {

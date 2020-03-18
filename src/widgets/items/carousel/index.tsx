@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Card, Carousel, Empty } from 'antd';
 import styles from './index.less'
 import { connect } from 'dva';
-import { ConfigBar, ConfigWrap, registerModel } from '@/widgets/utils'
+import {ConfigBar, registerModel } from '@/widgets/utils'
 import classnames from 'classnames'
-import ConfigPanel from './ConfigPanel'
 import SnapShot from './snapshot.png'
 const modelRegisterKey = 'carouselModelInit'
 
@@ -19,8 +18,6 @@ interface Props {
 
 const CarouselWidget = (props: Props) => {
 	const { loading, carouselWidget = {}, dispatch, itemHeight, editMode, widgetKey, handleDeleteWidget, } = props;
-	const [configVisible, setConfigVisible] = useState(false)
-
 	const {
 		list = [],
 		autoPlay,
@@ -52,31 +49,31 @@ const CarouselWidget = (props: Props) => {
 				dotPosition={actionPosition}
 				effect={effect}
 			>
-				{list.map((item, index) =>
+				{list.map((item: object, index: number) =>
 					<div className={styles.banner} key={index} >
-						<a href={item.url ? item.url : "javascript:void(0);"} target={item.url && item.urlTarget} style={{ cursor: item.url ? 'pointer' : 'default' }}>
+						<a href={item['url'] ? item['url'] : "javascript:void(0);"} target={item['url'] && item['urlTarget']} style={{ cursor: item['url'] ? 'pointer' : 'default' }}>
 							<div
 								style={{
 									height: itemHeight,
-									backgroundImage: `url(${item.img})`,
+									backgroundImage: `url(${item['img']})`,
 								}}
 								className={styles.banner}
 							>
 								<span className={styles.span} style={{
-									top: item.layoutV == 't' && 0,
-									left: item.layoutH == 'l' && 0,
-									bottom: item.layoutV == 'b' && 0,
-									right: item.layoutH == 'r' && 0,
-									color: item.colorMode == 'black' ? '#000' : '#fff'
+									top: item['layoutV'] == 't' ? 0 : 'unset',
+									left: item['layoutH'] == 'l' ? 0 : 'unset',
+									bottom: item['layoutV'] == 'b' ? 0 : 'unset',
+									right: item['layoutH'] == 'r' ? 0 : 'unset',
+									color: item['colorMode'] == 'black' ? '#000' : '#fff'
 								}}>
 									<p className={styles.title}
 										style={{
-											textAlign: item.layoutH == 'l' ? 'left' : 'right'
-										}}>{item.title}</p>
+											textAlign: item['layoutH'] == 'l' ? 'left' : 'right'
+										}}>{item['title']}</p>
 									<p className={styles.content}
 										style={{
-											textAlign: item.layoutH == 'l' ? 'left' : 'right'
-										}}>{item.content}</p>
+											textAlign: item['layoutH'] == 'l' ? 'left' : 'right'
+										}}>{item['content']}</p>
 								</span>
 
 							</div>
@@ -98,17 +95,14 @@ const CarouselWidget = (props: Props) => {
 					</Empty>
 				</div>
 			}
-			<ConfigBar widgetKey={widgetKey} editMode={editMode} handleDeleteWidget={handleDeleteWidget} setVisible={setConfigVisible} />
-			<ConfigWrap visible={configVisible} setVisible={setConfigVisible} widgetKey={widgetKey} width={1000}>
-				<ConfigPanel widgetKey={widgetKey} />
-			</ConfigWrap>
+			<ConfigBar widgetKey={widgetKey} editMode={editMode} handleDeleteWidget={handleDeleteWidget} />
 		</Card>
 	)
 
 }
 
 
-export default connect(({ carouselWidget, loading }) => ({
+export default connect(({ carouselWidget, loading }: { carouselWidget: any, loading: any }) => ({
 	carouselWidget,
 	loading: loading.effects['carouselWidget/fetchData'],
 }))(CarouselWidget)

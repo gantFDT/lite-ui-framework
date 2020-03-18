@@ -4,7 +4,7 @@ import { Input, Header, EditStatus } from 'gantd';
 import { connect } from 'dva';
 import styles from './personal.less';
 
-import ImageSelector from '@/components/form/upload/ImageSelector';
+// import ImageSelector from '@/components/form/upload/ImageSelector';
 import { faxRegexp, phoneRegexp, landlineRegexp, emailRegexp } from '@/utils/regexp'
 import { getImageById } from '@/utils/utils'
 
@@ -37,90 +37,22 @@ class AccountSettingsPersonal extends Component {
   }
 
   // 头像组件 方便以后独立，增加裁剪之类的功能
-  generateAvatar = pictureId => {
-    let avatar = getImageById(pictureId);
+  generateAvatar = avatar => {
     const { dispatch, currentUser, config } = this.props;
     const { COMMON_CONFIG: {
       showUpdateSelfInfo
     } } = config
     return (
       <>
-        {showUpdateSelfInfo ? <ImageSelector
-          shape="circle"
-          onConfirm={ret => {
-            dispatch({
-              type: 'accountSettingsPersonal/saveUserInfo',
-              payload: {
-                params: {
-                  ...currentUser,
-                  pictureId: ret.id
-                }
-              }
-            }).then(() => dispatch({
-              type: 'user/fetchCurrent',
-            }))
-          }}
-        >
-          <div className={styles.avatar} style={{cursor:'pointer'}}>
-            <div
-              className={styles.imageContainer}
-              style={{
-                backgroundImage: `url(${avatar})`,
-                backgroundSize: 'cover',
-              }}
-            />
-          </div>
-        </ImageSelector>
-          :
-          <div className={styles.avatar}>
-            <div
-              className={styles.imageContainer}
-              style={{
-                backgroundImage: `url(${avatar})`,
-                backgroundSize: 'cover',
-              }}
-            />
-          </div>
-        }
-
-        {showUpdateSelfInfo && <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignContent: 'center',
-            width: 200,
-          }}
-        >
-          <ImageSelector
-            shape="circle"
-            onConfirm={ret => {
-              dispatch({
-                type: 'accountSettingsPersonal/saveUserInfo',
-                payload: {
-                  params: {
-                    ...currentUser,
-                    pictureId: ret.id
-                  }
-                }
-              }).then(() => dispatch({
-                type: 'user/fetchCurrent',
-              }))
+        <div className={styles.avatar}>
+          <div
+            className={styles.imageContainer}
+            style={{
+              backgroundImage: `url(${avatar})`,
+              backgroundSize: 'cover',
             }}
-          >
-            <Button size="small" size="small">{tr('上传头像')}</Button>
-          </ImageSelector>
-
-
-          <Popconfirm
-            placement="bottom"
-            title={tr('确认使用默认头像吗') + '？'}
-            onConfirm={this.initAvatarUrl}
-            okText={tr('确认')}
-            cancelText={tr('取消')}
-          >
-            <Button size="small" size="small">{tr('默置头像')}</Button>
-          </Popconfirm>
-        </div>}
+          />
+        </div>
       </>
     );
   };
@@ -433,8 +365,7 @@ class AccountSettingsPersonal extends Component {
           </Form>
         </div>
         <div className={styles.right} style={{ paddingTop: '50px' }}>
-
-          {this.generateAvatar(currentUser.pictureId)}
+          {this.generateAvatar(currentUser.avatar)}
         </div>
       </div>
     );

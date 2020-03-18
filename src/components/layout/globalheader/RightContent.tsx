@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { formatMessage } from 'umi-plugin-react/locale';
 import HeaderSearch from '@/components/layout/headersearch';
 import styles from './index.less';
 import Notification from './notification';

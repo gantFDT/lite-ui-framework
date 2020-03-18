@@ -1,4 +1,4 @@
-import React,{useMemo} from 'react';
+import React, { useMemo } from 'react';
 import { Avatar, Tag } from 'antd'
 import { Icon } from 'gantd';
 import { SmartSearchCompatibilityModeSchema } from '@/components/specific/smartsearch';
@@ -88,8 +88,8 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
   ],
   systemViews: [
     {
-      viewId: 'systemView0001',
-      name: tr("系统视图"),
+      viewId: 'all',
+      name: tr("全字段"),
       version: '2019-8-23 10:29:03',
       panelConfig: {
         searchFields: [{
@@ -107,100 +107,176 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
         }]
       }
     },
+    {
+      viewId: 'all',
+      name: tr("简洁"),
+      version: '2019-8-23 10:29:03',
+      panelConfig: {
+        searchFields: [{
+          fieldName: "name"
+        }]
+      }
+    }
   ]
 }
 
 
-
-
-export const smartTableSchema = [
-  {
-    fieldName: "name",
-    title: tr('姓名'),
-    render: (value: string, row: object, index: number) => {
-      let avatarIndex = index > 9 ? Math.floor(index % 10) : index
-      return <Link to={`smartdetail/${row['id']}`}><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</Link>
+export const smartTableSchema = {
+  supportColumnFields: [
+    {
+      fieldName: "name",
+      title: tr('姓名'),
+      render: (value: string, row: object, index: number) => {
+        let avatarIndex = index > 9 ? Math.floor(index % 10) : index
+        return <Link to={`smartdetail/${row['id']}`}><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</Link>
+      },
+      locked: 'left'
     },
-    locked: 'left'
-  },
-  {
-    fieldName: 'sex',
-    title: tr('性别'),
-    render: (value: string, row: object) => {
-      // return <Selector defaultList={sexs} value={value} valueProp='value' labelProp='name' />
-      // let result: any = { name: '' }
-      // let target = _.find(sexs, (o) => o.value === value)
-      // if (target) { result = target }
-      // return result['name']
-      return <>
-        {value === 'male' && <Icon style={{ color: '#1890FF', marginLeft: '5px' }} type="man" />}
-        {value === 'female' && <Icon style={{ color: '#EA4C89', marginLeft: '5px' }} type="woman" />}
-      </>
+    {
+      fieldName: 'sex',
+      title: tr('性别'),
+      render: (value: string, row: object) => {
+        return <>
+          {value === 'male' && <Icon style={{ color: '#1890FF', marginLeft: '5px' }} type="man" />}
+          {value === 'female' && <Icon style={{ color: '#EA4C89', marginLeft: '5px' }} type="woman" />}
+        </>
+      }
+    },
+    {
+      fieldName: 'age',
+      title: tr('年龄')
+    },
 
-    }
-  },
-  {
-    fieldName: 'age',
-    title: tr('年龄')
-  },
-
-  {
-    fieldName: 'domain',
-    title: tr('擅长领域')
-  },
-  {
-    fieldName: 'view',
-    title: tr('浏览量'),
-    render: (value: string, row: object) => {
-      const view = Math.ceil(Math.random() * 10000);
-      return <>
-        {view > 8000 ? <Trend flag="up">
-          <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : 'var(--text-color)' }}> {view}</span >
-        </Trend> : <Trend flag="down">
+    {
+      fieldName: 'domain',
+      title: tr('擅长领域')
+    },
+    {
+      fieldName: 'view',
+      title: tr('浏览量'),
+      render: (value: string, row: object) => {
+        const view = Math.ceil(Math.random() * 10000);
+        return <>
+          {view > 8000 ? <Trend flag="up">
             <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : 'var(--text-color)' }}> {view}</span >
-          </Trend>}
-      </>
+          </Trend> : <Trend flag="down">
+              <span style={{ fontWeight: 'bold', color: view > 5000 ? '#f00' : 'var(--text-color)' }}> {view}</span >
+            </Trend>}
+        </>
+      }
+    },
+    {
+      fieldName: 'codeRate',
+      title: tr('代码提交频度'),
+      render: (value: string, row: object) => {
+        return <MiniArea color="#36C66E" data={getVisitData()} height={40} showTooltip={false} />
+      }
+    },
+    {
+      fieldName: 'popularIndex',
+      title: tr('受欢迎指数'),
+      render: (value: string, row: object) => {
+        return <Pie
+          animate={false}
+          inner={0.55}
+          tooltip={false}
+          margin={[0, 0, 0, 0]}
+          percent={Math.random() * 100}
+          height={40}
+        />
+      }
+    },
+    {
+      fieldName: 'hobby',
+      title: tr('爱好'),
+      render: (value: string[], row: object) => {
+        if (!value) { return }
+        return value.map((words) => <Tag style={{ marginBottom: 3, marginRight: 3 }}>{words}</Tag>)
+      }
+    },
+    {
+      fieldName: 'motto',
+      title: tr('座右铭'),
+      render: (value: string, row: object) => {
+        return value
+      }
     }
-  },
-  {
-    fieldName: 'codeRate',
-    title: tr('代码提交频度'),
-    render: (value: string, row: object) => {
+  ],
+  systemViews: [
+    {
+      viewId: 'all',
+      name: "全字段视图",
+      version: '2020-02-20 02:20:02',
+      wrap: false,
+      isZebra: false,
+      bordered: false,
+      clickable: false,
+      footerDirection: 'row',
+      heightMode: 'full',
+      panelConfig: {
+        wrap: false,
+        columnFields: [
+          {
+            fieldName: 'name',
+            width: 150
+          },
+          {
+            fieldName: 'sex',
+            width: 50
+          },
+          {
+            fieldName: 'age',
+            width: 50
+          },
+          {
+            fieldName: 'domain',
+            width: 100
+          },
+          {
+            fieldName: 'view',
+            width: 120
+          },
+          {
+            fieldName: 'codeRate',
+            width: 375
+          },
+          {
+            fieldName: 'popularIndex',
+            width: 150
+          },
+          {
+            fieldName: 'hobby',
+            width: 200
+          },
+          {
+            fieldName: 'motto',
+            width: 260
+          }
+        ]
+      }
+    },
+    {
+      viewId: 'simple',
+      name: "简洁视图",
+      version: '2020-02-20 02:20:02',
+      panelConfig: {
+        wrap: false,
+        columnFields: [
+          {
+            fieldName: 'name',
+          },
+          {
+            fieldName: 'sex',
 
-      return <MiniArea color="#36C66E" data={getVisitData()} height={40} showTooltip={false} />
+          },
+          {
+            fieldName: 'motto',
+          }
+        ]
+      }
     }
-  },
-  {
-    fieldName: 'popularIndex',
-    title: tr('受欢迎指数'),
-    render: (value: string, row: object) => {
-      return <Pie
-        animate={false}
-        inner={0.55}
-        tooltip={false}
-        margin={[0, 0, 0, 0]}
-        percent={Math.random() * 100}
-        height={40}
-      />
-    }
-  },
-  {
-    fieldName: 'hobby',
-    title: tr('爱好'),
-    render: (value: string[], row: object) => {
-      if (!value) { return }
-      return value.map((words) => <Tag style={{ marginBottom: 3, marginRight: 3 }}>{words}</Tag>)
-    }
-  },
-  {
-    fieldName: 'motto',
-    title: tr('座右铭'),
-    render: (value: string, row: object) => {
-
-      return value
-    }
-  },
-];
+  ]
+}
 
 
 

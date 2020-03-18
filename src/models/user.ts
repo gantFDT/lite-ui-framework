@@ -1,6 +1,6 @@
 import { Model } from './connect'
 
-import { query as queryUsers, queryCurrent, getUserByUserLoginNameApi, findPermission } from '@/services/user';
+import { query as queryUsers, getUserByUserLoginNameApi, findPermission } from '@/services/user';
 import { getUserIdentity, getImageById } from '@/utils/utils';
 
 const initialState = {
@@ -44,7 +44,6 @@ const UserModel: User = {
       const { userLoginName } = getUserIdentity();
       // const userloginname = window.localStorage.getItem('username')
       let user = yield call(getUserByUserLoginNameApi, { userLoginName });
-      user.avatar = getImageById(user.pictureId)
       user.isSuperAdmin = user.id === -1;
       yield put({
         type: 'save',
