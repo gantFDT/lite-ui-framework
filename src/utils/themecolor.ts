@@ -68,8 +68,8 @@ export default {
   changeTheme(themeName: string, otherConfig: object) {
     styles = {};
     let cssVars = themes[themeName];
-    this.generateCssVars(cssVars);
-    this.generateCssVars(otherConfig);
+    this.generateCssVars(cssVars); // 路径 src/themes/*/index.ts 下的配置
+    this.generateCssVars(otherConfig); // 可切换的主题变量
     setCssVar(styles);
   }
 };
