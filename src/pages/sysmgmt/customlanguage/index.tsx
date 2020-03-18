@@ -2,9 +2,9 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { Table, EditStatus, SwitchStatus, Card, Input as GantInput } from 'gantd'
 import { Button, Icon, Input, Tabs } from 'antd'
 import { Title } from '@/components/common';
-import { SettingsProps } from '@/models/settings'
-import { UserProps } from '@/models/user'
-import { ModelProps } from '@/models/locale'
+import { SettingsState } from '@/models/setting'
+import { UserState } from '@/models/user'
+import { LocaleState } from '@/models/locale'
 import { connect } from 'dva';
 import { getTableHeight } from '@/utils/utils'
 
@@ -16,7 +16,7 @@ const Page = (props: any) => {
   const [editing, setEditing] = useState(EditStatus.CANCEL);
   const [visibleData, setVisibleData] = useState({})
   const [currentLangulage, setCurrentLangulage] = useState('zh-CN')
-  const bodyHeight = getTableHeight(MAIN_CONFIG, 120)
+  const bodyHeight = getTableHeight(MAIN_CONFIG, 92)
 
   const columns = [
     {
@@ -117,12 +117,14 @@ const Page = (props: any) => {
       title={<Title route={route} />}
       className='specialCardHeader'
     >
-      <Tabs defaultActiveKey={currentLangulage}
+      <Tabs
+        defaultActiveKey={currentLangulage}
         onChange={handleTabChange}
+        size="small"
       >
         {
           langulages.map((item: object) =>
-            <TabPane tab={item['name']} key={item['key']} style={{ padding: 10 }}>
+            <TabPane tab={item['name']} key={item['key']} style={{ padding: 0 }}>
               {currentLangulage == item['key'] && <Table
                 columns={columns}
                 dataSource={visibleData[item['key']]}
@@ -164,7 +166,7 @@ const Page = (props: any) => {
 }
 
 export default connect(
-  ({ locale, settings, loading, user }: { locale: ModelProps, settings: SettingsProps, loading: any, user: UserProps }) => ({
+  ({ locale, settings, loading, user }: { locale: LocaleState, settings: SettingsState, loading: any, user: UserState }) => ({
     MAIN_CONFIG: settings.MAIN_CONFIG,
     userId: user.currentUser.id,
     langulages: locale.langulages,

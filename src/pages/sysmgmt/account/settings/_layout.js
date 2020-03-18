@@ -98,7 +98,7 @@ const AccountSettings = props => {
 
   const activeItem = useMemo(() => {
     const item = _.find(arr, (i) => i['key'] === selectKey)
-    if (_.isEmpty(item)) { return arr[0]}
+    if (_.isEmpty(item)) { return arr[0] }
     return item
   }, [selectKey])
 
@@ -140,8 +140,11 @@ const AccountSettings = props => {
             </div>
           }
         >
-          <div>
-            <Header title={<><span className='gant-margin-h-5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+          <div style={{ background: 'var(--component-background)' }}>
+            <Header
+              title={<><span className='gant-margin-h-5'>{activeItem['icon']}</span>{activeItem['title']}</>}
+              bottomLine
+            />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

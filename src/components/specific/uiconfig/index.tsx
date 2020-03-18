@@ -81,7 +81,7 @@ const Page = (props: any) => {
 
   return (
     <div className={styles.wrap}>
-      <Tabs tabPosition='top'>
+      <Tabs tabPosition='top' size="small">
         <TabPane
           tab={
             <span>

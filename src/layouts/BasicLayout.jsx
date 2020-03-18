@@ -109,7 +109,8 @@ const BasicLayout = props => {
     waterPadding,
     waterStatus,
     waterShowTime,
-    waterText, themeType } = MAIN_CONFIG;
+    waterText, themeType,
+    showNavigationButton } = MAIN_CONFIG;
   const { userName } = currentUser;
   const data64 = useMemo(() => {
     let renderText = "";
@@ -397,10 +398,10 @@ const BasicLayout = props => {
                   <>
                     {showBreadcrumb && (
                       <div className='page-header-box'>
-                        {/* <ButtonGroup className={styles.navigation}>
-                          <Button size="small" icon="left" onClick={()=>history.go(-1)}/>
-                          <Button size="small" icon="right" onClick={()=>history.go(1)}/>
-                        </ButtonGroup> */}
+                        {showNavigationButton && <ButtonGroup className={styles.navigation}>
+                          <Button size="small" icon="left" onClick={() => history.go(-1)} />
+                          <Button size="small" icon="right" onClick={() => history.go(1)} />
+                        </ButtonGroup>}
                         <Breadcrumb breadcrumb={breadcrumb} />
                         <History {...props} />
                       </div>
