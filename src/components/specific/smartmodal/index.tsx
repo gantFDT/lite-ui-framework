@@ -1,13 +1,12 @@
 import React, { useCallback, useRef, useMemo, useContext, memo, useEffect } from 'react';
-import { SchemaForm } from 'gantd';
-import { ResizableModal, ResizableProvider, ModalContext } from 'gantd/lib/modal';
+import { Button } from 'antd';
+import { SchemaForm, Modal } from 'gantd';
 import { UISchema, TitleSchema, Schema, Props as SchemaProps } from 'gantd/lib/schema-form';
 import { spanCalculate } from '@/utils/utils';
+const { ResizableModal, ResizableProvider, ModalContext } = Modal;
 
 const defaultSpan = 24; //默认栅格占位格数
-const defaultValues = {}; //默认回填数据值
-const defaultMaxZIndex = 999;//默认最大堆叠等级
-
+const defaultFooterStyle = { display: 'flex', justifyContent: 'space-between' }
 export interface initalState {
     x?: number;
     y?: number;
@@ -32,12 +31,22 @@ export interface FormModalProps extends SchemaAllProps {
     canResize?: boolean,
     canMaximize?: boolean,
     maxZIndex?: number,
+    minWidth?: number,
+    minHeight?: number,
     itemState?: initalState,
     onSubmit?: (values: object) => void,
+    onCancel: () => void,
     onSizeChange?: (width: number, height: number) => void,
     customCalculate?: (width: number) => void,
     formSchemaProps?: SchemaProps,
     children?: React.ReactElement[] | React.ReactElement | undefined,
+    footerLeftExtra?: React.ReactDOM,
+    footerRightExtra?: React.ReactDOM,
+    disabled?: boolean,
+    okBtnSolid?: boolean,
+    okText?: string,
+    cancelText?: string,
+    confirmLoading?: boolean,
     [propsname: string]: any
 }
 
@@ -108,8 +117,16 @@ const SmartModal = function (props: FormModalProps): React.ReactElement {
         children,
         formSchemaProps,
         onSubmit,
+        onCancel,
         onSizeChange,
         customCalculate,
+        footerLeftExtra,//默认的footer左侧插槽
+        footerRightExtra,//默认的footer右侧插槽
+        disabled,       //提交按钮是否禁用
+        okBtnSolid,     //提交按钮是否实心
+        okText,         //确定按钮文案
+        cancelText,     //取消按钮文案
+        confirmLoading, //弹窗加载状态
         ...restProps
     } = props;
 
@@ -130,11 +147,26 @@ const SmartModal = function (props: FormModalProps): React.ReactElement {
         <ResizableModal
             id={id}
             itemState={itemState}
-            onOk={schema ? handleSubmit : onSubmit}
             bodyStyle={schema && { padding: 0 }}
             isModalDialog
             canMaximize={canMaximize}
             canResize={canResize}
+            onCancel={onCancel}
+            footer={<div style={footerLeftExtra ? defaultFooterStyle : {}}>
+                {footerLeftExtra && <div>{footerLeftExtra}</div>}
+                <div>
+                    {footerRightExtra}
+                    <Button size="small" onClick={onCancel}>{cancelText}</Button>
+                    <Button
+                        size="small"
+                        type='primary'
+                        className={okBtnSolid ? 'btn-solid' : ''}
+                        loading={confirmLoading}
+                        disabled={disabled}
+                        onClick={schema ? handleSubmit : onSubmit}
+                    >{okText}</Button>
+                </div>
+            </div>}
             {...restProps}
         >
             <ContextContent
@@ -153,8 +185,15 @@ const SmartModal = function (props: FormModalProps): React.ReactElement {
     </ResizableProvider>
 }
 SmartModal.defaultProps = {
-    maxZIndex: defaultMaxZIndex,
-    values: defaultValues,
-    formSchemaProps: {}
+    maxZIndex: 999,         //默认最大堆叠等级
+    values: {},             //默认回填数据值
+    formSchemaProps: {},
+    disabled: false,
+    okBtnSolid: false,
+    okText: tr('确定'),
+    cancelText: tr('取消'),
+    footerLeftExtra: null,
+    footerRightExtra: null,
 }
 export default SmartModal;
+
