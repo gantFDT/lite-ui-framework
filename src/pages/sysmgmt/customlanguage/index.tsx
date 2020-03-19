@@ -151,7 +151,7 @@ const Page = (props: any) => {
                 scroll={{ x: '100%', y: bodyHeight }}
                 pagination={false}
                 flex
-                wheel={wheel}
+                onScroll={wheel}
                 loading={listLoading}
               />}
             </TabPane>

@@ -14,9 +14,9 @@ import { Link } from '@/components/common';
 import { CardList } from '@/components/list';
 import { MiniArea, Pie, Trend } from '@/components/chart'
 const { confirm } = Modal;
+
 const Page = (props: any) => {
   const pageKey: string = 'exampleSmartTable';
-
   const {
     MAIN_CONFIG, route, userId,
     dataSource, params, totalCount,
