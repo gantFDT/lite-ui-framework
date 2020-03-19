@@ -9,9 +9,9 @@ html {
     font-feature-settings: var(--font-feature-settings-base)
   }
 
-  .ant-table table {
-    border-radius: var(--table-border-radius-base) var(--table-border-radius-base) 0 0
-  }
+  //   .ant-table table {
+  //     border-radius: var(--table-border-radius-base) var(--table-border-radius-base) 0 0
+  //   }
 
   .ant-table-thead>tr>th {
     color: var(--table-header-color);
@@ -91,22 +91,22 @@ html {
   .ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td,
   .ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td,
   .ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td {
-    background: var(--table-row-hover-bg)
+    background-color: var(--table-row-hover-bg)
   }
 
   .ant-table-thead>tr.ant-table-row-selected>td.ant-table-column-sort,
   .ant-table-tbody>tr.ant-table-row-selected>td.ant-table-column-sort {
-    background: var(--table-body-selected-sort-bg)
+    background-color: var(--table-body-selected-sort-bg)
   }
 
   .ant-table-thead>tr:hover.ant-table-row-selected>td,
   .ant-table-tbody>tr:hover.ant-table-row-selected>td {
-    background: var(--table-selected-row-hover-bg)
+    background-color: var(--table-selected-row-hover-bg)
   }
 
   .ant-table-thead>tr:hover.ant-table-row-selected>td.ant-table-column-sort,
   .ant-table-tbody>tr:hover.ant-table-row-selected>td.ant-table-column-sort {
-    background: var(--table-body-selected-sort-bg)
+    background-color: var(--table-body-selected-sort-bg)
   }
 
   .ant-table-footer {
@@ -127,13 +127,13 @@ html {
   }
 
   .ant-table-title {
-    padding: var(--table-padding-vertical) 0;
+    // padding: var(--table-padding-vertical) 0;
     border-radius: var(--table-border-radius-base) var(--table-border-radius-base) 0 0
   }
 
   .ant-table.ant-table-bordered .ant-table-title {
-    padding-right: var(--table-padding-horizontal);
-    padding-left: var(--table-padding-horizontal);
+    // padding-right: var(--table-padding-horizontal);
+    // padding-left: var(--table-padding-horizontal);
     border: var(--border-width-base) var(--border-style-base) var(--border-color-split)
   }
 
@@ -148,7 +148,7 @@ html {
 
   .ant-table-tbody>tr.ant-table-row-selected td {
     color: var(--table-selected-row-color);
-    background: var(--table-selected-row-bg) !important
+    background-color: var(--table-selected-row-bg) !important
   }
 
   .ant-table-thead>tr>th.ant-table-column-sort {
@@ -159,18 +159,18 @@ html {
     background: var(--table-body-sort-bg)
   }
 
-  .ant-table-thead>tr>th,
-  .ant-table-tbody>tr>td {
-    padding: var(--table-padding-vertical) var(--table-padding-horizontal)
-  }
+  //   .ant-table-thead>tr>th,
+  //   .ant-table-tbody>tr>td {
+  //     padding: var(--table-padding-vertical) var(--table-padding-horizontal)
+  //   }
 
   .ant-table-header {
     background: var(--table-header-bg)
   }
 
-  .ant-table-header table {
-    border-radius: var(--table-border-radius-base) var(--table-border-radius-base) 0 0
-  }
+  //   .ant-table-header table {
+  //     border-radius: var(--table-border-radius-base) var(--table-border-radius-base) 0 0
+  //   }
 
   .ant-table-loading .ant-table-body {
     background: var(--component-background)
@@ -275,9 +275,9 @@ html {
     background: var(--table-expanded-row-bg)
   }
 
-  tr.ant-table-expanded-row td>.ant-table-wrapper {
-    margin: calc(0px - var(--table-padding-vertical)) calc(0px - var(--table-padding-horizontal)) calc(0px - var(--table-padding-vertical) - 1px)
-  }
+  //   tr.ant-table-expanded-row td>.ant-table-wrapper {
+  //     margin: calc(0px - var(--table-padding-vertical)) calc(0px - var(--table-padding-horizontal)) calc(0px - var(--table-padding-vertical) - 1px)
+  //   }
 
   .ant-table-fixed-header>.ant-table-content>.ant-table-scroll>.ant-table-body {
     background: var(--component-background)
@@ -316,70 +316,80 @@ html {
     border-radius: 0 var(--table-border-radius-base) 0 0
   }
 
-  .ant-table-middle>.ant-table-title,
-  .ant-table-middle>.ant-table-footer {
-    padding: calc(var(--table-padding-vertical) * 3 / 4) calc(var(--table-padding-horizontal) / 2)
-  }
+  //   .ant-table-middle>.ant-table-title,
+  //   .ant-table-middle>.ant-table-footer {
+  //     padding: calc(var(--table-padding-vertical) * 3 / 4) calc(var(--table-padding-horizontal) / 2)
+  //   }
 
-  .ant-table-middle>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
-  .ant-table-middle>.ant-table-content>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-body>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td,
-  .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td {
-    padding: calc(var(--table-padding-vertical) * 3 / 4) calc(var(--table-padding-horizontal) / 2)
-  }
+  //   .ant-table-middle>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
+  //   .ant-table-middle>.ant-table-content>.ant-table-header>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-body>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td,
+  //   .ant-table-middle>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td {
+  //     padding: calc(var(--table-padding-vertical) * 3 / 4) calc(var(--table-padding-horizontal) / 2)
+  //   }
 
-  .ant-table-middle tr.ant-table-expanded-row td>.ant-table-wrapper {
-    margin: calc(0px - var(--table-padding-vertical-md)) calc(0px - var(--table-padding-horizontal) / 2) calc(0px - var(--table-padding-vertical-md) - 1px)
-  }
+  //   .ant-table-middle tr.ant-table-expanded-row td>.ant-table-wrapper {
+  //     margin: calc(0px - var(--table-padding-vertical-md)) calc(0px - var(--table-padding-horizontal) / 2) calc(0px - var(--table-padding-vertical-md) - 1px)
+  //   }
 
   .ant-table-small {
     border: var(--border-width-base) var(--border-style-base) var(--border-color-split);
     border-radius: var(--table-border-radius-base)
   }
 
-  .ant-table-small>.ant-table-title,
-  .ant-table-small>.ant-table-footer {
-    padding: calc(var(--table-padding-vertical) / 2) calc(var(--table-padding-horizontal) / 2)
-  }
+  //   .ant-table-small>.ant-table-title,
+  //   .ant-table-small>.ant-table-footer {
+  //     padding: calc(var(--table-padding-vertical) / 2) calc(var(--table-padding-horizontal) / 2)
+  //   }
 
   .ant-table-small>.ant-table-title {
     border-bottom: var(--border-width-base) var(--border-style-base) var(--border-color-split)
   }
 
-  .ant-table-small>.ant-table-content>.ant-table-body {
-    margin: 0 calc(var(--table-padding-horizontal) / 2)
-  }
+  //   .ant-table-small>.ant-table-content>.ant-table-body {
+  //     margin: 0 calc(var(--table-padding-horizontal) / 2)
+  //   }
 
-  .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
-  .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td,
-  .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td {
-    padding: calc(var(--table-padding-vertical) / 2) calc(var(--table-padding-horizontal) / 2) !important;
-  }
+  //   .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
+  //   .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th {
+  //     padding: calc(var(--table-padding-vertical) / 2) calc(var(--table-padding-horizontal) / 2) !important;
+  // }
+  // .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-thead>tr>th,
+  // .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-header>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-scroll>.ant-table-body>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-header>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-header>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-left>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td,
+  // .ant-table-small>.ant-table-content>.ant-table-fixed-right>.ant-table-body-outer>.ant-table-body-inner>table>.ant-table-tbody>tr>td {
+  //   padding: calc(var(--table-padding-vertical) / 2) calc(var(--table-padding-horizontal) / 2) !important;
+  // }
 
   .ant-table-small>.ant-table-content>.ant-table-header>table>.ant-table-thead>tr,
   .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr,
@@ -432,8 +442,8 @@ html {
     border-left: var(--border-width-base) var(--border-style-base) var(--border-color-split)
   }
 
-  .ant-table-small tr.ant-table-expanded-row td>.ant-table-wrapper {
-    margin: calc(0px - var(--table-padding-vertical-sm)) calc(0px - var(--table-padding-horizontal) / 2) calc(0px - var(--table-padding-vertical-sm) - 1px)
-  }
+  //   .ant-table-small tr.ant-table-expanded-row td>.ant-table-wrapper {
+  //     margin: calc(0px - var(--table-padding-vertical-sm)) calc(0px - var(--table-padding-horizontal) / 2) calc(0px - var(--table-padding-vertical-sm) - 1px)
+  //   }
 
 }

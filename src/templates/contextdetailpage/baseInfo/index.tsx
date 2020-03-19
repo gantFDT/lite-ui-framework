@@ -54,7 +54,7 @@ function Page(props: any) {
         "title:extra": <div>
           <Tooltip title={tr("保存")}>
             <Button size="small" icon="save"
-              className="marginh5"
+              className="gant-margin-h-5"
               onClick={() => onSaveForm(itemId)}
             />
           </Tooltip>

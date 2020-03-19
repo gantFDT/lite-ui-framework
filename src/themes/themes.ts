@@ -49,7 +49,11 @@ export const themes: Themes = [{
   name: tr('Classic 经典'),
   intro: tr('经典风格，默认风格、关键词："线条、镂空、圆角"'),
   image: classicImg,
-  uiConfig: {}
+  uiConfig: {
+    MAIN_CONFIG: {
+      navTheme: 'light',
+    }
+  }
 }, {
   value: 'material',
   name: tr('Material 谷歌设计 '),
@@ -62,7 +66,7 @@ export const themes: Themes = [{
   }
 }, {
   value: 'dark',
-  name: tr('Black 黑暗'),
+  name: tr('Black 暗黑'),
   intro: tr('暗色风格，关键词："背景暗色、文字白色、夜间模式"'),
   image: blackImg,
   uiConfig: {
@@ -76,7 +80,11 @@ export const themes: Themes = [{
   name: tr('Aliyun 阿里云'),
   intro: tr('阿里云风格，关键词：橙色、灰色、直角'),
   image: aliyunImg,
-  uiConfig: {}
+  uiConfig: {
+    MAIN_CONFIG: {
+      navTheme: 'light'
+    }
+  }
 }, {
   value: 'github',
   name: 'GitHub',

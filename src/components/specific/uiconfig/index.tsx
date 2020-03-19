@@ -1,14 +1,15 @@
-import React, { useCallback, useState } from 'react';
-import { Form, Button, Switch, Tabs, Icon, Radio, Row, Col, Progress, Input, InputNumber } from 'antd';
-import { Header, ColorPicker, Icon as GantIcon } from 'gantd';
+import React, { useCallback, useState, useMemo } from 'react';
+import { Form, Button, Switch, Tabs, Icon, Radio, Row, Col, Progress, Input, InputNumber, message } from 'antd';
+import { ColorPicker, Icon as GantIcon, Header, EditStatus } from 'gantd';
 import { merge } from 'lodash';
 // import PictureWall from './PictureWall';
-import { cssVar2camel } from '@/utils/utils';
+import { cssVar2camel, isIE } from '@/utils/utils';
 import styles from './index.less';
 import { themes, JS_VAR_KEYS } from '@/themes/themes'
 import themeConfigs from '@/themes'
 import classnames from 'classnames'
 
+const isIeBrowser = isIE();
 const { TabPane } = Tabs;
 const formItemLayout = {
   labelCol: {
@@ -20,7 +21,6 @@ const formItemLayout = {
     sm: { span: 16 },
   },
 }
-
 const defaultThemeConfig = {
   BASE_CONFIG,
   LOGIN_CONFIG,
@@ -64,15 +64,28 @@ const Page = (props: any) => {
         defaultThemeConfig
       )
     })
+    // window.location.reload()
   }, [])
+
+  const handleChangeTheme = useCallback((theme) => {
+    if (isIeBrowser) {
+      message.info(`${tr('更多主题切换与自定义配色功能请使用最新版谷歌')}、${tr('火狐')}、${tr('Edge或360浏览器进行体验')}`, 5)
+      return
+    }
+    changeTheme(theme)
+  }, [])
+
+  const shouldThemeDisabled = useMemo(() => {
+    return isIeBrowser
+  }, [isIeBrowser])
 
   return (
     <div className={styles.wrap}>
-      <Tabs tabPosition='top'>
+      <Tabs tabPosition='top' size="small">
         <TabPane
           tab={
             <span>
-              <GantIcon type="icon-zhuti1" />
+              <GantIcon type="icon-theme" />
               {tr('主题')}
             </span>
           }
@@ -93,7 +106,7 @@ const Page = (props: any) => {
                     </div>
                     {activeTheme != theme.value &&
                       <div className={styles.actionWrap}>
-                        {!themeLoading && <Button size="large" type="primary" onClick={() => changeTheme(theme)} className={classnames('btn-solid', styles.action)}>{tr('应用')}</Button>}
+                        {!themeLoading && <Button size="large" type="primary" onClick={handleChangeTheme.bind(null, theme)} className={classnames('btn-solid', styles.action)}>{tr('应用')}</Button>}
                         {themeLoading && <Progress type="circle" className={styles.progress} percent={themeLoadingPercent} />}
                       </div>
                     }
@@ -107,7 +120,7 @@ const Page = (props: any) => {
         <TabPane
           tab={
             <span>
-              <GantIcon type="icon-zhuti" />
+              <GantIcon type="icon-settings" />
               {tr('配置')}
             </span>
           }
@@ -137,7 +150,7 @@ const Page = (props: any) => {
                     {getFieldDecorator('MAIN_CONFIG.primaryColor', {
                       initialValue: MAIN_CONFIG.primaryColor,
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT} />
                     )}
                   </Form.Item>
                   <Header title={
@@ -152,7 +165,7 @@ const Page = (props: any) => {
                     {getFieldDecorator('MAIN_CONFIG.navTheme', {
                       initialValue: MAIN_CONFIG.navTheme
                     })(
-                      <Radio.Group buttonStyle="solid" >
+                      <Radio.Group buttonStyle="solid" disabled={shouldThemeDisabled}>
                         <Radio.Button value="dark">{tr('暗色')}</Radio.Button>
                         <Radio.Button value="light">{tr('亮色')}</Radio.Button>
                       </Radio.Group>
@@ -186,28 +199,28 @@ const Page = (props: any) => {
                     {getFieldDecorator('MAIN_CONFIG.siderMenuTextColor', {
                       initialValue: MAIN_CONFIG.siderMenuTextColor
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
                   <Form.Item label={tr('侧边栏背景色')} {...formItemLayout}>
                     {getFieldDecorator('MAIN_CONFIG.siderMenuBackground', {
                       initialValue: MAIN_CONFIG.siderMenuBackground
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
                   <Form.Item label={tr('logo栏文字色')} {...formItemLayout}>
                     {getFieldDecorator('MAIN_CONFIG.siderMenuLogoColor', {
                       initialValue: MAIN_CONFIG.siderMenuLogoColor
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
                   <Form.Item label={tr('logo栏背景色')} {...formItemLayout}>
                     {getFieldDecorator('MAIN_CONFIG.siderMenuLogoBackground', {
                       initialValue: MAIN_CONFIG.siderMenuLogoBackground
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
                   {/* <Form.Item label={tr('背景色透明度')} {...formItemLayout}>
@@ -267,14 +280,14 @@ const Page = (props: any) => {
                     {getFieldDecorator('MAIN_CONFIG.globalHeaderTextColor', {
                       initialValue: MAIN_CONFIG.globalHeaderTextColor
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
                   <Form.Item label={tr('header背景色')} {...formItemLayout}>
                     {getFieldDecorator('MAIN_CONFIG.globalHeaderBackground', {
                       initialValue: MAIN_CONFIG.globalHeaderBackground
                     })(
-                      <ColorPicker />
+                      <ColorPicker disabled={shouldThemeDisabled} edit={EditStatus.EDIT}/>
                     )}
                   </Form.Item>
 
@@ -306,6 +319,14 @@ const Page = (props: any) => {
                   <Form.Item label={tr('面包屑')} {...formItemLayout}>
                     {getFieldDecorator('MAIN_CONFIG.showBreadcrumb', {
                       initialValue: MAIN_CONFIG.showBreadcrumb,
+                      valuePropName: 'checked'
+                    })(
+                      <Switch />
+                    )}
+                  </Form.Item>
+                  <Form.Item label={tr('导航按钮')} {...formItemLayout}>
+                    {getFieldDecorator('MAIN_CONFIG.showNavigationButton', {
+                      initialValue: MAIN_CONFIG.showNavigationButton,
                       valuePropName: 'checked'
                     })(
                       <Switch />
@@ -461,7 +482,7 @@ const Page = (props: any) => {
                       {getFieldDecorator(`MAIN_CONFIG.${themeType}WaterFontColor`, {
                         initialValue: MAIN_CONFIG[`${themeType}WaterFontColor`],
                       })(
-                        <ColorPicker edit={MAIN_CONFIG.waterStatus !== "none"} />
+                        <ColorPicker edit={EditStatus.EDIT} />
                       )}
                     </Form.Item>
                   </>}
@@ -481,14 +502,17 @@ const Page = (props: any) => {
 
 const FormCP = Form.create({
   onValuesChange(props: any, changedValues, allValues) {
+    // console.log('changedValues', changedValues)
     // 如果是侧边栏则不能用定宽
-    if (changedValues.MAIN_CONFIG.layout) {
-      allValues.MAIN_CONFIG.contentWidth = 'Fluid';
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-      }, 300)
+    if (changedValues.MAIN_CONFIG) {
+      if (changedValues.MAIN_CONFIG.layout) {
+        allValues.MAIN_CONFIG.contentWidth = 'Fluid';
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 300)
+      }
+      allValues.MAIN_CONFIG.theme = props.settings.MAIN_CONFIG.theme;
     }
-    allValues.MAIN_CONFIG.theme = props.settings.MAIN_CONFIG.theme;
     dispatch({
       type: 'settings/changeSetting',
       payload: merge({}, allValues)

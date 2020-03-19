@@ -198,7 +198,7 @@ const Page = (props: any) => {
             <Button
               size="small"
               icon="plus"
-              className="marginh5"
+              className="gant-margin-h-5"
               onClick={() => handleShowCreate(setDataList)}
             />
           </Tooltip>
@@ -207,7 +207,7 @@ const Page = (props: any) => {
               size="small"
               icon="delete"
               type="danger"
-              className="marginh5"
+              className="gant-margin-h-5"
               disabled={!selectedRowKeys.length}
               onClick={() => handleremove(setDataList)}
             />
@@ -215,7 +215,7 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="save"
-            className="marginh5"
+            className="gant-margin-h-5"
             onClick={() => seteditable(EditStatus.SAVE)}
           >{tr('保存')}</Button>
         </>
@@ -260,20 +260,20 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="export"
-            className="marginh5"
+            className="gant-margin-h-5"
           />
         </ExportExcel>
         {
           editable !== EditStatus.EDIT ? (
             <Button
               size="small"
-              className="marginh5"
+              className="gant-margin-h-5"
               onClick={() => seteditable(EditStatus.EDIT)}
             >{tr('进入编辑')}</Button>
           ) : (
               <Button
                 size="small"
-                className="marginh5"
+                className="gant-margin-h-5"
                 onClick={() => seteditable(EditStatus.CANCEL)}
               >{tr('取消编辑')}</Button>
 

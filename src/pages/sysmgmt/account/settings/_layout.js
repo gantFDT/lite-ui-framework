@@ -21,7 +21,7 @@ const AccountSettings = props => {
     children,
     MAIN_CONFIG,
     location: { pathname },
-    currentUser: { pictureId = '', userName = '', id = '' },
+    currentUser: { avatar = '', userName = '', id = '' },
     mode,
     config
   } = props;
@@ -62,7 +62,6 @@ const AccountSettings = props => {
     }
   });
 
-  const avatarUrl = getImageById(pictureId);
 
   const getActiveKey = (_pathname) => {
     const currentTab = menuData.find(item => _pathname.includes(item.key));
@@ -98,7 +97,7 @@ const AccountSettings = props => {
 
   const activeItem = useMemo(() => {
     const item = _.find(arr, (i) => i['key'] === selectKey)
-    if (_.isEmpty(item)) { return arr[0]}
+    if (_.isEmpty(item)) { return arr[0] }
     return item
   }, [selectKey])
 
@@ -133,15 +132,18 @@ const AccountSettings = props => {
             <div className="aligncenter" style={{ padding: '20px' }}>
               <Link to={`/common/user/${id}`}>
                 <div className="aligncenter" style={{ flexDirection: 'column', width: '100%' }}>
-                  <div className={styles.avatar} style={avatarUrl ? { backgroundImage: `url(${avatarUrl})` } : { backgroundColor: '#fafafa' }} />
+                  <div className={styles.avatar} style={avatar ? { backgroundImage: `url(${avatar})` } : { backgroundColor: '#fafafa' }} />
                   <div className="text-overflow-hidden" style={{ textAlign: 'center' }}>{userName}</div>
                 </div>
               </Link>
             </div>
           }
         >
-          <div>
-            <Header title={<><span className='marginh5'>{activeItem['icon']}</span>{activeItem['title']}</>} style={{ borderBottom: '1px solid rgba(0,0,0,0.1)' }} />
+          <div style={{ background: 'var(--component-background)' }}>
+            <Header
+              title={<><span className='gant-margin-h-5'>{activeItem['icon']}</span>{activeItem['title']}</>}
+              bottomLine
+            />
             <div style={{ padding: '10px 20px', minHeight: getContentHeight(MAIN_CONFIG, 40) }}>
               {renderChildren()}
             </div>

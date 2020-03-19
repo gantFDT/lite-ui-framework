@@ -262,18 +262,18 @@ class Login extends Component<LoginProps, LoginState> {
                   )}
                 <UserName
                   name="userName"
-                  placeholder={tr('用户名')}
+                  placeholder={tr('用户名:gantd.design')}
                   rules={[
                     {
                       required: true,
                       message: tr('请输入用户名'),
                     },
                   ]}
-                  className="marginv10"
+                  className="gant-margin-v-10"
                 />
                 <Password
                   name="password"
-                  placeholder={tr('密码')}
+                  placeholder={tr('密码:任意字符')}
                   rules={[
                     {
                       required: true,
@@ -283,7 +283,7 @@ class Login extends Component<LoginProps, LoginState> {
                   onPressEnter={() =>
                     this.loginForm && this.loginForm.validateFields(this.handleSubmit)
                   }
-                  className="marginv10"
+                  className="gant-margin-v-10"
                 />
                 {
                   validateCode && (
@@ -291,12 +291,12 @@ class Login extends Component<LoginProps, LoginState> {
                       name="validate"
                       placeholder={tr('验证码')}
                       size="large"
-                      className="marginv10"
+                      className="gant-margin-v-10"
                     />
                   )
                 }
                 
-                {/* <div className="marginv10">
+                {/* <div className="gant-margin-v-10">
                   <Checkbox checked={autoLogin} onChange={this.changeAutoLogin}>
                     {tr('记住我')}
                   </Checkbox>
@@ -304,7 +304,7 @@ class Login extends Component<LoginProps, LoginState> {
                     <FormattedMessage id="login.login.forgot-password" />
                   </a>
                 </div> */}
-                <Submit loading={submitting} className="marginv10">
+                <Submit loading={submitting} className="gant-margin-v-10">
                   {tr('登录')}
                 </Submit>
                 {/* <div className={styles.other}>
@@ -339,16 +339,7 @@ class Login extends Component<LoginProps, LoginState> {
             :
             <div style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, padding: '10px' }}>
               <div style={{ width: '100%', lineHeight: '30px', fontSize: '14px', color: '#696969', textAlign: copyrightAlign }}>
-                {showDownloadClientLink && <Link to={downloadClientUrl}>
-                  <p
-                    style={{
-                      // textAlign: copyrightAlign == 'left' ? 'right' : (copyrightAlign == 'center' && 'center')
-                      margin: 0
-                    }}
-                  >
-                    <Icon type="download" className="marginh5" />{tr('为了更好地体验') + tr('请您下载客户端')}
-                  </p>
-                </Link>}
+                
                 <p
                   style={{
                     // textAlign: copyrightAlign

@@ -37,7 +37,7 @@ function Anchor(props: AnchorProps) {
     }, [])
 
     return <GantAnchor
-        layout={localData.anchorMode}
+        layout={localData['anchorMode']}
         onLayoutChange={onSwitchChange}
         list={anchorList}
         offsetTop={offsetTop}

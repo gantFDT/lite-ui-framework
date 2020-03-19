@@ -165,10 +165,10 @@ const Page = (props: any) => {
   }, [data, anchorList])
 
   //单个字段编辑
-  const onItemSave = useCallback((key,value,cb)=>{
+  const onItemSave = useCallback((key, value, cb) => {
     key = key.split('.')[1]
-    update({ id: parseInt(id), [key]:value }, cb())
-  },[data,id])
+    update({ id: parseInt(id), [key]: value }, cb())
+  }, [data, id])
 
   //删除
   const handleremove = useCallback(() => {
@@ -197,15 +197,15 @@ const Page = (props: any) => {
     });
   }, [id, removeLoading])
 
-  return <Card title={<>
-    <span className="marginh5"><Icon type="form" /></span>
-    {tr('智能详情')}
-  </>} bodyStyle={{ padding: 0 }}>
+  return <Card
+    title={<><span className="gant-margin-h-5"><Icon type="form" /></span>{tr('智能详情')}</>}
+    bodyStyle={{ padding: 0 }}>
     <Submenu
       menuData={menuData}
       selectedKey={selectedKey}
       width={180}
       onSelectedChange={onSelectedChange}
+      bordered={false}
       extra={
         <div id='menuExtra' style={{ padding: '10px', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', width: 'auto' }}>
           <div>
@@ -223,11 +223,12 @@ const Page = (props: any) => {
           fixedTop={fixedHeader ? 40 : 0}
           anchorList={currentAnchorList}
           onClick={(e) => { e.preventDefault() }}
+          
           content={
-            <>
+            <div style={{borderRight:'1px solid rgba(128,128,128,0.2)'}}>
               <Header title={
                 <>
-                  <span className="marginh5"><Icon type="user" /></span>
+                  <span className="gant-margin-h-5"><Icon type="user" /></span>
                   {tr('基本信息')}
                 </>
               }
@@ -236,21 +237,21 @@ const Page = (props: any) => {
                   {edit === EditStatus.EDIT && <Tooltip title={tr("保存")}>
                     <Button size="small" icon="save"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => onSaveAll()}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.EDIT && <Tooltip title={tr("进入编辑")}>
                     <Button size="small" icon="edit"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.EDIT)}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.CANCEL && <Tooltip title={tr("结束编辑")}>
                     <Button size="small" icon="minus-circle"
                       // disabled={itemEdit != EditStatus.EDIT}
-                      className="marginh5"
+                      className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.CANCEL)}
                     />
                   </Tooltip>}
@@ -268,14 +269,14 @@ const Page = (props: any) => {
                 onSave={onItemSave}
               />
               <div style={{ padding: 10 }}><Button type='danger' style={{ width: '100%' }} onClick={handleremove}>{tr('删除')}</Button></div>
-            </>
+            </div>
           }
         />
         }
         {selectedKey == 'community' && <>
           <Header title={
             <>
-              <span className="marginh5"><Icon type="global" /></span>
+              <span className="gant-margin-h-5"><Icon type="global" /></span>
               {tr('社区')}
             </>
           }

@@ -45,24 +45,6 @@ export default withRouter(function Title(props: TitleProps) {
     return empty
   }, [pathname, menu])
 
-  // const getDocs = async () => {
-  //   try {
-  //     let res = await findHelpTopicByPathApi({
-  //       topicPath: path,
-  //       language: 'zh_CN'
-  //     })
-  //     if (res.length > 0) {
-  //       setShowQuetion(true)
-  //     }
-  //   } catch (error) {
-  //     console.log('getDocs error\n', error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   path && getDocs()
-  // }, [path])
-
   return (
     <div
       className={classnames(styles.title, {
@@ -70,7 +52,7 @@ export default withRouter(function Title(props: TitleProps) {
         [styles[`title-short-line`]]: showShortLine
       })}
     >
-      {icon && !title && <span className="marginh5">{icon}</span>}
+      {icon && !title && <span className="gant-margin-h-5">{icon}</span>}
       {title || name}
       {showQustion && (
         <Tooltip title={tr('查看帮助文档')}>

@@ -52,7 +52,7 @@ export const formSchema = {
           "type": "string",
           componentType: 'Selector',
           props: {
-            defaultList: sexs,
+            dataSource: sexs,
             valueProp: 'value',
             labelProp: 'name',
           },
@@ -111,27 +111,27 @@ export const formSchema = {
 }
 
 export const formUISchema = {
-  'ui:backgroundColor': '#fff',
-  "ui:col": {
+  "form:style":{background:'transparent'},
+  "field:col": {
     span: 24,
     sm: 12,
     xl: 12,
     xxl: 12,
   },
-  "ui:labelCol": {
+  "field:labelCol": {
     // span: 24,
     // sm: 6
   },
-  "ui:wrapperCol": {
+  "field:wrapperCol": {
     // span: 24,
     // sm: 18
   },
   more: {
     hobby: {
-      "ui:col": 24
+      "field:col": 24
     },
     motto: {
-      "ui:col": 24
+      "field:col": 24
     }
   }
 };

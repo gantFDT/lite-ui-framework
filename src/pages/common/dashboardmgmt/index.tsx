@@ -199,14 +199,14 @@ const Page = (props: any) => {
       bodyStyle={{ padding: '5px', background: 'rgba(0,0,0,0.05)' }}
       title={<><Title route={route} /></>}
       extra={<>
-        {currentUser['id'] === '-1' && <Button className="marginh5" size="small" icon="inbox" onClick={() => { showRepository() }}  >{tr('公共仪表板仓库管理')}</Button>}
+        {currentUser['id'] === '-1' && <Button className="gant-margin-h-5" size="small" icon="inbox" onClick={() => { showRepository() }}  >{tr('公共仪表板仓库管理')}</Button>}
         <Dropdown overlay={addMenu} placement="bottomCenter">
-          <Tooltip title={tr('新增')}><Button size="small" icon="plus" type="primary" className="marginh5" onClick={handleCreateClick} /></Tooltip>
+          <Tooltip title={tr('新增')}><Button size="small" icon="plus" type="primary" className="gant-margin-h-5" onClick={handleCreateClick} /></Tooltip>
         </Dropdown>
-        <Button className="marginh5" size="small" icon="dashboard" onClick={handleDesignClick} disabled={_.isEmpty(selectedRows)} >{tr('设计仪表板')}</Button>
-        <Tooltip title={tr('编辑')}><Button className="marginh5" size="small" icon="edit" onClick={() => handleEditClick(selectedRows[0])} disabled={_.isEmpty(selectedRows) || selectedRows[0].id === 'default'} /></Tooltip>
-        <Tooltip title={tr('删除')}><Button className="marginh5" type="danger" size="small" icon="delete" onClick={() => showRemoveModal()} disabled={_.isEmpty(selectedRows) || selectedRows[0].id === 'default'} /></Tooltip>
-        <Tooltip title={tr('刷新')}><Button className="marginh5" size="small" icon="reload" onClick={() => fetch({ type: nowType })} /></Tooltip>
+        <Button className="gant-margin-h-5" size="small" icon="dashboard" onClick={handleDesignClick} disabled={_.isEmpty(selectedRows)} >{tr('设计仪表板')}</Button>
+        <Tooltip title={tr('编辑')}><Button className="gant-margin-h-5" size="small" icon="edit" onClick={() => handleEditClick(selectedRows[0])} disabled={_.isEmpty(selectedRows) || selectedRows[0].id === 'default'} /></Tooltip>
+        <Tooltip title={tr('删除')}><Button className="gant-margin-h-5" type="danger" size="small" icon="delete" onClick={() => showRemoveModal()} disabled={_.isEmpty(selectedRows) || selectedRows[0].id === 'default'} /></Tooltip>
+        <Tooltip title={tr('刷新')}><Button className="gant-margin-h-5" size="small" icon="reload" onClick={() => fetch({ type: nowType })} /></Tooltip>
       </>}
     >
       <Spin spinning={fetchLoading} style={{}}>
@@ -275,7 +275,7 @@ const Page = (props: any) => {
 
       <SmartModal
         id="dashboard_create"
-        title={<><Icon type="plus" className="marginh5" />{tr("新增仪表板")}</>}
+        title={<><Icon type="plus" className="gant-margin-h-5" />{tr("新增仪表板")}</>}
         visible={createVisible}
         onCancel={() => setCreateVisible(false)}
         itemState={{
@@ -294,7 +294,7 @@ const Page = (props: any) => {
 
       {copyVisible && <SmartModal
         id="dashboard_copy"
-        title={<><Icon type="plus" className="marginh5" />{tr("通过") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name']) + '-' + tr('复制创建')}</>}
+        title={<><Icon type="plus" className="gant-margin-h-5" />{tr("通过") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name']) + '-' + tr('复制创建')}</>}
         visible={copyVisible}
         onCancel={() => setCopyVisible(false)}
         itemState={{
@@ -312,7 +312,7 @@ const Page = (props: any) => {
 
       {editVisible && <SmartModal
         id="dashboard_edit"
-        title={<><Icon type="edit" className="marginh5" />{tr("编辑仪表板") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name'])}</>}
+        title={<><Icon type="edit" className="gant-margin-h-5" />{tr("编辑仪表板") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name'])}</>}
         visible={editVisible}
         onCancel={() => setEditVisible(false)}
         itemState={{
@@ -329,7 +329,7 @@ const Page = (props: any) => {
 
       {!_.isEmpty(selectedRows) && <SmartModal
         id="dashboard_design"
-        title={<><Icon type="dashboard" className="marginh5" />{tr("设计仪表板") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name'])}</>}
+        title={<><Icon type="dashboard" className="gant-margin-h-5" />{tr("设计仪表板") + (!_.isEmpty(selectedRows) && '-' + selectedRows[0]['name'])}</>}
         visible={designVisible}
         onCancel={() => {
           setDesignVisible(false);
@@ -365,7 +365,7 @@ const Page = (props: any) => {
 
       <SmartModal
         id="dashboard_repository"
-        title={<><Icon type="inbox" className="marginh5" />{tr("公共仪表板仓库管理")}</>}
+        title={<><Icon type="inbox" className="gant-margin-h-5" />{tr("公共仪表板仓库管理")}</>}
         visible={repositoryVisible}
         onCancel={() => {
           setRepositoryVisible(false);
@@ -405,7 +405,7 @@ const Page = (props: any) => {
       </SmartModal>
     </Card>
     {drawerVisible &&  <Drawer
-      title={<><Icon type='inbox' className="marginh5" />{tr("公共仪表板仓库")}</>}
+      title={<><Icon type='inbox' className="gant-margin-h-5" />{tr("公共仪表板仓库")}</>}
       width={450}
       placement="right"
       closable

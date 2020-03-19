@@ -240,6 +240,7 @@ const Comp = (props: Dashboard) => {
             </Spin>
               :
               <div className={classnames('full', 'aligncenter')} style={{ height: 'calc(100vh - 92px)' }}>
+
                 <WidgetSelector
                   widgets={widgets}
                   currentLayout={currentLayout}
@@ -258,23 +259,26 @@ const Comp = (props: Dashboard) => {
         {stateEditMode && !_.isEmpty(currentLayout) && <div className={styles.block} />}
         {
           stateEditMode &&
-          <Toolbar style={{ width: '100%' }}>
-            <Tooltip placement="top" title={
-              tr('在布局时请尽量不要改变浏览器大小') + ',' +
-              tr('布局宽度可以随浏览器变小') + ',' +
-              tr('但不会随浏览器宽度变大') + '!'
-            }>
-              <Icon className="marginh10" type="exclamation-circle" />
-            </Tooltip>
-            <Button size="small" onClick={() => { setStateEditMode(false); exitEditCallback() }}>{tr('完成')}</Button>
-            {!_.isEmpty(currentLayout) && <Button size="small" type="danger" onClick={() => reset()}>{tr('一键清空')}</Button>}
-            <WidgetSelector
-              widgets={widgets}
-              currentLayout={currentLayout}
-              addWidget={addWidget}
-            />
+          <Toolbar
+            fixed={true}
+            extraRight={<>
+              <Tooltip placement="top" title={
+                tr('在布局时请尽量不要改变浏览器大小') + ',' +
+                tr('布局宽度可以随浏览器变小') + ',' +
+                tr('但不会随浏览器宽度变大') + '!'
+              }>
+                <Icon className="marginh10" type="exclamation-circle" />
+              </Tooltip>
+              <Button size="small" onClick={() => { setStateEditMode(false); exitEditCallback() }}>{tr('完成')}</Button>
+              {!_.isEmpty(currentLayout) && <Button size="small" type="danger" onClick={() => reset()}>{tr('一键清空')}</Button>}
+              <WidgetSelector
+                widgets={widgets}
+                currentLayout={currentLayout}
+                addWidget={addWidget}
+              />
+            </>}
+          />
 
-          </Toolbar>
         }
       </div >
     </Spin>

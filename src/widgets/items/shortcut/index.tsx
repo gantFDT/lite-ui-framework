@@ -51,7 +51,7 @@ const Widget = (props: Props) => {
 		<Card
 			bordered={false}
 			className="full"
-			title={<><Icon type="appstore" className="marginh5" />{tr('快捷方式')}</>}
+			title={<><Icon type="appstore" className="gant-margin-h-5" />{tr('快捷方式')}</>}
 			loading={loading}
 			bodyStyle={{ padding: '0px' }}
 			extra={<Button size="small" icon="reload" onClick={() => load()} loading={loading} />}

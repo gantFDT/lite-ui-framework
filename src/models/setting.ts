@@ -1,7 +1,6 @@
 import { Icon } from 'gantd'
 import defaultSettings from '../../config/defaultSettings';
 import {
-  JSONisEqual,
   deepCopy4JSON,
   cssVar2camel,
   camel2cssVar,
@@ -31,14 +30,6 @@ const updateFavicon = (img: string) => {
   document.getElementsByTagName('head')[0].appendChild(link);
 }
 
-const updateColorWeak = (colorWeak: string) => {
-  const root = document.getElementById('root');
-
-  if (root) {
-    root.className = colorWeak ? 'colorWeak' : '';
-  }
-};
-
 /**
  * 比较两个对象对应字段是否相等
  * @param {object} dataSource 数据源
@@ -59,7 +50,7 @@ const isObjectDiff = (target: object, origin: object, keys2Compare: Array<string
 // 注入ICON
 const buildIcon = () => {
   // 更新Icon
-  const { iconfontUrl, iconWareHouse } = defaultSettings as { iconfontUrl?: string, iconWareHouse?: string }
+  const { iconfontUrl } = defaultSettings as { iconfontUrl?: string, iconWareHouse?: string }
   Icon.updateFromIconfontCN({
     scriptUrl: iconfontUrl
   })

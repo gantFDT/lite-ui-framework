@@ -173,7 +173,7 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="plus"
-            className="marginh5"
+            className="gant-margin-h-5"
             onClick={handleShowCreate}
           />
         </Tooltip>
@@ -181,7 +181,7 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="edit"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!selectedRows.length}
             onClick={handleShowUpdate}
           />
@@ -191,7 +191,7 @@ const Page = (props: any) => {
             size="small"
             icon="delete"
             type="danger"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!selectedRows.length}
             onClick={handleremove}
           />

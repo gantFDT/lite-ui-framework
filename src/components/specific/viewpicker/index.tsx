@@ -155,6 +155,7 @@ export default function View(props: ViewProps) {
   return (
     <>
       <Popover
+        visible={showPop}
         content={views}
         placement='bottomLeft'
         trigger='click'
@@ -165,7 +166,9 @@ export default function View(props: ViewProps) {
         <div className={classnames(styles.dropbutton, {
           [styles['dropbuttonDefaultShow']]: !config || showPop,
           [styles['dropbuttonSplitLine']]: splitLine
-        })}  >
+        })}
+          style={{ color: 'var(--text-color)' }}
+        >
           {viewName}
           <Icon type='down' style={{ marginLeft: '5px' }} />
         </div>

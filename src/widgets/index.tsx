@@ -45,7 +45,7 @@ const widgets = {
     icon: 'picture',
     name: tr('轮播导航'),
     description: `${tr('轮播导航一般可做显示管理员配置的公告信息')},${tr('快捷自定义地址导航')},${tr('广告等')}`,
-    configPanel: true,
+    configPanel: false,
     maxLength: 1,
     snapShot: Widgets['Carousel']['snapShot'],
     tags: [tr('全部'), tr('其他')],

@@ -1,6 +1,4 @@
-export { default as SmartTable } from './smarttable';
 
-export { default as UserColumn } from './usercolumn';
 
 export { default as SearchForm } from './searchform'
 

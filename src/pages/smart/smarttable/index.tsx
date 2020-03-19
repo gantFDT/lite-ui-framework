@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useEffect, useMemo, useRef } from 'react';
-import { Card } from 'gantd';
+import { Card, SmartTable } from 'gantd';
 import { connect } from 'dva';
 import { Button, Tooltip, Modal, Checkbox, Avatar, Tag, Icon } from 'antd';
 import { Title } from '@/components/common';
-import { SmartSearch, SmartTable, SmartModal } from '@/components/specific';
+import { SmartSearch, SmartModal } from '@/components/specific';
 import { getTableHeight, TABLE_HEADER_HEIGHT, CARD_BORDER_HEIGHT } from '@/utils/utils'
 import { smartSearchSchema, smartTableSchema, modalSchema, getVisitData, avatars } from './schema';
 import { SettingsState } from '@/models/setting';
@@ -14,9 +14,9 @@ import { Link } from '@/components/common';
 import { CardList } from '@/components/list';
 import { MiniArea, Pie, Trend } from '@/components/chart'
 const { confirm } = Modal;
+
 const Page = (props: any) => {
   const pageKey: string = 'exampleSmartTable';
-
   const {
     MAIN_CONFIG, route, userId,
     dataSource, params, totalCount,
@@ -140,7 +140,7 @@ const Page = (props: any) => {
 
   //view改变
   const viewButtonGroup = useMemo(() => {
-    return <Button.Group className="marginh5">
+    return <Button.Group className="gant-margin-h-5">
       <Button
         icon="table"
         size="small"
@@ -180,18 +180,18 @@ const Page = (props: any) => {
         <div className={styles.left}>{<>
           {value['sex'] === 'male' && <Icon style={{ color: '#1890FF', marginLeft: '5px' }} type="man" />}
           {value['sex'] === 'female' && <Icon style={{ color: '#EA4C89', marginLeft: '5px' }} type="woman" />}
-          <span style={{marginLeft:5}}>{value['age']}</span>
+          <span style={{ marginLeft: 5 }}>{value['age']}</span>
         </>}</div>
         <div className={styles.right}>{Math.ceil(Math.random() * 10000)}</div>
       </div>
       <div className={styles.middle}>
         <div>
-        <Link to={`smartdetail/${value['id']}`}>
-          <Avatar size={60} icon="user" src={avatars[index > 9 ? Math.floor(index % 10) : index]} />
-          <div className={styles.name}>{value['name']}</div>
+          <Link to={`smartdetail/${value['id']}`}>
+            <Avatar size={60} icon="user" src={avatars[index > 9 ? Math.floor(index % 10) : index]} />
+            <div className={styles.name}>{value['name']}</div>
           </Link>
           <div className={styles.goodat}>
-        <span>{value['domain']}</span>
+            <span>{value['domain']}</span>
           </div>
           <div className={styles.tags}>
             {value['hobby'] && value['hobby'].map((words: string) => <Tag style={{ marginBottom: 3, marginRight: 3 }}>{words}</Tag>)}
@@ -203,7 +203,7 @@ const Page = (props: any) => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={true} className={styles.area}/>
+        <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={true} className={styles.area} />
 
       </div>
     </Card>
@@ -253,7 +253,8 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="plus"
-            className="marginh5"
+            type="primary"
+            className="gant-margin-h-5"
             onClick={handleShowCreate}
           />
         </Tooltip>
@@ -261,7 +262,7 @@ const Page = (props: any) => {
           <Button
             size="small"
             icon="edit"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!(selectedRows.length === 1)}
             onClick={handleShowUpdate}
           />
@@ -271,7 +272,7 @@ const Page = (props: any) => {
             size="small"
             icon="delete"
             type="danger"
-            className="marginh5"
+            className="gant-margin-h-5"
             disabled={!(selectedRows.length === 1)}
             onClick={handleremove}
           />

@@ -1,6 +1,5 @@
 {
   "order": 1,
-  "proxyTarget": "http://v5.ip2fw.gantcloud.com",
   "routes": [
     {
       "path": "/**/customlanguage",
