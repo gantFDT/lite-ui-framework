@@ -41,11 +41,5 @@ export default {
     icon: "global",
     leaf: true,
     children: [],
-  }],
-
-
-  // '/security/getReactStartMenu': async () => {
-  //   const data = await db['menu'].toArray();
-  //   return data
-  // },
+  }]
 }

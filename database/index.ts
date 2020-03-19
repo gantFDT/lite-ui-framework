@@ -1,5 +1,5 @@
 import Dexie from 'dexie';
-import { userData,smartTableData } from './mock'
+import { userData, smartTableData } from './mock'
 const initDB = async () => {
   const db = new Dexie('Gant');
   db.version(1).stores({
@@ -8,7 +8,7 @@ const initDB = async () => {
     userData: '++id, dataType, dataId, bigData',
     menu: '++id, parentResourceId,name,icon,leaf',
     file: '++id, data',
-    smarttable: '++id, name, age, sex, view, domain, codeRate, popularIndex, hobby, motto'
+    smarttable: '++id, name, age, sex, view, domain, codeRate, popularIndex, hobby, motto,birth,cellphone,price,address,href,email'
   });
   window['db'] = db
 

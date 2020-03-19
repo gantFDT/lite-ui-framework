@@ -24,27 +24,12 @@ const reduxModel: Model = {
     *fetch({ payload }, { call, put, select }) {
       const { params } = yield select((state: object) => state['exampleSmartTable']);
       const newsParams = { ...params, ...payload };
-      let dataSource = yield call(fetchApi, newsParams);
-
+      let res = yield call(fetchApi, newsParams);
       yield put({
         type: 'save',
         payload: {
-          dataSource,
-          totalCount: dataSource.totalCount,
-          params: newsParams
-        },
-      });
-    },
-    *reload({ payload }, { call, put, select }) {
-      const { params } = yield select((state: object) => state['exampleSmartTable']);
-      const newsParams = { ...params, ...payload };
-      let dataSource = yield call(fetchApi, newsParams);
-
-      yield put({
-        type: 'save',
-        payload: {
-          dataSource,
-          totalCount: dataSource.totalCount,
+          dataSource: res.data,
+          totalCount: res.totalCount,
           params: newsParams
         },
       });

@@ -14,13 +14,15 @@ import { Link } from '@/components/common';
 import { CardList } from '@/components/list';
 import { MiniArea, Pie, Trend } from '@/components/chart'
 const { confirm } = Modal;
+import Mock from 'mockjs'
+const { Random } = Mock
 
 const Page = (props: any) => {
   const pageKey: string = 'exampleSmartTable';
   const {
     MAIN_CONFIG, route, userId,
     dataSource, params, totalCount,
-    fetch, reload, create, remove, update, save,
+    fetch, create, remove, update, save,
     listLoading, createLoading, updateLoading, removeLoading,
   } = props;
 
@@ -49,7 +51,6 @@ const Page = (props: any) => {
 
   //选中
   const handleSelect = useCallback((selectedRowKeys, selectedRows) => {
-    // debugger
     setRowKeys(selectedRowKeys)
     setRows(selectedRows)
   }, [setRowKeys, setRows])
@@ -123,19 +124,7 @@ const Page = (props: any) => {
   //过滤
   const handleSearch = useCallback((params, isInit) => {
     if (isInit) { return }
-    reload(params)
-  }, [reload])
-
-  const onSimpleSearch = useCallback((params) => {
-    // const { searchKeyword, pageInfo } = params;
-    // let filters = {
-    //   orderList: [{ fieldName: "name", orderType: "ASC" }],
-    //   pageInfo,
-    //   whereList: [{ fieldName: 'keyword', operator: 'EMPTY', value: searchKeyword }]
-    // };
-    // setFilterInfo(filters);
-    // setPageInfo(pageInfo)
-    // fetch(filters)
+    fetch(params)
   }, [])
 
   //view改变
@@ -159,9 +148,6 @@ const Page = (props: any) => {
   }, [activeViewType])
 
   const onLoadMore = useCallback((beginIndex, pageSize) => {
-    // setIsLoadMore(true);
-    // setPageInfo({ beginIndex, pageSize });
-    // fetchMore({ ...filterInfo, pageInfo: { beginIndex, pageSize } });
   }, [pageInfo])
 
   //更改继续创建
@@ -187,7 +173,7 @@ const Page = (props: any) => {
       <div className={styles.middle}>
         <div>
           <Link to={`smartdetail/${value['id']}`}>
-            <Avatar size={60} icon="user" src={avatars[index > 9 ? Math.floor(index % 10) : index]} />
+            <Avatar size={60} icon="user" src={`https://i.picsum.photos/id/${Random.natural(10, 300)}/100/100.jpg`} />
             <div className={styles.name}>{value['name']}</div>
           </Link>
           <div className={styles.goodat}>
@@ -204,7 +190,6 @@ const Page = (props: any) => {
       </div>
       <div className={styles.bottom}>
         <MiniArea color="#36C66E" data={getVisitData()} height={60} showTooltip={true} className={styles.area} />
-
       </div>
     </Card>
   }
@@ -217,7 +202,9 @@ const Page = (props: any) => {
 
   //初始化数据
   useEffect(() => {
-    fetch();
+    if (_.isEmpty(dataSource)) {
+      fetch();
+    }
   }, [])
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
@@ -230,7 +217,6 @@ const Page = (props: any) => {
       schema={smartSearchSchema}
       isCompatibilityMode
       onSearch={handleSearch}
-      onSimpleSearch={onSimpleSearch}
       onSizeChange={onSearchFormSizeChange}
       pageInfo={pageInfo}
       totalCount={totalCount}
@@ -343,14 +329,14 @@ export default connect(
     MAIN_CONFIG: settings.MAIN_CONFIG,
     userId: user.currentUser.id,
     ...exampleSmartTable,
-    listLoading: loading.effects['exampleSmartTable/fetch'] || loading.effects['exampleSmartTable/reload'],
+    listLoading:loading.effects['exampleSmartTable/fetch'],
     createLoading: loading.effects['exampleSmartTable/create'],
     updateLoading: loading.effects['exampleSmartTable/update'],
     removeLoading: loading.effects['exampleSmartTable/remove'],
   }),
   (dispatch: any) => {
     const mapProps = {};
-    ['fetch', 'reload', 'create', 'remove', 'update', 'save'].forEach(method => {
+    ['fetch', 'create', 'remove', 'update', 'save'].forEach(method => {
       mapProps[method] = (payload: object, callback: Function, final: Function) => {
         dispatch({
           type: `exampleSmartTable/${method}`,

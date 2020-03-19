@@ -82,11 +82,51 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
     },
   },
   {
-    fieldName: 'view',
-    title: tr('浏览量')
+    fieldName: 'cellphone',
+    title: tr('手机号'),
+    componentType: 'InputCellPhone'
   },
-  ],
+  {
+    fieldName: 'href',
+    title: '个人主页',
+    componentType: 'InputUrl'
+  },
+  {
+    fieldName: 'email',
+    title: '邮箱',
+    componentType: 'InputEmail'
+  },
+  {
+    fieldName: 'birth',
+    title: tr('生日'),
+    componentType: 'DatePicker'
+  },
+  {
+    fieldName: 'cellphone',
+    title: tr('手机号'),
+    componentType: 'InputCellPhone'
+  },
+  {
+    fieldName: 'price',
+    title: tr('收益'),
+    componentType: 'InputMoney'
+  },
+  {
+    fieldName: 'address',
+    title: tr('地址'),
+    componentType: 'LocationSelector'
+  }],
   systemViews: [
+    {
+      viewId: 'simple',
+      name: tr("简洁视图"),
+      version: '2019-8-23 10:29:03',
+      panelConfig: {
+        searchFields: [{
+          fieldName: "name"
+        }]
+      }
+    },
     {
       viewId: 'all',
       name: tr("全字段视图"),
@@ -103,17 +143,24 @@ export const smartSearchSchema: SmartSearchCompatibilityModeSchema = {
           fieldName: 'sex'
         },
         {
-          fieldName: 'view'
-        }]
-      }
-    },
-    {
-      viewId: 'simple',
-      name: tr("简洁视图"),
-      version: '2019-8-23 10:29:03',
-      panelConfig: {
-        searchFields: [{
-          fieldName: "name"
+          fieldName: 'cellphone'
+        },
+        {
+          fieldName: 'href',
+        },
+        {
+          fieldName: 'birth',
+        },
+        {
+          fieldName: 'cellphone',
+        },
+        {
+          fieldName: 'price',
+        },
+        {
+          fieldName: 'address',
+        }, {
+          fieldName: 'email',
         }]
       }
     }
@@ -128,7 +175,10 @@ export const smartTableSchema = {
       title: tr('姓名'),
       render: (value: string, row: object, index: number) => {
         let avatarIndex = index > 9 ? Math.floor(index % 10) : index
-        return <Link to={`smartdetail/${row['id']}`}><Avatar size={30} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} />{value}</Link>
+        return <Link to={`smartdetail/${row['id']}`}>
+          {/* <Avatar size={15} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} /> */}
+          {value}
+        </Link>
       },
       locked: 'left'
     },
@@ -166,10 +216,40 @@ export const smartTableSchema = {
       }
     },
     {
+      fieldName: 'href',
+      title: '个人主页',
+      componentType: 'InputUrl'
+    },
+    {
+      fieldName: 'email',
+      title: '邮箱',
+      componentType: 'InputEmail'
+    },
+    {
+      fieldName: 'birth',
+      title: tr('生日'),
+      componentType: 'DatePicker'
+    },
+    {
+      fieldName: 'cellphone',
+      title: tr('手机号'),
+      componentType: 'InputCellPhone'
+    },
+    {
+      fieldName: 'price',
+      title: tr('收益'),
+      componentType: 'InputMoney'
+    },
+    {
+      fieldName: 'address',
+      title: tr('地址'),
+      componentType: 'LocationSelector'
+    },
+    {
       fieldName: 'codeRate',
       title: tr('代码提交频度'),
       render: (value: string, row: object) => {
-        return <MiniArea color="#36C66E" data={getVisitData()} height={40} showTooltip={false} />
+        return <MiniArea color="#36C66E" data={getVisitData()} height={16} showTooltip={false} />
       }
     },
     {
@@ -182,7 +262,7 @@ export const smartTableSchema = {
           tooltip={false}
           margin={[0, 0, 0, 0]}
           percent={Math.random() * 100}
-          height={40}
+          height={16}
         />
       }
     },
@@ -191,7 +271,7 @@ export const smartTableSchema = {
       title: tr('爱好'),
       render: (value: string[], row: object) => {
         if (!value) { return }
-        return value.map((words) => <Tag style={{ marginBottom: 3, marginRight: 3 }}>{words}</Tag>)
+        return value.map((words) => <Tag style={{ marginRight: 3 }}>{words}</Tag>)
       }
     },
     {
@@ -208,7 +288,7 @@ export const smartTableSchema = {
       name: "全字段视图",
       version: '2020-02-20 02:20:02',
       panelConfig: {
-        wrap: true,
+        wrap: false,
         isZebra: true,
         bordered: true,
         clickable: true,
@@ -217,7 +297,8 @@ export const smartTableSchema = {
         columnFields: [
           {
             fieldName: 'name',
-            width: 150
+            fixed: true,
+            width: 80
           },
           {
             fieldName: 'sex',
@@ -229,19 +310,43 @@ export const smartTableSchema = {
           },
           {
             fieldName: 'domain',
-            width: 100
+            width: 80
           },
           {
             fieldName: 'view',
+            width: 70
+          },
+          {
+            fieldName: 'href',
+            width: 150
+          },
+          {
+            fieldName: 'email',
+            width: 150
+          },
+          {
+            fieldName: 'birth',
             width: 120
           },
           {
+            fieldName: 'cellphone',
+            width: 150
+          },
+          {
+            fieldName: 'price',
+            width: 100
+          },
+          {
+            fieldName: 'address',
+            width: 200
+          },
+          {
             fieldName: 'codeRate',
-            width: 375
+            width: 40
           },
           {
             fieldName: 'popularIndex',
-            width: 150
+            width: 40
           },
           {
             fieldName: 'hobby',

@@ -62,6 +62,39 @@ export const formSchema = {
           type: "number",
           componentType: "InputNumber",
         },
+        cellphone: {
+          type: 'number',
+          title: tr('手机号'),
+          componentType: 'InputCellPhone'
+        },
+        href: {
+          type: 'string',
+          title: '个人主页',
+          componentType: 'InputUrl'
+        },
+        email: {
+          type: 'string',
+          title: '邮箱',
+          componentType: 'InputEmail'
+        },
+        birth: {
+          type: 'date',
+          title: tr('生日'),
+          componentType: 'DatePicker'
+        },
+        price: {
+          type: 'number',
+          title: tr('收益'),
+          componentType: 'InputMoney',
+          props: {
+            allowEdit: false
+          }
+        },
+        address: {
+          type: 'array',
+          title: tr('地址'),
+          componentType: 'LocationSelector'
+        }
       }
     },
     code: {
@@ -76,14 +109,14 @@ export const formSchema = {
           title: tr('浏览量'),
           type: "string",
           props: {
-            allowEdit:false
+            allowEdit: false
           }
         },
         popularIndex: {
           title: tr('受欢迎指数'),
           type: "number",
           props: {
-            allowEdit:false
+            allowEdit: false
           }
         }
       }
@@ -111,7 +144,7 @@ export const formSchema = {
 }
 
 export const formUISchema = {
-  "form:style":{background:'transparent'},
+  "form:style": { background: 'transparent' },
   "field:col": {
     span: 24,
     sm: 12,
@@ -119,19 +152,11 @@ export const formUISchema = {
     xxl: 12,
   },
   "field:labelCol": {
-    // span: 24,
-    // sm: 6
+    span: 6,
+    sm: 6
   },
   "field:wrapperCol": {
-    // span: 24,
-    // sm: 18
-  },
-  more: {
-    hobby: {
-      "field:col": 24
-    },
-    motto: {
-      "field:col": 24
-    }
+    span: 18,
+    sm: 18
   }
 };

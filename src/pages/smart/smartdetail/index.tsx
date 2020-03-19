@@ -12,22 +12,15 @@ import { ModelProps } from './model';
 import { getContentHeight } from '@/utils/utils'
 import { formSchema, formUISchema, getVisitData } from './schema'
 import { MiniArea, Pie } from '@/components/chart'
+import Friends from './Friends'
 import router from 'umi/router'
+import Mock from 'mockjs'
+const { Random } = Mock
+
 
 const confirm = Modal.confirm
 const ids = Object.keys(formSchema.propertyType);
-const avatars = [
-  'http://www.duoziwang.com/uploads/1512/1-1512291K2430-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512291K3400-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512292055010-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512291K6240-L.jpg',
-  'http://www.duoziwang.com/2016/10/05/2032097569.jpg',
-  'http://www.duoziwang.com/2016/10/05/21143213927.jpg',
-  'http://www.duoziwang.com/2016/10/05/21135613834.png',
-  'http://www.duoziwang.com/2016/10/05/2025046706.jpg',
-  'http://www.duoziwang.com/2016/10/05/21102913178.png',
-  'http://www.duoziwang.com/uploads/1512/1-1512292051490-L.jpg',
-]
+
 const menuData = [
   {
     title: '基本信息',
@@ -35,7 +28,7 @@ const menuData = [
     key: 'baseInfo',
   },
   {
-    title: '社区',
+    title: '他的好友',
     icon: 'global',
     key: 'community',
   }
@@ -209,7 +202,7 @@ const Page = (props: any) => {
       extra={
         <div id='menuExtra' style={{ padding: '10px', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', width: 'auto' }}>
           <div>
-            <Avatar size={64} src={avatars[detail.id]} />
+            <Avatar size={64} src={`https://i.picsum.photos/id/${Random.natural(100, 900)}/100/100.jpg`} />
             <div>{detail.name}</div>
           </div>
         </div>
@@ -223,9 +216,9 @@ const Page = (props: any) => {
           fixedTop={fixedHeader ? 40 : 0}
           anchorList={currentAnchorList}
           onClick={(e) => { e.preventDefault() }}
-          
+
           content={
-            <div style={{borderRight:'1px solid rgba(128,128,128,0.2)'}}>
+            <div style={{ borderRight: '1px solid rgba(128,128,128,0.2)' }}>
               <Header title={
                 <>
                   <span className="gant-margin-h-5"><Icon type="user" /></span>
@@ -273,47 +266,8 @@ const Page = (props: any) => {
           }
         />
         }
-        {selectedKey == 'community' && <>
-          <Header title={
-            <>
-              <span className="gant-margin-h-5"><Icon type="global" /></span>
-              {tr('社区')}
-            </>
-          }
-            bottomLine
-          />
-          <div style={{ padding: 10 }}>
-            <Header title={
-              <>
-                {tr('受欢迎指数')}
-              </>
-            }
-              type='num'
-              num={1}
-            />
-            <Pie
-              animate={false}
-              inner={0.55}
-              tooltip={false}
-              margin={[0, 0, 0, 0]}
-              percent={Math.random() * 100}
-              height={100}
-            />
-          </div>
-          <div style={{ padding: 10 }}>
-
-            <Header title={
-              <>
-                {tr('代码提交频度')}
-              </>
-            }
-              type='num'
-              num={2}
-            />
-            <MiniArea color="#36C66E" data={getVisitData()} height={300} />
-          </div>
-
-        </>}
+        {selectedKey == 'community' && <Friends />}
+        
       </div>
 
     </Submenu>

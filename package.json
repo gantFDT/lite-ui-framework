@@ -75,6 +75,7 @@
     "is-json": "^2.0.1",
     "lodash-decorators": "^6.0.1",
     "memoize-one": "^5.0.4",
+    "mockjs": "^1.1.0",
     "npm": "^6.11.2",
     "numeral": "^2.0.6",
     "omit.js": "^1.0.2",
