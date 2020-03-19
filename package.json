@@ -183,5 +183,6 @@
     "src/**/*.less",
     "config/**/*.js*",
     "scripts/**/*.js"
-  ]
+  ],
+  "__npminstall_done": false
 }

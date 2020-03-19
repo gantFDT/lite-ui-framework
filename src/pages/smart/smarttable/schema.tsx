@@ -207,14 +207,13 @@ export const smartTableSchema = {
       viewId: 'all',
       name: "全字段视图",
       version: '2020-02-20 02:20:02',
-      wrap: false,
-      isZebra: false,
-      bordered: false,
-      clickable: false,
-      footerDirection: 'row',
-      heightMode: 'full',
       panelConfig: {
-        wrap: false,
+        wrap: true,
+        isZebra: true,
+        bordered: true,
+        clickable: true,
+        footerDirection: 'row',
+        heightMode: 'full',
         columnFields: [
           {
             fieldName: 'name',
@@ -261,6 +260,11 @@ export const smartTableSchema = {
       version: '2020-02-20 02:20:02',
       panelConfig: {
         wrap: false,
+        isZebra: false,
+        bordered: false,
+        clickable: true,
+        footerDirection: 'row-reverse',
+        heightMode: 'auto',
         columnFields: [
           {
             fieldName: 'name',

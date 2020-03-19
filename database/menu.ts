@@ -2,7 +2,7 @@ import { gStatus } from './utils'
 
 export default {
   '/security/getReactStartMenu': [{
-    // id: "1",
+    id: "1",
     parentResourceId: "ROOT",
     type: "REACTMENU_CATEGORY_ITEM",
     name: "智能表格",
@@ -12,7 +12,7 @@ export default {
     leaf: true,
     children: [],
   }, {
-    // id: "2",
+    id: "2",
     parentResourceId: "ROOT",
     type: "REACTMENU_CATEGORY_ITEM",
     name: "智能详情",
@@ -22,7 +22,7 @@ export default {
     leaf: true,
     children: [],
   }, {
-    // id: "3",
+    id: "3",
     parentResourceId: "ROOT",
     type: "REACTMENU_CATEGORY_ITEM",
     name: "定制主题",
@@ -32,7 +32,7 @@ export default {
     leaf: true,
     children: [],
   },{
-    // id: "4",
+    id: "4",
     parentResourceId: "ROOT",
     type: "REACTMENU_CATEGORY_ITEM",
     path: "/sysrightmanage/customlanguage",

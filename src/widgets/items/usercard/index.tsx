@@ -4,11 +4,11 @@ import { Card } from 'gantd'
 import styles from './index.less'
 import classnames from 'classnames'
 import { connect } from 'dva'
-import { getOrganizationInfo } from '@/utils/organization'
+
 import Link from 'umi/link'
 import { ConfigBar } from '@/widgets/utils'
 import ReactResizeDetector from 'react-resize-detector';
-import { jump } from '@/components/common'
+
 import SnapShot from './snapshot.png'
 const modelRegisterKey = ''
 
@@ -70,11 +70,13 @@ const Widget = (props: any) => {
 									{currentUser.gender === 'MALE' && <Icon style={{ color: '#1890FF', marginLeft: '5px' }} type="man" />}
 									{currentUser.gender === 'FEMALE' && <Icon style={{ color: '#EA4C89', marginLeft: '5px' }} type="woman" />}
 								</div>
-								<div
+								{/* <div
 									style={{
 										textAlign: layout === 'h' ? 'left' : 'center',
 									}}
-								>{organizationInfo.fullOrgName} {organizationInfo.fullOrgName && currentUser.position ? '|':''} {currentUser.position}</div>
+								>{organizationInfo.fullOrgName} {organizationInfo.fullOrgName && currentUser.position ? '|':''}
+								 {currentUser.position}
+								 </div> */}
 							</Col>
 						</Row>
 					</ReactResizeDetector>
@@ -116,7 +118,7 @@ const Widget = (props: any) => {
 
 export default connect(({ user }: { user: any }) => ({
 	currentUser: user.currentUser,
-	organizationInfo: getOrganizationInfo(user.currentUser.organizationId)
+	// organizationInfo: getOrganizationInfo(user.currentUser.organizationId)
 }))(Widget)
 
 export { SnapShot, modelRegisterKey }

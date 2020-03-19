@@ -59,6 +59,9 @@ class LogoBandConfig extends Component {
         searchValue: undefined
     };
     onChange = (value, name, extra) => {
+        console.log('value',value)
+        console.log('name',name)
+        console.log('extra',extra)
         const { menuData, dispatch, shortcut, columns } = this.props;
         const node = getTreeNode(menuData, 'children', 'value', value);
         // if(_.isEmpty(shortcut)){return}
@@ -66,6 +69,8 @@ class LogoBandConfig extends Component {
             message.warning(tr('请选择叶子节点'));
             return
         }
+        console.log('shortcut',shortcut)
+        console.log('value',value)
         const hasThis = getTreeNode(shortcut, 'children', 'id', value);
         if (hasThis) {
             message.warning(tr('这个快捷方式已存在'));
@@ -127,7 +132,7 @@ class LogoBandConfig extends Component {
         const {
             getFieldDecorator, getFieldsError, getFieldError, isFieldTouched,
         } = this.props.form;
-
+        console.log('menuData',menuData)
         return (<>
             <Header title={tr("快捷方式")} type='num' num={1} bottomLine={false} />
             {!_.isEmpty(shortcut) && <MySortableContainer onSortEnd={this.onSortEnd} helperClass={styles.sortableHelper} useDragHandle>
