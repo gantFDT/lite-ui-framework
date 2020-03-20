@@ -1,17 +1,15 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
 import { Anchor } from '@/components/common'
-import { Submenu, Card, EditStatus, SwitchStatus, Header, Icon } from 'gantd'
-import { Avatar, Button, Tooltip, Radio, Modal } from 'antd'
+import { Submenu, Card, EditStatus, Header, Icon, SchemaForm } from 'gantd'
+import { Avatar, Button, Tooltip, Modal } from 'antd'
 import { connect } from 'dva';
-import { Title } from '@/components/common';
-import { SchemaForm } from 'gantd'
 import { LoadingIF } from '@/models/connect';
 import { SettingsState } from '@/models/setting';
 import { UserState } from '@/models/user';
 import { ModelProps } from './model';
 import { getContentHeight } from '@/utils/utils'
-import { formSchema, formUISchema, getVisitData } from './schema'
-import { MiniArea, Pie } from '@/components/chart'
+import { formSchema, formUISchema } from './schema'
+
 import Friends from './Friends'
 import router from 'umi/router'
 import Mock from 'mockjs'
@@ -20,7 +18,7 @@ const { Random } = Mock
 
 const confirm = Modal.confirm
 const ids = Object.keys(formSchema.propertyType);
-
+const avatar = `https://i.picsum.photos/id/${Random.natural(100, 900)}/100/100.jpg`
 const menuData = [
   {
     title: '基本信息',
@@ -66,8 +64,7 @@ const anchorList: AnchorListIF[] = [
 const Page = (props: any) => {
   const {
     match: { params: { id } },
-    MAIN_CONFIG, route, userId,
-    dispatch,
+    MAIN_CONFIG, userId,
     detail,
     fetch, update, remove,
     removeLoading
@@ -114,7 +111,6 @@ const Page = (props: any) => {
       }
     })
     return titleConfig
-    // }, [edit])
   }, [edit])
 
   //整理schemaform的data
@@ -202,13 +198,12 @@ const Page = (props: any) => {
       extra={
         <div id='menuExtra' style={{ padding: '10px', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', width: 'auto' }}>
           <div>
-            <Avatar size={64} src={`https://i.picsum.photos/id/${Random.natural(100, 900)}/100/100.jpg`} />
+            <Avatar size={64} src={avatar} />
             <div>{detail.name}</div>
           </div>
         </div>
       }
     >
-
       <div style={{ minHeight: minHei }}>
         {selectedKey == 'baseInfo' && <Anchor
           anchorKey='demoUserManageDetailBase'
@@ -229,21 +224,18 @@ const Page = (props: any) => {
                 extra={<>
                   {edit === EditStatus.EDIT && <Tooltip title={tr("保存")}>
                     <Button size="small" icon="save"
-                      // disabled={itemEdit != EditStatus.EDIT}
                       className="gant-margin-h-5"
                       onClick={() => onSaveAll()}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.EDIT && <Tooltip title={tr("进入编辑")}>
                     <Button size="small" icon="edit"
-                      // disabled={itemEdit != EditStatus.EDIT}
                       className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.EDIT)}
                     />
                   </Tooltip>}
                   {edit !== EditStatus.CANCEL && <Tooltip title={tr("结束编辑")}>
                     <Button size="small" icon="minus-circle"
-                      // disabled={itemEdit != EditStatus.EDIT}
                       className="gant-margin-h-5"
                       onClick={() => setEdit(EditStatus.CANCEL)}
                     />
@@ -254,7 +246,6 @@ const Page = (props: any) => {
               <SchemaForm
                 edit={edit}
                 wrappedComponentRef={formRef}
-                // edit={'CANCEL'}
                 data={data}
                 schema={formSchema}
                 uiSchema={formUISchema}
@@ -267,16 +258,13 @@ const Page = (props: any) => {
         />
         }
         {selectedKey == 'community' && <Friends />}
-        
       </div>
-
     </Submenu>
   </Card>
-
-
-
-
 }
+
+
+
 export default connect(
   ({ exampleSmartDetail, settings, loading, user }: { exampleSmartDetail: ModelProps, settings: SettingsState, loading: LoadingIF, user: UserState }) => ({
     MAIN_CONFIG: settings.MAIN_CONFIG,
