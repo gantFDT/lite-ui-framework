@@ -361,7 +361,7 @@ export const smartTableSchema = {
     },
     {
       viewId: 'simple',
-      name: "简洁视图",
+      name: "简洁自适应高度视图",
       version: '2020-02-20 02:20:02',
       panelConfig: {
         wrap: false,
@@ -375,7 +375,7 @@ export const smartTableSchema = {
             fieldName: 'name',
           },
           {
-            fieldName: 'sex',
+            fieldName: 'href',
 
           },
           {

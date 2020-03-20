@@ -12,13 +12,13 @@ export default {
     let data, totalCount
     if (!_.isEmpty(filterInfo)) {
       filterInfo = clearObject(filterInfo)
-      data = await db['smarttable'].where({ ...filterInfo }).offset(beginIndex*pageSize).limit(pageSize).toArray();
+      data = await db['smarttable'].where({ ...filterInfo }).offset(beginIndex * pageSize - pageSize).limit(pageSize).toArray();
       totalCount = await db['smarttable'].where({ ...filterInfo }).count();
     } else {
-      data = await db['smarttable'].offset(beginIndex*pageSize).limit(pageSize).toArray();
+      data = await db['smarttable'].offset(beginIndex * pageSize - pageSize).limit(pageSize).toArray();
       totalCount = await db['smarttable'].count();
     }
-    
+
     data = gStatus('success', { data, totalCount })
     return data
   },

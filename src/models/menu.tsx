@@ -485,11 +485,11 @@ export default {
       serveMenu[0].children = originDashboardMenu
       return {
         ...state,
+        dashboards,
         serveMenu: [...serveMenu]
       }
     },
     setMenu(state, { payload }) {
-
       const computedState = {
         ...state,
         ...payload,

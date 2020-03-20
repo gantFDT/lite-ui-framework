@@ -60,7 +60,7 @@ const Page = (props: any) => {
     save({
       params: {
         ...params,
-        pageInfo: { beginIndex, pageSize }
+        pageInfo: { beginIndex:beginIndex, pageSize }
       }
     })
   }, [params])
@@ -208,6 +208,7 @@ const Page = (props: any) => {
   }, [])
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
+  console.log('bodyHeight',bodyHeight)
   const cardHeight = getTableHeight(MAIN_CONFIG, searchFormHei, false)
   return (<Card bodyStyle={{ padding: '0px' }}>
     <SmartSearch
@@ -222,7 +223,8 @@ const Page = (props: any) => {
       totalCount={totalCount}
       ref={searchRef}
     />
-    {activeViewType === 'table' && <SmartTable
+    {/* {activeViewType === 'table' &&  */}
+    <SmartTable
       tableKey={`${pageKey}:${userId}`}
       rowKey="id"
       schema={getSchema}
@@ -269,7 +271,8 @@ const Page = (props: any) => {
       pageIndex={beginIndex}
       onPageChange={onPageChange}
       totalCount={totalCount}
-    />}
+    />
+    {/* } */}
     {activeViewType === 'card' && <CardList
       bodyHeight={cardHeight}
       headerRight={

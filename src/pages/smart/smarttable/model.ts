@@ -14,7 +14,7 @@ const reduxModel: Model = {
     params: {
       pageInfo: {
         pageSize: 50,
-        beginIndex: 0
+        beginIndex: 1
       }
     },
     dataSource: [],

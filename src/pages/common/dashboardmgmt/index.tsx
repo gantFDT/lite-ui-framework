@@ -19,7 +19,8 @@ const Page = (props: any) => {
     fetch, create, update, remove, copy,
     data, repositoryData,
     fetchLoading, createLoading, removeLoading, updateLoading,
-    global, currentUser
+    global, currentUser,
+    dispatch
   } = props
   const [selectedRows, setSelectedRows] = useState()
   const [selectedRowKeys, setSelectedRowKeys] = useState()

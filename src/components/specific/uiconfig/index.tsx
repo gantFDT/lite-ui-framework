@@ -140,7 +140,7 @@ const Page = (props: any) => {
 
                   <Header title={
                     < span className="primary-color">
-                      <Icon type="desktop" className="marginhr5" />
+                      <Icon type="desktop" className="gant-margin-h-5" />
                       {tr('基础')}
                     </span>
                   } bottomLine={false}
@@ -155,7 +155,7 @@ const Page = (props: any) => {
                   </Form.Item>
                   <Header title={
                     < span className="primary-color">
-                      <Icon type="layout" className="marginhr5" />
+                      <Icon type="layout" className="gant-margin-h-5" />
                       {tr('主菜单')}
                     </span>
                   } bottomLine={false}
@@ -268,7 +268,7 @@ const Page = (props: any) => {
 
                   <Header title={
                     < span className="primary-color">
-                      <Icon type="layout" className="marginhr5" />
+                      <Icon type="layout" className="gant-margin-h-5" />
                       {tr('头部设置')}
                     </span>
 
@@ -363,7 +363,7 @@ const Page = (props: any) => {
                   <Header
                     title={
                       < span className="primary-color">
-                        <Icon type="table" className="marginhr5" />
+                        <Icon type="table" className="gant-margin-h-5" />
                         {tr('登陆表单')}
                       </span>
                     }
@@ -395,7 +395,7 @@ const Page = (props: any) => {
                 <div style={{ height }} className={styles.fixheight}>
                   <Header title={
                     < span className="primary-color">
-                      <Icon type="highlight" className="marginhr5" />
+                      <Icon type="highlight" className="gant-margin-h-5" />
                       {tr('水印')}
                     </span>
                   } bottomLine={false}
