@@ -38,7 +38,7 @@
     "locale": "node ./scripts/locale.js",
     "gcode": "node ./scripts/genCode.js",
     "gitconfig": "git remote add gitlab git@git.gantcloud.com:ui-team/lite-ui-framework.git && git remote add github git@github.com:yuanguandong/lite-ui-framework.git",
-    "gitpush": "git push gitlab master && git push github master"
+    "gitpush": "git push gitee master && git push github master"
   },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
