@@ -354,7 +354,7 @@ const BasicLayout = props => {
   return (
     <WithKeyEvent
       logout={logout}
-      onCtrlB={() => toggleMenuCollapse(!collapsed)} // 展开|收起 侧边菜单栏
+      onCtrlB={() => {console.log(collapsed);toggleMenuCollapse(!collapsed)}} // 展开|收起 侧边菜单栏
       onAltUp={backTop} // 滚动到顶部
       onAltH={backToHome} // 回到首页
       // onAltS={() => toggleFilterDrawer()} // 展开|收起 侧边菜单栏
