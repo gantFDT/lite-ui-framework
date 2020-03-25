@@ -22,10 +22,12 @@ const shortcutList = () => {
   return <div style={{ margin: '-10px' }}><ul className={styles.shortcutList} >
     <Header title={"Ctrl" + tr("类")} type="num" num='1' />
     <li> <Tag>Ctrl+B</Tag> {tr("主菜单的收缩")}</li>
-    <Header title={"Alt" + tr("类")} type="num" num='2' />
+    <Header title={"Shift" + tr("类")} type="num" num='2' />
+    <li> <Tag>Shift+F</Tag> {tr("满屏显示")}</li>
+    <Header title={"Alt" + tr("类")} type="num" num='3' />
     <li><Tag>Alt+H</Tag> {tr("回到首页")}</li>
     <li><Tag>Alt +↑</Tag>{tr("回到顶部")}</li>
-    <Header title={"Esc" + tr("类")} type="num" num='3' />
+    <Header title={"Esc" + tr("类")} type="num" num='4' />
     <li><Tag>Esc</Tag>{tr("关闭模态窗口")}</li>
   </ul>
   </div>

@@ -11,29 +11,6 @@ const COMMON_CONFIG = {
   // 默认时间字符串格式
   defaultDateFormat: 'YYYY-MM-DD HH:mm:ss',
   //上传文件的大小的最大值(M)
-  uploadFileSize: 10,
-
-  //单点登录相关
-  //按顺序加载登录链js文件及方法
-  loginChain: [],
-  //按顺序加载登出链js文件及方法
-  logoutChain: [],
-  //单点登录令牌名称
-  ssoTokenName: undefined,
-  //单点登录令牌类型
-  ssoTokenType: undefined,
-  //显示验证码功能(默认为false隐藏)
-  validateCode: false,
-  //登录地址
-  loginUri: '/authentication/login',
-  //登录用户类型
-  loginUserType: null,
-  //登录用户名
-  loginUserName: 'admin',
-  //登录密码
-  loginPassword: '123456',
-
-
   //显示用户帐号编辑功能。在与单点登录系统集成时，往往用户由单点登录系统集中管理，所以需要关闭本系统功能
   showUserEdit: true,
   //显示用户退出功能
@@ -50,12 +27,6 @@ const COMMON_CONFIG = {
   startTaskRunner: true,
   //登录超时时间
   loginTimeout: 60 * 60 * 8,
-  //显示通知按钮
-  showMsgBtn: true,
-  //是否显示下载客户端链接
-  showDownloadClientLink: true,
-  //客户端下载链接地址
-  downloadClientUrl: '#',
   //是否显示切换语言的菜单
   showChangeLanguageMenu: true,
   //全局头部额外插槽，一般放置点击跳转的button

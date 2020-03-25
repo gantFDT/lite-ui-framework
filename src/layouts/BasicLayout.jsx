@@ -47,7 +47,8 @@ const fsStyle = {
   width: '100vw',
   height: '100vh',
   backgroundColor: 'var(--body-background)',
-  padding: '10px'
+  padding: '0px',
+  overflow:'auto'
 }
 
 const noMatchAction = <Button size="small" type='primary' onClick={() => { router.replace('/') }}>{tr('返回首页')}</Button>

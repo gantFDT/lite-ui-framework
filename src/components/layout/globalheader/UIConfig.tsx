@@ -27,7 +27,7 @@ const Page = (props: any) => {
         setHeight(height)
       }}
     >
-      <UIConfig settings={settings} tabPosition='left' height={height - 125} />
+      <UIConfig settings={settings} tabPosition='left' height={height - 115} />
     </SmartModal>
   )
 }
