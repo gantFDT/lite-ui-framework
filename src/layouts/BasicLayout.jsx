@@ -365,12 +365,11 @@ const BasicLayout = props => {
       </BackTop>
       <ProLayoutComponents
         title={title}
-        // logo={settings.MAIN_CONFIG.navTheme === 'dark' ? logoImageWhite : logoImage}
+        logo={settings.MAIN_CONFIG.navTheme === 'dark' ? logoImageWhite : logoImage}
         onCollapse={() => toggleMenuCollapse(!collapsed)}
         menuItemRender={getMenuName}
         breadcrumbRender={(routers = []) => routers}
         siderWidth={slideWidth}
-        // formatMessage={formatMessage}
         rightContentRender={rightProps => <RightContent {...rightProps} />}
         footerRender={false} // 去掉版权信息
         menuDataRender={menuDataRender}
