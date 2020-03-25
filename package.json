@@ -4,11 +4,6 @@
   "private": true,
   "description": "An out-of-box UI solution for enterprise applications",
   "scripts": {
-    "add": "node ./scripts/add-dependencies.js",
-    "postinstall": "node ./scripts/install-dependencies.js",
-    "install:only": "node ./scripts/install-dependencies.js",
-    "init-submodule": "node ./scripts/init-submodule.js",
-    "delete-submodule": "node ./scripts/delete-submodule.js",
     "analyze": "cross-env ANALYZE=1 umi build",
     "build": "umi build",
     "build:no-example": "cross-env EXAMPLE=NONE umi build",
@@ -35,10 +30,7 @@
     "test:all": "node ./tests/run-tests.js",
     "test:component": "umi test ./src/components",
     "tslint:fix": "tslint --fix \"src/**/*.ts*\"",
-    "locale": "node ./scripts/locale.js",
-    "gcode": "node ./scripts/genCode.js",
-    "gitconfig": "git remote add gitlab git@git.gantcloud.com:ui-team/lite-ui-framework.git && git remote add github git@github.com:yuanguandong/lite-ui-framework.git",
-    "gitpush": "git push gitee master && git push origin master"
+    "locale": "node ./scripts/locale.js"
   },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
