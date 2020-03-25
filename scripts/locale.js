@@ -17,10 +17,10 @@ const config = {
     'zh-CN': '中文简体',
     // 'zh-TW': '中文繁体',
   },
-  //百度翻译的appid和key
+  //百度翻译的appid和key,
   baiduTranslate: {
-    appid: '20190222000269988',
-    key: 'LGFk8C3pgW8GBvyG5MrS',
+    appid: '你的百度翻译appid',
+    key: '你的百度翻译appkey',
   }
 };
 
