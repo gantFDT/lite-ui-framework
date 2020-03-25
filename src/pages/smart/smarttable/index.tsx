@@ -60,7 +60,7 @@ const Page = (props: any) => {
     save({
       params: {
         ...params,
-        pageInfo: { beginIndex:beginIndex, pageSize }
+        pageInfo: { beginIndex: beginIndex, pageSize }
       }
     })
   }, [params])
@@ -208,7 +208,7 @@ const Page = (props: any) => {
   }, [])
 
   const bodyHeight = getTableHeight(MAIN_CONFIG, searchFormHei + TABLE_HEADER_HEIGHT + CARD_BORDER_HEIGHT)
-  console.log('bodyHeight',bodyHeight)
+  console.log('bodyHeight', bodyHeight)
   const cardHeight = getTableHeight(MAIN_CONFIG, searchFormHei, false)
   return (<Card bodyStyle={{ padding: '0px' }}>
     <SmartSearch
@@ -223,56 +223,56 @@ const Page = (props: any) => {
       totalCount={totalCount}
       ref={searchRef}
     />
-    {/* {activeViewType === 'table' &&  */}
-    <SmartTable
-      tableKey={`${pageKey}:${userId}`}
-      rowKey="id"
-      schema={getSchema}
-      dataSource={dataSource}
-      loading={listLoading}
-      rowSelection={{
-        type: 'checkbox',
-        selectedRowKeys,
-        onChange: handleSelect
-      }}
-      bodyHeight={bodyHeight}
-      headerRight={<>
-        <Tooltip title={tr("创建")}>
-          <Button
-            size="small"
-            icon="plus"
-            type="primary"
-            className="gant-margin-h-5"
-            onClick={handleShowCreate}
-          />
-        </Tooltip>
-        <Tooltip title={tr("编辑")}>
-          <Button
-            size="small"
-            icon="edit"
-            className="gant-margin-h-5"
-            disabled={!(selectedRows.length === 1)}
-            onClick={handleShowUpdate}
-          />
-        </Tooltip>
-        <Tooltip title={tr("删除")}>
-          <Button
-            size="small"
-            icon="delete"
-            type="danger"
-            className="gant-margin-h-5"
-            disabled={!(selectedRows.length === 1)}
-            onClick={handleremove}
-          />
-        </Tooltip>
-        {viewButtonGroup}
-      </>}
-      pageSize={pageSize}
-      pageIndex={beginIndex}
-      onPageChange={onPageChange}
-      totalCount={totalCount}
-    />
-    {/* } */}
+    {activeViewType === 'table' &&
+      <SmartTable
+        tableKey={`${pageKey}:${userId}`}
+        rowKey="id"
+        schema={getSchema}
+        dataSource={dataSource}
+        loading={listLoading}
+        rowSelection={{
+          type: 'checkbox',
+          selectedRowKeys,
+          onChange: handleSelect
+        }}
+        bodyHeight={bodyHeight}
+        headerRight={<>
+          <Tooltip title={tr("创建")}>
+            <Button
+              size="small"
+              icon="plus"
+              type="primary"
+              className="gant-margin-h-5"
+              onClick={handleShowCreate}
+            />
+          </Tooltip>
+          <Tooltip title={tr("编辑")}>
+            <Button
+              size="small"
+              icon="edit"
+              className="gant-margin-h-5"
+              disabled={!(selectedRows.length === 1)}
+              onClick={handleShowUpdate}
+            />
+          </Tooltip>
+          <Tooltip title={tr("删除")}>
+            <Button
+              size="small"
+              icon="delete"
+              type="danger"
+              className="gant-margin-h-5"
+              disabled={!(selectedRows.length === 1)}
+              onClick={handleremove}
+            />
+          </Tooltip>
+          {viewButtonGroup}
+        </>}
+        pageSize={pageSize}
+        pageIndex={beginIndex}
+        onPageChange={onPageChange}
+        totalCount={totalCount}
+      />
+    }
     {activeViewType === 'card' && <CardList
       bodyHeight={cardHeight}
       headerRight={
@@ -332,7 +332,7 @@ export default connect(
     MAIN_CONFIG: settings.MAIN_CONFIG,
     userId: user.currentUser.id,
     ...exampleSmartTable,
-    listLoading:loading.effects['exampleSmartTable/fetch'],
+    listLoading: loading.effects['exampleSmartTable/fetch'],
     createLoading: loading.effects['exampleSmartTable/create'],
     updateLoading: loading.effects['exampleSmartTable/update'],
     removeLoading: loading.effects['exampleSmartTable/remove'],
