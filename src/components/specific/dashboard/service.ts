@@ -44,23 +44,6 @@ export async function update(payload: payloadProps) {
   });
 }
 
-// 删除仪表板信息
-// export async function remove(payload: payloadProps) {
-//   const { id, type } = payload
-//   let url = '/accountUserSelf/delUserData';
-//   if (type == 'company') {
-//     url = '/companyData/delCompanyData'
-//   }
-//   if (!id) { return }
-//   return request(url, {
-//     method: 'POST',
-//     data: {
-//       dataId: id,
-//       dataType: "dashboard"
-//     },
-//   });
-// }
-
 //删除小程序信息
 export function removeWidgetApi(params) {
   const { widgetKey, type } = params

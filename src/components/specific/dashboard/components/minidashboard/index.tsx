@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useEffect, useReducer } from 'react';
-import { Button, Icon, Spin, Tooltip, Empty, message, Col,Tag } from 'antd';
+import React from 'react';
+import { Button, Icon, Empty, Col, Tag } from 'antd';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import styles from './index.less'
-import { Widget, widgets } from '@/widgets'
+import { widgets } from '@/widgets'
 
 import classnames from 'classnames'
 import { getWidgetType } from '@/widgets/utils'
@@ -29,43 +29,11 @@ const Comp = (props: dashboard) => {
     span = 3
   } = props;
 
-  // const wrapWidth = collapsed ? `calc(100vh - ${slideCollapsedWidth}px)` : `calc(100vh - ${slideWidth}px)`
-
-  const [wrapWidth, setWrapWidth] = useState(1000)
-  const [widgetWidth, setWidgetWidth] = useState(202)
-  const [widgetHeight, setWidgetHeight] = useState(202)
-
-  const syncWidgetRect = _.debounce(() => {
-    var test = document.querySelector('.widgetReact');
-    var rect = test && test.getBoundingClientRect();
-    if (rect) {
-      setWidgetHeight(rect.height)
-      setWidgetWidth(rect.width)
-      // setWrapWidth(collapsed ? window.innerWidth - slideCollapsedWidth -20 : window.innerWidth - slideWidth -20)
-
-    }
-  }, 10)
-
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      syncWidgetRect()
-    }, 10)
-    window.addEventListener('resize', syncWidgetRect)
-    return () => {
-      window.removeEventListener('resize', syncWidgetRect)
-    };
-  }, [])
-
-
   return (
     <Col className={classnames(className, styles.dashboardWrap)} style={{ width: `calc((100% / ${span}) - 10px)` }}>
       {_.isArray(currentLayout) && !_.isEmpty(currentLayout) ? <div className={classnames(styles.wrap, 'dashboardItem')} style={{ height: 200, width: 200 }} onClick={onClick}>
         <div className={classnames(styles.container, 'widgetReact')}
           style={{
-            // width: wrapWidth,
-            // transform: `scale(${widgetWidth/wrapWidth})`
             width: '1440px',
             transform: `scale(calc(180 / 1440))`
           }}
@@ -86,15 +54,6 @@ const Comp = (props: dashboard) => {
             {currentLayout.map((item: any) => {
               return <div key={item.i} className={classnames('ant-card', 'reactgriditem')}>
                 {widgets[getWidgetType(item.i)] ?
-                  // <Widget
-                  //   widgetKey={item.i}
-                  //   widgetType={getWidgetType(item.i)}
-                  //   itemHeight={item.h * 40 - 10}
-                  //   editMode={false}
-                  // />
-                  // <div className={styles.widget} style={{ height: item.h * 40 - 10, backgroundImage: `url(${item.snapShot}`, }}>
-                  //   {/* {item['name']} */}
-                  // </div>
                   <div className={styles.widget} style={{ height: item.h * 40 - 10, backgroundImage: `${item.iconBackground}`, }}>
                     <Icon type={item['icon']} />
                   </div>
@@ -116,11 +75,6 @@ const Comp = (props: dashboard) => {
         <div className="emptyContent" style={{ height: 170 }} onClick={onClick}>
           <Empty
             description=''
-          // description={
-          //   // <span>
-          //   //   {tr('当前仪表板没有小程序')}
-          //   // </span>
-          // }
           >
           </Empty>
         </div>

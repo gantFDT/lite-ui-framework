@@ -1,3 +1,4 @@
+//此组件主要功能是封装了一层schemaForm
 import React, { useCallback, useRef, useMemo, useContext, memo, useEffect } from 'react';
 import { Button } from 'antd';
 import { SchemaForm, Modal } from 'gantd';
