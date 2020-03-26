@@ -21,12 +21,12 @@ const ids = Object.keys(formSchema.propertyType);
 const avatar = `https://i.picsum.photos/id/${Random.natural(100, 900)}/100/100.jpg`
 const menuData = [
   {
-    title: '基本信息',
+    title: tr('基本信息'),
     icon: 'user',
     key: 'baseInfo',
   },
   {
-    title: '他的好友',
+    title: tr('他的好友'),
     icon: 'global',
     key: 'community',
   }

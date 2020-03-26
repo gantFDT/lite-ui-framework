@@ -137,6 +137,7 @@ const Page = (props: any) => {
                       onSearch={handleSearch}
                       onChange={(e) => handleSearch(e.target.value)}
                       prefix={<Icon type="exception" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      style={{width:200}}
                       allowClear
                     />
                   </>

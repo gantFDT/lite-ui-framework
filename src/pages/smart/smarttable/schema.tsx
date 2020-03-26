@@ -7,18 +7,6 @@ import moment from 'moment'
 import { MiniArea, Pie, Trend } from '@/components/chart'
 import { Link } from '@/components/common';
 
-export const avatars = [
-  'http://www.duoziwang.com/uploads/1512/1-1512291K2430-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512291K3400-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512292055010-L.jpg',
-  'http://www.duoziwang.com/uploads/1512/1-1512291K6240-L.jpg',
-  'http://www.duoziwang.com/2016/10/05/2032097569.jpg',
-  'http://www.duoziwang.com/2016/10/05/21143213927.jpg',
-  'http://www.duoziwang.com/2016/10/05/21135613834.png',
-  'http://www.duoziwang.com/2016/10/05/2025046706.jpg',
-  'http://www.duoziwang.com/2016/10/05/21102913178.png',
-  'http://www.duoziwang.com/uploads/1512/1-1512292051490-L.jpg',
-]
 
 export const sexs = [{
   name: tr('男'),
@@ -176,7 +164,6 @@ export const smartTableSchema = {
       render: (value: string, row: object, index: number) => {
         let avatarIndex = index > 9 ? Math.floor(index % 10) : index
         return <Link to={`smartdetail/${row['id']}`}>
-          {/* <Avatar size={15} icon="user" src={avatars[avatarIndex]} style={{ marginRight: '10px' }} /> */}
           {value}
         </Link>
       },
@@ -217,12 +204,12 @@ export const smartTableSchema = {
     },
     {
       fieldName: 'href',
-      title: '个人主页',
+      title: tr('个人主页'),
       componentType: 'InputUrl'
     },
     {
       fieldName: 'email',
-      title: '邮箱',
+      title: tr('邮箱'),
       componentType: 'InputEmail'
     },
     {
