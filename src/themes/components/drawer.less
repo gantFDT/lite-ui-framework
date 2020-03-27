@@ -23,7 +23,7 @@ html {
   .ant-drawer-title {
     color: var(--heading-color);
     font-size: var(--font-size-lg);
-    font-weight:bold;
+    font-weight: bold;
   }
 
   .ant-drawer-content {
@@ -67,5 +67,26 @@ html {
     -webkit-box-shadow: var(--shadow-2);
     box-shadow: var(--shadow-2)
   }
+
+
+  .ant-drawer .ant-drawer-content {
+    overflow: hidden;
+  }
+
+  .ant-drawer-content-wrapper {
+    height: 100vh;
+  }
+
+  .ant-drawer-wrapper-body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .ant-drawer-body {
+    padding: 10px;
+    height: calc(100vh - 40px);
+    overflow: auto;
+  }
+
 
 }

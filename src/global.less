@@ -185,6 +185,7 @@ div.aligncenter {
 .ant-tooltip-inner {
   min-height: 20px !important;
 }
+
 .ant-tooltip {
   font-size: 12px !important;
   line-height: 1 !important;
@@ -269,6 +270,7 @@ div.aligncenter {
 .ant-pagination {
   font-size: 12px !important;
 }
+
 //基础定制antd结束
 
 
@@ -292,41 +294,41 @@ div.aligncenter {
 
 
 
-.form-item-align-right {
-  :global(.ant-form-item-label) {
-    text-align: right;
-  }
-}
+// .form-item-align-right {
+//   :global(.ant-form-item-label) {
+//     text-align: right;
+//   }
+// }
 
-.form-item-align-left {
-  :global(.ant-form-item-label) {
-    text-align: left;
-  }
-}
+// .form-item-align-left {
+//   :global(.ant-form-item-label) {
+//     text-align: left;
+//   }
+// }
 
-.fixed-label-from-h {
-  .ant-form-item-control-wrapper {
-    width: calc(100% - 120px) !important;
-  }
+// .fixed-label-from-h {
+//   .ant-form-item-control-wrapper {
+//     width: calc(100% - 120px) !important;
+//   }
 
-  .ant-form-item-label {
-    width: 120px !important;
-  }
-}
+//   .ant-form-item-label {
+//     width: 120px !important;
+//   }
+// }
 
-.iconbtn {
-  margin: 0 5px;
-  padding: 0 8px !important;
-}
+// .iconbtn {
+//   margin: 0 5px;
+//   padding: 0 8px !important;
+// }
 
 
 
-.text-overflow-hidden {
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+// .text-overflow-hidden {
+//   max-width: 100%;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+// }
 
 
 
@@ -369,22 +371,22 @@ div.aligncenter {
   font-size: 20px;
 }
 
-.ant-form-item-label-left {
-  width: 100px !important;
-}
+// .ant-form-item-label-left {
+//   width: 100px !important;
+// }
 
-.ant-form-item-label>label {
-  width: 100%;
-  overflow: hidden;
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+// .ant-form-item-label>label {
+//   width: 100%;
+//   overflow: hidden;
+//   display: block;
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+// }
 
-.ant-menu-sub.ant-menu-inline>.ant-menu-item {
-  height: 30px;
-  line-height: 30px;
-}
+// .ant-menu-sub.ant-menu-inline>.ant-menu-item {
+//   height: 30px;
+//   line-height: 30px;
+// }
 
 @menu-item-padding-left: 10px;
 
@@ -440,7 +442,17 @@ div.aligncenter {
       color: var(--menu-item-color);
       font-weight: var(--sider-menu-font-weight);
       padding-right: 4px;
-      .omitdisplay;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      /*! autoprefixer: ignore next */
+      display: box;
+      /*! autoprefixer: ignore next */
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      /*! autoprefixer: ignore next */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
 
       &.dark {
         color: var(--menu-item-dark-color);
@@ -479,12 +491,14 @@ div.aligncenter {
 
 .ant-pro-sider-menu-sider {
   .ant-layout-sider-children .ant-pro-sider-menu-logo {
+
     // 去掉亮色默认的下阴影   
     h1 {
       margin: 0 0 0 5px;
       font-size: 16px;
     }
   }
+
   // 暗色
   &.ant-layout-sider-dark .ant-layout-sider-children .ant-pro-sider-menu-logo h1 {
     color: #fff;
@@ -519,9 +533,9 @@ div.aligncenter {
   }
 }
 
-.visibleSwitch {
-  font-size: 12px;
-}
+// .visibleSwitch {
+//   font-size: 12px;
+// }
 
 
 .dynamic_action_button_wrap {
@@ -543,23 +557,23 @@ div.aligncenter {
   }
 }
 
-.ant-table-row-selected {
-  .dynamic_action_icon {
-    display: inline-block;
-  }
-}
+// .ant-table-row-selected {
+//   .dynamic_action_icon {
+//     display: inline-block;
+//   }
+// }
 
 
 
-.row_hover_icon {
-  line-height: 18px;
-  margin: 0 3px;
-  display: inline-block;
+// .row_hover_icon {
+//   line-height: 18px;
+//   margin: 0 3px;
+//   display: inline-block;
 
-  &:hover {
-    color: var(--primary-color);
-  }
-}
+//   &:hover {
+//     color: var(--primary-color);
+//   }
+// }
 
 
 
@@ -570,32 +584,7 @@ div.aligncenter {
   align-items: center;
 }
 
-//widget 配置面板脚部
-.widgetconfigfooter {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  border-top: 1px solid var(--border-color-split);
-  padding: 8px 10px;
-  text-align: right;
-  left: 0;
-  background: var(--component-background);
-  border-radius: 0 0 var(--border-radius-base) var(--border-radius-base);
-  height: 40px;
-  z-index: 10;
 
-  &:after {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 40px;
-  }
-}
-
-.widgetconfigfooterblank {
-  width: 100%;
-  height: 40px;
-}
 
 .miniAvatar {
   width: 16px;
@@ -604,74 +593,18 @@ div.aligncenter {
   vertical-align: sub;
 }
 
-// .fixCardTab {
-//   .ant-tabs .ant-tabs-large-bar .ant-tabs-tab {
-//     padding: 13px 16px;
-//   }
 
-//   .ant-card-head {
-//     padding: 0px 10px;
-//   }
 
-//   .ant-card-head-wrapper {
-//     float: right;
-//   }
 
-//   .ant-card-head .ant-tabs {
-//     clear: none;
-//     float: left;
-//   }
 
-//   .ant-card-extra {
-//     // padding-top: 8px;
-//     display: flex;
-//   }
 
-//   .ant-tabs-nav-container {
-//     margin-bottom: 0px;
-//   }
+// .ant-badge-count {
+//   line-height: 16px !important;
+//   height: 16px !important;
+//   box-shadow: none !important;
 // }
 
-.steps-content {
-  margin-top: 10px;
-  border: 1px dashed rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  min-height: 200px;
-}
 
-
-
-.ant-badge-count {
-  line-height: 16px !important;
-  height: 16px !important;
-  box-shadow: none !important;
-}
-
-//超出省略显示
-
-.omitdisplay {
-  word-break: break-all;
-  text-overflow: ellipsis;
-  display: box;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  /*! autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
-  overflow: hidden;
-  word-break: break-all;
-}
-
-.omit-generator(@line) when (@line <=10) {
-  .omit-@{line} {
-    .omitdisplay;
-    -webkit-line-clamp: @line;
-  }
-
-  .omit-generator(@line+1);
-}
-
-.omit-generator(1);
 
 
 
@@ -744,104 +677,9 @@ div.aligncenter {
   column-gap: 10px;
 }
 
-.reactgriditem {
-  position: relative;
-  overflow: hidden;
-
-  .mask {
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    cursor: move;
-    background: rgba(0, 0, 0, 0);
-    transition: all 0.3s;
-    z-index: 1;
-  }
-
-  .configicon {
-    display: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #fff;
-    background: var(--primary-color);
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    top: 0;
-    font-weight: bold;
-    right: 40px;
-    border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
-    z-index: 1;
-  }
-
-  .deleteicon {
-    display: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #fff;
-    background: #f5222d;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    top: 0;
-    right: 0;
-    border-radius: var(--card-border-radius);
-    z-index: 1;
-  }
-
-  .configicon+.deleteicon {
-    border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;
-  }
-
-  &:hover {
-    .mask {
-      background: rgba(0, 0, 0, 0.05);
-      transition: all 0.3s;
-    }
-
-    .configicon {
-      display: block;
-    }
-
-    .deleteicon {
-      display: block;
-    }
-  }
-}
-
-html {
-  .ant-drawer .ant-drawer-content {
-    overflow: hidden;
-  }
-
-  .ant-drawer-content-wrapper {
-    height: 100vh;
-  }
-
-  .ant-drawer-wrapper-body {
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .ant-drawer-body {
-    padding: 10px;
-    height: calc(100vh - 40px);
-    overflow: auto;
-  }
-}
 
 
 
-
-.react-grid-item>.react-resizable-handle {
-  z-index: 1
-}
 
 
 //修复按钮组的圆角问题
@@ -849,11 +687,6 @@ html .ant-btn-group .ant-btn-icon-only.ant-btn-sm {
   border-radius: 0;
 }
 
-.ant-card-head-wrapper{width:100%;}
+// .ant-card-head-wrapper{width:100%;}
 
-.ant-form-item-children{color:var(--text-color);}
-
-// *{
-//   -webkit-transition: none!important;
-//   animation:none!important;
-// }
+// .ant-form-item-children{color:var(--text-color);}

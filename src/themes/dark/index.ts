@@ -87,7 +87,7 @@ export default {
   '--sider-menu-text-color': '#fff',
 
   '--upload-bg': '#313133',
-  '--menu-item-active-bg':'rgba(0,0,0,0.1)',
+  '--menu-item-active-bg':'rgba(0,0,0,1)',
   '--checkbox-check-color':'rgba(0,0,0,0)',
   '--select-item-active-bg':'rgba(0,0,0,0)'
 };

@@ -8,3 +8,79 @@
   height: 50px;
 }
 
+:global {
+  .reactgriditem {
+    position: relative;
+    overflow: hidden;
+
+    .mask {
+      width: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      height: 100%;
+      cursor: move;
+      background: rgba(0, 0, 0, 0);
+      transition: all 0.3s;
+      z-index: 1;
+    }
+
+    .configicon {
+      display: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      background: var(--primary-color);
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      top: 0;
+      font-weight: bold;
+      right: 40px;
+      border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
+      z-index: 1;
+    }
+
+    .deleteicon {
+      display: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      background: #f5222d;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      top: 0;
+      right: 0;
+      border-radius: var(--card-border-radius);
+      z-index: 1;
+    }
+
+    .configicon+.deleteicon {
+      border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;
+    }
+
+    &:hover {
+      .mask {
+        background: rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+      }
+
+      .configicon {
+        display: block;
+      }
+
+      .deleteicon {
+        display: block;
+      }
+    }
+  }
+
+  .react-grid-item>.react-resizable-handle {
+    z-index: 1
+  }
+}

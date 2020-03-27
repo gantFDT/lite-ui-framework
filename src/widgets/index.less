@@ -1,0 +1,29 @@
+:global {
+
+  //widget 配置面板脚部
+  .widgetconfigfooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid var(--border-color-split);
+    padding: 8px 10px;
+    text-align: right;
+    left: 0;
+    background: var(--component-background);
+    border-radius: 0 0 var(--border-radius-base) var(--border-radius-base);
+    height: 40px;
+    z-index: 10;
+
+    &:after {
+      display: block;
+      content: '';
+      width: 100%;
+      height: 40px;
+    }
+  }
+
+  .widgetconfigfooterblank {
+    width: 100%;
+    height: 40px;
+  }
+}

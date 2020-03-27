@@ -3,6 +3,7 @@ import React, { useEffect, useCallback } from 'react'
 import { importModel } from '@/utils/utils'
 import event from '@/utils/events'
 import Widgets from '@/widgets/items'
+import './index.less'
 
 const widgets = {
   LogoBand: {

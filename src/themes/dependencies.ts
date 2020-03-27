@@ -101,7 +101,7 @@ export default {
     },
     {
       // keys: ['--primary-1', '--item-active-bg', '--item-hover-bg', '--table-row-hover-bg', '--select-item-active-bg', '--menu-item-active-bg', '--tree-node-hover-bg'],
-      keys: ['--primary-1', '--item-active-bg', '--item-hover-bg', '--select-item-active-bg', '--menu-item-active-bg', '--tree-node-hover-bg'],
+      keys: ['--primary-1', '--item-active-bg', '--item-hover-bg', '--select-item-active-bg', '--tree-node-hover-bg'],
       rule: 'palette(key, 1)'
     },
     {
