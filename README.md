@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/gantFDT/lite-ui-framework.svg?branch=master)](https://travis-ci.org/gantFDT/lite-ui-framework)
+
 # 一、快速开始 
 ```bash
 git clone git@github.com:gantFDT/lite-ui-framework.git
