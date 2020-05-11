@@ -12,7 +12,7 @@ const { pwa, MAIN_CONFIG: { primaryColor } } = defaultSettings; // preview.pro.a
 
 
 const extraBabelPlugins = [
-  'dynamic-import-node',
+  // 'dynamic-import-node',
   [
     "import",
     {
